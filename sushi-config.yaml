@@ -1,0 +1,31 @@
+id: hl7-ie.medication-events
+canonical: https://hl7-ie.github.io/medication-events/fhir
+name: HL7IEMedicationEvents
+status: draft
+version: 0.1.0
+title: HL7 Ireland Medication Events Implementation Guide
+description: Starter implementation guide for Irish medication event and ePrescription exchange workflows.
+fhirVersion: 4.0.1
+copyrightYear: 2026+
+releaseLabel: ci-build
+license: CC0-1.0
+publisher:
+  name: HL7 Ireland
+  url: https://github.com/hl7-ie
+contact:
+  - name: HL7 Ireland
+    telecom:
+      - system: url
+        value: https://github.com/hl7-ie
+jurisdiction: urn:iso:std:iso:3166#IE "Ireland"
+pages:
+  index.md:
+    title: Home
+  downloads.md:
+    title: Downloads
+menu:
+  Home: index.html
+  Downloads: downloads.html
+parameters:
+  path-resource:
+    - input/resources
