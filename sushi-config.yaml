@@ -1,5 +1,5 @@
-id: hl7-ie.medication-events
-canonical: https://hl7-ie.github.io/medication-events/fhir
+id: hl7.fhir.ie.medication-events
+canonical: https://hl7.eu/fhir/ie/medication-events/fhir
 name: HL7IEMedicationEvents
 status: draft
 version: 0.1.0
@@ -18,6 +18,8 @@ contact:
       - system: url
         value: https://github.com/hl7-ie
 jurisdiction: urn:iso:std:iso:3166#IE "Ireland"
+dependencies:
+  hl7.fhir.eu.base: 1.0.0
 pages:
   index.md:
     title: Home

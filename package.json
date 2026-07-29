@@ -1,5 +1,5 @@
 {
-  "name": "hl7-ie-medication-events",
+  "name": "hl7.fhir.ie.medication-events",
   "version": "0.1.0",
   "private": true,
   "description": "Starter FHIR IG scaffold for HL7 Ireland medication events.",
