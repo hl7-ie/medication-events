@@ -1,0 +1,16 @@
+{
+  "package-id": "hl7-ie.medication-events",
+  "canonical": "https://hl7-ie.github.io/medication-events/fhir",
+  "title": "HL7 Ireland Medication Events",
+  "category": "Clinical",
+  "introduction": "Starter implementation guide scaffold for Irish medication prescribing and medication event exchange.",
+  "list": [
+    {
+      "version": "current",
+      "desc": "Continuous Integration Build",
+      "status": "ci-build",
+      "current": true,
+      "path": "https://hl7-ie.github.io/medication-events/fhir"
+    }
+  ]
+}

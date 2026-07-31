@@ -1,0 +1,61 @@
+{
+  "resourceType": "CapabilityStatement",
+  "id": "ie-medication-events-capabilitystatement",
+  "url": "https://hl7-ie.github.io/medication-events/fhir/CapabilityStatement/ie-medication-events-capabilitystatement",
+  "version": "0.1.0",
+  "name": "IEMedicationEventsCapabilityStatement",
+  "title": "HL7 Ireland Medication Events CapabilityStatement",
+  "status": "draft",
+  "experimental": true,
+  "date": "2026-07-23",
+  "publisher": "HL7 Ireland",
+  "contact": [
+    {
+      "name": "HL7 Ireland",
+      "telecom": [
+        {
+          "system": "url",
+          "value": "https://github.com/hl7-ie"
+        }
+      ]
+    }
+  ],
+  "description": "Starter capability statement for medication prescribing, dispensing, administration, and medication event workflows in Ireland.",
+  "kind": "requirements",
+  "fhirVersion": "4.0.1",
+  "format": [
+    "json"
+  ],
+  "rest": [
+    {
+      "mode": "server",
+      "documentation": "Illustrative server expectations for the starter HL7 Ireland medication events guide.",
+      "resource": [
+        {
+          "type": "Patient",
+          "profile": "http://hl7.org/fhir/StructureDefinition/Patient",
+          "documentation": "Patients participating in medication-event exchange."
+        },
+        {
+          "type": "Encounter",
+          "profile": "http://hl7.org/fhir/StructureDefinition/Encounter",
+          "documentation": "Encounter context for prescribing and medication review."
+        },
+        {
+          "type": "MedicationRequest",
+          "supportedProfile": [
+            "https://hl7-ie.github.io/medication-events/fhir/StructureDefinition/ie-medication-request"
+          ],
+          "documentation": "Medication requests flowing through national prescribing pathways."
+        },
+        {
+          "type": "Observation",
+          "supportedProfile": [
+            "https://hl7-ie.github.io/medication-events/fhir/StructureDefinition/ie-medication-observation"
+          ],
+          "documentation": "Medication-event observations such as administration or adherence notes."
+        }
+      ]
+    }
+  ]
+}
