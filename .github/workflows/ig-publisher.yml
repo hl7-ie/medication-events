@@ -41,11 +41,8 @@ jobs:
       - name: Compile FSH definitions
         run: npm run build
 
-      - name: Download IG Publisher
-        run: npm run publisher:download
-
       - name: Build implementation guide
-        run: java -jar input-cache/publisher.jar -ig ig.ini
+        run: npm run publish:local
 
       - name: Upload QA and output artifacts
         if: always()
