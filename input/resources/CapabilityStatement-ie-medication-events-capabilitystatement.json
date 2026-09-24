@@ -1,7 +1,7 @@
 {
   "resourceType": "CapabilityStatement",
   "id": "ie-medication-events-capabilitystatement",
-  "url": "https://hl7-ie.github.io/medication-events/fhir/CapabilityStatement/ie-medication-events-capabilitystatement",
+  "url": "https://hl7.eu/fhir/ie/medication-events/fhir/CapabilityStatement/ie-medication-events-capabilitystatement",
   "version": "0.1.0",
   "name": "IEMedicationEventsCapabilityStatement",
   "title": "HL7 Ireland Medication Events CapabilityStatement",
@@ -44,14 +44,14 @@
         {
           "type": "MedicationRequest",
           "supportedProfile": [
-            "https://hl7-ie.github.io/medication-events/fhir/StructureDefinition/ie-medication-request"
+            "https://hl7.eu/fhir/ie/medication-events/fhir/StructureDefinition/ie-medication-request"
           ],
           "documentation": "Medication requests flowing through national prescribing pathways."
         },
         {
           "type": "Observation",
           "supportedProfile": [
-            "https://hl7-ie.github.io/medication-events/fhir/StructureDefinition/ie-medication-observation"
+            "https://hl7.eu/fhir/ie/medication-events/fhir/StructureDefinition/ie-medication-observation"
           ],
           "documentation": "Medication-event observations such as administration or adherence notes."
         }

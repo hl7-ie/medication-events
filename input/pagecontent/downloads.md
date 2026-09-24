@@ -1,9 +1,9 @@
 # Downloads
 
-This scaffold publishes from GitHub Pages while the official `hl7.ie` domain is unavailable.
+This scaffold is hosted from GitHub Pages while using the interim HL7 Europe canonical.
 
 ## Source and package identifiers
 
-- Canonical: `https://hl7-ie.github.io/medication-events/fhir`
-- Package: `hl7-ie.medication-events`
+- Canonical: `https://hl7.eu/fhir/ie/medication-events/fhir`
+- Package: `hl7.fhir.ie.medication-events`
 - Source repository: `https://github.com/hl7-ie/medication-events`

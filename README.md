@@ -33,7 +33,7 @@ This implementation guide is part of the **federated HL7 Europe governance model
 
 The scaffold intentionally follows patterns commonly used across affiliate implementation guides such as **HL7 US Core**, **CA Core+**, **UK Core**, **NI Core**, and **AU Base**:
 
-- GitHub Pages is used as the canonical publication base while the official `hl7.ie` domain is unavailable.
+- GitHub Pages hosts the generated site while the guide uses the interim HL7 Europe canonical.
 - SUSHI/FSH is used to define starter conformance artifacts in a maintainable form.
 - IG Publisher configuration is kept repository-local so that CI and local builds use the same entry points.
 - Terminology, profiles, examples, and page content are separated into standard input folders for future growth.
@@ -114,4 +114,4 @@ The generated site is written to `output/` and is ignored by git.
 
 ## Publishing
 
-The GitHub Actions workflow validates the FSH definitions on pull requests and, on `main`, runs IG Publisher and deploys the generated guide to GitHub Pages at the canonical URL.
+The GitHub Actions workflow validates the FSH definitions on pull requests and, on `main`, runs IG Publisher and deploys the generated guide to GitHub Pages while the canonical remains `https://hl7.eu/fhir/ie/medication-events/fhir`.

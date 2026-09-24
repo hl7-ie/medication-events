@@ -64,7 +64,7 @@ Instance: ExampleIEPatient
 InstanceOf: Patient
 Usage: #example
 * id = "example-ie-patient"
-* identifier.system = "https://hl7-ie.github.io/medication-events/fhir/NamingSystem/national-health-identifier"
+* identifier.system = "https://hl7.eu/fhir/ie/medication-events/fhir/NamingSystem/national-health-identifier"
 * identifier.value = "9999999999"
 * name[0].family = "Murphy"
 * name[0].given[0] = "Aoife"
@@ -93,7 +93,7 @@ Usage: #example
 * authoredOn = "2026-07-23"
 * medicationCodeableConcept = $SCT#387517004 "Paracetamol"
 * dosageInstruction[0].text = "Take one tablet twice daily as needed for pain."
-* extension[eprescriptionReference].valueIdentifier.system = "https://hl7-ie.github.io/medication-events/fhir/NamingSystem/eprescription-reference"
+* extension[eprescriptionReference].valueIdentifier.system = "https://hl7.eu/fhir/ie/medication-events/fhir/NamingSystem/eprescription-reference"
 * extension[eprescriptionReference].valueIdentifier.value = "NEPS-0001"
 
 Instance: ExampleIEMedicationObservation
