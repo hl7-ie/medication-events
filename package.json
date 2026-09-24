@@ -7,7 +7,7 @@
     "build": "sushi .",
     "validate": "npm run build",
     "publisher:download": "mkdir -p input-cache && curl --fail --show-error --location https://github.com/HL7/fhir-ig-publisher/releases/latest/download/publisher.jar -o input-cache/publisher.jar",
-    "publish:local": "test -f input-cache/publisher.jar || npm run publisher:download && java -jar input-cache/publisher.jar -ig ig.ini"
+    "publish:local": "(test -f input-cache/publisher.jar || npm run publisher:download) && java -jar input-cache/publisher.jar -ig ig.ini"
   },
   "engines": {
     "node": ">=20"
