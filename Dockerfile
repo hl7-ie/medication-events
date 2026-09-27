@@ -13,7 +13,7 @@
 # Tool versions match .github/workflows/*.yml; the jars are checked against their SHA-256.
 
 # ── toolchain ───────────────────────────────────────────────────────────────
-FROM node:20-bookworm-slim AS toolchain
+FROM node:26-bookworm-slim AS toolchain
 
 ARG SUSHI_VERSION=3.18.0
 ARG PUBLISHER_VERSION=2.3.4
