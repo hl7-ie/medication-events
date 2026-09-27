@@ -65,6 +65,6 @@ FROM ci AS site-build
 RUN bash scripts/local/run-gates.sh publish
 
 # ── site: static IG ─────────────────────────────────────────────────────────
-FROM nginxinc/nginx-unprivileged:1.27-alpine AS site
+FROM nginxinc/nginx-unprivileged:1.31-alpine AS site
 COPY --from=site-build /workspace/site /usr/share/nginx/html
 EXPOSE 8080
