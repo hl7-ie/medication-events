@@ -1,0 +1,40 @@
+# IE Medication Events: local build, test and preview.
+#
+#   docker compose run --rm gates                 # SUSHI, BDD, HIQA and QA gates, Simplifier bundle
+#   docker compose run --rm gates validate        # FHIR Validator (examples + whole-IG baseline)
+#   docker compose run --rm gates codes           # verify codes on tx.fhir.org
+#   docker compose run --rm gates publish         # IG Publisher -> output/ and site/
+#   docker compose run --rm gates all
+#   docker compose up preview                     # http://localhost:8080 (serves site/ after `publish`)
+#
+# The repository is mounted at /workspace, so results land in your working copy. The FHIR package cache is a named
+# volume shared between runs.
+
+services:
+  gates:
+    build:
+      context: .
+      target: toolchain
+    image: ie-mpd-toolchain:local
+    volumes:
+      - .:/workspace
+      - fhir-packages:/home/node/.fhir
+      - tests-node-modules:/workspace/tests/node_modules
+    environment:
+      SIMPLIFIER_PROJECT: nostalgic-ie
+    command: ["test"]
+
+  preview:
+    image: nginxinc/nginx-unprivileged:1.27-alpine
+    ports:
+      - "127.0.0.1:8080:8080"
+    volumes:
+      - ./site:/usr/share/nginx/html:ro
+    read_only: true
+    tmpfs:
+      - /tmp
+    profiles: [preview]
+
+volumes:
+  fhir-packages:
+  tests-node-modules:

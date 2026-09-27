@@ -4,4 +4,7 @@ temp/
 template/
 fsh-generated/
 input-cache/
+build/
+tests/reports/
+tests/validator/validator_cli.jar
 .DS_Store

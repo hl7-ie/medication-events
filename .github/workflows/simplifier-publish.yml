@@ -1,0 +1,127 @@
+name: Simplifier publish
+
+# MANUAL ONLY. Builds the Simplifier bundle from main, runs the gates it depends on, and (unless dry run) uploads the
+# conformance resources and examples to a Simplifier.net project with the Project ZIP API
+# (PUT https://api.simplifier.net/<project>/zip).
+#
+# It never releases a package: Simplifier has no API for that, and a released package version can never be deleted.
+# After an upload, create the release in Simplifier (Releases -> Create), marked prerelease.
+#
+# Set-up (repository settings):
+#   * Environment `simplifier`, with required reviewers, holding the secrets SIMPLIFIER_EMAIL and SIMPLIFIER_PASSWORD
+#     (a Simplifier account with write access to the project; a dedicated account is best).
+#   * Optional repository variable SIMPLIFIER_PROJECT: the project's URL key (e.g. `nostalgic-ie`).
+
+on:
+  workflow_dispatch:
+    inputs:
+      project:
+        description: 'Simplifier project URL key (blank = repository variable SIMPLIFIER_PROJECT)'
+        required: false
+        default: ''
+      mode:
+        description: '"dry-run" builds and lists the upload; "upload" sends it to Simplifier'
+        required: true
+        default: dry-run
+        type: choice
+        options: [dry-run, upload]
+
+permissions:
+  contents: read
+
+concurrency:
+  group: simplifier-publish
+  cancel-in-progress: false
+
+env:
+  SUSHI_VERSION: 3.18.0
+  NODE_VERSION: '20'
+  PYTHON_VERSION: '3.12'
+
+jobs:
+  bundle:
+    name: Build and check the Simplifier bundle
+    if: github.ref == 'refs/heads/main'
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    outputs:
+      project: ${{ steps.project.outputs.key }}
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+      - uses: actions/setup-node@820762786026740c76f36085b0efc47a31fe5020 # v7.0.0
+        with:
+          node-version: ${{ env.NODE_VERSION }}
+      - uses: actions/setup-python@5fda3b95a4ea91299a34e894583c3862153e4b97 # v7.0.0
+        with:
+          python-version: ${{ env.PYTHON_VERSION }}
+      - uses: actions/cache@55cc8345863c7cc4c66a329aec7e433d2d1c52a9 # v6.1.0
+        with:
+          path: ~/.fhir/packages
+          key: fhir-packages-${{ hashFiles('sushi-config.yaml') }}
+      - name: Project URL key
+        id: project
+        env:
+          INPUT_PROJECT: ${{ github.event.inputs.project }}
+          VAR_PROJECT: ${{ vars.SIMPLIFIER_PROJECT }}
+        run: |
+          key="${INPUT_PROJECT:-$VAR_PROJECT}"
+          if ! [[ "$key" =~ ^[A-Za-z0-9][A-Za-z0-9._-]{0,99}$ ]]; then
+            echo "::error::Set the project input or the SIMPLIFIER_PROJECT repository variable (a Simplifier URL key)"
+            exit 1
+          fi
+          echo "key=$key" >> "$GITHUB_OUTPUT"
+      - run: npm install -g fsh-sushi@${{ env.SUSHI_VERSION }}
+      - name: Run SUSHI (fail on any error)
+        run: |
+          sushi . | tee sushi.log
+          grep -Eq '\b0 Errors\b' sushi.log
+      - name: Gates the published content depends on
+        run: |
+          python scripts/hiqa/generate_traceability.py --check
+          python scripts/qa/check_ep_data_minimisation.py
+      - name: Build the Simplifier bundle (package id, dependencies, canonical)
+        run: python scripts/simplifier/build_bundle.py
+      - name: Build the project zip (dry run)
+        run: python scripts/simplifier/upload_project_zip.py "${{ steps.project.outputs.key }}"
+      - uses: actions/upload-artifact@043fb46d1a93c77aae656e7c1c64a875d1fc6a0a # v7.0.1
+        with:
+          name: simplifier-publish
+          path: |
+            build/simplifier-upload.zip
+            build/simplifier-project.zip
+            build/simplifier/
+          retention-days: 30
+
+  upload:
+    name: Upload to Simplifier (no package release)
+    needs: bundle
+    if: github.event.inputs.mode == 'upload'
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    environment:
+      name: simplifier
+      url: https://simplifier.net/${{ needs.bundle.outputs.project }}
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+      - uses: actions/setup-python@5fda3b95a4ea91299a34e894583c3862153e4b97 # v7.0.0
+        with:
+          python-version: ${{ env.PYTHON_VERSION }}
+      - uses: actions/download-artifact@3e5f45b2cfb9172054b4087a40e8e0b5a5461e7c # v8.0.1
+        with:
+          name: simplifier-publish
+          path: build/
+      - name: PUT the project zip
+        env:
+          SIMPLIFIER_EMAIL: ${{ secrets.SIMPLIFIER_EMAIL }}
+          SIMPLIFIER_PASSWORD: ${{ secrets.SIMPLIFIER_PASSWORD }}
+        run: python scripts/simplifier/upload_project_zip.py "${{ needs.bundle.outputs.project }}" --upload
+      - name: Summary
+        env:
+          PROJECT: ${{ needs.bundle.outputs.project }}
+        run: |
+          {
+            echo "## Uploaded to Simplifier project \`${PROJECT}\`"
+            echo
+            echo "Built from \`${GITHUB_SHA}\`. **No package was released.** In Simplifier: run quality control, check the"
+            echo "dependencies match \`build/simplifier/package.json\`, then Releases -> Create (prerelease)."
+          } >> "$GITHUB_STEP_SUMMARY"

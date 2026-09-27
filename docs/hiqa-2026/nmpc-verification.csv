@@ -1,0 +1,18 @@
+nmpc_code,concept_type,nmpc_name,used_for,replaces
+267451000220105,VMP,Amlodipine 5 mg oral tablet,ie-mpd-medication-amlodipine-5,NMPC-AML5TAB
+254311000220102,VMP,Atorvastatin 20 mg oral tablet,ie-mpd-medication-atorvastatin-20,NMPC-ATV20TAB
+254331000220107,VMP,Atorvastatin 40 mg oral tablet,ie-medication-atorvastatin-40; ie-medication-dispensed-be-to-ie-neps,NMPC-ATV40TAB
+254341000220103,VMP,Atorvastatin 80 mg oral tablet,ie-medication-atorvastatin-80,NMPC-ATV80TAB
+525351000220105,VMP,Insulin aspart 100 units/1 mL solution for injection 3 mL cartridge,ie-medication-insulin-aspart,NMPC-INSASP100
+529881000220106,VMP,Insulin glargine 100 units/1 mL solution for injection 3 mL pre-filled pen,ie-medication-insulin-glargine,NMPC-INSGLAR100
+714701000220101,VMP,Lisinopril 10 mg oral tablet,ie-medication-lisinopril-10; ie-medication-dispensed-de-lisinopril,NMPC-LIS10TAB
+718271000220105,VMP,Metformin hydrochloride 500 mg oral tablet,ie-mpd-medication-metformin-500; dispensed metformin examples; ie-mpd-medicationrequest-example,NMPC-MET500TAB
+313941000220100,VMP,Omeprazole 20 mg gastro-resistant oral capsule,ie-medication-omeprazole-20,NMPC-OME20CAP
+720061000220100,VMP,Ramipril 10 mg oral capsule,ie-medication-ramipril-10,NMPC-RAM10CAP
+716371000220101,VMP,Ramipril 5 mg oral capsule,ie-mpd-medication-ramipril-5,NMPC-RAM5CAP
+268301000220104,VMP,Sertraline 50 mg oral tablet,ie-medication-sertraline-50; ie-medication-dispensed-pt-sertraline,NMPC-SER50TAB
+718731000220101,VMP,Warfarin sodium 5 mg oral tablet,ie-medication-warfarin-5,NMPC-WAR5TAB
+716141000220105,VMP,Amoxicillin 500 mg oral capsule,hiqa-med-amoxicillin-500-caps,(added)
+462991000220107,VMP,Amoxicillin 250 mg/5 mL powder for oral suspension,hiqa-med-amoxicillin-50mgml-susp,(added)
+363291000220101,VMP,Salbutamol 100 microgram/actuation pressurised suspension for inhalation,hiqa-med-salbutamol-inhaler,(added)
+720411000220105,VMP,Oxycodone hydrochloride 10 mg prolonged-release oral tablet,hiqa-med-oxycodone-10-pr,(added)

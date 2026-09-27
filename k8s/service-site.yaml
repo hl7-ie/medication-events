@@ -1,0 +1,14 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: ie-mpd-site
+  labels:
+    app.kubernetes.io/name: ie-mpd-site
+spec:
+  type: ClusterIP
+  selector:
+    app.kubernetes.io/name: ie-mpd-site
+  ports:
+    - name: http
+      port: 80
+      targetPort: http

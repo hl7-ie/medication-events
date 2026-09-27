@@ -1,0 +1,72 @@
+name: Simplifier sync branch
+
+# MANUAL ONLY. Builds the Simplifier.net bundle from main and force-pushes it to the `simplifier-sync` branch, which a
+# Simplifier project on a Team plan (or higher) can link to through Simplifier's GitHub integration.
+# Copied from IE Core. For accounts without the Team plan, use simplifier-publish.yml (Project ZIP API) instead.
+# SUSHI output is not committed to main, so Simplifier cannot import it from main directly.
+# Nothing is published to Simplifier by this workflow: creating a package stays a manual step in Simplifier, because a
+# published package version can never be deleted.
+
+on:
+  workflow_dispatch:
+    inputs:
+      confirm:
+        description: 'Type "sync" to overwrite the simplifier-sync branch with a fresh bundle built from main'
+        required: true
+
+permissions:
+  contents: read
+
+concurrency:
+  group: simplifier-sync
+  cancel-in-progress: false
+
+env:
+  SUSHI_VERSION: 3.18.0
+  NODE_VERSION: '20'
+  PYTHON_VERSION: '3.12'
+
+jobs:
+  sync:
+    name: Build bundle and update simplifier-sync
+    if: github.event.inputs.confirm == 'sync' && github.ref == 'refs/heads/main'
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    permissions:
+      contents: write
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+      - uses: actions/setup-node@820762786026740c76f36085b0efc47a31fe5020 # v7.0.0
+        with:
+          node-version: ${{ env.NODE_VERSION }}
+      - uses: actions/setup-python@5fda3b95a4ea91299a34e894583c3862153e4b97 # v7.0.0
+        with:
+          python-version: ${{ env.PYTHON_VERSION }}
+      - uses: actions/cache@55cc8345863c7cc4c66a329aec7e433d2d1c52a9 # v6.1.0
+        with:
+          path: ~/.fhir/packages
+          key: fhir-packages-${{ hashFiles('sushi-config.yaml') }}
+      - run: npm install -g fsh-sushi@${{ env.SUSHI_VERSION }}
+      - name: Run SUSHI (fail on any error)
+        run: |
+          sushi . | tee sushi.log
+          grep -Eq '\b0 Errors\b' sushi.log
+      - name: Build the Simplifier bundle
+        run: python scripts/simplifier/build_bundle.py
+      - name: Force-push the bundle to simplifier-sync
+        env:
+          SOURCE_SHA: ${{ github.sha }}
+        run: |
+          cd build/simplifier
+          git init -q -b simplifier-sync
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add -A
+          git commit -q -m "Simplifier bundle built from main@${SOURCE_SHA}"
+          git remote add origin "https://x-access-token:${{ github.token }}@github.com/${{ github.repository }}.git"
+          git push -q --force origin simplifier-sync
+      - name: Summary
+        run: |
+          echo "## simplifier-sync updated" >> "$GITHUB_STEP_SUMMARY"
+          echo "" >> "$GITHUB_STEP_SUMMARY"
+          echo "Bundle built from \`${GITHUB_SHA}\`. Simplifier's GitHub integration imports it on the next push webhook or a Reimport." >> "$GITHUB_STEP_SUMMARY"

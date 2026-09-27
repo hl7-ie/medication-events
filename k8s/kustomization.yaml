@@ -1,0 +1,26 @@
+# IE Medication Events on a local Kubernetes cluster (minikube, kind, Docker Desktop). Not for production.
+#
+#   docker build --target ci   -t ie-mpd-ci:local .
+#   docker build --target site -t ie-mpd-site:local .
+#   minikube image load ie-mpd-ci:local ie-mpd-site:local      # kind: kind load docker-image ...
+#   kubectl apply -k k8s/
+#   kubectl -n ie-mpd logs -f job/ie-mpd-gates                 # the gates (run-gates.sh test)
+#   kubectl -n ie-mpd port-forward svc/ie-mpd-site 8080:80     # http://localhost:8080
+#   kubectl delete -k k8s/
+apiVersion: kustomize.config.k8s.io/v1beta1
+kind: Kustomization
+namespace: ie-mpd
+labels:
+  - pairs:
+      app.kubernetes.io/part-of: ie-medication-events
+    includeSelectors: false
+resources:
+  - namespace.yaml
+  - job-gates.yaml
+  - deployment-site.yaml
+  - service-site.yaml
+images:
+  - name: ie-mpd-ci
+    newTag: local
+  - name: ie-mpd-site
+    newTag: local

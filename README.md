@@ -1,117 +1,116 @@
-# HL7 Ireland Medication Events
+# IE Medication Events (IE MPD)
 
-Starter implementation guide scaffold for **`hl7.fhir.ie.medication-events`**. This repository provides the initial structure for an Irish medication events implementation guide covering prescribing, dispensing, administration, medication statements, and NePS-aligned ePrescription workflows.
+FHIR R4 implementation guide for Irish **ePrescription, eDispensation, medication administration and medication
+statements**, aligned with the HIQA *Draft National Standard for Electronic Prescriptions and Electronic
+Dispensations* (September 2026).
 
-## Canonical and package metadata
+> **Proof of concept by Nithin Mohan. Not for clinical use.** Not affiliated with, or endorsed by, HIQA, the HSE,
+> HL7 Ireland, HL7 Europe or the Department of Health. The HIQA standard is a consultation draft and will change.
 
-- **Repository:** `hl7-ie/medication-events`
-- **Canonical (interim):** `https://hl7.eu/fhir/ie/medication-events/fhir` (European federation canonical under HL7 Europe)
-- **FHIR package:** `hl7.fhir.ie.medication-events`
-- **FHIR version:** `4.0.1`
+| Item | Value |
+|---|---|
+| Package id | `nostalgic-ie.fhir.medication-events` |
+| Release name | Nostalgic IE (draft) |
+| Version | 0.1.0 |
+| Canonical | `https://hl7-ie.github.io/medication-events/fhir` |
+| FHIR | 4.0.1 |
+| Built on | HL7 Europe MPD 1.0.0 (prescription, dispense, medication), HL7 Europe Base 2.0.0 (medication statement) |
+| Site | <https://hl7-ie.github.io/medication-events/> |
 
-## Purpose and scope
+The ePrescription and eDispensation profiles were copied from [IE Core](https://github.com/hl7-ie/ie-core) and
+renamed `IEMpd*`; this IG has its own canonical and does not depend on the IE Core package
+([ADR-001](docs/adr/ADR-001-identity-and-copy-from-ie-core.md)). Administration and statements are described in
+[ADR-002](docs/adr/ADR-002-administration-and-statement-scope.md).
 
-This scaffold establishes a baseline HL7 Ireland implementation guide that can evolve into national guidance for medication event exchange. The initial content includes:
-
-- a minimal FHIR IG publisher configuration
-- placeholder conformance artifacts for profiles, extensions, terminology, and capability statement support
-- synthetic sample resources for Patient, Encounter, MedicationRequest, and Observation
-- GitHub Actions automation for validating and publishing the guide through GitHub Pages
-
-## European federation context
-
-This implementation guide is part of the **federated HL7 Europe governance model** where:
-
-- **Package naming** follows the standard pattern: `hl7.fhir.{cc}.{module}` (e.g., `hl7.fhir.ie.medication-events`)
-- **Canonical URL** uses the interim European federation structure: `https://hl7.eu/fhir/ie/medication-events/fhir`
-- **HL7 Ireland** maintains sovereign control over medication-events while coordinating with [hl7-eu/coalesced](https://github.com/hl7-eu/coalesced) for European harmonization
-- **Related affiliate medication IGs**: This guide aligns with medication implementation guides from Belgium, Sweden, Denmark, and Norway; see [HL7 Europe affiliates](https://github.com/hl7-eu) for federation structure
-
-**Note:** When the `hl7.ie` domain becomes available or the official HL7 EU infrastructure is launched, the canonical URL will migrate to the permanent location.
-
-## Alignment to HL7 affiliate patterns
-
-The scaffold intentionally follows patterns commonly used across affiliate implementation guides such as **HL7 US Core**, **CA Core+**, **UK Core**, **NI Core**, and **AU Base**:
-
-- GitHub Pages hosts the generated site while the guide uses the interim HL7 Europe canonical.
-- SUSHI/FSH is used to define starter conformance artifacts in a maintainable form.
-- IG Publisher configuration is kept repository-local so that CI and local builds use the same entry points.
-- Terminology, profiles, examples, and page content are separated into standard input folders for future growth.
-
-## Repository structure
+## Repository layout
 
 ```text
-.
-├── .github/
-│   └── workflows/
-│       └── ig-publisher.yml
-├── input/
-│   ├── fsh/
-│   │   └── medication-events.fsh
-│   ├── pagecontent/
-│   │   ├── downloads.md
-│   │   └── index.md
-│   └── resources/
-│       └── CapabilityStatement-ie-medication-events-capabilitystatement.json
-├── .gitignore
-├── ig.ini
-├── package-list.json
-├── package.json
-├── sushi-config.yaml
-└── README.md
+input/fsh/profiles/       IEMpd* profiles (ePrescription, eDispensation, administration, statement, actors)
+input/fsh/extensions/     extensions (HIQA-specific and general)
+input/fsh/terminology/    CodeSystems, ValueSets, HIQA placeholders
+input/fsh/identifiers/    NamingSystems for Irish identifiers
+input/fsh/logical/        HIQA EP logical model (generated)
+input/fsh/examples/       HIQA scenarios 1-9, NMPC-coded medicines
+input/pagecontent/        IG pages
+docs/adr/                 architecture decision records
+docs/hiqa-2026/           mapping, traceability matrix, open issues, NMPC verification, clinical-safety log
+docs/sources/hiqa-2026/   HIQA EP data elements (source for the logical model)
+scripts/                  traceability, QA, terminology and Simplifier tooling
+tests/                    BDD (Cucumber) and FHIR Validator runs
 ```
 
-## Included starter artifacts
+## Build and test
 
-- **Profiles**
-  - `IEMedicationRequest`
-  - `IEMedicationObservation`
-- **Extension**
-  - `IEEPrescriptionReference`
-- **Terminology placeholders**
-  - `IEMedicationEventTypeCS`
-  - `IEMedicationEventTypeVS`
-- **Capability statement**
-  - `IEMedicationEventsCapabilityStatement`
-- **Synthetic examples**
-  - `ExampleIEPatient`
-  - `ExampleIEEncounter`
-  - `ExampleIEMedicationRequest`
-  - `ExampleIEMedicationObservation`
-
-## Developer workflow
-
-### Prerequisites
-
-- Node.js 20+
-- Java 17+
-
-### Install dependencies
+Prerequisites: Node.js 20+, Java 17+, Python 3.12+.
 
 ```bash
-npm install
+npm install                                  # SUSHI 3.18.0
+npm run build                                # SUSHI: FSH -> fsh-generated/
+cd tests && npm ci && npm run test:bdd       # BDD tests (invariants, data minimisation, scenarios)
+npm run download:validator                   # FHIR Validator 6.10.4
+node validator/run-validation.js --tx        # validate every example (codes checked on tx.fhir.org)
 ```
 
-### Build and validate the FSH content
+From the repository root:
 
 ```bash
-npm run build
+python scripts/hiqa/generate_traceability.py         # regenerate the HIQA logical model and traceability
+python scripts/hiqa/check_mapping_against_snapshots.py
+python scripts/qa/check_ep_data_minimisation.py
+python scripts/terminology/verify_codes.py           # every SNOMED CT, LOINC, UCUM code; NMPC via the CSV
+python scripts/hiqa/sync_open_issues.py              # docs/hiqa-2026/open-issues.md -> the Open Issues page
+python scripts/simplifier/build_bundle.py            # build/simplifier-upload.zip
+npm run publisher:download && npm run publish:local  # IG Publisher 2.3.4 (needs Jekyll)
 ```
 
-### Download IG Publisher
+`scripts/local/run-gates.sh test|validate|codes|publish|all` runs the same gates as CI in one command.
+
+## Local testing with Docker
+
+The [Dockerfile](Dockerfile) pins the same tools as CI (SUSHI 3.18.0, IG Publisher 2.3.4, FHIR Validator 6.10.4,
+Jekyll 4.4.1) and checks the jars' SHA-256. Nothing else needs installing.
 
 ```bash
-npm run publisher:download
+docker compose run --rm gates                # SUSHI, BDD, HIQA and QA gates, Simplifier bundle
+docker compose run --rm gates validate       # FHIR Validator: examples (tx.fhir.org) + whole-IG QA baseline
+docker compose run --rm gates codes          # verify every code on tx.fhir.org
+docker compose run --rm gates publish        # IG Publisher -> output/, site/ (with canonical redirects)
+docker compose up preview                    # serve site/ at http://localhost:8080
 ```
 
-### Build the implementation guide locally
+Image targets: `toolchain` (mount the repository), `ci` (self-contained copy), `site` (the built IG on unprivileged
+nginx, port 8080): `docker build --target site -t ie-mpd-site:local .`
+
+## Local Kubernetes
+
+[k8s/](k8s) holds a kustomization for a local cluster (minikube, kind, Docker Desktop): a Job that runs the gates in
+the `ci` image and a Deployment/Service serving the `site` image. Both run as non-root with all capabilities dropped,
+in a namespace with the `restricted` Pod Security Standard.
 
 ```bash
-npm run publish:local
+docker build --target ci -t ie-mpd-ci:local . && docker build --target site -t ie-mpd-site:local .
+minikube image load ie-mpd-ci:local && minikube image load ie-mpd-site:local
+kubectl apply -k k8s/
+kubectl -n ie-mpd logs -f job/ie-mpd-gates
+kubectl -n ie-mpd port-forward svc/ie-mpd-site 8080:80
 ```
 
-The generated site is written to `output/` and is ignored by git.
+## CI
 
-## Publishing
+- `pr-validation.yml`: every pull request. SUSHI (0 errors), BDD, traceability, mapping, data-minimisation guard,
+  open issues, page links, Simplifier bundle, code verification, FHIR Validator (examples, and whole-IG QA not above
+  `scripts/qa/qa-baseline.json`), IG Publisher QA, and the Docker image and Kubernetes manifests.
+- `build-ig.yml`: `main`. The same gates, then the IG Publisher and deployment to GitHub Pages.
+- `simplifier-publish.yml` (manual): builds the Simplifier bundle from `main` and, in `upload` mode, puts the
+  resources in a Simplifier.net project through the Project ZIP API. It needs the `simplifier` environment (with
+  required reviewers) holding `SIMPLIFIER_EMAIL` and `SIMPLIFIER_PASSWORD`, and a project URL key (input or the
+  `SIMPLIFIER_PROJECT` variable). It **never releases a package**: Simplifier has no API for that, and package
+  versions are permanent.
+- `simplifier-sync.yml` (manual): force-pushes the bundle to a `simplifier-sync` branch for Simplifier's GitHub
+  integration (Team plan).
 
-The GitHub Actions workflow validates the FSH definitions on pull requests and, on `main`, runs IG Publisher and deploys the generated guide to GitHub Pages while the canonical remains `https://hl7.eu/fhir/ie/medication-events/fhir`.
+Actions are pinned to commit SHAs; tools are pinned to exact versions and the jars are checked against SHA-256.
+
+## Licence
+
+CC0-1.0. See [GOVERNANCE.md](GOVERNANCE.md) and [CONTRIBUTING.md](CONTRIBUTING.md).

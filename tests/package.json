@@ -1,0 +1,22 @@
+{
+  "name": "ie-mpd-fhir-tests",
+  "version": "0.1.0",
+  "description": "Tests for IE MPD (medication-events): BDD with the IG's own invariants, and FHIR Validator runs.",
+  "private": true,
+  "scripts": {
+    "test": "npm run test:validate && npm run test:bdd",
+    "test:validate": "node validator/run-validation.js",
+    "test:bdd": "cucumber-js --config cucumber.mjs",
+    "download:validator": "node validator/download-validator.js"
+  },
+  "dependencies": {
+    "@cucumber/cucumber": "^11.0.0",
+    "ajv": "^8.12.0",
+    "chai": "^4.4.1",
+    "glob": "^10.3.10"
+  },
+  "devDependencies": {
+    "chai-as-promised": "^8.0.2",
+    "fhirpath": "^5.2.0"
+  }
+}
