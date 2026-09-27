@@ -20,3 +20,5 @@ First release of IE Medication Events, replacing the starter scaffold.
 - MedicationAdministration (IE-defined) and MedicationStatement on HL7 Europe Base (ADR-002).
 - HIQA EP logical model and traceability matrix (242 elements), data-minimisation guard, NMPC-coded examples
   (scenarios 1–9), BDD tests, FHIR Validator gate, code verification and the Simplifier bundle.
+- Simplifier publishing from CI (manual, approved upload through the Project ZIP API; releases stay manual), and
+  local testing with Docker, docker compose and Kubernetes manifests.

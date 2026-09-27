@@ -63,12 +63,51 @@ python scripts/simplifier/build_bundle.py            # build/simplifier-upload.z
 npm run publisher:download && npm run publish:local  # IG Publisher 2.3.4 (needs Jekyll)
 ```
 
+`scripts/local/run-gates.sh test|validate|codes|publish|all` runs the same gates as CI in one command.
+
+## Local testing with Docker
+
+The [Dockerfile](Dockerfile) pins the same tools as CI (SUSHI 3.18.0, IG Publisher 2.3.4, FHIR Validator 6.10.4,
+Jekyll 4.4.1) and checks the jars' SHA-256. Nothing else needs installing.
+
+```bash
+docker compose run --rm gates                # SUSHI, BDD, HIQA and QA gates, Simplifier bundle
+docker compose run --rm gates validate       # FHIR Validator: examples (tx.fhir.org) + whole-IG QA baseline
+docker compose run --rm gates codes          # verify every code on tx.fhir.org
+docker compose run --rm gates publish        # IG Publisher -> output/, site/ (with canonical redirects)
+docker compose up preview                    # serve site/ at http://localhost:8080
+```
+
+Image targets: `toolchain` (mount the repository), `ci` (self-contained copy), `site` (the built IG on unprivileged
+nginx, port 8080): `docker build --target site -t ie-mpd-site:local .`
+
+## Local Kubernetes
+
+[k8s/](k8s) holds a kustomization for a local cluster (minikube, kind, Docker Desktop): a Job that runs the gates in
+the `ci` image and a Deployment/Service serving the `site` image. Both run as non-root with all capabilities dropped,
+in a namespace with the `restricted` Pod Security Standard.
+
+```bash
+docker build --target ci -t ie-mpd-ci:local . && docker build --target site -t ie-mpd-site:local .
+minikube image load ie-mpd-ci:local && minikube image load ie-mpd-site:local
+kubectl apply -k k8s/
+kubectl -n ie-mpd logs -f job/ie-mpd-gates
+kubectl -n ie-mpd port-forward svc/ie-mpd-site 8080:80
+```
+
 ## CI
 
 - `pr-validation.yml`: every pull request. SUSHI (0 errors), BDD, traceability, mapping, data-minimisation guard,
   open issues, page links, Simplifier bundle, code verification, FHIR Validator (examples, and whole-IG QA not above
-  `scripts/qa/qa-baseline.json`), IG Publisher QA.
+  `scripts/qa/qa-baseline.json`), IG Publisher QA, and the Docker image and Kubernetes manifests.
 - `build-ig.yml`: `main`. The same gates, then the IG Publisher and deployment to GitHub Pages.
+- `simplifier-publish.yml` (manual): builds the Simplifier bundle from `main` and, in `upload` mode, puts the
+  resources in a Simplifier.net project through the Project ZIP API. It needs the `simplifier` environment (with
+  required reviewers) holding `SIMPLIFIER_EMAIL` and `SIMPLIFIER_PASSWORD`, and a project URL key (input or the
+  `SIMPLIFIER_PROJECT` variable). It **never releases a package**: Simplifier has no API for that, and package
+  versions are permanent.
+- `simplifier-sync.yml` (manual): force-pushes the bundle to a `simplifier-sync` branch for Simplifier's GitHub
+  integration (Team plan).
 
 Actions are pinned to commit SHAs; tools are pinned to exact versions and the jars are checked against SHA-256.
 

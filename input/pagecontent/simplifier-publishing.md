@@ -34,16 +34,41 @@ CI builds it on every pull request and on `main` (the `simplifier-bundle` artifa
 id starts with `hl7.`, if a dependency is missing from `package.json`, if two resources share an id, or if a
 conformance resource sits outside the canonical.
 
-### Upload
+### Upload from CI (Project ZIP API)
 
-1. In a **public** Simplifier project, upload the files from `resources/conformance/` and `resources/examples/`.
-2. In the project's **Dependencies**, add every package in the bundle's `package.json`, at the same versions.
-3. Run Simplifier's quality control and fix anything it reports.
-4. **Releases → Create → Create new package**: name `nostalgic-ie.fhir.medication-events`, version as in
+The **Simplifier publish** workflow (Actions tab, manual) builds the bundle from `main`, runs the gates the content
+depends on, and in `upload` mode sends the conformance resources and examples to a Simplifier project with
+`PUT https://api.simplifier.net/<project>/zip`, authenticated with a token from `POST https://api.simplifier.net/token`.
+The default mode, `dry-run`, only builds and attaches the zip.
+
+One-time set-up in the repository settings:
+
+| Setting | Value |
+|---|---|
+| Environment | `simplifier`, with **required reviewers**, so every upload is approved |
+| Environment secrets | `SIMPLIFIER_EMAIL`, `SIMPLIFIER_PASSWORD` (an account with write access to the project; a dedicated account is best) |
+| Repository variable (optional) | `SIMPLIFIER_PROJECT`: the project's URL key |
+{:.grid}
+
+The same upload runs locally:
+`python scripts/simplifier/upload_project_zip.py <project> [--upload]`, with the credentials in the environment.
+
+For a Simplifier Team plan, the **Simplifier sync branch** workflow instead pushes the bundle to a `simplifier-sync`
+branch that Simplifier's GitHub integration can import.
+
+### Release (manual, in Simplifier)
+
+Simplifier has no API for creating a package ("It is not possible to create a package using the API"), and a
+released version is permanent, so releasing stays a deliberate manual step:
+
+1. In the project's **Dependencies**, add every package in the bundle's `package.json`, at the same versions.
+2. Run Simplifier's quality control and fix anything it reports.
+3. **Releases → Create → Create new package**: name `nostalgic-ie.fhir.medication-events`, version as in
    `sushi-config.yaml`, marked **prerelease**. The release notes say it is a proof of concept, not endorsed by HIQA,
    the HSE, HL7 Ireland or HL7 Europe, and not for clinical use.
 
 Simplifier lists a project under a country, and returns its package in search, only after a package is released.
 
 Sources: [FHIR package naming](https://hl7.org/fhir/packages.html) ·
-[Simplifier packages](https://github.com/FirelyTeam/firely-docs-simplifier/blob/main/package_releases/simplifierPackages.rst)
+[Simplifier packages](https://github.com/FirelyTeam/firely-docs-simplifier/blob/main/package_releases/simplifierPackages.rst) ·
+[Simplifier API](https://github.com/FirelyTeam/firely-docs-simplifier/blob/main/adding_content/api.rst)

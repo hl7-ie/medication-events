@@ -17,7 +17,7 @@ const os = require('os');
 const path = require('path');
 const glob = require('glob');
 
-const VALIDATOR_JAR = path.join(__dirname, 'validator_cli.jar');
+const VALIDATOR_JAR = process.env.VALIDATOR_JAR || path.join(__dirname, 'validator_cli.jar');  // env: Docker image
 const IG_ROOT = path.resolve(__dirname, '..', '..');
 const FSH_GENERATED = path.join(IG_ROOT, 'fsh-generated', 'resources');
 const REPORTS_DIR = path.join(__dirname, '..', 'reports');
@@ -107,7 +107,7 @@ const work = fs.mkdtempSync(path.join(os.tmpdir(), 'ie-mpd-validate-'));
 for (const n of examples) fs.copyFileSync(sourceOf[n], path.join(work, n));
 const rawOut = path.join(work, 'validator-output.json');
 
-const args = ['-Xmx6g', '-Dfile.encoding=UTF-8', '-jar', VALIDATOR_JAR, work, '-version', '4.0.1',
+const args = [`-Xmx${process.env.VALIDATOR_HEAP || '6g'}`, '-Dfile.encoding=UTF-8', '-jar', VALIDATOR_JAR, work, '-version', '4.0.1',
   '-ig', FSH_GENERATED, '-output', rawOut, '-level', 'warnings'];
 for (const d of dependencyIgs()) args.push('-ig', d);
 if (!useTx) args.push('-tx', 'n/a');

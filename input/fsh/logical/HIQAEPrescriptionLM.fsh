@@ -272,7 +272,7 @@ Mapping: HIQAEPrescriptionLMToIECore
 Source: HIQAEPrescriptionLM
 Target: "https://hl7-ie.github.io/medication-events/fhir"
 Id: ie-core
-Title: "IE Core profiles"
+Title: "IE MPD profiles"
 Description: "How each HIQA EP element is represented in IE Core. GAP = not represented."
 * patientDetails.nameDetails.nameTitle -> "IEMpdPatientEPrescription: Patient.name.prefix" "Aligned"
 * patientDetails.nameDetails.forename -> "IEMpdPatientEPrescription: Patient.name.given" "Aligned. given 1..* in the ePrescription patient"

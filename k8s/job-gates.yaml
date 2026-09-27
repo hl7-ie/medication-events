@@ -1,0 +1,53 @@
+# Runs scripts/local/run-gates.sh in the self-contained `ci` image. Change args to ["validate"] (needs ~4 GiB) or
+# ["all"] for the full set; `codes` and `validate` need outbound access to tx.fhir.org.
+apiVersion: batch/v1
+kind: Job
+metadata:
+  name: ie-mpd-gates
+  labels:
+    app.kubernetes.io/name: ie-mpd-gates
+spec:
+  backoffLimit: 0
+  ttlSecondsAfterFinished: 86400
+  template:
+    metadata:
+      labels:
+        app.kubernetes.io/name: ie-mpd-gates
+    spec:
+      restartPolicy: Never
+      automountServiceAccountToken: false
+      securityContext:
+        runAsNonRoot: true
+        runAsUser: 1000
+        runAsGroup: 1000
+        fsGroup: 1000
+        seccompProfile:
+          type: RuntimeDefault
+      containers:
+        - name: gates
+          image: ie-mpd-ci
+          imagePullPolicy: IfNotPresent
+          args: ["test"]
+          env:
+            - name: SIMPLIFIER_PROJECT
+              value: nostalgic-ie
+          resources:
+            requests:
+              cpu: "1"
+              memory: 1Gi
+            limits:
+              memory: 4Gi
+          securityContext:
+            allowPrivilegeEscalation: false
+            capabilities:
+              drop: ["ALL"]
+          volumeMounts:
+            - name: fhir-packages
+              mountPath: /home/node/.fhir
+            - name: tmp
+              mountPath: /tmp
+      volumes:
+        - name: fhir-packages
+          emptyDir: {}
+        - name: tmp
+          emptyDir: {}

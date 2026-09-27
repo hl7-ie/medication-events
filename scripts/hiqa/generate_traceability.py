@@ -206,7 +206,7 @@ def generate_fsh(std, root, nodes, mapping):
     w(f'Source: {std["name"]}\n')
     w(f'Target: "{CANONICAL}"\n')
     w('Id: ie-core\n')
-    w('Title: "IE Core profiles"\n')
+    w('Title: "IE MPD profiles"\n')
     w(f'Description: "How each HIQA {std["prefix"]} element is represented in IE Core. GAP = not represented."\n')
     for hid in sorted((k for k in nodes if k and nodes[k].row), key=id_key):
         m = mapping[hid]

@@ -6,7 +6,6 @@ The FHIR package for this IG is `nostalgic-ie.fhir.medication-events`. Download 
 ### Other downloads
 
 - [Examples](examples.json.zip) (JSON)
-- [Validator pack](validator.pack)
 
 The package is not yet published to the FHIR package registry or Simplifier.net. See
 [Simplifier Publishing](simplifier-publishing.html).
