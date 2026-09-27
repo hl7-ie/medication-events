@@ -1,0 +1,52 @@
+system,code,display_in_fsh,found_on_tx,tx_display,inactive,files
+http://loinc.org,29463-7,Body weight,yes,Body weight,False,IEMpdVitalSigns.fsh
+http://loinc.org,48765-2,Allergies and adverse reactions Document,yes,Allergies and adverse reactions Document,False,IEMpdBundleEPrescription.fsh
+http://loinc.org,76689-9,Sex assigned at birth,yes,Sex assigned at birth,False,ExampleRuleSets.fsh;IEMpdPatient.fsh
+http://loinc.org,8302-2,Body height,yes,Body height,False,IEMpdVitalSigns.fsh
+http://snomed.info/sct,1148466008,Amoxicillin 50 mg/mL oral suspension,yes,Amoxicillin 50 mg/mL oral suspension,False,HIQAScenarios.fsh
+http://snomed.info/sct,15805002,Acute sinusitis,yes,Acute sinusitis,False,HIQAScenarios.fsh
+http://snomed.info/sct,195967001,Asthma,yes,Asthma,False,AdministrationStatementExamples.fsh;HIQAScenarios.fsh
+http://snomed.info/sct,254311000220102,Atorvastatin 20 mg oral tablet,yes,Atorvastatin 20 mg oral tablet,,MedicationExamples.fsh
+http://snomed.info/sct,26643006,Oral route,yes,Oral route,False,HIQAScenarios.fsh
+http://snomed.info/sct,3110003,Acute otitis media,yes,Acute otitis media,False,HIQAScenarios.fsh
+http://snomed.info/sct,323510009,Amoxicillin 500 mg oral capsule,yes,Amoxicillin 500 mg oral capsule,False,HIQAScenarios.fsh
+http://snomed.info/sct,363291000220101,Salbutamol 100 microgram/actuation pressurised suspension for inhalation,yes,Salbutamol 100 microgram/actuation pressurised suspension for inhalation,,HIQAScenarios.fsh
+http://snomed.info/sct,372567009,Metformin,yes,Metformin,False,MedicationExamples.fsh
+http://snomed.info/sct,372687004,Amoxicillin,yes,Amoxicillin,False,HIQAScenarios.fsh
+http://snomed.info/sct,372897005,Albuterol,yes,Albuterol,False,HIQAScenarios.fsh
+http://snomed.info/sct,373444002,Atorvastatin,yes,Atorvastatin,False,MedicationExamples.fsh
+http://snomed.info/sct,385024007,Oral suspension,yes,Oral suspension,False,HIQAScenarios.fsh
+http://snomed.info/sct,385049006,Capsule,yes,Capsule,False,HIQAScenarios.fsh
+http://snomed.info/sct,385055001,Tablet,yes,Tablet,False,MedicationExamples.fsh
+http://snomed.info/sct,385060002,Prolonged-release oral tablet,yes,Prolonged-release oral tablet,False,HIQAScenarios.fsh
+http://snomed.info/sct,385205001,Pressurized suspension for inhalation,yes,Pressurized suspension for inhalation,False,HIQAScenarios.fsh
+http://snomed.info/sct,387024006,Oxycodone hydrochloride,yes,Oxycodone hydrochloride,False,HIQAScenarios.fsh
+http://snomed.info/sct,39579001,Anaphylaxis,yes,Anaphylaxis,False,HIQAScenarios.fsh
+http://snomed.info/sct,44054006,Type 2 diabetes mellitus,yes,Type 2 diabetes mellitus,False,HIQAScenarios.fsh
+http://snomed.info/sct,447694001,Respiratory tract route,yes,Respiratory tract route,False,AdministrationStatementExamples.fsh;HIQAScenarios.fsh
+http://snomed.info/sct,462991000220107,Amoxicillin 250 mg/5 mL powder for oral suspension,yes,Amoxicillin 250 mg/5 mL powder for oral suspension,,HIQAScenarios.fsh
+http://snomed.info/sct,716141000220105,Amoxicillin 500 mg oral capsule,yes,Amoxicillin 500 mg oral capsule,,HIQAScenarios.fsh
+http://snomed.info/sct,718271000220105,Metformin hydrochloride 500 mg oral tablet,yes,Metformin hydrochloride 500 mg oral tablet,,MedicationExamples.fsh
+http://snomed.info/sct,720411000220105,Oxycodone hydrochloride 10 mg prolonged-release oral tablet,yes,Oxycodone hydrochloride 10 mg prolonged-release oral tablet,,HIQAScenarios.fsh
+http://snomed.info/sct,765706002,Oxycodone hydrochloride 10 mg prolonged-release oral tablet,yes,Oxycodone hydrochloride 10 mg prolonged-release oral tablet,False,HIQAScenarios.fsh
+http://snomed.info/sct,770300007,Albuterol (as albuterol sulfate) 100 microgram/actuation pressurized suspension for inhalation,yes,Albuterol (as albuterol sulfate) 100 microgram/actuation pressurized suspension for inhalation,False,HIQAScenarios.fsh
+http://snomed.info/sct,82423001,Chronic pain,yes,Chronic pain,False,HIQAScenarios.fsh
+http://snomed.info/sct,91936005,Allergy to penicillin,yes,Allergy to penicillin,False,HIQAScenarios.fsh
+http://terminology.hl7.org/CodeSystem/allergyintolerance-clinical,active,Active,yes,Active,False,HIQAScenarios.fsh
+http://terminology.hl7.org/CodeSystem/allergyintolerance-verification,confirmed,Confirmed,yes,Confirmed,False,HIQAScenarios.fsh
+http://terminology.hl7.org/CodeSystem/list-empty-reason,nilknown,Nil Known,yes,Nil Known,False,HIQAScenarios.fsh
+http://terminology.hl7.org/CodeSystem/medicationrequest-course-of-therapy,acute,Short course (acute) therapy,yes,Short course (acute) therapy,False,HIQAScenarios.fsh
+http://terminology.hl7.org/CodeSystem/medicationrequest-course-of-therapy,continuous,Continuous long term therapy,yes,Continuous long term therapy,False,HIQAScenarios.fsh
+http://terminology.hl7.org/CodeSystem/organization-type,prov,Healthcare Provider,yes,Healthcare Provider,False,HIQAScenarios.fsh
+http://terminology.hl7.org/CodeSystem/v2-0203,MD,Medical License number,yes,Medical License number,False,IEMpdPractitioner.fsh
+http://terminology.hl7.org/CodeSystem/v2-0203,NI,National unique individual identifier,yes,National unique individual identifier,False,HIQAScenarios.fsh;IEMpdPatient.fsh
+http://terminology.hl7.org/CodeSystem/v3-ActCode,FF,First Fill,yes,First Fill,False,HIQAScenarios.fsh
+http://terminology.hl7.org/CodeSystem/v3-ActCode,FFC,First Fill - Complete,yes,First Fill - Complete,False,HIQAScenarios.fsh
+http://terminology.hl7.org/CodeSystem/v3-ActCode,FFP,First Fill - Part Fill,yes,First Fill - Part Fill,False,HIQAScenarios.fsh
+http://terminology.hl7.org/CodeSystem/v3-ActCode,RF,Refill,yes,Refill,False,HIQAScenarios.fsh
+http://unitsofmeasure.org,a,year,yes,a,False,HIQAExtensions.fsh
+http://unitsofmeasure.org,d,day,yes,d,False,HIQAExtensions.fsh
+http://unitsofmeasure.org,mo,month,yes,mo,False,HIQAExtensions.fsh
+http://www.whocc.no/atc,J01CA04,amoxicillin,yes,amoxicillin,False,HIQAScenarios.fsh
+http://www.whocc.no/atc,N02AA05,oxycodone,yes,oxycodone,False,HIQAScenarios.fsh
+http://www.whocc.no/atc,R03AC02,salbutamol,yes,salbutamol,False,HIQAScenarios.fsh

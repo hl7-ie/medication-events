@@ -1,0 +1,243 @@
+id,element,pd,auto,conformance,cardinality,values,page
+1.1.1,Name title,PD,,Optional,0..*,Coded value,25
+1.1.2,Forename,PD,,Mandatory,1..1,Free text,25
+1.1.3,Surname,PD,,Mandatory,1..1,Free text,25
+1.1.4,Name suffix,PD,,Optional,0..*,Coded value,26
+1.2.1,Postcode,PD,,Required,0..1,Alpha-numeric,26
+1.2.2,Address line(s),PD,,Mandatory,1..1,Free text,26
+1.2.3,Suburb/ Town/ Townland/ Locality,PD,,Required,0..1,Free text,27
+1.2.4,District/ County,PD,,Mandatory,1..1,Coded Value,27
+1.2.5,Country,PD,,Required,0..1,Coded value,27
+1.2.6,Address type,PD,,Mandatory,1..1,Coded value,27
+1.2.7,Address use,PD,,Optional,0..1,Coded value,27
+1.3.1,Individual Health Identifier (IHI),PD,,Required,0..1,Numeric,28
+1.3.2,Personal Public Service Number,PD,,Required,0..1,Alpha-numeric,28
+1.3.3,Other identifiers used in health and social care details (cluster),PD,,Required,0..*,,28
+1.3.3.1,Other identifier used in health and social care – Type,PD,,Required,0..1,Coded value,29
+1.3.3.2,Other identifier used in health and social care-Value,PD,,Required,0..1,Alpha-numeric,29
+1.3.3.3,Other identifier used in health and social care - Time period,PD,,Required,0..1,Period,29
+1.3.3.4,Organisation who issued the other identifier used in health and social care,PD,,Required,0..1,Free text,29
+1.4.1,Date of birth,PD,,Mandatory,1..1,Date,30
+1.4.2,Age (cluster),P,#,Required,0..1,,30
+1.4.2.1,Age if less than 12 years – value,P,,Mandatory,1..1,Numeric,31
+1.4.2.2,Age if less than 12 years - type,P,,Mandatory,1..1,Coded value,31
+1.4.3,Sex,PD,,Mandatory,1..1,Coded value,31
+1.4.4,Gender (cluster),PD,,Required,0..1,,31
+1.4.4.1,Gender,,,Required,0..1,Coded value,31
+1.4.4.2,Other gender identity,PD,,Optional,0..1,Free text,32
+1.5.1,Mobile phone number,,,Required,0..*,Alpha-numeric,32
+1.5.2,Email address,PD,,Required,0..*,Alpha-numeric,33
+1.5.3,Other Communication details (cluster),PD,,Optional,0..*,,33
+1.5.3.1,Communication details – Type,PD,,Optional,0..*,Coded value,33
+1.5.3.2,Communication Details – Value,PD,,Optional,0..*,Alpha-numeric,33
+1.6.1,Reason for not recording allergies and intolerances,P,,Required,0..1,Coded value,35
+1.6.2,Allergies and intolerances (record entry),P,,Required,0..*,,35
+1.6.2.1,Allergies or intolerances,P,,Required,0..*,Coded value,35
+1.6.2.2,Causative agent or allergen,P,,Required,0..1,Coded value,35
+1.6.2.3,Additional information,P,,Optional,0..1,Free text,35
+1.6.2.4,Record entry provenance data for allergies and intolerances (cluster),P,#,Required,0..*,,36
+1.6.2.4.1,Record entry identifier,P,#,Optional,0..*,Alpha-numeric,36
+1.6.2.4.2,Record entry author,P,#,Mandatory,0..*,,36
+1.6.2.4.3,Record entry date,P,#,Mandatory,0..1,Datetime,36
+1.6.2.4.4,Record entry source,P,#,Optional,0..1,Coded value,37
+1.6.2.4.5,Record entry language,P,#,Optional,0..1,Coded value,37
+1.6.3,Weight (record entry),PD,,Optional,0..1,,37
+1.6.3.1,Weight value,PD,,Optional,0..1,Decimal,38
+1.6.3.2,Weight type,PD,,Optional,0..1,Coded value,38
+1.6.3.3,Record entry provenance data for weight (cluster),PD,#,Optional,0..*,,38
+1.6.3.3.1,Record entry identifier,PD,#,Optional,0..*,Alpha-numeric,38
+1.6.3.3.2,Record entry author,PD,#,Mandatory,0..*,,38
+1.6.3.3.3,Record entry date,PD,#,Mandatory,0..1,Datetime,38
+1.6.3.3.4,Record entry source,PD,#,Optional,0..1,Coded value,39
+1.6.3.3.5,Record entry language,PD,#,Optional,0..1,Coded value,39
+1.6.4,Height (record entry),PD,,Optional,0..1,,39
+1.6.4.1,Height value,PD,,Optional,0..1,Decimal,40
+1.6.4.2,Height type,PD,,Optional,0..1,Coded value,40
+1.6.4.3,Record entry provenance data for height (cluster),PD,#,Optional,0..*,,40
+1.6.4.3.1,Record entry identifier,PD,#,Optional,0..*,Alpha-numeric,40
+1.6.4.3.2,Record entry author,PD,#,Mandatory,0..*,,40
+1.6.4.3.3,Record entry date,PD,#,Mandatory,0..1,Datetime,41
+1.6.4.3.4,Record entry source,PD,#,Optional,0..1,Coded value,41
+1.6.4.3.5,Record entry language,PD,#,Optional,0..1,Coded value,41
+1.6.5,Additional notes,PD,,Optional,0..1,Free text,41
+2.1,Name title,PD,,Optional,0..*,Coded value,45
+2.2,Forename,PD,,Mandatory,1..1,Free text,45
+2.3,Surname,PD,,Mandatory,1..1,Free text,45
+2.4,Name suffix,PD,,Optional,0..*,Coded value,46
+2.5,Health practitioner role and speciality (cluster),PD,,Required,0..*,,46
+2.5.1,Health practitioner role,PD,,Required,0..*,Coded value,46
+2.5.2,Health practitioner specialty,PD,,Optional,0..*,Coded value,47
+2.6,Health practitioner registration (cluster),PD,,Mandatory,1..1,,47
+2.6.1,Health Professional body registration – type,PD,,Mandatory,1..1,Coded value,47
+2.6.2,Health Professional body registration – value,PD,,Mandatory,1..1,Alpha-numeric,48
+2.7,Healthcare facility name,PD,,Required,0..1,Free text,48
+2.8,Healthcare facility identifier,PD,,Required,0..1,Alpha-numeric,49
+2.9,Healthcare facility address (cluster),PD,,Mandatory,1..1,,49
+2.9.1,Postcode,PD,,Mandatory,1..1,Alpha-numeric,49
+2.9.2,Address line(s),PD,,Mandatory,1..1,Free text,50
+2.9.3,Suburb/Town/ Townland/Locality,PD,,Required,0..1,Free text,50
+2.9.4,District/ County,PD,,Mandatory,1..1,Coded Value,50
+2.9.5,Country,PD,,Mandatory,1..1,Coded value,50
+2.10,Communication details (cluster),PD,,Mandatory,1..*,,51
+2.10.1,Telephone Number,PD,,Mandatory,1..1,Alpha-numeric,51
+2.10.2,Email address,PD,,Required,0..*,Alpha-numeric,52
+2.10.3,Other Communication details (cluster),PD,,Optional,0..*,,52
+2.10.3.1,Communication details – Type,PD,,Optional,0..*,Coded value,53
+2.10.3.2,Communication Details – Value,PD,,Optional,0..*,Alpha-numeric,53
+2.11,Location ID (GLN),PD,,Required,0..1,Numeric,53
+2.12,GMS Panel ID,,,Optional,0..1,Numeric,53
+2.13,Signature,P,,Required,0..1,Multi-media,54
+3.1,Electronic prescription identifier (cluster),P,,Mandatory,1..*,Alpha-numeric Alpha-numeric,57
+3.1.1,Electronic prescription identifier – type,P,,Mandatory,1..1,Coded value,57
+3.1.2,Electronic prescription identifier – value,P,,Mandatory,1..1,Alpha-numeric,57
+3.2,Date and time of issuing the prescription,P,,Mandatory,1..1,DateTime,58
+3.3,Prescription Status (cluster),P,,Mandatory,1..1,,58
+3.3.1,Status,P,,Mandatory,1..1,Coded value,58
+3.3.2,Status reason,P,,Required,0..1,Coded value,59
+3.3.3,Status reason (free text),P,,Optional,0..1,Free text,59
+3.4,Presented form,P,,Optional,0..*,Attachment,59
+3.5,Prescription item (cluster),P,,Mandatory,1..*,,60
+3.5.1,Prescription item identifier,P,,Mandatory,1..*,Alpha-numeric,60
+3.5.2,Prescription item status (cluster),P,,Mandatory,1..1,,60
+3.5.2.1,Prescription item status,P,,Mandatory,1..1,Coded value,60
+3.5.2.2,Prescription item status reason,P,,Required,0..1,Coded value,60
+3.5.2.3,Prescription item status reason (free text),P,,Optional,0..1,Free text,61
+3.5.3,Prescribed Medication item,P,,Mandatory,1..1,,61
+3.5.4,Indication for prescription item (cluster),P,,Optional,0..*,,61
+3.5.4.1,Indication for prescription item,P,,Optional,0..*,Coded value,62
+3.5.4.2,Indication for prescription item (free text),P,,Optional,0..1,Free text,62
+3.5.5,Intended use of prescription item,P,,Optional,0..1,Coded value,62
+3.5.6,Period of use,P,,Required,0..1,Period,62
+3.5.7,Quantity of prescription item prescribed (cluster),P,,Required,0..1,,63
+3.5.7.1,Quantity prescribed,P,,Required,0..1,Quantity,63
+3.5.7.2,Quantity prescribed (free text),,,Required,0..1,Free text,63
+3.5.8,Dosage instructions,P,,Mandatory,1..1,,64
+3.5.9,Validity period (cluster),P,,Required,0..1,,64
+3.5.9.1,Validity period,P,,Required,0..1,Period,64
+3.5.9.2,“Do Not Extend”,,,Optional,0..1,Boolean,65
+3.5.10,Substitutions (cluster),P,,Optional,0..*,,65
+3.5.10.1,Medicinal Product is interchangeable,P,#,Required,0..1,Boolean,66
+3.5.10.2,“Do Not Substitute”,P,,Optional,0..1,Boolean,66
+3.5.10.3,Reason for not allowing substitution,,,Required,0..1,Free text,66
+3.5.11,Repeats of prescription item allowed,P,,Optional,0..1,Numerical,67
+3.5.12,Number of instalments,P,,Required,0..1,Numerical,67
+3.5.13,Minimum dispense interval,P,,Required,0..1,Quantity,67
+3.5.14,Off label (cluster),,,Required,0..*,,67
+3.5.14.1,Off label use in prescription,P,,Mandatory,1..1,Boolean,68
+3.5.14.2,Reason for off label use (cluster),P,,Required,0..*,,68
+3.5.14.2.1,Reason for off label use,P,,Required,0..1,Coded value,68
+3.5.14.2.2,Reason for off label use (free text),P,,Optional,0..1,Free text,69
+3.6.1,Note,P,,Optional,0..*,Free text,69
+4.1,Medication item identifier,PD,#,Required,0..*,Alpha-numeric,72
+4.2,Classification (cluster),PD,#,Required,0..*,Coded value,72
+4.2.1,Anatomical Therapeutic Chemical (ATC) Classification,PD,#,Required,0..*,Coded value,73
+4.2.2,Supply Legal Status,PD,#,Required,0..1,Coded value,73
+4.2.3,Misuse of Drugs Act (MDA) Schedule,PD,#,Required,0..1,Coded value,73
+4.2.4,Other classification group,PD,,Optional,0..*,Free text,73
+4.3,Medication product name (cluster),P,,Required,0..1,,73
+4.3.1,Medication product name (coded),P,,Required,0..1,Coded value,74
+4.3.2,Medication product name (free text),P,,Optional,0..1,Free text,74
+4.4,Manufacturer/ Marketing authorisation holder (cluster),D,#,Optional,0..1,,74
+4.4.1,Manufacturer/ Marketing authorisation holder name,D,#,Optional,0..1,Coded value,75
+4.4.2,Manufacturer/ Marketing authorisation holder identifier,D,#,Optional,0..*,Alpha-numeric,75
+4.5,Dose form (type),D,#,Required,0..1,Coded value,75
+4.6,Description of medicinal product,PD,,Optional,0..1,Free text,75
+4.7,Medication item (cluster),PD,,Required,0..*,,76
+4.7.1,Medication item Dose form,PD,#,Required,0..1,Coded value,76
+4.7.2,Ingredient in medication item (cluster),PD,#,Mandatory,1..*,,76
+4.7.2.1,Ingredient is active,PD,,Required,0..1,Boolean,76
+4.7.2.2,Active ingredient/ Substance,PD,#,Mandatory,1..1,Coded value,76
+4.7.2.3,Strength information (cluster),PD,#,Required,0..*,,77
+4.7.2.3.1,Strength,PD,#,Mandatory,1..1,Ratio,77
+4.7.2.3.2,Basis of strength substance,PD,#,Required,0..1,Coded value,77
+4.7.3,Unit of presentation,D,#,Optional,0..1,Coded value,77
+4.7.4,Contained quantity,D,#,Optional,0..1,Ratio,78
+4.7.5,Pack size or Amount,PD,#,Optional,0..1,Quantity,78
+4.7.6,Package type,D,#,Optional,0..1,Coded value,78
+4.8,Device (cluster),D,,Optional,0..*,,78
+4.8.1,Device type,D,,Mandatory,1..1,Coded value,78
+4.8.2,Device quantity value,D,,Mandatory,1..1,Numeric,78
+4.9,Characteristics (cluster),D,,Optional,0..*,,79
+4.9.1,Characteristic type,D,,Mandatory,1..1,Coded value,79
+4.9.2,Characteristic value (cluster),D,,Optional,0..1,,79
+4.9.2.1,Characteristic value (coded),D,,Optional,0..1,Coded value,79
+4.9.2.2,Characteristic value (quantity),D,,Optional,0..1,Quantity,79
+4.9.2.3,Characteristic value (datetime),D,,Optional,0..1,DateTime,79
+4.9.2.4,Characteristic value (integer),D,,Optional,0..1,Integer,80
+4.9.2.5,Characteristic value (decimal),D,,Optional,0..1,Decimal,80
+4.9.2.6,Characteristic value (ratio),D,,Optional,0..1,Ratio,80
+4.9.2.7,Characteristic value (free text),D,,Optional,0..1,Free text,80
+4.10,Batch (cluster),D,,Required,0..1,,80
+4.10.1,Batch Lot number,D,,Required,0..1,Alpha-numeric,81
+4.10.2,Batch expiration date,D,,Required,0..1,Date,81
+4.11,Exempt medication item,PD,#,Required,0..1,Boolean,81
+5.1,Rendered dosage instruction,PD,,Optional,0..1,Free text,85
+5.2,Dosage details (cluster),PD,,Required,0..*,,85
+5.2.1,Sequence (if more than one dosaging scheme exists),PD,,Optional,0..1,Integer,85
+5.2.2,Note for patient,PD,,Required,0..1,Free text,85
+5.2.3,Dose and rate (cluster),,,Required,0..*,,85
+5.2.3.1,Dose of medication item (cluster),PD,,Required,0..1,,86
+5.2.3.1.1,Dose of medication item - quantity,PD,,Required,0..1,Quantity,86
+5.2.3.1.2,Dose of medication item - range,PD,,Required,0..1,Range,86
+5.2.3.2,Rate of administration (cluster),PD,,Optional,0..1,,86
+5.2.3.2.1,Rate of administration - quantity,PD,,Optional,0..1,Quantity,87
+5.2.3.2.2,Rate of administration - ratio,PD,,Optional,0..1,Ratio,87
+5.2.4,Repeat administration of medication item (cluster),PD,,Required,0..1,,87
+5.2.4.1,Time bounds (cluster),PD,,Optional,0..1,,87
+5.2.4.1.1,Time bounds - quantity,PD,,Optional,0..1,Quantity,87
+5.2.4.1.2,Time bounds - period,PD,,Optional,0..1,Period,87
+5.2.4.2,Duration of administration,PD,,Optional,0..1,Quantity,88
+5.2.4.3,Frequency (cluster),PD,,Required,0..1,,88
+5.2.4.3.1,Frequency of administration,PD,,Mandatory,1..1,Integer,88
+5.2.4.3.2,Period,PD,,Mandatory,1..1,Quantity,88
+5.2.4.4,Day of the week,,,Optional,0..*,Coded values,88
+5.2.4.5,Time of the day,PD,,Optional,0..*,Time,89
+5.2.4.6,Event or time period for administration,PD,,Optional,0..*,Coded values,89
+5.2.5,Administer as needed,PD,,Optional,0..1,Boolean,89
+5.2.6,Body site or structure (cluster),PD,,Optional,0..*,,89
+5.2.6.1,Morphology,PD,,Optional,0..1,Coded values,89
+5.2.6.2,Body site location,PD,,Optional,0..1,Coded values,89
+5.2.6.3,Body site location qualifier,PD,,Optional,0..*,Coded values,90
+5.2.6.4,Laterality,PD,,Optional,0..1,Coded values,90
+5.2.6.5,Description (free text),PD,,Optional,0..1,Free text,90
+5.2.7,Route of administration,PD,,Required,0..1,Coded values,90
+6.1,Dispensation identifier,D,,Required,0..*,Alpha-numeric,93
+6.2,Date and time of issuing the dispense record,D,,Mandatory,1..1,Datetime,93
+6.3,Status (cluster),D,,Mandatory,1..*,,93
+6.3.1,Dispensation Status,D,,Mandatory,1..1,Coded value,94
+6.3.2,Dispensation Status Reason (cluster),D,,Optional,0..1,,94
+6.3.2.1,Status reason,D,,Optional,0..1,Coded value,94
+6.3.2.2,Status reason (free text),D,,Optional,0..1,Free text,95
+6.4,Receiver of the medication item (cluster),D,,Optional,0..*,,95
+6.4.1,Patient is the receiver,D,,Optional,0..1,,95
+6.4.2,Health practitioner is the receiver,D,,Optional,0..1,,95
+6.4.3,Related person is the receiver (cluster),D,,Optional,0..1,,95
+6.4.3.1,Name title,D,,Optional,0..*,Coded value,96
+6.4.3.2,Forename of receiver,D,,Optional,0..1,Free text,96
+6.4.3.3,Surname of receiver,D,,Optional,0..1,Free text,96
+6.4.3.4,Name suffix,D,,Optional,0..*,Coded value,96
+6.4.3.5,Receiver (related person) personal identifier (cluster),D,,Optional,0..*,,97
+6.4.3.5.1,Receiver personal identifier - type,D,,Optional,0..1,Coded value,97
+6.4.3.5.2,Receiver personal identifier - value,D,,Optional,0..1,Alpha-numeric,97
+6.4.3.5.3,Receiver personal identifier - time period,D,,Optional,0..1,Period,97
+6.4.3.5.4,Organisation who issued the Receiver’s (related person) personal identifier,D,,Optional,0..1,Free text,97
+6.4.3.6,Role of receiver (related person),D,,Optional,0..1,Coded value,98
+6.4.3.7,Relationship to the patient,D,,Optional,0..1,Coded value,98
+6.4.3.8,Address for receiver (related person) (cluster),D,,Optional,0..1,,98
+6.4.3.8.1,Postcode,D,,Optional,0..1,Alpha-numeric,98
+6.4.3.8.2,Address line(s),D,,Optional,0..1,Free text,99
+6.4.3.8.3,Suburb/Town/ Townland/ Locality,D,,Optional,0..1,Free text,99
+6.4.3.8.4,District/ County,D,,Optional,0..1,Coded Value,99
+6.4.3.8.5,Country,D,,Optional,0..1,Coded value,99
+6.4.3.9,Communication details for receiver (related person) (cluster),D,,Optional,0..1,,99
+6.4.3.9.1,Mobile phone number of receiver,D,,Optional,0..1,Alpha-numeric,100
+6.4.3.9.2,Landline phone number of receiver,D,,Optional,0..1,Alpha-numeric,100
+6.4.3.9.3,Email address of receiver,D,,Optional,0..1,Alpha-numeric,100
+6.5,Prescription item identifier with related request,D,,Required,0..1,Alpha-numeric,101
+6.6,Dispensed medication,D,,Mandatory,1..1,,101
+6.7,Dispensed quantity value,D,,Mandatory,1..1,Quantity,101
+6.8,Date of dispensation,D,,Mandatory,1..1,Datetime,101
+6.9,Time of dispensation,D,,Required,0..1,Time,102
+6.10,Substitution occurred,D,,Optional,0..1,Coded value (Boolean),102
+6.11,Dosage instructions,D,,Required,0..1,,102
+6.12,Additional information,D,,Optional,0..*,Free text,103

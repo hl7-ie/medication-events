@@ -1,9 +1,12 @@
-# Downloads
+### Package
 
-This scaffold is hosted from GitHub Pages while using the interim HL7 Europe canonical.
+The FHIR package for this IG is `nostalgic-ie.fhir.medication-events`. Download it from the
+[package file](package.tgz), or use the [full IG](full-ig.zip) and the [definitions](definitions.json.zip).
 
-## Source and package identifiers
+### Other downloads
 
-- Canonical: `https://hl7.eu/fhir/ie/medication-events/fhir`
-- Package: `hl7.fhir.ie.medication-events`
-- Source repository: `https://github.com/hl7-ie/medication-events`
+- [Examples](examples.json.zip) (JSON)
+- [Validator pack](validator.pack)
+
+The package is not yet published to the FHIR package registry or Simplifier.net. See
+[Simplifier Publishing](simplifier-publishing.html).
