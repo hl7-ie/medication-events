@@ -16,7 +16,14 @@ Description: "The IE Medication Events Organization Profile is based upon the co
 * identifier ^comment = "HIQA EP/PS 2.8 Healthcare facility identifier (Required): for a pharmacy, the PSI Retail Pharmacy Business (RPB) registration number. HIQA EP/PS 2.12 GMS Panel ID (Optional) for a GP. The GLN (2.11) is a location identifier (IEMpdLocation)."
 * identifier contains
     PSIRPB 0..1 MS and
-    GMSPanel 0..1
+    GMSPanel 0..1 and
+    HSPO 0..1
+* identifier[HSPO] ^short = "Health Services Provider Identifier, organisation (HSP-O)"
+* identifier[HSPO] ^comment = "Health Identifiers Act 2014 s.13 assigns a health services provider identifier (HSPI, 'a unique number', alphanumeric) to each health services provider, including organisations such as hospitals, GP practices and pharmacies; s.14 keeps it in the National Register of Health Services Provider Identifiers (Parts B, E for organisations). Not a HIQA draft element, so not MustSupport. No format is set by the Act. System URI placeholder shared with IE Core (IE Core OI-003, OI-030)."
+* identifier[HSPO].system 1..1
+* identifier[HSPO].system = $HSPI-O
+* identifier[HSPO].type = $V2-0203#XX "Organization identifier"
+* identifier[HSPO].value 1..1
 * identifier[PSIRPB] ^short = "PSI Retail Pharmacy Business (RPB) registration number"
 * identifier[PSIRPB] ^comment = "HIQA EP/PS 2.8: the unique registration number issued by the PSI to a Retail Pharmacy Business. System URI placeholder (IE Core OI-003)."
 * identifier[PSIRPB].system 1..1 MS

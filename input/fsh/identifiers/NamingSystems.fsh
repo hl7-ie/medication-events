@@ -207,3 +207,33 @@ Title: "GMS Panel ID"
 * uniqueId[0].type = #uri
 * uniqueId[=].value = "https://hl7-ie.github.io/ie-core/fhir/ie/core/sid/gms-panel"
 * uniqueId[=].preferred = true
+
+Instance: ie-mpd-ns-hsp-i
+InstanceOf: NamingSystem
+Usage: #definition
+Title: "Health Services Provider Identifier: individual (HSP-I)"
+* name = "IEMpdNamingSystemHSPI"
+* status = #draft
+* kind = #identifier
+* date = "2026-09-28"
+* responsible = "Minister for Health (functions delegable to the HSE, Health Identifiers Act 2014 s.26)"
+* description = "PLACEHOLDER URI in IE Core's namespace (ADR-001), pending a URI published by the issuing authority (IE Core OI-003). The health services provider identifier (HSPI) of an individual provider: Health Identifiers Act 2014 s.13 (assignment, 'a unique number', alphanumeric) and s.14 (National Register of Health Services Provider Identifiers, Parts A health practitioners, C relevant employees, D individual relevant agents). No format is set by the Act, so none is enforced. Whether individual and organisation HSPIs share one number range is Requires Clarification (OI-030)."
+* jurisdiction = urn:iso:std:iso:3166#IE "Ireland"
+* uniqueId[0].type = #uri
+* uniqueId[=].value = "https://hl7-ie.github.io/ie-core/fhir/ie/core/sid/hsp-i"
+* uniqueId[=].preferred = true
+
+Instance: ie-mpd-ns-hsp-o
+InstanceOf: NamingSystem
+Usage: #definition
+Title: "Health Services Provider Identifier: organisation (HSP-O)"
+* name = "IEMpdNamingSystemHSPO"
+* status = #draft
+* kind = #identifier
+* date = "2026-09-28"
+* responsible = "Minister for Health (functions delegable to the HSE, Health Identifiers Act 2014 s.26)"
+* description = "PLACEHOLDER URI in IE Core's namespace (ADR-001), pending a URI published by the issuing authority (IE Core OI-003). The health services provider identifier (HSPI) of an organisation provider, such as a hospital, GP practice or pharmacy: Health Identifiers Act 2014 s.13 (assignment, 'a unique number', alphanumeric) and s.14 (National Register of Health Services Provider Identifiers, Parts B relevant bodies, E corporate relevant agents). No format is set by the Act, so none is enforced. Whether individual and organisation HSPIs share one number range is Requires Clarification (OI-030)."
+* jurisdiction = urn:iso:std:iso:3166#IE "Ireland"
+* uniqueId[0].type = #uri
+* uniqueId[=].value = "https://hl7-ie.github.io/ie-core/fhir/ie/core/sid/hsp-o"
+* uniqueId[=].preferred = true

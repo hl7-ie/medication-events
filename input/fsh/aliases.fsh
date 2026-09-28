@@ -65,6 +65,9 @@ Alias: $NMBI = https://hl7-ie.github.io/ie-core/fhir/ie/core/sid/nmbi
 Alias: $DentalCouncil = https://hl7-ie.github.io/ie-core/fhir/ie/core/sid/dental-council
 Alias: $PSIRPB = https://hl7-ie.github.io/ie-core/fhir/ie/core/sid/psi-rpb
 Alias: $GMSPanel = https://hl7-ie.github.io/ie-core/fhir/ie/core/sid/gms-panel
+// Health Services Provider Identifier (HSPI), Health Identifiers Act 2014 s.13-14; IE Core systems (ADR-001).
+Alias: $HSPI-I = https://hl7-ie.github.io/ie-core/fhir/ie/core/sid/hsp-i
+Alias: $HSPI-O = https://hl7-ie.github.io/ie-core/fhir/ie/core/sid/hsp-o
 Alias: $SCT = http://snomed.info/sct
 Alias: $LOINC = http://loinc.org
 Alias: $ATC = http://www.whocc.no/atc

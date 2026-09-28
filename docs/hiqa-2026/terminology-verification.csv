@@ -40,6 +40,8 @@ http://terminology.hl7.org/CodeSystem/medicationrequest-course-of-therapy,contin
 http://terminology.hl7.org/CodeSystem/organization-type,prov,Healthcare Provider,yes,Healthcare Provider,False,HIQAScenarios.fsh
 http://terminology.hl7.org/CodeSystem/v2-0203,MD,Medical License number,yes,Medical License number,False,IEMpdPractitioner.fsh
 http://terminology.hl7.org/CodeSystem/v2-0203,NI,National unique individual identifier,yes,National unique individual identifier,False,HIQAScenarios.fsh;IEMpdPatient.fsh
+http://terminology.hl7.org/CodeSystem/v2-0203,PRN,Provider number,yes,Provider number,False,IEMpdPractitioner.fsh
+http://terminology.hl7.org/CodeSystem/v2-0203,XX,Organization identifier,yes,Organization identifier,False,IEMpdOrganization.fsh
 http://terminology.hl7.org/CodeSystem/v3-ActCode,FF,First Fill,yes,First Fill,False,HIQAScenarios.fsh
 http://terminology.hl7.org/CodeSystem/v3-ActCode,FFC,First Fill - Complete,yes,First Fill - Complete,False,HIQAScenarios.fsh
 http://terminology.hl7.org/CodeSystem/v3-ActCode,FFP,First Fill - Part Fill,yes,First Fill - Part Fill,False,HIQAScenarios.fsh
