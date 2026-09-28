@@ -18,5 +18,8 @@
   "devDependencies": {
     "chai-as-promised": "^8.0.2",
     "fhirpath": "^5.2.0"
+  },
+  "engines": {
+    "node": "22 || 24 || >=26"
   }
 }

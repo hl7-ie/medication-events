@@ -19,7 +19,16 @@ Description: "The IE Medication Events Practitioner Profile is based upon the co
     IMC 0..1 MS and
     PSI 0..1 MS and
     NMBI 0..1 MS and
-    DentalCouncil 0..1 MS
+    DentalCouncil 0..1 MS and
+    HSPI 0..1
+
+// HSP-I: Health Services Provider Identifier of an individual (Health Identifiers Act 2014 s.13-14; not a HIQA element)
+* identifier[HSPI] ^short = "Health Services Provider Identifier, individual (HSP-I)"
+* identifier[HSPI] ^comment = "Health Identifiers Act 2014 s.13 assigns a health services provider identifier (HSPI, 'a unique number', alphanumeric) to each health services provider; s.14 keeps it in the National Register of Health Services Provider Identifiers (Parts A, C, D for individuals). Not a HIQA draft element, so not MustSupport. No format is set by the Act. System URI placeholder shared with IE Core (IE Core OI-003, OI-030)."
+* identifier[HSPI].system 1..1
+* identifier[HSPI].system = $HSPI-I
+* identifier[HSPI].type = $V2-0203#PRN "Provider number"
+* identifier[HSPI].value 1..1
 
 // PSI – Pharmaceutical Society of Ireland registration (HIQA EP/PS 2.6.2: up to eight digits)
 * identifier[PSI] ^short = "Pharmaceutical Society of Ireland (PSI) registration number"

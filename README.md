@@ -41,7 +41,7 @@ tests/                    BDD (Cucumber) and FHIR Validator runs
 
 ## Build and test
 
-Prerequisites: Node.js 20+, Java 17+, Python 3.12+.
+Prerequisites: Node.js 22+ (24 LTS recommended; Cucumber 13 needs 22, 24 or 26+), Java 17+, Python 3.12+.
 
 ```bash
 npm install                                  # SUSHI 3.18.0
