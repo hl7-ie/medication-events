@@ -23,7 +23,7 @@ concurrency:
 
 env:
   SUSHI_VERSION: 3.18.0
-  NODE_VERSION: '20'
+  NODE_VERSION: '24'  # @cucumber/cucumber 13 needs Node 22, 24 or >=26
   PYTHON_VERSION: '3.12'
 
 jobs:
