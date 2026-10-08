@@ -197,7 +197,7 @@ Two different signatures are involved, and IE MPD only profiles the first:
 
 1. **The prescriber's signature** (HIQA EP 2.13, a legal requirement for cross-border prescriptions). IE MPD carries it
    as a [Provenance](StructureDefinition-ie-mpd-provenance-eprescription-signature.html) record whose `target` covers every
-   prescription item, inside an [IE MPD cross-border Bundle](StructureDefinition-ie-mpd-bundle-eprescription-crossborder.html)
+   prescription item, inside an [IE MPD cross-border ePG](StructureDefinition-ie-mpd-electronic-prescription-group-crossborder.html)
    (invariant `ie-bnd-xb-2`; ADR-003). A Provenance signature survives storage in NePS and re-bundling, which
    `Bundle.signature` does not. The signature format and eIDAS assurance level are Requires Clarification (OI-009).
 2. **A transport or organisational seal** that a National Contact Point may apply before sending. It is outside the

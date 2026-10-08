@@ -30,12 +30,16 @@ First release of IE Medication Events, replacing the starter scaffold.
   scenarios 1–6: full, partial, multi-item, IE→ES, ES→IE, repeat); 22 FHIR and CDA payloads; a Postman collection;
   and their BDD features (77 scenarios). Conditions and the encounter in these examples use the base FHIR resource.
   The payloads' broken `ie-core-allergy-intolerance` profile reference now points to `ie-mpd-allergyintolerance`.
-- **Electronic Prescription Group** (ADR-003): `IEMpdElectronicPrescriptionGroup` (RequestGroup) is a required entry
-  in the ePrescription Bundle, carrying HIQA EP 3.1 identifier (with type), 3.2 date of issue, 3.3 prescription status
-  with a reason (`IEMpdPrescriptionGroupStatusReason`), 3.4 presented form (`IEMpdPresentedForm`) and the items as
-  actions; consistency rules `ie-bnd-rx-7` to `ie-bnd-rx-10` and `ie-grp-status-1`, informed by the NHS England EPS
-  `prescription-order` rules; the signature Provenance may target the group. Scenario 10: a cancelled prescription.
-  **Breaking** for ePrescription Bundles (they need the group entry).
+- **Electronic Prescription Group (ePG)** (ADR-003): the ePrescription Bundle becomes the ePG,
+  `IEMpdElectronicPrescriptionGroup` (and `IEMpdElectronicPrescriptionGroupCrossBorder`): one prescription's items
+  (eP) together with their eDispensations and provenance, plus a required **Prescription Group Header**
+  (`IEMpdPrescriptionGroupHeader`, RequestGroup) carrying HIQA EP 3.1 identifier (with type), 3.2 date of issue, 3.3
+  prescription status with a reason (`IEMpdPrescriptionGroupStatusReason`), 3.4 presented form (`IEMpdPresentedForm`)
+  and the items as actions. Rules `ie-bnd-rx-7` to `ie-bnd-rx-14` and `ie-grp-status-1` (item consistency informed by
+  the NHS England EPS `prescription-order` rules; eDispensations authorised by an item in the same ePG). Scenarios 1,
+  3, 4 and 5 are full ePGs; scenario 10 is a cancelled prescription. **Breaking:** profile ids
+  `ie-mpd-bundle-eprescription(-crossborder)` → `ie-mpd-electronic-prescription-group(-crossborder)`; the header is
+  required.
 - **Dosage** (ADR-004): `IEMpdDosage` on HL7 Europe MPD `Dosage-eu-mpd` for prescription, dispense and statement
   (`ie-dos-1` to `ie-dos-4`), a Dosage guidance page structured like the UK Core medicines guidance, and seven
   validated dosage examples. Product-based doses in the examples use SNOMED CT units of presentation.
