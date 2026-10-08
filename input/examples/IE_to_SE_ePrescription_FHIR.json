@@ -1,0 +1,392 @@
+{
+  "resourceType": "Bundle",
+  "id": "ie-bundle-to-se-eprescription",
+  "type": "collection",
+  "timestamp": "2025-07-10T09:00:00+02:00",
+  "entry": [
+    {
+      "fullUrl": "urn:uuid:80858291-1d72-5f01-b5bf-3a1427320ba9",
+      "resource": {
+        "resourceType": "Patient",
+        "id": "patient-sean-murphy",
+        "identifier": [
+          {
+            "system": "https://hl7-ie.github.io/ie-core/fhir/ie/core/sid/ihi",
+            "value": "210000000099887766"
+          },
+          {
+            "system": "https://hl7-ie.github.io/ie-core/fhir/ie/core/sid/pps",
+            "value": "1234567T"
+          },
+          {
+            "system": "http://eidas.europa.eu/attributes/naturalperson/PersonIdentifier",
+            "value": "IE/SE/1234567T"
+          }
+        ],
+        "active": true,
+        "name": [
+          {
+            "use": "official",
+            "family": "Murphy",
+            "given": [
+              "Seán",
+              "Patrick"
+            ],
+            "prefix": [
+              "Mr."
+            ]
+          }
+        ],
+        "gender": "male",
+        "birthDate": "1975-03-15",
+        "address": [
+          {
+            "use": "home",
+            "line": [
+              "14 Grafton Street"
+            ],
+            "city": "Dublin 2",
+            "postalCode": "D02 XY45",
+            "country": "IE",
+            "state": "Dublin"
+          }
+        ],
+        "extension": [
+          {
+            "url": "http://hl7.org/fhir/StructureDefinition/individual-recordedSexOrGender",
+            "extension": [
+              {
+                "url": "value",
+                "valueCodeableConcept": {
+                  "coding": [
+                    {
+                      "system": "http://hl7.org/fhir/administrative-gender",
+                      "code": "male",
+                      "display": "Male"
+                    }
+                  ]
+                }
+              },
+              {
+                "url": "type",
+                "valueCodeableConcept": {
+                  "coding": [
+                    {
+                      "system": "http://loinc.org",
+                      "code": "76689-9",
+                      "display": "Sex assigned at birth"
+                    }
+                  ]
+                }
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "fullUrl": "urn:uuid:f6ae4c82-db5b-5024-b472-a1582886e3ce",
+      "resource": {
+        "resourceType": "Practitioner",
+        "id": "practitioner-aoife-obrien",
+        "identifier": [
+          {
+            "system": "https://hl7-ie.github.io/ie-core/fhir/ie/core/sid/imc",
+            "value": "GP-IE-12345"
+          }
+        ],
+        "active": true,
+        "name": [
+          {
+            "use": "official",
+            "family": "O'Brien",
+            "given": [
+              "Aoife"
+            ],
+            "prefix": [
+              "Dr."
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "fullUrl": "urn:uuid:3cdf2d27-505d-5d12-bdb7-07c99c628c3e",
+      "resource": {
+        "resourceType": "Organization",
+        "id": "org-se-apoteket-hjartat",
+        "identifier": [
+          {
+            "value": "SE-APT-STO-001",
+            "assigner": {
+              "display": "Issuing authority in Sweden (illustrative)"
+            }
+          }
+        ],
+        "active": true,
+        "name": "Apoteket Hjärtat",
+        "address": [
+          {
+            "city": "Stockholm",
+            "country": "SE"
+          }
+        ]
+      }
+    },
+    {
+      "fullUrl": "urn:uuid:b36c29ce-b570-5a53-850e-f26a2181c438",
+      "resource": {
+        "resourceType": "MedicationRequest",
+        "id": "rx-ie-se-insulin-glargine",
+        "meta": {
+          "profile": [
+            "https://hl7-ie.github.io/medication-events/fhir/StructureDefinition/ie-mpd-medicationrequest-eprescription"
+          ]
+        },
+        "identifier": [
+          {
+            "system": "https://hl7-ie.github.io/ie-core/fhir/ie/core/sid/neps",
+            "value": "PCRS-RX-2025-IE-SE-001"
+          },
+          {
+            "system": "http://eidas.europa.eu/attributes/naturalperson/PersonIdentifier",
+            "value": "IE/SE/1234567T"
+          }
+        ],
+        "groupIdentifier": {
+          "system": "https://hl7-ie.github.io/ie-core/fhir/ie/core/sid/neps",
+          "value": "IE-GP-RX-GROUP-20250710-SE"
+        },
+        "status": "active",
+        "intent": "order",
+        "subject": {
+          "reference": "urn:uuid:80858291-1d72-5f01-b5bf-3a1427320ba9",
+          "display": "Seán Murphy"
+        },
+        "requester": {
+          "reference": "urn:uuid:f6ae4c82-db5b-5024-b472-a1582886e3ce",
+          "display": "Dr. Aoife O'Brien"
+        },
+        "authoredOn": "2025-07-05",
+        "reasonCode": [
+          {
+            "coding": [
+              {
+                "system": "http://snomed.info/sct",
+                "code": "44054006",
+                "display": "Diabetes mellitus type 2"
+              }
+            ]
+          }
+        ],
+        "dosageInstruction": [
+          {
+            "text": "Injicera 20 enheter subkutant en gång dagligen vid läggdags (Inject 20 units subcutaneously once daily at bedtime)",
+            "route": {
+              "coding": [
+                {
+                  "system": "http://snomed.info/sct",
+                  "code": "34206005",
+                  "display": "Subcutaneous route"
+                }
+              ]
+            }
+          }
+        ],
+        "dispenseRequest": {
+          "validityPeriod": {
+            "start": "2025-07-05",
+            "end": "2025-10-05"
+          },
+          "quantity": {
+            "value": 5,
+            "unit": "cartridges",
+            "system": "http://unitsofmeasure.org",
+            "code": "{cartridge}"
+          }
+        },
+        "substitution": {
+          "allowedBoolean": false,
+          "reason": {
+            "text": "Reason not stated in the source example"
+          }
+        },
+        "note": [
+          {
+            "text": "Cross-border ePrescription via MyHealth@EU (MPD). No substitution — insulin type must be maintained for dose continuity."
+          }
+        ],
+        "medicationReference": {
+          "reference": "urn:uuid:877787e3-8ffe-50fb-b11a-4d4da7eaf1b1",
+          "display": "Insulin Glargine 100u/ml → SE: Insulin Glargine 100 E/ml Injektionsvätska (LMV: SE-LMV-00892345)"
+        }
+      }
+    },
+    {
+      "fullUrl": "urn:uuid:bbac401e-0dd0-514f-a739-5356bf3d135a",
+      "resource": {
+        "resourceType": "MedicationRequest",
+        "id": "rx-ie-se-insulin-aspart",
+        "meta": {
+          "profile": [
+            "https://hl7-ie.github.io/medication-events/fhir/StructureDefinition/ie-mpd-medicationrequest-eprescription"
+          ]
+        },
+        "identifier": [
+          {
+            "system": "https://hl7-ie.github.io/ie-core/fhir/ie/core/sid/neps",
+            "value": "PCRS-RX-2025-IE-SE-002"
+          },
+          {
+            "system": "http://eidas.europa.eu/attributes/naturalperson/PersonIdentifier",
+            "value": "IE/SE/1234567T"
+          }
+        ],
+        "groupIdentifier": {
+          "system": "https://hl7-ie.github.io/ie-core/fhir/ie/core/sid/neps",
+          "value": "IE-GP-RX-GROUP-20250710-SE"
+        },
+        "status": "active",
+        "intent": "order",
+        "subject": {
+          "reference": "urn:uuid:80858291-1d72-5f01-b5bf-3a1427320ba9",
+          "display": "Seán Murphy"
+        },
+        "requester": {
+          "reference": "urn:uuid:f6ae4c82-db5b-5024-b472-a1582886e3ce",
+          "display": "Dr. Aoife O'Brien"
+        },
+        "authoredOn": "2025-07-05",
+        "reasonCode": [
+          {
+            "coding": [
+              {
+                "system": "http://snomed.info/sct",
+                "code": "44054006",
+                "display": "Diabetes mellitus type 2"
+              }
+            ]
+          }
+        ],
+        "dosageInstruction": [
+          {
+            "text": "Injicera 6-10 enheter subkutant omedelbart före måltider (Inject 6-10 units subcutaneously immediately before meals)",
+            "route": {
+              "coding": [
+                {
+                  "system": "http://snomed.info/sct",
+                  "code": "34206005",
+                  "display": "Subcutaneous route"
+                }
+              ]
+            }
+          }
+        ],
+        "dispenseRequest": {
+          "validityPeriod": {
+            "start": "2025-07-05",
+            "end": "2025-10-05"
+          },
+          "quantity": {
+            "value": 5,
+            "unit": "cartridges",
+            "system": "http://unitsofmeasure.org",
+            "code": "{cartridge}"
+          }
+        },
+        "substitution": {
+          "allowedBoolean": false,
+          "reason": {
+            "text": "Reason not stated in the source example"
+          }
+        },
+        "medicationReference": {
+          "reference": "urn:uuid:8b70e42c-1cf0-5375-8c8a-fa38fba0ff7a",
+          "display": "Insulin Aspart 100u/ml → SE: Insulin Aspart 100 E/ml Injektionsvätska (LMV: SE-LMV-00892346)"
+        }
+      }
+    },
+    {
+      "fullUrl": "urn:uuid:877787e3-8ffe-50fb-b11a-4d4da7eaf1b1",
+      "resource": {
+        "resourceType": "Medication",
+        "id": "med-rx-ie-se-insulin-glargine",
+        "meta": {
+          "profile": [
+            "https://hl7-ie.github.io/medication-events/fhir/StructureDefinition/ie-mpd-medication-eprescription"
+          ]
+        },
+        "code": {
+          "coding": [
+            {
+              "system": "http://snomed.info/sct",
+              "code": "411529005",
+              "display": "Insulin glargine"
+            },
+            {
+              "system": "http://www.whocc.no/atc",
+              "code": "A10AE04",
+              "display": "Insulin glargine"
+            }
+          ],
+          "text": "Insulin Glargine 100u/ml → SE: Insulin Glargine 100 E/ml Injektionsvätska (LMV: SE-LMV-00892345)"
+        },
+        "ingredient": [
+          {
+            "itemCodeableConcept": {
+              "coding": [
+                {
+                  "system": "http://snomed.info/sct",
+                  "code": "411529005",
+                  "display": "Insulin glargine"
+                }
+              ]
+            },
+            "isActive": true
+          }
+        ]
+      }
+    },
+    {
+      "fullUrl": "urn:uuid:8b70e42c-1cf0-5375-8c8a-fa38fba0ff7a",
+      "resource": {
+        "resourceType": "Medication",
+        "id": "med-rx-ie-se-insulin-aspart",
+        "meta": {
+          "profile": [
+            "https://hl7-ie.github.io/medication-events/fhir/StructureDefinition/ie-mpd-medication-eprescription"
+          ]
+        },
+        "code": {
+          "coding": [
+            {
+              "system": "http://snomed.info/sct",
+              "code": "325072002",
+              "display": "Insulin aspart"
+            },
+            {
+              "system": "http://www.whocc.no/atc",
+              "code": "A10AB05",
+              "display": "Insulin aspart"
+            }
+          ],
+          "text": "Insulin Aspart 100u/ml → SE: Insulin Aspart 100 E/ml Injektionsvätska (LMV: SE-LMV-00892346)"
+        },
+        "ingredient": [
+          {
+            "itemCodeableConcept": {
+              "coding": [
+                {
+                  "system": "http://snomed.info/sct",
+                  "code": "325072002",
+                  "display": "Insulin aspart"
+                }
+              ]
+            },
+            "isActive": true
+          }
+        ]
+      }
+    }
+  ]
+}

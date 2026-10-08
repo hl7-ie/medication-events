@@ -76,3 +76,6 @@ Alias: $PROVENANCE-PARTICIPANT-TYPE = http://terminology.hl7.org/CodeSystem/prov
 Alias: $IE-PROVENANCE = https://hl7-ie.github.io/medication-events/fhir/CodeSystem/ie-mpd-provenance-participant-type-codes
 Alias: $IE-COUNTY = https://hl7-ie.github.io/medication-events/fhir/CodeSystem/ie-mpd-county-codes
 Alias: $IE-ETHNICITY = https://hl7-ie.github.io/medication-events/fhir/CodeSystem/ie-mpd-ethnicity-codes
+
+// Aliases used by the cross-border reference examples (from IE Core 0.2.0)
+Alias: $V3-ActCode = http://terminology.hl7.org/CodeSystem/v3-ActCode

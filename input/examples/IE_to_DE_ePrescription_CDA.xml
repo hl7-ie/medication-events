@@ -1,0 +1,314 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Illustrative sample (IE Core). Identifier OIDs use the HL7 example arc 2.16.840.1.113883.19: no Irish OIDs are assigned for these identifiers (OI-020). -->
+<!-- =========================================================================
+  ePrescription CDA R2 (eHDSI / MyHealth@EU format)
+  Scenario: Ireland → Germany (Berlin)
+  Patient:  Seán Patrick Murphy (IE/DE/1234567T)
+  Drugs:    Metformin 500mg + Lisinopril 10mg
+  Date:     15 January 2025
+  Standard: HL7 CDA R2, eHDSI ePrescription template
+            Template ID: 1.3.6.1.4.1.12559.11.10.1.3.1.1.4 (ePrescription)
+  Context:  Transmitted via MyHealth@EU Central Hub from IE NCPeH to DE NCPeH
+  ========================================================================= -->
+<ClinicalDocument xmlns="urn:hl7-org:v3"
+                  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                  xsi:schemaLocation="urn:hl7-org:v3 CDA.xsd">
+
+  <typeId root="2.16.840.1.113883.1.3" extension="POCD_HD000040"/>
+
+  <!-- eHDSI ePrescription template OID -->
+  <templateId root="1.3.6.1.4.1.12559.11.10.1.3.1.1.4" extension="2022"/>
+
+  <id root="2.16.840.1.113883.19.1" extension="IE-EPRX-2025-IE-DE-001"/>
+  <code code="57833-6" codeSystem="2.16.840.1.113883.6.1" displayName="Prescription for medication"/>
+  <title>ePrescription – Seán Patrick Murphy – Ireland to Germany</title>
+  <effectiveTime value="20250115090000+0000"/>
+  <confidentialityCode code="N" codeSystem="2.16.840.1.113883.5.25"/>
+  <languageCode code="en-IE"/>
+
+  <!-- MyHealth@EU interchange identifiers -->
+  <setId root="2.16.840.1.113883.19.1.4.1" extension="IE-EHDS-XPRES-20250115-001"/>
+  <versionNumber value="1"/>
+
+  <!-- ─────────────────────────────────────────────
+    RECORD TARGET – Seán Murphy
+  ───────────────────────────────────────────── -->
+  <recordTarget>
+    <patientRole>
+      <!-- IHI (Irish Health Identifier) -->
+      <id root="2.16.840.1.113883.19.1.6.1" extension="210000000099887766"/>
+      <!-- PPS Number -->
+      <id root="2.16.840.1.113883.19.1.6.2" extension="1234567T"/>
+      <!-- eIDAS cross-border PID: IE → DE -->
+      <id root="2.16.840.1.113883.19.2.1" extension="IE/DE/1234567T"
+          assigningAuthorityName="eIDAS Natural Person Identifier"/>
+
+      <addr use="HP">
+        <streetAddressLine>14 Grafton Street</streetAddressLine>
+        <city>Dublin 2</city>
+        <state>Dublin</state>
+        <postalCode>D02 XY45</postalCode>
+        <country>IE</country>
+      </addr>
+      <telecom use="MC" value="tel:+353879001234"/>
+
+      <patient>
+        <name use="L">
+          <prefix>Mr.</prefix>
+          <given>Seán</given>
+          <given>Patrick</given>
+          <family>Murphy</family>
+        </name>
+        <administrativeGenderCode code="M" codeSystem="2.16.840.1.113883.5.1"/>
+        <birthTime value="19750315"/>
+        <languageCommunication>
+          <languageCode code="en"/>
+          <preferenceInd value="true"/>
+        </languageCommunication>
+      </patient>
+    </patientRole>
+  </recordTarget>
+
+  <!-- ─────────────────────────────────────────────
+    AUTHOR – Dr. Aoife O'Brien
+  ───────────────────────────────────────────── -->
+  <author>
+    <time value="20250115090000+0000"/>
+    <assignedAuthor>
+      <id root="2.16.840.1.113883.19.1.7.1" extension="GP-IE-12345"/>
+      <addr use="WP">
+        <streetAddressLine>14 Grafton Street</streetAddressLine>
+        <city>Dublin 2</city>
+        <postalCode>D02 XY45</postalCode>
+        <country>IE</country>
+      </addr>
+      <telecom use="WP" value="tel:+35316771234"/>
+      <assignedPerson>
+        <name>
+          <prefix>Dr.</prefix>
+          <given>Aoife</given>
+          <family>O'Brien</family>
+        </name>
+      </assignedPerson>
+      <representedOrganization>
+        <id root="2.16.840.1.113883.19.1.3.1" extension="IE-GP-GSMP-001"/>
+        <name>Grafton Street Medical Practice</name>
+        <addr>
+          <streetAddressLine>14 Grafton Street</streetAddressLine>
+          <city>Dublin 2</city>
+          <postalCode>D02 XY45</postalCode>
+          <country>IE</country>
+        </addr>
+        <telecom use="WP" value="tel:+35316771234"/>
+      </representedOrganization>
+    </assignedAuthor>
+  </author>
+
+  <!-- ─────────────────────────────────────────────
+    CUSTODIAN – IE NCPeH (HSE eHealth)
+  ───────────────────────────────────────────── -->
+  <custodian>
+    <assignedCustodian>
+      <representedCustodianOrganization>
+        <id root="2.16.840.1.113883.19.1.1.1" extension="IE-NCPeH-HSE"/>
+        <name>NCPeH Ireland — HSE eHealth</name>
+        <addr>
+          <streetAddressLine>HSE eHealth, Dr. Steevens' Hospital</streetAddressLine>
+          <city>Dublin 8</city>
+          <country>IE</country>
+        </addr>
+      </representedCustodianOrganization>
+    </assignedCustodian>
+  </custodian>
+
+  <!-- ─────────────────────────────────────────────
+    INTENDED RECIPIENT – DE NCPeH (gematik)
+  ───────────────────────────────────────────── -->
+  <informationRecipient typeCode="PRCP">
+    <intendedRecipient>
+      <receivedOrganization>
+        <id root="2.16.840.1.113883.19.3.1" extension="DE-NCPeH-GEMATIK"/>
+        <name>NCPeH Germany — gematik GmbH</name>
+        <addr>
+          <country>DE</country>
+        </addr>
+      </receivedOrganization>
+    </intendedRecipient>
+  </informationRecipient>
+
+  <!-- ─────────────────────────────────────────────
+    LEGAL AUTHENTICATOR
+  ───────────────────────────────────────────── -->
+  <legalAuthenticator>
+    <time value="20250115090000+0000"/>
+    <signatureCode code="S"/>
+    <assignedEntity>
+      <id root="2.16.840.1.113883.19.1.7.1" extension="GP-IE-12345"/>
+      <assignedPerson>
+        <name><prefix>Dr.</prefix><given>Aoife</given><family>O'Brien</family></name>
+      </assignedPerson>
+    </assignedEntity>
+  </legalAuthenticator>
+
+  <!-- ─────────────────────────────────────────────
+    COMPONENT / BODY — Prescription Items
+  ───────────────────────────────────────────── -->
+  <component>
+    <structuredBody>
+
+      <!-- ── CRITICAL ALLERGY ALERT ── -->
+      <component>
+        <section>
+          <templateId root="2.16.840.1.113883.10.22.3.2" extension="2022"/>
+          <code code="48765-2" codeSystem="2.16.840.1.113883.6.1" displayName="Allergies"/>
+          <title>⚠️ CRITICAL ALLERGY ALERT</title>
+          <text>
+            <content styleCode="Bold Italics">ANAPHYLAXIS: Penicillin / Amoxicillin (all penicillin-class antibiotics).
+            Do NOT dispense penicillin-class antibiotics. Documented 1995.</content>
+          </text>
+        </section>
+      </component>
+
+      <!-- ── PRESCRIPTION ITEM 1: Metformin 500mg ── -->
+      <component>
+        <section>
+          <templateId root="1.3.6.1.4.1.12559.11.10.1.3.1.2.1" extension="2022"/>
+          <code code="57828-6" codeSystem="2.16.840.1.113883.6.1" displayName="Prescriptions"/>
+          <title>Prescription Item 1 of 2 — Metformin 500mg</title>
+          <text>
+            <table>
+              <tbody>
+                <tr><td>Drug</td><td>Metformin 500mg tablets</td></tr>
+                <tr><td>SNOMED CT</td><td>372567009</td></tr>
+                <tr><td>ATC</td><td>A10BA02</td></tr>
+                <tr><td>Dosage</td><td>500mg twice daily with meals</td></tr>
+                <tr><td>Quantity</td><td>60 tablets</td></tr>
+                <tr><td>Valid from</td><td>15 January 2025</td></tr>
+                <tr><td>Valid until</td><td>15 April 2025 (90 days — Arzneimittelgesetz §48)</td></tr>
+                <tr><td>Indication</td><td>Type 2 Diabetes Mellitus (E11)</td></tr>
+                <tr><td>Substitution</td><td>Allowed — generic substitution permitted</td></tr>
+                <tr><td>IE Prescription ID</td><td>PCRS-RX-2025-IE-DE-001</td></tr>
+              </tbody>
+            </table>
+          </text>
+          <entry>
+            <substanceAdministration classCode="SBADM" moodCode="RQO">
+              <templateId root="1.3.6.1.4.1.12559.11.10.1.3.1.3.1" extension="2022"/>
+              <id root="2.16.840.1.113883.19.1.8.1" extension="PCRS-RX-2025-IE-DE-001"/>
+              <statusCode code="active"/>
+              <effectiveTime xsi:type="IVL_TS">
+                <low value="20250115"/>
+                <high value="20250415"/>
+              </effectiveTime>
+              <effectiveTime xsi:type="PIVL_TS" operator="A">
+                <period value="12" unit="h"/>
+              </effectiveTime>
+              <routeCode code="26643006" codeSystem="2.16.840.1.113883.6.96" displayName="Oral route"/>
+              <doseQuantity value="500" unit="mg"/>
+              <consumable>
+                <manufacturedProduct>
+                  <manufacturedMaterial>
+                    <code code="372567009" codeSystem="2.16.840.1.113883.6.96" displayName="Metformin">
+                      <translation code="A10BA02" codeSystem="2.16.840.1.113883.6.73" displayName="Metformin (ATC)"/>
+                    </code>
+                    <name>Metformin 500mg tablets</name>
+                  </manufacturedMaterial>
+                </manufacturedProduct>
+              </consumable>
+              <supply classCode="SPLY" moodCode="RQO">
+                <independentInd value="false"/>
+                <quantity value="60"/>
+                <product>
+                  <manufacturedProduct>
+                    <manufacturedMaterial>
+                      <code code="372567009" codeSystem="2.16.840.1.113883.6.96"/>
+                    </manufacturedMaterial>
+                  </manufacturedProduct>
+                </product>
+                <subjectOf>
+                  <substitutionPermission>
+                    <code code="G" codeSystem="2.16.840.1.113883.5.1070" displayName="Generic composition"/>
+                  </substitutionPermission>
+                </subjectOf>
+              </supply>
+              <!-- Indication -->
+              <entryRelationship typeCode="RSON">
+                <observation classCode="OBS" moodCode="EVN">
+                  <code code="75315-2" codeSystem="2.16.840.1.113883.6.1"/>
+                  <value xsi:type="CD" code="44054006" codeSystem="2.16.840.1.113883.6.96" displayName="Type 2 diabetes mellitus"/>
+                </observation>
+              </entryRelationship>
+            </substanceAdministration>
+          </entry>
+        </section>
+      </component>
+
+      <!-- ── PRESCRIPTION ITEM 2: Lisinopril 10mg ── -->
+      <component>
+        <section>
+          <templateId root="1.3.6.1.4.1.12559.11.10.1.3.1.2.1" extension="2022"/>
+          <code code="57828-6" codeSystem="2.16.840.1.113883.6.1" displayName="Prescriptions"/>
+          <title>Prescription Item 2 of 2 — Lisinopril 10mg</title>
+          <text>
+            <table>
+              <tbody>
+                <tr><td>Drug</td><td>Lisinopril 10mg tablets</td></tr>
+                <tr><td>SNOMED CT</td><td>386873009</td></tr>
+                <tr><td>ATC</td><td>C09AA03</td></tr>
+                <tr><td>Dosage</td><td>10mg once daily in the morning</td></tr>
+                <tr><td>Quantity</td><td>28 tablets</td></tr>
+                <tr><td>Valid from</td><td>15 January 2025</td></tr>
+                <tr><td>Valid until</td><td>15 April 2025 (90 days)</td></tr>
+                <tr><td>Indication</td><td>Essential Hypertension (I10)</td></tr>
+                <tr><td>Substitution</td><td>Allowed — generic substitution permitted</td></tr>
+                <tr><td>IE Prescription ID</td><td>PCRS-RX-2025-IE-DE-002</td></tr>
+              </tbody>
+            </table>
+          </text>
+          <entry>
+            <substanceAdministration classCode="SBADM" moodCode="RQO">
+              <templateId root="1.3.6.1.4.1.12559.11.10.1.3.1.3.1" extension="2022"/>
+              <id root="2.16.840.1.113883.19.1.8.1" extension="PCRS-RX-2025-IE-DE-002"/>
+              <statusCode code="active"/>
+              <effectiveTime xsi:type="IVL_TS">
+                <low value="20250115"/>
+                <high value="20250415"/>
+              </effectiveTime>
+              <effectiveTime xsi:type="PIVL_TS" operator="A">
+                <period value="24" unit="h"/>
+              </effectiveTime>
+              <routeCode code="26643006" codeSystem="2.16.840.1.113883.6.96" displayName="Oral route"/>
+              <doseQuantity value="10" unit="mg"/>
+              <consumable>
+                <manufacturedProduct>
+                  <manufacturedMaterial>
+                    <code code="386873009" codeSystem="2.16.840.1.113883.6.96" displayName="Lisinopril">
+                      <translation code="C09AA03" codeSystem="2.16.840.1.113883.6.73" displayName="Lisinopril (ATC)"/>
+                    </code>
+                    <name>Lisinopril 10mg tablets</name>
+                  </manufacturedMaterial>
+                </manufacturedProduct>
+              </consumable>
+              <supply classCode="SPLY" moodCode="RQO">
+                <independentInd value="false"/>
+                <quantity value="28"/>
+                <subjectOf>
+                  <substitutionPermission>
+                    <code code="G" codeSystem="2.16.840.1.113883.5.1070" displayName="Generic composition"/>
+                  </substitutionPermission>
+                </subjectOf>
+              </supply>
+              <entryRelationship typeCode="RSON">
+                <observation classCode="OBS" moodCode="EVN">
+                  <code code="75315-2" codeSystem="2.16.840.1.113883.6.1"/>
+                  <value xsi:type="CD" code="38341003" codeSystem="2.16.840.1.113883.6.96" displayName="Essential hypertension"/>
+                </observation>
+              </entryRelationship>
+            </substanceAdministration>
+          </entry>
+        </section>
+      </component>
+
+    </structuredBody>
+  </component>
+</ClinicalDocument>

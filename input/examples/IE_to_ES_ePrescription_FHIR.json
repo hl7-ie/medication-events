@@ -1,0 +1,601 @@
+{
+  "resourceType": "Bundle",
+  "id": "ie-bundle-to-es-eprescription",
+  "type": "collection",
+  "timestamp": "2025-02-10T09:00:00+01:00",
+  "entry": [
+    {
+      "fullUrl": "urn:uuid:80858291-1d72-5f01-b5bf-3a1427320ba9",
+      "resource": {
+        "resourceType": "Patient",
+        "id": "patient-sean-murphy",
+        "meta": {
+          "profile": [
+            "https://hl7-ie.github.io/medication-events/fhir/StructureDefinition/ie-mpd-patient-eprescription"
+          ]
+        },
+        "identifier": [
+          {
+            "system": "https://hl7-ie.github.io/ie-core/fhir/ie/core/sid/ihi",
+            "value": "210000000099887766"
+          },
+          {
+            "system": "https://hl7-ie.github.io/ie-core/fhir/ie/core/sid/pps",
+            "value": "1234567T"
+          },
+          {
+            "system": "http://eidas.europa.eu/attributes/naturalperson/PersonIdentifier",
+            "value": "IE/ES/1234567T"
+          }
+        ],
+        "active": true,
+        "name": [
+          {
+            "use": "official",
+            "family": "Murphy",
+            "given": [
+              "Seán",
+              "Patrick"
+            ],
+            "prefix": [
+              "Mr."
+            ]
+          }
+        ],
+        "gender": "male",
+        "birthDate": "1975-03-15",
+        "address": [
+          {
+            "use": "home",
+            "line": [
+              "14 Grafton Street"
+            ],
+            "city": "Dublin 2",
+            "postalCode": "D02 XY45",
+            "country": "IE",
+            "state": "Dublin"
+          }
+        ],
+        "extension": [
+          {
+            "url": "http://hl7.org/fhir/StructureDefinition/individual-recordedSexOrGender",
+            "extension": [
+              {
+                "url": "value",
+                "valueCodeableConcept": {
+                  "coding": [
+                    {
+                      "system": "http://hl7.org/fhir/administrative-gender",
+                      "code": "male",
+                      "display": "Male"
+                    }
+                  ]
+                }
+              },
+              {
+                "url": "type",
+                "valueCodeableConcept": {
+                  "coding": [
+                    {
+                      "system": "http://loinc.org",
+                      "code": "76689-9",
+                      "display": "Sex assigned at birth"
+                    }
+                  ]
+                }
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "fullUrl": "urn:uuid:f6ae4c82-db5b-5024-b472-a1582886e3ce",
+      "resource": {
+        "resourceType": "Practitioner",
+        "id": "practitioner-aoife-obrien",
+        "meta": {
+          "profile": [
+            "https://hl7-ie.github.io/medication-events/fhir/StructureDefinition/ie-mpd-practitioner"
+          ]
+        },
+        "identifier": [
+          {
+            "system": "https://hl7-ie.github.io/ie-core/fhir/ie/core/sid/imc",
+            "value": "GP-IE-12345"
+          }
+        ],
+        "active": true,
+        "name": [
+          {
+            "use": "official",
+            "family": "O'Brien",
+            "given": [
+              "Aoife"
+            ],
+            "prefix": [
+              "Dr."
+            ]
+          }
+        ],
+        "gender": "female"
+      }
+    },
+    {
+      "fullUrl": "urn:uuid:3ab51105-7364-58f5-a3d6-f9bc50690c12",
+      "resource": {
+        "resourceType": "AllergyIntolerance",
+        "id": "allergy-penicillin",
+        "meta": {
+          "profile": [
+            "https://hl7-ie.github.io/medication-events/fhir/StructureDefinition/ie-mpd-allergyintolerance"
+          ]
+        },
+        "clinicalStatus": {
+          "coding": [
+            {
+              "system": "http://terminology.hl7.org/CodeSystem/allergyintolerance-clinical",
+              "code": "active"
+            }
+          ]
+        },
+        "verificationStatus": {
+          "coding": [
+            {
+              "system": "http://terminology.hl7.org/CodeSystem/allergyintolerance-verification",
+              "code": "confirmed"
+            }
+          ]
+        },
+        "type": "allergy",
+        "category": [
+          "medication"
+        ],
+        "criticality": "high",
+        "code": {
+          "coding": [
+            {
+              "system": "http://snomed.info/sct",
+              "code": "372687004",
+              "display": "Amoxicillin"
+            }
+          ],
+          "text": "Penicillin / Amoxicillin — ALL penicillin-class antibiotics"
+        },
+        "patient": {
+          "reference": "urn:uuid:80858291-1d72-5f01-b5bf-3a1427320ba9"
+        },
+        "reaction": [
+          {
+            "manifestation": [
+              {
+                "coding": [
+                  {
+                    "system": "http://snomed.info/sct",
+                    "code": "39579001",
+                    "display": "Anaphylaxis"
+                  }
+                ]
+              }
+            ],
+            "severity": "severe"
+          }
+        ]
+      }
+    },
+    {
+      "fullUrl": "urn:uuid:433e0a04-c1f7-5043-8b3d-19ea5531fc7b",
+      "resource": {
+        "resourceType": "Organization",
+        "id": "org-es-farmacia-central-barcelona",
+        "identifier": [
+          {
+            "value": "ES-OF-08-001234",
+            "assigner": {
+              "display": "Issuing authority in Spain (illustrative)"
+            }
+          }
+        ],
+        "active": true,
+        "name": "Farmàcia Central",
+        "address": [
+          {
+            "line": [
+              "Passeig de Gràcia 45"
+            ],
+            "city": "Barcelona",
+            "postalCode": "08007",
+            "country": "ES"
+          }
+        ],
+        "telecom": [
+          {
+            "system": "phone",
+            "value": "+34 93 215 1234"
+          }
+        ]
+      }
+    },
+    {
+      "fullUrl": "urn:uuid:4e50da87-7b9a-5d10-ab14-ca32c6c7e94e",
+      "resource": {
+        "resourceType": "MedicationRequest",
+        "id": "rx-ie-es-metformin",
+        "meta": {
+          "profile": [
+            "https://hl7-ie.github.io/medication-events/fhir/StructureDefinition/ie-mpd-medicationrequest-eprescription"
+          ]
+        },
+        "identifier": [
+          {
+            "system": "https://hl7-ie.github.io/ie-core/fhir/ie/core/sid/neps",
+            "value": "PCRS-RX-2025-IE-ES-001"
+          },
+          {
+            "system": "http://eidas.europa.eu/attributes/naturalperson/PersonIdentifier",
+            "value": "IE/ES/1234567T"
+          }
+        ],
+        "groupIdentifier": {
+          "system": "https://hl7-ie.github.io/ie-core/fhir/ie/core/sid/neps",
+          "value": "IE-GP-RX-GROUP-20250210-ES"
+        },
+        "status": "active",
+        "intent": "order",
+        "category": [
+          {
+            "coding": [
+              {
+                "system": "http://terminology.hl7.org/CodeSystem/medicationrequest-category",
+                "code": "community"
+              }
+            ]
+          }
+        ],
+        "subject": {
+          "reference": "urn:uuid:80858291-1d72-5f01-b5bf-3a1427320ba9",
+          "display": "Seán Murphy"
+        },
+        "requester": {
+          "reference": "urn:uuid:f6ae4c82-db5b-5024-b472-a1582886e3ce",
+          "display": "Dr. Aoife O'Brien"
+        },
+        "authoredOn": "2025-02-05",
+        "reasonCode": [
+          {
+            "coding": [
+              {
+                "system": "http://snomed.info/sct",
+                "code": "44054006",
+                "display": "Diabetes mellitus type 2"
+              }
+            ]
+          }
+        ],
+        "dosageInstruction": [
+          {
+            "text": "Take one 500mg tablet twice daily with meals",
+            "timing": {
+              "repeat": {
+                "frequency": 2,
+                "period": 1,
+                "periodUnit": "d"
+              }
+            }
+          }
+        ],
+        "dispenseRequest": {
+          "validityPeriod": {
+            "start": "2025-02-05",
+            "end": "2025-05-05"
+          },
+          "quantity": {
+            "value": 60,
+            "unit": "tablets",
+            "system": "http://unitsofmeasure.org",
+            "code": "{tablet}"
+          }
+        },
+        "substitution": {
+          "allowedBoolean": true
+        },
+        "note": [
+          {
+            "text": "Cross-border ePrescription via MyHealth@EU. Valid 90 days (Real Decreto 1718/2010)."
+          }
+        ],
+        "medicationReference": {
+          "reference": "urn:uuid:c566df55-464b-56ac-9935-01e7c984b57e",
+          "display": "Metformin 500mg tablets → ES: Metformina Cinfa 500mg comprimidos (CIMA: 60918)"
+        }
+      }
+    },
+    {
+      "fullUrl": "urn:uuid:b7a3fbe1-d22d-5c25-a3f6-9bae35562ea9",
+      "resource": {
+        "resourceType": "MedicationRequest",
+        "id": "rx-ie-es-lisinopril",
+        "meta": {
+          "profile": [
+            "https://hl7-ie.github.io/medication-events/fhir/StructureDefinition/ie-mpd-medicationrequest-eprescription"
+          ]
+        },
+        "identifier": [
+          {
+            "system": "https://hl7-ie.github.io/ie-core/fhir/ie/core/sid/neps",
+            "value": "PCRS-RX-2025-IE-ES-002"
+          },
+          {
+            "system": "http://eidas.europa.eu/attributes/naturalperson/PersonIdentifier",
+            "value": "IE/ES/1234567T"
+          }
+        ],
+        "groupIdentifier": {
+          "system": "https://hl7-ie.github.io/ie-core/fhir/ie/core/sid/neps",
+          "value": "IE-GP-RX-GROUP-20250210-ES"
+        },
+        "status": "active",
+        "intent": "order",
+        "category": [
+          {
+            "coding": [
+              {
+                "system": "http://terminology.hl7.org/CodeSystem/medicationrequest-category",
+                "code": "community"
+              }
+            ]
+          }
+        ],
+        "subject": {
+          "reference": "urn:uuid:80858291-1d72-5f01-b5bf-3a1427320ba9",
+          "display": "Seán Murphy"
+        },
+        "requester": {
+          "reference": "urn:uuid:f6ae4c82-db5b-5024-b472-a1582886e3ce",
+          "display": "Dr. Aoife O'Brien"
+        },
+        "authoredOn": "2025-02-05",
+        "reasonCode": [
+          {
+            "coding": [
+              {
+                "system": "http://snomed.info/sct",
+                "code": "38341003",
+                "display": "Hypertensive disorder"
+              }
+            ]
+          }
+        ],
+        "dosageInstruction": [
+          {
+            "text": "Take one 10mg tablet once daily in the morning"
+          }
+        ],
+        "dispenseRequest": {
+          "validityPeriod": {
+            "start": "2025-02-05",
+            "end": "2025-05-05"
+          },
+          "quantity": {
+            "value": 28,
+            "unit": "tablets",
+            "system": "http://unitsofmeasure.org",
+            "code": "{tablet}"
+          }
+        },
+        "substitution": {
+          "allowedBoolean": true
+        },
+        "medicationReference": {
+          "reference": "urn:uuid:8278392b-09c5-5323-8b1c-09b3cce56601",
+          "display": "Lisinopril 10mg tablets → ES: Lisinopril Kern Pharma 10mg comprimidos (CIMA: 57552)"
+        }
+      }
+    },
+    {
+      "fullUrl": "urn:uuid:9cb09898-af67-5575-8015-d115bc3adabd",
+      "resource": {
+        "resourceType": "MedicationRequest",
+        "id": "rx-ie-es-atorvastatin",
+        "meta": {
+          "profile": [
+            "https://hl7-ie.github.io/medication-events/fhir/StructureDefinition/ie-mpd-medicationrequest-eprescription"
+          ]
+        },
+        "identifier": [
+          {
+            "system": "https://hl7-ie.github.io/ie-core/fhir/ie/core/sid/neps",
+            "value": "PCRS-RX-2025-IE-ES-003"
+          },
+          {
+            "system": "http://eidas.europa.eu/attributes/naturalperson/PersonIdentifier",
+            "value": "IE/ES/1234567T"
+          }
+        ],
+        "groupIdentifier": {
+          "system": "https://hl7-ie.github.io/ie-core/fhir/ie/core/sid/neps",
+          "value": "IE-GP-RX-GROUP-20250210-ES"
+        },
+        "status": "active",
+        "intent": "order",
+        "category": [
+          {
+            "coding": [
+              {
+                "system": "http://terminology.hl7.org/CodeSystem/medicationrequest-category",
+                "code": "community"
+              }
+            ]
+          }
+        ],
+        "subject": {
+          "reference": "urn:uuid:80858291-1d72-5f01-b5bf-3a1427320ba9",
+          "display": "Seán Murphy"
+        },
+        "requester": {
+          "reference": "urn:uuid:f6ae4c82-db5b-5024-b472-a1582886e3ce",
+          "display": "Dr. Aoife O'Brien"
+        },
+        "authoredOn": "2025-02-05",
+        "reasonCode": [
+          {
+            "coding": [
+              {
+                "system": "http://snomed.info/sct",
+                "code": "13644009",
+                "display": "Hypercholesterolemia"
+              }
+            ]
+          }
+        ],
+        "dosageInstruction": [
+          {
+            "text": "Take one 20mg tablet once daily at night"
+          }
+        ],
+        "dispenseRequest": {
+          "validityPeriod": {
+            "start": "2025-02-05",
+            "end": "2025-05-05"
+          },
+          "quantity": {
+            "value": 28,
+            "unit": "tablets",
+            "system": "http://unitsofmeasure.org",
+            "code": "{tablet}"
+          }
+        },
+        "substitution": {
+          "allowedBoolean": true
+        },
+        "medicationReference": {
+          "reference": "urn:uuid:edb539a2-3a8b-5bbd-ac9b-441e21a025ff",
+          "display": "Atorvastatin 20mg tablets → ES: Atorvastatina Cinfa 20mg comprimidos (CIMA: 72242)"
+        }
+      }
+    },
+    {
+      "fullUrl": "urn:uuid:c566df55-464b-56ac-9935-01e7c984b57e",
+      "resource": {
+        "resourceType": "Medication",
+        "id": "med-rx-ie-es-metformin",
+        "meta": {
+          "profile": [
+            "https://hl7-ie.github.io/medication-events/fhir/StructureDefinition/ie-mpd-medication-eprescription"
+          ]
+        },
+        "code": {
+          "coding": [
+            {
+              "system": "http://snomed.info/sct",
+              "code": "372567009",
+              "display": "Metformin"
+            },
+            {
+              "system": "http://www.whocc.no/atc",
+              "code": "A10BA02",
+              "display": "Metformin"
+            }
+          ],
+          "text": "Metformin 500mg tablets → ES: Metformina Cinfa 500mg comprimidos (CIMA: 60918)"
+        },
+        "ingredient": [
+          {
+            "itemCodeableConcept": {
+              "coding": [
+                {
+                  "system": "http://snomed.info/sct",
+                  "code": "372567009",
+                  "display": "Metformin"
+                }
+              ]
+            },
+            "isActive": true
+          }
+        ]
+      }
+    },
+    {
+      "fullUrl": "urn:uuid:8278392b-09c5-5323-8b1c-09b3cce56601",
+      "resource": {
+        "resourceType": "Medication",
+        "id": "med-rx-ie-es-lisinopril",
+        "meta": {
+          "profile": [
+            "https://hl7-ie.github.io/medication-events/fhir/StructureDefinition/ie-mpd-medication-eprescription"
+          ]
+        },
+        "code": {
+          "coding": [
+            {
+              "system": "http://snomed.info/sct",
+              "code": "386873009",
+              "display": "Lisinopril"
+            },
+            {
+              "system": "http://www.whocc.no/atc",
+              "code": "C09AA03",
+              "display": "Lisinopril"
+            }
+          ],
+          "text": "Lisinopril 10mg tablets → ES: Lisinopril Kern Pharma 10mg comprimidos (CIMA: 57552)"
+        },
+        "ingredient": [
+          {
+            "itemCodeableConcept": {
+              "coding": [
+                {
+                  "system": "http://snomed.info/sct",
+                  "code": "386873009",
+                  "display": "Lisinopril"
+                }
+              ]
+            },
+            "isActive": true
+          }
+        ]
+      }
+    },
+    {
+      "fullUrl": "urn:uuid:edb539a2-3a8b-5bbd-ac9b-441e21a025ff",
+      "resource": {
+        "resourceType": "Medication",
+        "id": "med-rx-ie-es-atorvastatin",
+        "meta": {
+          "profile": [
+            "https://hl7-ie.github.io/medication-events/fhir/StructureDefinition/ie-mpd-medication-eprescription"
+          ]
+        },
+        "code": {
+          "coding": [
+            {
+              "system": "http://snomed.info/sct",
+              "code": "373444002",
+              "display": "Atorvastatin"
+            },
+            {
+              "system": "http://www.whocc.no/atc",
+              "code": "C10AA05",
+              "display": "Atorvastatin"
+            }
+          ],
+          "text": "Atorvastatin 20mg tablets → ES: Atorvastatina Cinfa 20mg comprimidos (CIMA: 72242)"
+        },
+        "ingredient": [
+          {
+            "itemCodeableConcept": {
+              "coding": [
+                {
+                  "system": "http://snomed.info/sct",
+                  "code": "373444002",
+                  "display": "Atorvastatin"
+                }
+              ]
+            },
+            "isActive": true
+          }
+        ]
+      }
+    }
+  ]
+}

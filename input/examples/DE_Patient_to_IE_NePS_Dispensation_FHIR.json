@@ -1,0 +1,365 @@
+{
+  "resourceType": "Bundle",
+  "id": "de-patient-to-ie-neps",
+  "type": "collection",
+  "timestamp": "2025-08-10T10:00:00+01:00",
+  "entry": [
+    {
+      "fullUrl": "urn:uuid:6053ae6e-5307-5593-a512-efee6484a192",
+      "resource": {
+        "resourceType": "Patient",
+        "id": "patient-klaus-weber",
+        "identifier": [
+          {
+            "value": "DE-K123456789",
+            "assigner": {
+              "display": "Issuing authority in Germany (illustrative)"
+            }
+          },
+          {
+            "system": "http://eidas.europa.eu/attributes/naturalperson/PersonIdentifier",
+            "value": "DE/IE/K123456789"
+          }
+        ],
+        "active": true,
+        "name": [
+          {
+            "use": "official",
+            "family": "Weber",
+            "given": [
+              "Klaus",
+              "Heinrich"
+            ]
+          }
+        ],
+        "gender": "male",
+        "birthDate": "1965-09-12",
+        "address": [
+          {
+            "use": "home",
+            "city": "Munich",
+            "postalCode": "80331",
+            "country": "DE",
+            "state": "Munich",
+            "line": [
+              null
+            ],
+            "_line": [
+              {
+                "extension": [
+                  {
+                    "url": "http://hl7.org/fhir/StructureDefinition/data-absent-reason",
+                    "valueCode": "unknown"
+                  }
+                ]
+              }
+            ]
+          }
+        ],
+        "communication": [
+          {
+            "language": {
+              "coding": [
+                {
+                  "system": "urn:ietf:bcp:47",
+                  "code": "de",
+                  "display": "German"
+                }
+              ]
+            },
+            "preferred": true
+          }
+        ],
+        "extension": [
+          {
+            "url": "http://hl7.org/fhir/StructureDefinition/individual-recordedSexOrGender",
+            "extension": [
+              {
+                "url": "value",
+                "valueCodeableConcept": {
+                  "coding": [
+                    {
+                      "system": "http://hl7.org/fhir/administrative-gender",
+                      "code": "male",
+                      "display": "Male"
+                    }
+                  ]
+                }
+              },
+              {
+                "url": "type",
+                "valueCodeableConcept": {
+                  "coding": [
+                    {
+                      "system": "http://loinc.org",
+                      "code": "76689-9",
+                      "display": "Sex assigned at birth"
+                    }
+                  ]
+                }
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "fullUrl": "urn:uuid:e0bcd61c-b497-5c68-8175-27c9b0c88496",
+      "resource": {
+        "resourceType": "Practitioner",
+        "id": "de-prescriber",
+        "identifier": [
+          {
+            "value": "DE-ARZT-0012345",
+            "assigner": {
+              "display": "Issuing authority in Germany (illustrative)"
+            }
+          }
+        ],
+        "active": true,
+        "name": [
+          {
+            "use": "official",
+            "family": "Müller",
+            "given": [
+              "Hans"
+            ],
+            "prefix": [
+              "Dr."
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "fullUrl": "urn:uuid:4dca1744-857f-54d3-8f4e-9b328adc386b",
+      "resource": {
+        "resourceType": "Organization",
+        "id": "org-ie-boots-grafton",
+        "meta": {
+          "profile": [
+            "https://hl7-ie.github.io/medication-events/fhir/StructureDefinition/ie-mpd-organization"
+          ]
+        },
+        "active": true,
+        "name": "Boots Pharmacy",
+        "address": [
+          {
+            "use": "work",
+            "line": [
+              "Grafton Street"
+            ],
+            "city": "Dublin 2",
+            "postalCode": "D02 HH24",
+            "country": "IE"
+          }
+        ]
+      }
+    },
+    {
+      "fullUrl": "urn:uuid:0418f532-1491-5c2f-9032-090f511b0de9",
+      "resource": {
+        "resourceType": "MedicationRequest",
+        "id": "de-original-rx-ramipril",
+        "identifier": [
+          {
+            "value": "DE-RX-2025-NEPS-001",
+            "assigner": {
+              "display": "Issuing authority in Germany (illustrative)"
+            }
+          },
+          {
+            "system": "http://eidas.europa.eu/attributes/naturalperson/PersonIdentifier",
+            "value": "DE/IE/K123456789"
+          }
+        ],
+        "status": "active",
+        "intent": "order",
+        "subject": {
+          "reference": "urn:uuid:6053ae6e-5307-5593-a512-efee6484a192",
+          "display": "Klaus Weber"
+        },
+        "requester": {
+          "reference": "urn:uuid:e0bcd61c-b497-5c68-8175-27c9b0c88496",
+          "display": "Dr. Hans Müller"
+        },
+        "authoredOn": "2025-08-01",
+        "dosageInstruction": [
+          {
+            "text": "Nehmen Sie täglich eine Kapsel 10mg morgens (Take one 10mg capsule once daily in the morning)"
+          }
+        ],
+        "dispenseRequest": {
+          "validityPeriod": {
+            "start": "2025-08-01",
+            "end": "2025-10-31"
+          },
+          "quantity": {
+            "value": 28,
+            "unit": "tablets",
+            "system": "http://unitsofmeasure.org",
+            "code": "{tablet}"
+          }
+        },
+        "substitution": {
+          "allowedBoolean": false,
+          "reason": {
+            "text": "Reason not stated in the source example"
+          }
+        },
+        "medicationReference": {
+          "reference": "urn:uuid:23c14466-d00b-56ed-ae50-91ced0ac4767",
+          "display": "Ramipril 10mg Kapseln"
+        }
+      }
+    },
+    {
+      "fullUrl": "urn:uuid:043302f8-447b-552d-b243-f24d9024b4a1",
+      "resource": {
+        "resourceType": "MedicationDispense",
+        "id": "ie-dispense-de-rx",
+        "meta": {
+          "profile": [
+            "https://hl7-ie.github.io/medication-events/fhir/StructureDefinition/ie-mpd-medicationdispense-edispensation"
+          ]
+        },
+        "identifier": [
+          {
+            "system": "urn:ietf:rfc:3986",
+            "value": "urn:uuid:6546ff3d-1518-54d2-82b3-17ec46e0f789"
+          },
+          {
+            "value": "DE-RX-2025-NEPS-001",
+            "assigner": {
+              "display": "Issuing authority in Germany (illustrative)"
+            }
+          }
+        ],
+        "status": "completed",
+        "subject": {
+          "reference": "urn:uuid:6053ae6e-5307-5593-a512-efee6484a192",
+          "display": "Klaus Weber"
+        },
+        "performer": [
+          {
+            "actor": {
+              "reference": "urn:uuid:4dca1744-857f-54d3-8f4e-9b328adc386b",
+              "display": "Boots Pharmacy Grafton Street"
+            }
+          }
+        ],
+        "authorizingPrescription": [
+          {
+            "reference": "urn:uuid:0418f532-1491-5c2f-9032-090f511b0de9"
+          }
+        ],
+        "type": {
+          "coding": [
+            {
+              "system": "http://terminology.hl7.org/CodeSystem/v3-ActCode",
+              "code": "DF",
+              "display": "Daily Fill"
+            }
+          ]
+        },
+        "quantity": {
+          "value": 28,
+          "unit": "tablets",
+          "system": "http://unitsofmeasure.org",
+          "code": "{tablet}"
+        },
+        "whenHandedOver": "2025-08-10T10:00:00+01:00",
+        "dosageInstruction": [
+          {
+            "text": "Take one 10mg capsule once daily in the morning"
+          }
+        ],
+        "substitution": {
+          "wasSubstituted": false
+        },
+        "extension": [
+          {
+            "url": "http://hl7.org/fhir/5.0/StructureDefinition/extension-MedicationDispense.recorded",
+            "valueDateTime": "2025-08-10T10:00:00+01:00"
+          }
+        ],
+        "medicationReference": {
+          "reference": "urn:uuid:30e82dfd-ec4b-59be-9243-433b425a22f6",
+          "display": "Ramipril 10mg capsules"
+        }
+      }
+    },
+    {
+      "fullUrl": "urn:uuid:30e82dfd-ec4b-59be-9243-433b425a22f6",
+      "resource": {
+        "resourceType": "Medication",
+        "id": "med-ie-dispense-de-rx",
+        "meta": {
+          "profile": [
+            "https://hl7-ie.github.io/medication-events/fhir/StructureDefinition/ie-mpd-medication-eprescription"
+          ]
+        },
+        "code": {
+          "coding": [
+            {
+              "system": "http://snomed.info/sct",
+              "code": "386872004",
+              "display": "Ramipril"
+            }
+          ],
+          "text": "Ramipril 10mg capsules"
+        },
+        "ingredient": [
+          {
+            "itemCodeableConcept": {
+              "coding": [
+                {
+                  "system": "http://snomed.info/sct",
+                  "code": "386872004",
+                  "display": "Ramipril"
+                }
+              ]
+            },
+            "isActive": true
+          }
+        ]
+      }
+    },
+    {
+      "fullUrl": "urn:uuid:23c14466-d00b-56ed-ae50-91ced0ac4767",
+      "resource": {
+        "resourceType": "Medication",
+        "id": "med-de-original-rx-ramipril",
+        "meta": {
+          "profile": [
+            "https://hl7-ie.github.io/medication-events/fhir/StructureDefinition/ie-mpd-medication-eprescription"
+          ]
+        },
+        "code": {
+          "coding": [
+            {
+              "system": "http://snomed.info/sct",
+              "code": "386872004",
+              "display": "Ramipril"
+            }
+          ],
+          "text": "Ramipril 10mg Kapseln"
+        },
+        "ingredient": [
+          {
+            "itemCodeableConcept": {
+              "coding": [
+                {
+                  "system": "http://snomed.info/sct",
+                  "code": "386872004",
+                  "display": "Ramipril"
+                }
+              ]
+            },
+            "isActive": true
+          }
+        ]
+      }
+    }
+  ]
+}

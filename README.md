@@ -30,8 +30,10 @@ input/fsh/extensions/     extensions (HIQA-specific and general)
 input/fsh/terminology/    CodeSystems, ValueSets, HIQA placeholders
 input/fsh/identifiers/    NamingSystems for Irish identifiers
 input/fsh/logical/        HIQA EP logical model (generated)
-input/fsh/examples/       HIQA scenarios 1-9, NMPC-coded medicines
-input/pagecontent/        IG pages
+input/fsh/examples/       HIQA scenarios 1-9, NMPC-coded medicines; cross-border reference examples
+input/examples/           reference payloads: cross-border and local ePrescription/eDispensation Bundles, IE->DE CDA
+input/postman/            reference Postman collection for the medication scenarios
+input/pagecontent/        IG pages (incl. Cross-Border ePrescription reference pages, Irish legislation)
 docs/adr/                 architecture decision records
 docs/hiqa-2026/           mapping, traceability matrix, open issues, NMPC verification, clinical-safety log
 docs/sources/hiqa-2026/   HIQA EP data elements (source for the logical model)
