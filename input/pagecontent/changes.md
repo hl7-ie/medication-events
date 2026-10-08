@@ -31,12 +31,13 @@ First release of IE Medication Events, replacing the starter scaffold.
   and their BDD features (77 scenarios). Conditions and the encounter in these examples use the base FHIR resource.
   The payloads' broken `ie-core-allergy-intolerance` profile reference now points to `ie-mpd-allergyintolerance`.
 - **Electronic Prescription Group (ePG)** (ADR-003): the ePrescription Bundle becomes the ePG,
-  `IEMpdElectronicPrescriptionGroup` (and `IEMpdElectronicPrescriptionGroupCrossBorder`): one prescription's items
-  (eP) together with their eDispensations and provenance, plus a required **Prescription Group Header**
+  `IEMpdElectronicPrescriptionGroup` (and `IEMpdElectronicPrescriptionGroupCrossBorder`): one or more electronic
+  prescriptions (eP, MedicationRequest) issued together as part of the same request, sharing a prescription group
+  identifier, with their eDispensations and provenance, plus a required **Prescription Group Header**
   (`IEMpdPrescriptionGroupHeader`, RequestGroup) carrying HIQA EP 3.1 identifier (with type), 3.2 date of issue, 3.3
   prescription status with a reason (`IEMpdPrescriptionGroupStatusReason`), 3.4 presented form (`IEMpdPresentedForm`)
-  and the items as actions. Rules `ie-bnd-rx-7` to `ie-bnd-rx-14` and `ie-grp-status-1` (item consistency informed by
-  the NHS England EPS `prescription-order` rules; eDispensations authorised by an item in the same ePG). Scenarios 1,
+  and the eP as actions. Rules `ie-bnd-rx-7` to `ie-bnd-rx-14` and `ie-grp-status-1` (item consistency informed by
+  the NHS England EPS `prescription-order` rules; eDispensations authorised by an eP in the same ePG). Scenarios 1,
   3, 4 and 5 are full ePGs; scenario 10 is a cancelled prescription. **Breaking:** profile ids
   `ie-mpd-bundle-eprescription(-crossborder)` → `ie-mpd-electronic-prescription-group(-crossborder)`; the header is
   required.

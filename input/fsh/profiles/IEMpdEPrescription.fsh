@@ -5,7 +5,7 @@ Profile: IEMpdMedicationRequestEPrescription
 Parent: $EUMPDMedicationRequest
 Id: ie-mpd-medicationrequest-eprescription
 Title: "IE MPD MedicationRequest (ePrescription)"
-Description: "One prescription item of an Irish electronic prescription (HIQA EP Section 3), derived from the HL7 Europe MPD MedicationRequest. A multi-item prescription is a set of MedicationRequests sharing groupIdentifier, exchanged in an IEMpdElectronicPrescriptionGroup together with the patient, prescriber and the allergy statement."
+Description: "An Irish electronic prescription (eP): one prescribed medication (HIQA EP 3.5 prescription item), derived from the HL7 Europe MPD MedicationRequest. One or more eP issued together as part of the same request form an Electronic Prescription Group (IEMpdElectronicPrescriptionGroup): they share the prescription group identifier in groupIdentifier and are exchanged with the patient, prescriber, facility, allergy statement, eDispensations and provenance."
 * ^status = #draft
 
 // ── 3.1 / 3.5.1 Identifiers ────────────────────────────────────────────
