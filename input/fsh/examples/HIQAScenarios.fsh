@@ -219,7 +219,7 @@ Description: "International SNOMED CT product code and the NMPC VMP (SNOMED CT I
 * ingredient[0].itemCodeableConcept = $SCT#372687004 "Amoxicillin"
 * ingredient[=].isActive = true
 * ingredient[=].strength.numerator = 500 'mg' "mg"
-* ingredient[=].strength.denominator = 1 '{capsule}' "capsule"
+* ingredient[=].strength.denominator = 1 $SCT#732937005 "Capsule"
 
 
 Instance: hiqa-med-amoxicillin-50mgml-susp
@@ -251,12 +251,12 @@ Description: "Repeat medication (scenarios 3 and 7). SNOMED CT uses the USAN nam
 * code.text = "Salbutamol 100 micrograms/dose pressurised inhalation suspension"
 * extension[classification][0].valueCodeableConcept = $ATC#R03AC02 "salbutamol"
 * form = $SCT#385205001 "Pressurized suspension for inhalation"
-* amount.numerator = 200 '{actuation}' "actuations"
+* amount.numerator = 200 $SCT#732981002 "Actuation"
 * amount.denominator = 1 '{inhaler}' "inhaler"
 * ingredient[0].itemCodeableConcept = $SCT#372897005 "Albuterol"
 * ingredient[=].isActive = true
 * ingredient[=].strength.numerator = 100 'ug' "microgram"
-* ingredient[=].strength.denominator = 1 '{actuation}' "actuation"
+* ingredient[=].strength.denominator = 1 $SCT#732981002 "Actuation"
 
 
 Instance: hiqa-med-oxycodone-10-pr
@@ -275,7 +275,7 @@ Description: "Controlled drug (scenario 4). The MDA schedule (HIQA EP 4.2.3) use
 * ingredient[0].itemCodeableConcept = $SCT#387024006 "Oxycodone hydrochloride"
 * ingredient[=].isActive = true
 * ingredient[=].strength.numerator = 10 'mg' "mg"
-* ingredient[=].strength.denominator = 1 '{tablet}' "tablet"
+* ingredient[=].strength.denominator = 1 $SCT#732936001 "Tablet"
 
 
 
@@ -322,6 +322,7 @@ Description: "HIQA EP 1.6.2 / PS 5.3: confirmed penicillin allergy with anaphyla
 * code = $SCT#91936005 "Allergy to penicillin"
 * patient = Reference(hiqa-patient-niamh-keane)
 * recordedDate = "2015-04-10"
+* recorder = Reference(hiqa-prac-gp-nolan)
 * reaction[0].manifestation = $SCT#39579001 "Anaphylaxis"
 * reaction[=].severity = #severe
 
@@ -381,8 +382,8 @@ Description: "Single-item acute prescription (HIQA EP Section 3)."
 * dosageInstruction[=].timing.repeat.periodUnit = #d
 * dosageInstruction[=].timing.repeat.boundsDuration = 7 'd' "days"
 * dosageInstruction[=].route = $SCT#26643006 "Oral route"
-* dosageInstruction[=].doseAndRate[0].doseQuantity = 1 '{capsule}' "capsule"
-* dispenseRequest.quantity = 21 '{capsule}' "capsules"
+* dosageInstruction[=].doseAndRate[0].doseQuantity = 1 $SCT#732937005 "Capsule"
+* dispenseRequest.quantity = 21 $SCT#732937005 "Capsule"
 * dispenseRequest.validityPeriod.start = "2026-09-21"
 * dispenseRequest.validityPeriod.end = "2026-10-21"
 * dispenseRequest.numberOfRepeatsAllowed = 0
@@ -404,7 +405,7 @@ Description: "Completed dispensation (HIQA EP Section 6) handed to the patient."
 * performer[+].actor = Reference(hiqa-org-pharmacy)
 * authorizingPrescription = Reference(hiqa-rx-s1-amoxicillin)
 * type = http://terminology.hl7.org/CodeSystem/v3-ActCode#FF "First Fill"
-* quantity = 21 '{capsule}' "capsules"
+* quantity = 21 $SCT#732937005 "Capsule"
 * whenHandedOver = "2026-09-21T11:15:00+01:00"
 * receiver = Reference(hiqa-patient-tomas-quinn)
 * dosageInstruction[0].text = "Take one capsule three times a day for 7 days"
@@ -421,6 +422,7 @@ Description: "HIQA EP: patient, prescriber, facility, medicinal product, allergy
 * type = #collection
 * timestamp = "2026-09-21T09:45:00+01:00"
 * insert HIQAEntry(Patient, hiqa-patient-tomas-quinn)
+* insert HIQAEntry(RequestGroup, hiqa-grp-s1-acute-adult)
 * insert HIQAEntry(MedicationRequest, hiqa-rx-s1-amoxicillin)
 * insert HIQAEntry(List, hiqa-allergies-tomas-nilknown)
 * insert HIQAEntry(PractitionerRole, hiqa-role-gp-nolan)
@@ -442,6 +444,7 @@ Description: "HIQA EP 1.6.3 Weight: supports weight-based paediatric dosing."
 * status = #final
 * subject = Reference(hiqa-patient-oisin-brady)
 * effectiveDateTime = "2026-09-20T10:00:00+01:00"
+* performer = Reference(hiqa-role-gp-nolan)
 * valueQuantity = 19 'kg' "kg"
 
 
@@ -489,6 +492,7 @@ Description: "Enforces the legal requirement to state the age of a child under 1
 * type = #collection
 * timestamp = "2026-09-20T10:10:00+01:00"
 * insert HIQAEntry(Patient, hiqa-patient-oisin-brady)
+* insert HIQAEntry(RequestGroup, hiqa-grp-s2-paediatric)
 * insert HIQAEntry(MedicationRequest, hiqa-rx-s2-amoxicillin-paeds)
 * insert HIQAEntry(List, hiqa-allergies-oisin-nilknown)
 * insert HIQAEntry(Observation, hiqa-weight-oisin)
@@ -526,8 +530,8 @@ Description: "Continuous therapy with repeats (HIQA EP 3.5.11), a minimum dispen
 * dosageInstruction[0].text = "Inhale two puffs when required for breathlessness. Maximum 8 puffs in 24 hours"
 * dosageInstruction[=].asNeededBoolean = true
 * dosageInstruction[=].route = $SCT#447694001 "Respiratory tract route"
-* dosageInstruction[=].doseAndRate[0].doseQuantity = 2 '{puff}' "puffs"
-* dosageInstruction[=].maxDosePerPeriod.numerator = 8 '{puff}' "puffs"
+* dosageInstruction[=].doseAndRate[0].doseQuantity = 2 $SCT#732981002 "Actuation"
+* dosageInstruction[=].maxDosePerPeriod.numerator = 8 $SCT#732981002 "Actuation"
 * dosageInstruction[=].maxDosePerPeriod.denominator = 24 'h' "hours"
 * dispenseRequest.extension[prescribedQuantity].valueQuantity = 12 '{inhaler}' "inhalers"
 * dispenseRequest.quantity = 2 '{inhaler}' "inhalers"
@@ -606,6 +610,7 @@ Description: "The allergy statement lists a confirmed penicillin allergy (EP 1.6
 * type = #collection
 * timestamp = "2026-09-01T11:05:00+01:00"
 * insert HIQAEntry(Patient, hiqa-patient-niamh-keane)
+* insert HIQAEntry(RequestGroup, hiqa-grp-s3-repeat)
 * insert HIQAEntry(MedicationRequest, hiqa-rx-s3-salbutamol-repeat)
 * insert HIQAEntry(List, hiqa-allergies-niamh)
 * insert HIQAEntry(AllergyIntolerance, hiqa-allergy-niamh-penicillin)
@@ -644,10 +649,10 @@ Description: "Misuse of Drugs Regulations 2017 requirements as cited by HIQA: qu
 * dosageInstruction[=].timing.repeat.period = 12
 * dosageInstruction[=].timing.repeat.periodUnit = #h
 * dosageInstruction[=].route = $SCT#26643006 "Oral route"
-* dosageInstruction[=].doseAndRate[0].doseQuantity = 1 '{tablet}' "tablet"
-* dispenseRequest.extension[prescribedQuantity].valueQuantity = 28 '{tablet}' "tablets"
+* dosageInstruction[=].doseAndRate[0].doseQuantity = 1 $SCT#732936001 "Tablet"
+* dispenseRequest.extension[prescribedQuantity].valueQuantity = 28 $SCT#732936001 "Tablet"
 * dispenseRequest.extension[numberOfInstalments].valuePositiveInt = 2
-* dispenseRequest.quantity = 14 '{tablet}' "tablets"
+* dispenseRequest.quantity = 14 $SCT#732936001 "Tablet"
 * dispenseRequest.dispenseInterval = 7 'd' "days"
 * dispenseRequest.validityPeriod.start = "2026-09-15"
 * dispenseRequest.validityPeriod.end = "2026-09-29"
@@ -670,7 +675,7 @@ Description: "First instalment of a Schedule 2 controlled drug."
 * performer[0].actor = Reference(hiqa-prac-pharmacist-farrell)
 * authorizingPrescription = Reference(hiqa-rx-s4-oxycodone)
 * type = http://terminology.hl7.org/CodeSystem/v3-ActCode#FFP "First Fill - Part Fill"
-* quantity = 14 '{tablet}' "tablets"
+* quantity = 14 $SCT#732936001 "Tablet"
 * whenHandedOver = "2026-09-15T17:25:00+01:00"
 * dosageInstruction[0].text = "Take one tablet every 12 hours. Swallow whole; do not crush or chew"
 * substitution.wasSubstituted = false
@@ -687,6 +692,7 @@ Description: "Schedule 2 controlled-drug prescription."
 * type = #collection
 * timestamp = "2026-09-15T15:10:00+01:00"
 * insert HIQAEntry(Patient, hiqa-patient-declan-walsh)
+* insert HIQAEntry(RequestGroup, hiqa-grp-s4-controlled-drug)
 * insert HIQAEntry(MedicationRequest, hiqa-rx-s4-oxycodone)
 * insert HIQAEntry(List, hiqa-allergies-declan-nilknown)
 * insert HIQAEntry(PractitionerRole, hiqa-role-gp-nolan)
@@ -723,8 +729,8 @@ Description: "The allergy statement sent with the prescription records a penicil
 * dosageInstruction[=].timing.repeat.period = 1
 * dosageInstruction[=].timing.repeat.periodUnit = #d
 * dosageInstruction[=].route = $SCT#26643006 "Oral route"
-* dosageInstruction[=].doseAndRate[0].doseQuantity = 1 '{capsule}' "capsule"
-* dispenseRequest.quantity = 21 '{capsule}' "capsules"
+* dosageInstruction[=].doseAndRate[0].doseQuantity = 1 $SCT#732937005 "Capsule"
+* dispenseRequest.quantity = 21 $SCT#732937005 "Capsule"
 * dispenseRequest.validityPeriod.start = "2026-09-22"
 * dispenseRequest.validityPeriod.end = "2026-10-22"
 * substitution.allowedBoolean = true
@@ -744,7 +750,7 @@ Description: "HIQA EP 6.3.1 status (declined) and 6.3.2.2 reason (free text); in
 * subject = Reference(hiqa-patient-niamh-keane)
 * performer[0].actor = Reference(hiqa-prac-pharmacist-farrell)
 * authorizingPrescription = Reference(hiqa-rx-s5-amoxicillin)
-* quantity = 0 '{capsule}' "capsules"
+* quantity = 0 $SCT#732937005 "Capsule"
 
 
 Instance: hiqa-bundle-s5-non-dispensation
@@ -757,6 +763,7 @@ Description: "The prescription as sent. The declined dispense is hiqa-md-s5-decl
 * type = #collection
 * timestamp = "2026-09-22T09:30:00+01:00"
 * insert HIQAEntry(Patient, hiqa-patient-niamh-keane)
+* insert HIQAEntry(RequestGroup, hiqa-grp-s5-non-dispensation)
 * insert HIQAEntry(MedicationRequest, hiqa-rx-s5-amoxicillin)
 * insert HIQAEntry(List, hiqa-allergies-niamh)
 * insert HIQAEntry(AllergyIntolerance, hiqa-allergy-niamh-penicillin)
@@ -794,8 +801,8 @@ Description: "Item 1 of a two-item prescription to be dispensed in another EU Me
 * dosageInstruction[=].timing.repeat.period = 1
 * dosageInstruction[=].timing.repeat.periodUnit = #d
 * dosageInstruction[=].route = $SCT#26643006 "Oral route"
-* dosageInstruction[=].doseAndRate[0].doseQuantity = 1 '{tablet}' "tablet"
-* dispenseRequest.quantity = 56 '{tablet}' "tablets"
+* dosageInstruction[=].doseAndRate[0].doseQuantity = 1 $SCT#732936001 "Tablet"
+* dispenseRequest.quantity = 56 $SCT#732936001 "Tablet"
 * dispenseRequest.validityPeriod.start = "2026-09-16"
 * dispenseRequest.validityPeriod.end = "2027-03-15"
 * substitution.allowedBoolean = true
@@ -823,8 +830,8 @@ Description: "Item 2 of the cross-border prescription; same group identifier (EP
 * dosageInstruction[=].timing.repeat.period = 1
 * dosageInstruction[=].timing.repeat.periodUnit = #d
 * dosageInstruction[=].route = $SCT#26643006 "Oral route"
-* dosageInstruction[=].doseAndRate[0].doseQuantity = 1 '{tablet}' "tablet"
-* dispenseRequest.quantity = 28 '{tablet}' "tablets"
+* dosageInstruction[=].doseAndRate[0].doseQuantity = 1 $SCT#732936001 "Tablet"
+* dispenseRequest.quantity = 28 $SCT#732936001 "Tablet"
 * dispenseRequest.validityPeriod.start = "2026-09-16"
 * dispenseRequest.validityPeriod.end = "2027-03-15"
 * substitution.allowedBoolean = true
@@ -857,6 +864,7 @@ Description: "Claims IEMpdBundleEPrescriptionCrossBorder (no invented tag; IE Co
 * type = #collection
 * timestamp = "2026-09-16T10:01:00+01:00"
 * insert HIQAEntry(Patient, hiqa-patient-declan-walsh)
+* insert HIQAEntry(RequestGroup, hiqa-grp-s6-crossborder)
 * insert HIQAEntry(MedicationRequest, hiqa-rx-s6-metformin)
 * insert HIQAEntry(MedicationRequest, hiqa-rx-s6-atorvastatin)
 * insert HIQAEntry(List, hiqa-allergies-declan-nilknown)

@@ -67,6 +67,10 @@ pages:
     title: HIQA Traceability
   data-minimisation.md:
     title: Data Minimisation
+  electronic-prescription-group.md:
+    title: Electronic Prescription Group
+  dosage.md:
+    title: Dosage
   administration-and-statements.md:
     title: Administration and Statements
   terminology.md:
@@ -75,6 +79,14 @@ pages:
     title: Open Issues
   simplifier-publishing.md:
     title: Simplifier Publishing
+  crossborder-eprescription.md:
+    title: Cross-Border ePrescription (reference examples)
+    crossborder-patient-profile.md:
+      title: Patient Profile & Scenarios (reference)
+    crossborder-sample-payloads.md:
+      title: Sample Payloads & Downloads (reference)
+  irish-legislation.md:
+    title: Irish ePrescription Legislation (reference)
   changes.md:
     title: Changes
   downloads.md:
@@ -88,9 +100,16 @@ menu:
     Data Minimisation: data-minimisation.html
     Open Issues: open-issues.html
   Guidance:
+    Electronic Prescription Group: electronic-prescription-group.html
+    Dosage: dosage.html
     Administration and Statements: administration-and-statements.html
     Terminology: terminology.html
     Simplifier Publishing: simplifier-publishing.html
+  Reference Examples:
+    Cross-Border ePrescription: crossborder-eprescription.html
+    Patient Profile & Scenarios: crossborder-patient-profile.html
+    Sample Payloads & Downloads: crossborder-sample-payloads.html
+    Irish ePrescription Legislation: irish-legislation.html
   Artifacts: artifacts.html
   Changes: changes.html
   Downloads: downloads.html

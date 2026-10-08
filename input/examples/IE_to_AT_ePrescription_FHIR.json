@@ -1,0 +1,368 @@
+{
+  "resourceType": "Bundle",
+  "id": "ie-bundle-to-at-eprescription",
+  "type": "collection",
+  "timestamp": "2025-07-15T09:00:00+02:00",
+  "entry": [
+    {
+      "fullUrl": "urn:uuid:80858291-1d72-5f01-b5bf-3a1427320ba9",
+      "resource": {
+        "resourceType": "Patient",
+        "id": "patient-sean-murphy",
+        "identifier": [
+          {
+            "system": "https://hl7-ie.github.io/ie-core/fhir/ie/core/sid/ihi",
+            "value": "210000000099887766"
+          },
+          {
+            "system": "https://hl7-ie.github.io/ie-core/fhir/ie/core/sid/pps",
+            "value": "1234567T"
+          },
+          {
+            "system": "http://eidas.europa.eu/attributes/naturalperson/PersonIdentifier",
+            "value": "IE/AT/1234567T"
+          }
+        ],
+        "active": true,
+        "name": [
+          {
+            "use": "official",
+            "family": "Murphy",
+            "given": [
+              "Seán",
+              "Patrick"
+            ],
+            "prefix": [
+              "Mr."
+            ]
+          }
+        ],
+        "gender": "male",
+        "birthDate": "1975-03-15",
+        "address": [
+          {
+            "use": "home",
+            "line": [
+              "14 Grafton Street"
+            ],
+            "city": "Dublin 2",
+            "postalCode": "D02 XY45",
+            "country": "IE",
+            "state": "Dublin"
+          }
+        ],
+        "extension": [
+          {
+            "url": "http://hl7.org/fhir/StructureDefinition/individual-recordedSexOrGender",
+            "extension": [
+              {
+                "url": "value",
+                "valueCodeableConcept": {
+                  "coding": [
+                    {
+                      "system": "http://hl7.org/fhir/administrative-gender",
+                      "code": "male",
+                      "display": "Male"
+                    }
+                  ]
+                }
+              },
+              {
+                "url": "type",
+                "valueCodeableConcept": {
+                  "coding": [
+                    {
+                      "system": "http://loinc.org",
+                      "code": "76689-9",
+                      "display": "Sex assigned at birth"
+                    }
+                  ]
+                }
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "fullUrl": "urn:uuid:f6ae4c82-db5b-5024-b472-a1582886e3ce",
+      "resource": {
+        "resourceType": "Practitioner",
+        "id": "practitioner-aoife-obrien",
+        "identifier": [
+          {
+            "system": "https://hl7-ie.github.io/ie-core/fhir/ie/core/sid/imc",
+            "value": "GP-IE-12345"
+          }
+        ],
+        "active": true,
+        "name": [
+          {
+            "use": "official",
+            "family": "O'Brien",
+            "given": [
+              "Aoife"
+            ],
+            "prefix": [
+              "Dr."
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "fullUrl": "urn:uuid:155212a1-06e2-5808-b6d3-89532db15379",
+      "resource": {
+        "resourceType": "Organization",
+        "id": "org-at-apotheke-goldene-kugel",
+        "identifier": [
+          {
+            "value": "AT-APO-WIE-001",
+            "assigner": {
+              "display": "Issuing authority in Austria (illustrative)"
+            }
+          }
+        ],
+        "active": true,
+        "name": "Apotheke zur goldenen Kugel",
+        "address": [
+          {
+            "city": "Vienna",
+            "country": "AT"
+          }
+        ]
+      }
+    },
+    {
+      "fullUrl": "urn:uuid:0bc2ff24-636e-5ea4-90d0-fefa2fe91606",
+      "resource": {
+        "resourceType": "MedicationRequest",
+        "id": "rx-ie-at-atorvastatin80",
+        "meta": {
+          "profile": [
+            "https://hl7-ie.github.io/medication-events/fhir/StructureDefinition/ie-mpd-medicationrequest-eprescription"
+          ]
+        },
+        "identifier": [
+          {
+            "system": "https://hl7-ie.github.io/ie-core/fhir/ie/core/sid/neps",
+            "value": "PCRS-RX-2025-IE-AT-001"
+          },
+          {
+            "system": "http://eidas.europa.eu/attributes/naturalperson/PersonIdentifier",
+            "value": "IE/AT/1234567T"
+          }
+        ],
+        "groupIdentifier": {
+          "system": "https://hl7-ie.github.io/ie-core/fhir/ie/core/sid/neps",
+          "value": "IE-GP-RX-GROUP-20250715-AT"
+        },
+        "status": "active",
+        "intent": "order",
+        "subject": {
+          "reference": "urn:uuid:80858291-1d72-5f01-b5bf-3a1427320ba9",
+          "display": "Seán Murphy"
+        },
+        "requester": {
+          "reference": "urn:uuid:f6ae4c82-db5b-5024-b472-a1582886e3ce",
+          "display": "Dr. Aoife O'Brien"
+        },
+        "authoredOn": "2025-07-10",
+        "reasonCode": [
+          {
+            "coding": [
+              {
+                "system": "http://snomed.info/sct",
+                "code": "13644009",
+                "display": "Hypercholesterolemia"
+              }
+            ]
+          }
+        ],
+        "dosageInstruction": [
+          {
+            "text": "Nehmen Sie täglich eine 80mg-Tablette abends ein (Take one 80mg tablet once daily at night)"
+          }
+        ],
+        "dispenseRequest": {
+          "validityPeriod": {
+            "start": "2025-07-10",
+            "end": "2025-10-10"
+          },
+          "quantity": {
+            "value": 28,
+            "unit": "tablets",
+            "system": "http://unitsofmeasure.org",
+            "code": "{tablet}"
+          }
+        },
+        "substitution": {
+          "allowedBoolean": true
+        },
+        "note": [
+          {
+            "text": "Cross-border ePrescription via MyHealth@EU (MPD). Valid 90 days (Austrian Medicines Act)."
+          }
+        ],
+        "medicationReference": {
+          "reference": "urn:uuid:a0b9c5df-d639-50de-895a-c5134ca0bee1",
+          "display": "Atorvastatin 80mg tablets → AT: Atorvastatin 80mg Filmtabletten"
+        }
+      }
+    },
+    {
+      "fullUrl": "urn:uuid:fb06fe2b-ca0d-51f2-832a-9543edc0adb1",
+      "resource": {
+        "resourceType": "MedicationRequest",
+        "id": "rx-ie-at-ramipril10",
+        "meta": {
+          "profile": [
+            "https://hl7-ie.github.io/medication-events/fhir/StructureDefinition/ie-mpd-medicationrequest-eprescription"
+          ]
+        },
+        "identifier": [
+          {
+            "system": "https://hl7-ie.github.io/ie-core/fhir/ie/core/sid/neps",
+            "value": "PCRS-RX-2025-IE-AT-002"
+          },
+          {
+            "system": "http://eidas.europa.eu/attributes/naturalperson/PersonIdentifier",
+            "value": "IE/AT/1234567T"
+          }
+        ],
+        "groupIdentifier": {
+          "system": "https://hl7-ie.github.io/ie-core/fhir/ie/core/sid/neps",
+          "value": "IE-GP-RX-GROUP-20250715-AT"
+        },
+        "status": "active",
+        "intent": "order",
+        "subject": {
+          "reference": "urn:uuid:80858291-1d72-5f01-b5bf-3a1427320ba9",
+          "display": "Seán Murphy"
+        },
+        "requester": {
+          "reference": "urn:uuid:f6ae4c82-db5b-5024-b472-a1582886e3ce",
+          "display": "Dr. Aoife O'Brien"
+        },
+        "authoredOn": "2025-07-10",
+        "reasonCode": [
+          {
+            "coding": [
+              {
+                "system": "http://snomed.info/sct",
+                "code": "38341003",
+                "display": "Hypertensive disorder"
+              }
+            ]
+          }
+        ],
+        "dosageInstruction": [
+          {
+            "text": "Nehmen Sie täglich eine 10mg-Kapsel morgens ein (Take one 10mg capsule once daily in the morning)"
+          }
+        ],
+        "dispenseRequest": {
+          "validityPeriod": {
+            "start": "2025-07-10",
+            "end": "2025-10-10"
+          },
+          "quantity": {
+            "value": 28,
+            "unit": "tablets",
+            "system": "http://unitsofmeasure.org",
+            "code": "{tablet}"
+          }
+        },
+        "substitution": {
+          "allowedBoolean": true
+        },
+        "medicationReference": {
+          "reference": "urn:uuid:17cb1ba1-7837-58e0-a8ed-7b062227a066",
+          "display": "Ramipril 10mg capsules → AT: Ramipril 10mg Filmtabletten"
+        }
+      }
+    },
+    {
+      "fullUrl": "urn:uuid:a0b9c5df-d639-50de-895a-c5134ca0bee1",
+      "resource": {
+        "resourceType": "Medication",
+        "id": "med-rx-ie-at-atorvastatin80",
+        "meta": {
+          "profile": [
+            "https://hl7-ie.github.io/medication-events/fhir/StructureDefinition/ie-mpd-medication-eprescription"
+          ]
+        },
+        "code": {
+          "coding": [
+            {
+              "system": "http://snomed.info/sct",
+              "code": "373444002",
+              "display": "Atorvastatin"
+            },
+            {
+              "system": "http://www.whocc.no/atc",
+              "code": "C10AA05",
+              "display": "Atorvastatin"
+            }
+          ],
+          "text": "Atorvastatin 80mg tablets → AT: Atorvastatin 80mg Filmtabletten"
+        },
+        "ingredient": [
+          {
+            "itemCodeableConcept": {
+              "coding": [
+                {
+                  "system": "http://snomed.info/sct",
+                  "code": "373444002",
+                  "display": "Atorvastatin"
+                }
+              ]
+            },
+            "isActive": true
+          }
+        ]
+      }
+    },
+    {
+      "fullUrl": "urn:uuid:17cb1ba1-7837-58e0-a8ed-7b062227a066",
+      "resource": {
+        "resourceType": "Medication",
+        "id": "med-rx-ie-at-ramipril10",
+        "meta": {
+          "profile": [
+            "https://hl7-ie.github.io/medication-events/fhir/StructureDefinition/ie-mpd-medication-eprescription"
+          ]
+        },
+        "code": {
+          "coding": [
+            {
+              "system": "http://snomed.info/sct",
+              "code": "386872004",
+              "display": "Ramipril"
+            },
+            {
+              "system": "http://www.whocc.no/atc",
+              "code": "C09AA05",
+              "display": "Ramipril"
+            }
+          ],
+          "text": "Ramipril 10mg capsules → AT: Ramipril 10mg Filmtabletten"
+        },
+        "ingredient": [
+          {
+            "itemCodeableConcept": {
+              "coding": [
+                {
+                  "system": "http://snomed.info/sct",
+                  "code": "386872004",
+                  "display": "Ramipril"
+                }
+              ]
+            },
+            "isActive": true
+          }
+        ]
+      }
+    }
+  ]
+}

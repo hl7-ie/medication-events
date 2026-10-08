@@ -41,6 +41,7 @@ Alias: $EULocationCore = http://hl7.eu/fhir/base/StructureDefinition/location-eu
 Alias: $EUMPDMedicationRequest  = http://hl7.eu/fhir/mpd/StructureDefinition/MedicationRequest-eu-mpd
 Alias: $EUMPDMedicationDispense = http://hl7.eu/fhir/mpd/StructureDefinition/MedicationDispense-eu-mpd
 Alias: $EUMPDMedication         = http://hl7.eu/fhir/mpd/StructureDefinition/Medication-eu-mpd
+Alias: $EUMPDDosage             = http://hl7.eu/fhir/mpd/StructureDefinition/Dosage-eu-mpd
 
 // eHDSI / MyHealth@EU system identifiers
 //   NCPeH organisation identifier system (eHDSI OID)
@@ -76,3 +77,6 @@ Alias: $PROVENANCE-PARTICIPANT-TYPE = http://terminology.hl7.org/CodeSystem/prov
 Alias: $IE-PROVENANCE = https://hl7-ie.github.io/medication-events/fhir/CodeSystem/ie-mpd-provenance-participant-type-codes
 Alias: $IE-COUNTY = https://hl7-ie.github.io/medication-events/fhir/CodeSystem/ie-mpd-county-codes
 Alias: $IE-ETHNICITY = https://hl7-ie.github.io/medication-events/fhir/CodeSystem/ie-mpd-ethnicity-codes
+
+// Aliases used by the cross-border reference examples (from IE Core 0.2.0)
+Alias: $V3-ActCode = http://terminology.hl7.org/CodeSystem/v3-ActCode

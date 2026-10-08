@@ -22,3 +22,25 @@ First release of IE Medication Events, replacing the starter scaffold.
   (scenarios 1–9), BDD tests, FHIR Validator gate, code verification and the Simplifier bundle.
 - Simplifier publishing from CI (manual, approved upload through the Project ZIP API; releases stay manual), and
   local testing with Docker, docker compose and Kubernetes manifests.
+- Health Services Provider Identifier slices HSP-I (Practitioner) and HSP-O (Organization), Health Identifiers Act
+  2014 s.13–14, on IE Core's identifier systems (OI-030).
+- **Reference examples** (illustrative, ported from IE Core 0.2.0 when IE Core removed ePrescription, IE Core ADR-009):
+  the Cross-Border ePrescription pages (overview, Seán Murphy's patient profile and scenarios, sample payloads) and the
+  Irish ePrescription legislation page; 82 FSH examples (11 cross-border destinations and NePS inbound flows, local
+  scenarios 1–6: full, partial, multi-item, IE→ES, ES→IE, repeat); 22 FHIR and CDA payloads; a Postman collection;
+  and their BDD features (77 scenarios). Conditions and the encounter in these examples use the base FHIR resource.
+  The payloads' broken `ie-core-allergy-intolerance` profile reference now points to `ie-mpd-allergyintolerance`.
+- **Electronic Prescription Group** (ADR-003): `IEMpdElectronicPrescriptionGroup` (RequestGroup) is a required entry
+  in the ePrescription Bundle, carrying HIQA EP 3.1 identifier (with type), 3.2 date of issue, 3.3 prescription status
+  with a reason (`IEMpdPrescriptionGroupStatusReason`), 3.4 presented form (`IEMpdPresentedForm`) and the items as
+  actions; consistency rules `ie-bnd-rx-7` to `ie-bnd-rx-10` and `ie-grp-status-1`, informed by the NHS England EPS
+  `prescription-order` rules; the signature Provenance may target the group. Scenario 10: a cancelled prescription.
+  **Breaking** for ePrescription Bundles (they need the group entry).
+- **Dosage** (ADR-004): `IEMpdDosage` on HL7 Europe MPD `Dosage-eu-mpd` for prescription, dispense and statement
+  (`ie-dos-1` to `ie-dos-4`), a Dosage guidance page structured like the UK Core medicines guidance, and seven
+  validated dosage examples. Product-based doses in the examples use SNOMED CT units of presentation.
+- **HIQA EP gaps closed:** 2.9 facility address (`ie-bnd-rx-11`, OI-013 resolved); 1.6 record entry author for
+  allergies (`ie-allergy-2`), weight and height (performer required); 4.9 characteristics mapped to the IHE MPD
+  characteristic extension. New open issues OI-104 (identifier type value set) and OI-105 (national service
+  interface).
+

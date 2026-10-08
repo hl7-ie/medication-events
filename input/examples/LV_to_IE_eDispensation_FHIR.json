@@ -1,0 +1,289 @@
+{
+  "resourceType": "Bundle",
+  "id": "lv-edispensation-response",
+  "type": "collection",
+  "timestamp": "2025-06-15T11:30:00+03:00",
+  "entry": [
+    {
+      "fullUrl": "urn:uuid:66227b70-3a05-5f17-8c06-7ef4b7cc9bc9",
+      "resource": {
+        "resourceType": "Patient",
+        "id": "patient-sean-murphy-lv",
+        "identifier": [
+          {
+            "system": "http://eidas.europa.eu/attributes/naturalperson/PersonIdentifier",
+            "value": "IE/LV/1234567T"
+          },
+          {
+            "system": "https://hl7-ie.github.io/ie-core/fhir/ie/core/sid/ihi",
+            "value": "210000000099887766"
+          }
+        ],
+        "name": [
+          {
+            "use": "official",
+            "family": "Murphy",
+            "given": [
+              "Seán",
+              "Patrick"
+            ]
+          }
+        ],
+        "gender": "male",
+        "birthDate": "1975-03-15",
+        "extension": [
+          {
+            "url": "http://hl7.org/fhir/StructureDefinition/individual-recordedSexOrGender",
+            "extension": [
+              {
+                "url": "value",
+                "valueCodeableConcept": {
+                  "coding": [
+                    {
+                      "system": "http://hl7.org/fhir/administrative-gender",
+                      "code": "male",
+                      "display": "Male"
+                    }
+                  ]
+                }
+              },
+              {
+                "url": "type",
+                "valueCodeableConcept": {
+                  "coding": [
+                    {
+                      "system": "http://loinc.org",
+                      "code": "76689-9",
+                      "display": "Sex assigned at birth"
+                    }
+                  ]
+                }
+              }
+            ]
+          }
+        ],
+        "address": [
+          {
+            "use": "home",
+            "type": "physical",
+            "line": [
+              "14 Grafton Street"
+            ],
+            "city": "Dublin 2",
+            "state": "Dublin",
+            "postalCode": "D02 XY45",
+            "country": "IE"
+          }
+        ]
+      }
+    },
+    {
+      "fullUrl": "urn:uuid:232eb9de-b0a4-5a39-a302-ac1d6c493226",
+      "resource": {
+        "resourceType": "MedicationDispense",
+        "id": "lv-dispense-metformin",
+        "identifier": [
+          {
+            "value": "LV-DISP-2025-XB-001-MET",
+            "assigner": {
+              "display": "Issuing authority in Latvia (illustrative)"
+            }
+          }
+        ],
+        "status": "completed",
+        "subject": {
+          "reference": "urn:uuid:66227b70-3a05-5f17-8c06-7ef4b7cc9bc9"
+        },
+        "authorizingPrescription": [
+          {
+            "identifier": {
+              "system": "https://hl7-ie.github.io/ie-core/fhir/ie/core/sid/neps",
+              "value": "PCRS-RX-2025-IE-LV-001"
+            }
+          }
+        ],
+        "type": {
+          "coding": [
+            {
+              "system": "http://terminology.hl7.org/CodeSystem/v3-ActCode",
+              "code": "DF",
+              "display": "Daily Fill"
+            }
+          ]
+        },
+        "quantity": {
+          "value": 60,
+          "unit": "tablets",
+          "system": "http://unitsofmeasure.org",
+          "code": "{tablet}"
+        },
+        "daysSupply": {
+          "value": 30,
+          "unit": "days",
+          "system": "http://unitsofmeasure.org",
+          "code": "d"
+        },
+        "whenHandedOver": "2025-06-15T11:00:00+03:00",
+        "substitution": {
+          "wasSubstituted": true,
+          "type": {
+            "coding": [
+              {
+                "system": "http://terminology.hl7.org/CodeSystem/v3-substanceAdminSubstitution",
+                "code": "G",
+                "display": "Generic composition"
+              }
+            ]
+          }
+        },
+        "extension": [
+          {
+            "url": "http://hl7.org/fhir/5.0/StructureDefinition/extension-MedicationDispense.recorded",
+            "valueDateTime": "2025-06-15T11:00:00+03:00"
+          }
+        ],
+        "medicationReference": {
+          "reference": "urn:uuid:47a1106a-f78c-53a9-9264-ed37459766c3",
+          "display": "Metformins 500mg tabletes"
+        }
+      }
+    },
+    {
+      "fullUrl": "urn:uuid:5e9a7f7d-2c64-500a-872f-edb79909295d",
+      "resource": {
+        "resourceType": "MedicationDispense",
+        "id": "lv-dispense-lisinopril",
+        "identifier": [
+          {
+            "value": "LV-DISP-2025-XB-001-LIS",
+            "assigner": {
+              "display": "Issuing authority in Latvia (illustrative)"
+            }
+          }
+        ],
+        "status": "completed",
+        "subject": {
+          "reference": "urn:uuid:66227b70-3a05-5f17-8c06-7ef4b7cc9bc9"
+        },
+        "authorizingPrescription": [
+          {
+            "identifier": {
+              "system": "https://hl7-ie.github.io/ie-core/fhir/ie/core/sid/neps",
+              "value": "PCRS-RX-2025-IE-LV-002"
+            }
+          }
+        ],
+        "type": {
+          "coding": [
+            {
+              "system": "http://terminology.hl7.org/CodeSystem/v3-ActCode",
+              "code": "DF",
+              "display": "Daily Fill"
+            }
+          ]
+        },
+        "quantity": {
+          "value": 28,
+          "unit": "tablets",
+          "system": "http://unitsofmeasure.org",
+          "code": "{tablet}"
+        },
+        "whenHandedOver": "2025-06-15T11:00:00+03:00",
+        "substitution": {
+          "wasSubstituted": true,
+          "type": {
+            "coding": [
+              {
+                "system": "http://terminology.hl7.org/CodeSystem/v3-substanceAdminSubstitution",
+                "code": "G",
+                "display": "Generic composition"
+              }
+            ]
+          }
+        },
+        "extension": [
+          {
+            "url": "http://hl7.org/fhir/5.0/StructureDefinition/extension-MedicationDispense.recorded",
+            "valueDateTime": "2025-06-15T11:00:00+03:00"
+          }
+        ],
+        "medicationReference": {
+          "reference": "urn:uuid:8ef9d8ac-2cd7-56e8-8b43-5410729ecb6b",
+          "display": "Lizinoprils 10mg tabletes"
+        }
+      }
+    },
+    {
+      "fullUrl": "urn:uuid:47a1106a-f78c-53a9-9264-ed37459766c3",
+      "resource": {
+        "resourceType": "Medication",
+        "id": "med-lv-dispense-metformin",
+        "meta": {
+          "profile": [
+            "https://hl7-ie.github.io/medication-events/fhir/StructureDefinition/ie-mpd-medication-eprescription"
+          ]
+        },
+        "code": {
+          "coding": [
+            {
+              "system": "http://snomed.info/sct",
+              "code": "372567009",
+              "display": "Metformin"
+            }
+          ],
+          "text": "Metformins 500mg tabletes"
+        },
+        "ingredient": [
+          {
+            "itemCodeableConcept": {
+              "coding": [
+                {
+                  "system": "http://snomed.info/sct",
+                  "code": "372567009",
+                  "display": "Metformin"
+                }
+              ]
+            },
+            "isActive": true
+          }
+        ]
+      }
+    },
+    {
+      "fullUrl": "urn:uuid:8ef9d8ac-2cd7-56e8-8b43-5410729ecb6b",
+      "resource": {
+        "resourceType": "Medication",
+        "id": "med-lv-dispense-lisinopril",
+        "meta": {
+          "profile": [
+            "https://hl7-ie.github.io/medication-events/fhir/StructureDefinition/ie-mpd-medication-eprescription"
+          ]
+        },
+        "code": {
+          "coding": [
+            {
+              "system": "http://snomed.info/sct",
+              "code": "386873009",
+              "display": "Lisinopril"
+            }
+          ],
+          "text": "Lizinoprils 10mg tabletes"
+        },
+        "ingredient": [
+          {
+            "itemCodeableConcept": {
+              "coding": [
+                {
+                  "system": "http://snomed.info/sct",
+                  "code": "386873009",
+                  "display": "Lisinopril"
+                }
+              ]
+            },
+            "isActive": true
+          }
+        ]
+      }
+    }
+  ]
+}

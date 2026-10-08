@@ -1,0 +1,274 @@
+{
+  "resourceType": "Bundle",
+  "id": "pt-edispensation-response",
+  "type": "collection",
+  "timestamp": "2025-06-20T11:00:00+01:00",
+  "entry": [
+    {
+      "fullUrl": "urn:uuid:d10d3b26-3aa3-5432-8b5a-2958dbe41a25",
+      "resource": {
+        "resourceType": "Patient",
+        "id": "patient-sean-murphy-pt",
+        "identifier": [
+          {
+            "system": "http://eidas.europa.eu/attributes/naturalperson/PersonIdentifier",
+            "value": "IE/PT/1234567T"
+          },
+          {
+            "system": "https://hl7-ie.github.io/ie-core/fhir/ie/core/sid/ihi",
+            "value": "210000000099887766"
+          }
+        ],
+        "name": [
+          {
+            "use": "official",
+            "family": "Murphy",
+            "given": [
+              "Seán",
+              "Patrick"
+            ]
+          }
+        ],
+        "gender": "male",
+        "birthDate": "1975-03-15",
+        "extension": [
+          {
+            "url": "http://hl7.org/fhir/StructureDefinition/individual-recordedSexOrGender",
+            "extension": [
+              {
+                "url": "value",
+                "valueCodeableConcept": {
+                  "coding": [
+                    {
+                      "system": "http://hl7.org/fhir/administrative-gender",
+                      "code": "male",
+                      "display": "Male"
+                    }
+                  ]
+                }
+              },
+              {
+                "url": "type",
+                "valueCodeableConcept": {
+                  "coding": [
+                    {
+                      "system": "http://loinc.org",
+                      "code": "76689-9",
+                      "display": "Sex assigned at birth"
+                    }
+                  ]
+                }
+              }
+            ]
+          }
+        ],
+        "address": [
+          {
+            "use": "home",
+            "type": "physical",
+            "line": [
+              "14 Grafton Street"
+            ],
+            "city": "Dublin 2",
+            "state": "Dublin",
+            "postalCode": "D02 XY45",
+            "country": "IE"
+          }
+        ]
+      }
+    },
+    {
+      "fullUrl": "urn:uuid:62e5d79b-5e71-51e2-8645-b3e9862c86b7",
+      "resource": {
+        "resourceType": "MedicationDispense",
+        "id": "pt-dispense-sertraline",
+        "identifier": [
+          {
+            "value": "PT-DISP-2025-XB-001-SER",
+            "assigner": {
+              "display": "Issuing authority in Portugal (illustrative)"
+            }
+          }
+        ],
+        "status": "completed",
+        "subject": {
+          "reference": "urn:uuid:d10d3b26-3aa3-5432-8b5a-2958dbe41a25"
+        },
+        "authorizingPrescription": [
+          {
+            "identifier": {
+              "system": "https://hl7-ie.github.io/ie-core/fhir/ie/core/sid/neps",
+              "value": "PCRS-RX-2025-IE-PT-001"
+            }
+          }
+        ],
+        "type": {
+          "coding": [
+            {
+              "system": "http://terminology.hl7.org/CodeSystem/v3-ActCode",
+              "code": "DF",
+              "display": "Daily Fill"
+            }
+          ]
+        },
+        "quantity": {
+          "value": 28,
+          "unit": "tablets",
+          "system": "http://unitsofmeasure.org",
+          "code": "{tablet}"
+        },
+        "whenHandedOver": "2025-06-20T10:30:00+01:00",
+        "substitution": {
+          "wasSubstituted": false
+        },
+        "extension": [
+          {
+            "url": "http://hl7.org/fhir/5.0/StructureDefinition/extension-MedicationDispense.recorded",
+            "valueDateTime": "2025-06-20T10:30:00+01:00"
+          }
+        ],
+        "medicationReference": {
+          "reference": "urn:uuid:46aaf80b-958e-5fe9-9577-8d869f4c4259",
+          "display": "Sertralina 50mg Comprimidos"
+        }
+      }
+    },
+    {
+      "fullUrl": "urn:uuid:bce4ae3e-2441-5fce-bd68-8c03dd907435",
+      "resource": {
+        "resourceType": "MedicationDispense",
+        "id": "pt-dispense-omeprazole",
+        "identifier": [
+          {
+            "value": "PT-DISP-2025-XB-001-OME",
+            "assigner": {
+              "display": "Issuing authority in Portugal (illustrative)"
+            }
+          }
+        ],
+        "status": "completed",
+        "subject": {
+          "reference": "urn:uuid:d10d3b26-3aa3-5432-8b5a-2958dbe41a25"
+        },
+        "authorizingPrescription": [
+          {
+            "identifier": {
+              "system": "https://hl7-ie.github.io/ie-core/fhir/ie/core/sid/neps",
+              "value": "PCRS-RX-2025-IE-PT-002"
+            }
+          }
+        ],
+        "type": {
+          "coding": [
+            {
+              "system": "http://terminology.hl7.org/CodeSystem/v3-ActCode",
+              "code": "DF",
+              "display": "Daily Fill"
+            }
+          ]
+        },
+        "quantity": {
+          "value": 28,
+          "unit": "capsules",
+          "system": "http://unitsofmeasure.org",
+          "code": "{capsule}"
+        },
+        "whenHandedOver": "2025-06-20T10:30:00+01:00",
+        "substitution": {
+          "wasSubstituted": true,
+          "type": {
+            "coding": [
+              {
+                "system": "http://terminology.hl7.org/CodeSystem/v3-substanceAdminSubstitution",
+                "code": "G",
+                "display": "Generic composition"
+              }
+            ]
+          }
+        },
+        "extension": [
+          {
+            "url": "http://hl7.org/fhir/5.0/StructureDefinition/extension-MedicationDispense.recorded",
+            "valueDateTime": "2025-06-20T10:30:00+01:00"
+          }
+        ],
+        "medicationReference": {
+          "reference": "urn:uuid:a7e0bc5b-91e9-5f68-aee2-eb540986fcfd",
+          "display": "Omeprazol 20mg Cápsulas"
+        }
+      }
+    },
+    {
+      "fullUrl": "urn:uuid:46aaf80b-958e-5fe9-9577-8d869f4c4259",
+      "resource": {
+        "resourceType": "Medication",
+        "id": "med-pt-dispense-sertraline",
+        "meta": {
+          "profile": [
+            "https://hl7-ie.github.io/medication-events/fhir/StructureDefinition/ie-mpd-medication-eprescription"
+          ]
+        },
+        "code": {
+          "coding": [
+            {
+              "system": "http://snomed.info/sct",
+              "code": "372594008",
+              "display": "Sertraline"
+            }
+          ],
+          "text": "Sertralina 50mg Comprimidos"
+        },
+        "ingredient": [
+          {
+            "itemCodeableConcept": {
+              "coding": [
+                {
+                  "system": "http://snomed.info/sct",
+                  "code": "372594008",
+                  "display": "Sertraline"
+                }
+              ]
+            },
+            "isActive": true
+          }
+        ]
+      }
+    },
+    {
+      "fullUrl": "urn:uuid:a7e0bc5b-91e9-5f68-aee2-eb540986fcfd",
+      "resource": {
+        "resourceType": "Medication",
+        "id": "med-pt-dispense-omeprazole",
+        "meta": {
+          "profile": [
+            "https://hl7-ie.github.io/medication-events/fhir/StructureDefinition/ie-mpd-medication-eprescription"
+          ]
+        },
+        "code": {
+          "coding": [
+            {
+              "system": "http://snomed.info/sct",
+              "code": "317291008",
+              "display": "Omeprazole 20 mg oral capsule"
+            }
+          ],
+          "text": "Omeprazol 20mg Cápsulas"
+        },
+        "ingredient": [
+          {
+            "itemCodeableConcept": {
+              "coding": [
+                {
+                  "system": "http://snomed.info/sct",
+                  "code": "387137007",
+                  "display": "Omeprazole"
+                }
+              ]
+            },
+            "isActive": true
+          }
+        ]
+      }
+    }
+  ]
+}

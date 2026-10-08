@@ -1,0 +1,547 @@
+{
+  "resourceType": "Bundle",
+  "id": "ie-bundle-scenario4-ie-to-es-crossborder",
+  "meta": {
+    "profile": [
+      "http://hl7.org/fhir/StructureDefinition/Bundle"
+    ]
+  },
+  "type": "collection",
+  "timestamp": "2024-07-28T11:45:00+02:00",
+  "entry": [
+    {
+      "fullUrl": "urn:uuid:5128c91f-9848-524c-8050-006241d8508b",
+      "resource": {
+        "resourceType": "Patient",
+        "id": "patient-ciaran-walsh",
+        "meta": {
+          "profile": [
+            "https://hl7-ie.github.io/medication-events/fhir/StructureDefinition/ie-mpd-patient-eprescription"
+          ]
+        },
+        "identifier": [
+          {
+            "system": "https://hl7-ie.github.io/ie-core/fhir/ie/core/sid/ihi",
+            "type": {
+              "coding": [
+                {
+                  "system": "http://terminology.hl7.org/CodeSystem/v2-0203",
+                  "code": "NI",
+                  "display": "National unique individual identifier"
+                }
+              ]
+            },
+            "value": "210000000055667788"
+          },
+          {
+            "system": "https://hl7-ie.github.io/ie-core/fhir/ie/core/sid/gms",
+            "type": {
+              "coding": [
+                {
+                  "system": "http://terminology.hl7.org/CodeSystem/v2-0203",
+                  "code": "MC"
+                }
+              ]
+            },
+            "value": "8765432C"
+          }
+        ],
+        "active": true,
+        "name": [
+          {
+            "use": "official",
+            "family": "Walsh",
+            "given": [
+              "Ciarán",
+              "Seamus"
+            ],
+            "prefix": [
+              "Mr."
+            ]
+          }
+        ],
+        "gender": "male",
+        "birthDate": "1968-11-03",
+        "address": [
+          {
+            "use": "home",
+            "line": [
+              "22 Clontarf Road"
+            ],
+            "city": "Dublin",
+            "postalCode": "D03 YP78",
+            "country": "IE",
+            "state": "Dublin"
+          }
+        ],
+        "telecom": [
+          {
+            "system": "phone",
+            "value": "+353 87 654 3210",
+            "use": "mobile"
+          }
+        ],
+        "communication": [
+          {
+            "language": {
+              "coding": [
+                {
+                  "system": "urn:ietf:bcp:47",
+                  "code": "en",
+                  "display": "English"
+                }
+              ]
+            },
+            "preferred": true
+          }
+        ],
+        "extension": [
+          {
+            "url": "http://hl7.org/fhir/StructureDefinition/individual-recordedSexOrGender",
+            "extension": [
+              {
+                "url": "value",
+                "valueCodeableConcept": {
+                  "coding": [
+                    {
+                      "system": "http://hl7.org/fhir/administrative-gender",
+                      "code": "male",
+                      "display": "Male"
+                    }
+                  ]
+                }
+              },
+              {
+                "url": "type",
+                "valueCodeableConcept": {
+                  "coding": [
+                    {
+                      "system": "http://loinc.org",
+                      "code": "76689-9",
+                      "display": "Sex assigned at birth"
+                    }
+                  ]
+                }
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "fullUrl": "urn:uuid:30f2ac6d-a312-55a8-8960-b779170c7460",
+      "resource": {
+        "resourceType": "Practitioner",
+        "id": "practitioner-sarah-obrien",
+        "meta": {
+          "profile": [
+            "https://hl7-ie.github.io/medication-events/fhir/StructureDefinition/ie-mpd-practitioner"
+          ]
+        },
+        "identifier": [
+          {
+            "system": "https://hl7-ie.github.io/ie-core/fhir/ie/core/sid/imc",
+            "value": "IMC-12345"
+          }
+        ],
+        "active": true,
+        "name": [
+          {
+            "use": "official",
+            "family": "O'Brien",
+            "given": [
+              "Sarah"
+            ],
+            "prefix": [
+              "Dr."
+            ]
+          }
+        ],
+        "gender": "female",
+        "address": [
+          {
+            "use": "work",
+            "line": [
+              "James's Street"
+            ],
+            "city": "Dublin",
+            "country": "IE"
+          }
+        ]
+      }
+    },
+    {
+      "fullUrl": "urn:uuid:047be684-9ddc-56f3-8488-3894438cbecb",
+      "resource": {
+        "resourceType": "Organization",
+        "id": "org-ie-sjh",
+        "meta": {
+          "profile": [
+            "https://hl7-ie.github.io/medication-events/fhir/StructureDefinition/ie-mpd-organization"
+          ]
+        },
+        "active": true,
+        "name": "St. James's Hospital",
+        "address": [
+          {
+            "use": "work",
+            "line": [
+              "James's Street"
+            ],
+            "city": "Dublin",
+            "country": "IE"
+          }
+        ]
+      }
+    },
+    {
+      "fullUrl": "urn:uuid:2fe0f44e-0668-55af-8a5b-c2de75bca61b",
+      "resource": {
+        "resourceType": "Organization",
+        "id": "org-es-farmacia-america",
+        "identifier": [
+          {
+            "value": "ES-OF-28-009876",
+            "assigner": {
+              "display": "Issuing authority in Spain (illustrative)"
+            }
+          }
+        ],
+        "active": true,
+        "name": "Farmacia Avenida de América",
+        "address": [
+          {
+            "use": "work",
+            "line": [
+              "Avenida de América 34"
+            ],
+            "city": "Madrid",
+            "postalCode": "28028",
+            "country": "ES"
+          }
+        ],
+        "telecom": [
+          {
+            "system": "phone",
+            "value": "+34 91 555 3456",
+            "use": "work"
+          }
+        ]
+      }
+    },
+    {
+      "fullUrl": "urn:uuid:22f7b54c-f251-52fa-a537-2f210b14bac6",
+      "resource": {
+        "resourceType": "Practitioner",
+        "id": "practitioner-es-pharmacist-vega",
+        "identifier": [
+          {
+            "value": "ES-CF-28-005678",
+            "assigner": {
+              "display": "Issuing authority in Spain (illustrative)"
+            }
+          }
+        ],
+        "active": true,
+        "name": [
+          {
+            "use": "official",
+            "family": "Vega Soto",
+            "given": [
+              "Carmen"
+            ],
+            "prefix": [
+              "Dra."
+            ]
+          }
+        ],
+        "gender": "female",
+        "address": [
+          {
+            "use": "work",
+            "line": [
+              "Avenida de América 34"
+            ],
+            "city": "Madrid",
+            "country": "ES"
+          }
+        ]
+      }
+    },
+    {
+      "fullUrl": "urn:uuid:163dc720-e227-50da-9071-5caed63e9759",
+      "resource": {
+        "resourceType": "Medication",
+        "id": "medication-amlodipine-5",
+        "meta": {
+          "profile": [
+            "https://hl7-ie.github.io/medication-events/fhir/StructureDefinition/ie-mpd-medication-eprescription"
+          ]
+        },
+        "code": {
+          "coding": [
+            {
+              "system": "http://snomed.info/sct",
+              "code": "386864001",
+              "display": "Amlodipine"
+            }
+          ],
+          "text": "Amlodipine 5mg tablets"
+        },
+        "form": {
+          "coding": [
+            {
+              "system": "http://snomed.info/sct",
+              "code": "385055001",
+              "display": "Tablet"
+            }
+          ]
+        },
+        "ingredient": [
+          {
+            "itemCodeableConcept": {
+              "coding": [
+                {
+                  "system": "http://snomed.info/sct",
+                  "code": "386864001",
+                  "display": "Amlodipine"
+                }
+              ]
+            },
+            "isActive": true,
+            "strength": {
+              "numerator": {
+                "value": 5,
+                "unit": "mg",
+                "system": "http://unitsofmeasure.org",
+                "code": "mg"
+              },
+              "denominator": {
+                "value": 1,
+                "unit": "tablet",
+                "system": "http://unitsofmeasure.org",
+                "code": "{tablet}"
+              }
+            }
+          }
+        ]
+      }
+    },
+    {
+      "fullUrl": "urn:uuid:9922954c-8e42-596b-92fc-429233948c71",
+      "resource": {
+        "resourceType": "MedicationRequest",
+        "id": "prescription-ie-to-es",
+        "meta": {
+          "profile": [
+            "https://hl7-ie.github.io/medication-events/fhir/StructureDefinition/ie-mpd-medicationrequest-eprescription"
+          ]
+        },
+        "identifier": [
+          {
+            "system": "https://hl7-ie.github.io/ie-core/fhir/ie/core/sid/neps",
+            "value": "PCRS-RX-2024-004001"
+          },
+          {
+            "system": "urn:oid:2.16.840.1.113883.19.1.4.1",
+            "value": "IE-EHIC-XB-2024-004001"
+          }
+        ],
+        "status": "active",
+        "intent": "order",
+        "category": [
+          {
+            "coding": [
+              {
+                "system": "http://terminology.hl7.org/CodeSystem/medicationrequest-category",
+                "code": "community",
+                "display": "Community"
+              }
+            ]
+          }
+        ],
+        "medicationReference": {
+          "reference": "urn:uuid:163dc720-e227-50da-9071-5caed63e9759"
+        },
+        "subject": {
+          "reference": "urn:uuid:5128c91f-9848-524c-8050-006241d8508b",
+          "display": "Ciarán Walsh"
+        },
+        "requester": {
+          "reference": "urn:uuid:30f2ac6d-a312-55a8-8960-b779170c7460",
+          "display": "Dr. Sarah O'Brien"
+        },
+        "authoredOn": "2024-07-10",
+        "reasonCode": [
+          {
+            "coding": [
+              {
+                "system": "http://snomed.info/sct",
+                "code": "38341003",
+                "display": "Hypertensive disorder"
+              }
+            ]
+          }
+        ],
+        "dosageInstruction": [
+          {
+            "text": "Take one 5mg tablet once daily",
+            "timing": {
+              "repeat": {
+                "frequency": 1,
+                "period": 1,
+                "periodUnit": "d"
+              }
+            },
+            "route": {
+              "coding": [
+                {
+                  "system": "http://snomed.info/sct",
+                  "code": "26643006",
+                  "display": "Oral route"
+                }
+              ]
+            },
+            "doseAndRate": [
+              {
+                "doseQuantity": {
+                  "value": 5,
+                  "unit": "mg",
+                  "system": "http://unitsofmeasure.org",
+                  "code": "mg"
+                }
+              }
+            ]
+          }
+        ],
+        "dispenseRequest": {
+          "validityPeriod": {
+            "start": "2024-07-10",
+            "end": "2024-10-10"
+          },
+          "numberOfRepeatsAllowed": 2,
+          "quantity": {
+            "value": 30,
+            "unit": "tablets",
+            "system": "http://unitsofmeasure.org",
+            "code": "{tablet}"
+          },
+          "expectedSupplyDuration": {
+            "value": 30,
+            "unit": "days",
+            "system": "http://unitsofmeasure.org",
+            "code": "d"
+          }
+        },
+        "substitution": {
+          "allowedBoolean": true
+        }
+      }
+    },
+    {
+      "fullUrl": "urn:uuid:7376a65d-9562-58b7-a3b6-a82ecd112d81",
+      "resource": {
+        "resourceType": "MedicationDispense",
+        "id": "dispense-es-pharmacy",
+        "meta": {
+          "profile": [
+            "https://hl7-ie.github.io/medication-events/fhir/StructureDefinition/ie-mpd-medicationdispense-edispensation"
+          ]
+        },
+        "identifier": [
+          {
+            "value": "ES-DISP-2024-XB-004001",
+            "assigner": {
+              "display": "Issuing authority in Spain (illustrative)"
+            }
+          }
+        ],
+        "status": "completed",
+        "medicationReference": {
+          "reference": "urn:uuid:163dc720-e227-50da-9071-5caed63e9759"
+        },
+        "subject": {
+          "reference": "urn:uuid:5128c91f-9848-524c-8050-006241d8508b",
+          "display": "Ciarán Walsh"
+        },
+        "performer": [
+          {
+            "actor": {
+              "reference": "urn:uuid:22f7b54c-f251-52fa-a537-2f210b14bac6",
+              "display": "Dra. Carmen Vega Soto"
+            }
+          }
+        ],
+        "authorizingPrescription": [
+          {
+            "reference": "urn:uuid:9922954c-8e42-596b-92fc-429233948c71",
+            "display": "PCRS-RX-2024-004001"
+          }
+        ],
+        "type": {
+          "coding": [
+            {
+              "system": "http://terminology.hl7.org/CodeSystem/v3-ActCode",
+              "code": "DF",
+              "display": "Daily Fill"
+            }
+          ]
+        },
+        "quantity": {
+          "value": 30,
+          "unit": "tablets",
+          "system": "http://unitsofmeasure.org",
+          "code": "{tablet}"
+        },
+        "daysSupply": {
+          "value": 30,
+          "unit": "days",
+          "system": "http://unitsofmeasure.org",
+          "code": "d"
+        },
+        "whenPrepared": "2024-07-28T11:30:00+02:00",
+        "whenHandedOver": "2024-07-28T11:45:00+02:00",
+        "dosageInstruction": [
+          {
+            "text": "Tomar un comprimido de 5mg una vez al día (Take one 5mg tablet once daily)"
+          }
+        ],
+        "substitution": {
+          "wasSubstituted": true,
+          "type": {
+            "coding": [
+              {
+                "system": "http://terminology.hl7.org/CodeSystem/v3-substanceAdminSubstitution",
+                "code": "G",
+                "display": "Generic composition"
+              }
+            ]
+          },
+          "reason": [
+            {
+              "coding": [
+                {
+                  "system": "http://snomed.info/sct",
+                  "code": "373873005",
+                  "display": "Pharmaceutical / biologic product"
+                }
+              ]
+            }
+          ],
+          "responsibleParty": [
+            {
+              "reference": "urn:uuid:22f7b54c-f251-52fa-a537-2f210b14bac6",
+              "display": "Dra. Carmen Vega Soto"
+            }
+          ]
+        },
+        "extension": [
+          {
+            "url": "http://hl7.org/fhir/5.0/StructureDefinition/extension-MedicationDispense.recorded",
+            "valueDateTime": "2024-07-28T11:45:00+02:00"
+          }
+        ]
+      }
+    }
+  ]
+}

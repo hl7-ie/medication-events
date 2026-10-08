@@ -1,0 +1,398 @@
+{
+  "resourceType": "Bundle",
+  "id": "ie-bundle-de-edispensation-response",
+  "type": "collection",
+  "timestamp": "2025-01-20T10:20:00+01:00",
+  "entry": [
+    {
+      "fullUrl": "urn:uuid:7612a37d-82ca-5d3a-ba39-fb3f466cff01",
+      "resource": {
+        "resourceType": "Patient",
+        "id": "patient-sean-murphy-de-view",
+        "identifier": [
+          {
+            "system": "http://eidas.europa.eu/attributes/naturalperson/PersonIdentifier",
+            "value": "IE/DE/1234567T"
+          },
+          {
+            "system": "https://hl7-ie.github.io/ie-core/fhir/ie/core/sid/ihi",
+            "value": "210000000099887766"
+          }
+        ],
+        "name": [
+          {
+            "use": "official",
+            "family": "Murphy",
+            "given": [
+              "Seán",
+              "Patrick"
+            ]
+          }
+        ],
+        "gender": "male",
+        "birthDate": "1975-03-15",
+        "extension": [
+          {
+            "url": "http://hl7.org/fhir/StructureDefinition/individual-recordedSexOrGender",
+            "extension": [
+              {
+                "url": "value",
+                "valueCodeableConcept": {
+                  "coding": [
+                    {
+                      "system": "http://hl7.org/fhir/administrative-gender",
+                      "code": "male",
+                      "display": "Male"
+                    }
+                  ]
+                }
+              },
+              {
+                "url": "type",
+                "valueCodeableConcept": {
+                  "coding": [
+                    {
+                      "system": "http://loinc.org",
+                      "code": "76689-9",
+                      "display": "Sex assigned at birth"
+                    }
+                  ]
+                }
+              }
+            ]
+          }
+        ],
+        "address": [
+          {
+            "use": "home",
+            "type": "physical",
+            "line": [
+              "14 Grafton Street"
+            ],
+            "city": "Dublin 2",
+            "state": "Dublin",
+            "postalCode": "D02 XY45",
+            "country": "IE"
+          }
+        ]
+      }
+    },
+    {
+      "fullUrl": "urn:uuid:711dd717-25ce-51dc-97e7-e6196a898113",
+      "resource": {
+        "resourceType": "Organization",
+        "id": "org-de-apotheke-brandenburger-resp",
+        "identifier": [
+          {
+            "value": "DE-APO-10117-001",
+            "assigner": {
+              "display": "Issuing authority in Germany (illustrative)"
+            }
+          }
+        ],
+        "active": true,
+        "name": "Apotheke am Brandenburger Tor",
+        "address": [
+          {
+            "line": [
+              "Pariser Platz 1"
+            ],
+            "city": "Berlin",
+            "postalCode": "10117",
+            "country": "DE"
+          }
+        ],
+        "telecom": [
+          {
+            "system": "phone",
+            "value": "+49 30 202 64 14"
+          }
+        ]
+      }
+    },
+    {
+      "fullUrl": "urn:uuid:1b4f1a17-08ff-5a45-a156-8c55b0fa3b96",
+      "resource": {
+        "resourceType": "MedicationDispense",
+        "id": "de-dispense-metformin",
+        "meta": {
+          "profile": [
+            "https://hl7-ie.github.io/medication-events/fhir/StructureDefinition/ie-mpd-medicationdispense-edispensation"
+          ]
+        },
+        "identifier": [
+          {
+            "value": "DE-DISP-2025-XB-001-MET",
+            "assigner": {
+              "display": "Issuing authority in Germany (illustrative)"
+            }
+          },
+          {
+            "system": "https://hl7-ie.github.io/ie-core/fhir/ie/core/sid/neps",
+            "value": "PCRS-RX-2025-IE-DE-001"
+          }
+        ],
+        "status": "completed",
+        "subject": {
+          "reference": "urn:uuid:7612a37d-82ca-5d3a-ba39-fb3f466cff01",
+          "display": "Seán Murphy"
+        },
+        "performer": [
+          {
+            "actor": {
+              "reference": "urn:uuid:711dd717-25ce-51dc-97e7-e6196a898113",
+              "display": "Apotheke am Brandenburger Tor"
+            }
+          }
+        ],
+        "authorizingPrescription": [
+          {
+            "identifier": {
+              "system": "https://hl7-ie.github.io/ie-core/fhir/ie/core/sid/neps",
+              "value": "PCRS-RX-2025-IE-DE-001"
+            }
+          }
+        ],
+        "type": {
+          "coding": [
+            {
+              "system": "http://terminology.hl7.org/CodeSystem/v3-ActCode",
+              "code": "DF",
+              "display": "Daily Fill"
+            }
+          ]
+        },
+        "quantity": {
+          "value": 60,
+          "unit": "tablets",
+          "system": "http://unitsofmeasure.org",
+          "code": "{tablet}"
+        },
+        "daysSupply": {
+          "value": 30,
+          "unit": "days",
+          "system": "http://unitsofmeasure.org",
+          "code": "d"
+        },
+        "whenPrepared": "2025-01-20T10:00:00+01:00",
+        "whenHandedOver": "2025-01-20T10:15:00+01:00",
+        "dosageInstruction": [
+          {
+            "text": "Zweimal täglich 1 Tablette zu den Mahlzeiten einnehmen (Take one 500mg tablet twice daily with meals)"
+          }
+        ],
+        "substitution": {
+          "wasSubstituted": true,
+          "type": {
+            "coding": [
+              {
+                "system": "http://terminology.hl7.org/CodeSystem/v3-substanceAdminSubstitution",
+                "code": "G",
+                "display": "Generic composition"
+              }
+            ]
+          },
+          "reason": [
+            {
+              "coding": [
+                {
+                  "system": "http://snomed.info/sct",
+                  "code": "373873005",
+                  "display": "Pharmaceutical / biologic product"
+                }
+              ]
+            }
+          ]
+        },
+        "extension": [
+          {
+            "url": "http://hl7.org/fhir/5.0/StructureDefinition/extension-MedicationDispense.recorded",
+            "valueDateTime": "2025-01-20T10:15:00+01:00"
+          }
+        ],
+        "medicationReference": {
+          "reference": "urn:uuid:214b94d6-a4ab-5ddc-8806-fde6d5386a8f",
+          "display": "Metformin 500mg Filmtabletten (Ratiopharm)"
+        }
+      }
+    },
+    {
+      "fullUrl": "urn:uuid:a81e97fa-7a6f-51fd-9859-e3c9da7c4c0b",
+      "resource": {
+        "resourceType": "MedicationDispense",
+        "id": "de-dispense-lisinopril",
+        "meta": {
+          "profile": [
+            "https://hl7-ie.github.io/medication-events/fhir/StructureDefinition/ie-mpd-medicationdispense-edispensation"
+          ]
+        },
+        "identifier": [
+          {
+            "value": "DE-DISP-2025-XB-001-LIS",
+            "assigner": {
+              "display": "Issuing authority in Germany (illustrative)"
+            }
+          },
+          {
+            "system": "https://hl7-ie.github.io/ie-core/fhir/ie/core/sid/neps",
+            "value": "PCRS-RX-2025-IE-DE-002"
+          }
+        ],
+        "status": "completed",
+        "subject": {
+          "reference": "urn:uuid:7612a37d-82ca-5d3a-ba39-fb3f466cff01",
+          "display": "Seán Murphy"
+        },
+        "performer": [
+          {
+            "actor": {
+              "reference": "urn:uuid:711dd717-25ce-51dc-97e7-e6196a898113",
+              "display": "Apotheke am Brandenburger Tor"
+            }
+          }
+        ],
+        "authorizingPrescription": [
+          {
+            "identifier": {
+              "system": "https://hl7-ie.github.io/ie-core/fhir/ie/core/sid/neps",
+              "value": "PCRS-RX-2025-IE-DE-002"
+            }
+          }
+        ],
+        "type": {
+          "coding": [
+            {
+              "system": "http://terminology.hl7.org/CodeSystem/v3-ActCode",
+              "code": "DF",
+              "display": "Daily Fill"
+            }
+          ]
+        },
+        "quantity": {
+          "value": 28,
+          "unit": "tablets",
+          "system": "http://unitsofmeasure.org",
+          "code": "{tablet}"
+        },
+        "daysSupply": {
+          "value": 28,
+          "unit": "days",
+          "system": "http://unitsofmeasure.org",
+          "code": "d"
+        },
+        "whenPrepared": "2025-01-20T10:00:00+01:00",
+        "whenHandedOver": "2025-01-20T10:15:00+01:00",
+        "dosageInstruction": [
+          {
+            "text": "Einmal täglich 1 Tablette morgens (Take one 10mg tablet once daily in the morning)"
+          }
+        ],
+        "substitution": {
+          "wasSubstituted": true,
+          "type": {
+            "coding": [
+              {
+                "system": "http://terminology.hl7.org/CodeSystem/v3-substanceAdminSubstitution",
+                "code": "G",
+                "display": "Generic composition"
+              }
+            ]
+          },
+          "reason": [
+            {
+              "coding": [
+                {
+                  "system": "http://snomed.info/sct",
+                  "code": "373873005",
+                  "display": "Pharmaceutical / biologic product"
+                }
+              ]
+            }
+          ]
+        },
+        "extension": [
+          {
+            "url": "http://hl7.org/fhir/5.0/StructureDefinition/extension-MedicationDispense.recorded",
+            "valueDateTime": "2025-01-20T10:15:00+01:00"
+          }
+        ],
+        "medicationReference": {
+          "reference": "urn:uuid:13555388-b51b-5914-bbe8-467d9dc9c244",
+          "display": "Lisinopril 10mg Tabletten (Hexal)"
+        }
+      }
+    },
+    {
+      "fullUrl": "urn:uuid:214b94d6-a4ab-5ddc-8806-fde6d5386a8f",
+      "resource": {
+        "resourceType": "Medication",
+        "id": "med-de-dispense-metformin",
+        "meta": {
+          "profile": [
+            "https://hl7-ie.github.io/medication-events/fhir/StructureDefinition/ie-mpd-medication-eprescription"
+          ]
+        },
+        "code": {
+          "coding": [
+            {
+              "system": "http://snomed.info/sct",
+              "code": "372567009",
+              "display": "Metformin"
+            }
+          ],
+          "text": "Metformin 500mg Filmtabletten (Ratiopharm)"
+        },
+        "ingredient": [
+          {
+            "itemCodeableConcept": {
+              "coding": [
+                {
+                  "system": "http://snomed.info/sct",
+                  "code": "372567009",
+                  "display": "Metformin"
+                }
+              ]
+            },
+            "isActive": true
+          }
+        ]
+      }
+    },
+    {
+      "fullUrl": "urn:uuid:13555388-b51b-5914-bbe8-467d9dc9c244",
+      "resource": {
+        "resourceType": "Medication",
+        "id": "med-de-dispense-lisinopril",
+        "meta": {
+          "profile": [
+            "https://hl7-ie.github.io/medication-events/fhir/StructureDefinition/ie-mpd-medication-eprescription"
+          ]
+        },
+        "code": {
+          "coding": [
+            {
+              "system": "http://snomed.info/sct",
+              "code": "386873009",
+              "display": "Lisinopril"
+            }
+          ],
+          "text": "Lisinopril 10mg Tabletten (Hexal)"
+        },
+        "ingredient": [
+          {
+            "itemCodeableConcept": {
+              "coding": [
+                {
+                  "system": "http://snomed.info/sct",
+                  "code": "386873009",
+                  "display": "Lisinopril"
+                }
+              ]
+            },
+            "isActive": true
+          }
+        ]
+      }
+    }
+  ]
+}

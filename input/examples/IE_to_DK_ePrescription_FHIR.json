@@ -1,0 +1,331 @@
+{
+  "resourceType": "Bundle",
+  "id": "ie-bundle-to-dk-eprescription",
+  "type": "collection",
+  "timestamp": "2025-07-01T09:00:00+02:00",
+  "entry": [
+    {
+      "fullUrl": "urn:uuid:80858291-1d72-5f01-b5bf-3a1427320ba9",
+      "resource": {
+        "resourceType": "Patient",
+        "id": "patient-sean-murphy",
+        "identifier": [
+          {
+            "system": "https://hl7-ie.github.io/ie-core/fhir/ie/core/sid/ihi",
+            "value": "210000000099887766"
+          },
+          {
+            "system": "https://hl7-ie.github.io/ie-core/fhir/ie/core/sid/pps",
+            "value": "1234567T"
+          },
+          {
+            "system": "http://eidas.europa.eu/attributes/naturalperson/PersonIdentifier",
+            "value": "IE/DK/1234567T"
+          }
+        ],
+        "active": true,
+        "name": [
+          {
+            "use": "official",
+            "family": "Murphy",
+            "given": [
+              "Seán",
+              "Patrick"
+            ],
+            "prefix": [
+              "Mr."
+            ]
+          }
+        ],
+        "gender": "male",
+        "birthDate": "1975-03-15",
+        "address": [
+          {
+            "use": "home",
+            "line": [
+              "14 Grafton Street"
+            ],
+            "city": "Dublin 2",
+            "postalCode": "D02 XY45",
+            "country": "IE",
+            "state": "Dublin"
+          }
+        ],
+        "extension": [
+          {
+            "url": "http://hl7.org/fhir/StructureDefinition/individual-recordedSexOrGender",
+            "extension": [
+              {
+                "url": "value",
+                "valueCodeableConcept": {
+                  "coding": [
+                    {
+                      "system": "http://hl7.org/fhir/administrative-gender",
+                      "code": "male",
+                      "display": "Male"
+                    }
+                  ]
+                }
+              },
+              {
+                "url": "type",
+                "valueCodeableConcept": {
+                  "coding": [
+                    {
+                      "system": "http://loinc.org",
+                      "code": "76689-9",
+                      "display": "Sex assigned at birth"
+                    }
+                  ]
+                }
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "fullUrl": "urn:uuid:f6ae4c82-db5b-5024-b472-a1582886e3ce",
+      "resource": {
+        "resourceType": "Practitioner",
+        "id": "practitioner-aoife-obrien",
+        "identifier": [
+          {
+            "system": "https://hl7-ie.github.io/ie-core/fhir/ie/core/sid/imc",
+            "value": "GP-IE-12345"
+          }
+        ],
+        "active": true,
+        "name": [
+          {
+            "use": "official",
+            "family": "O'Brien",
+            "given": [
+              "Aoife"
+            ],
+            "prefix": [
+              "Dr."
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "fullUrl": "urn:uuid:3ab51105-7364-58f5-a3d6-f9bc50690c12",
+      "resource": {
+        "resourceType": "AllergyIntolerance",
+        "id": "allergy-penicillin",
+        "clinicalStatus": {
+          "coding": [
+            {
+              "system": "http://terminology.hl7.org/CodeSystem/allergyintolerance-clinical",
+              "code": "active"
+            }
+          ]
+        },
+        "verificationStatus": {
+          "coding": [
+            {
+              "system": "http://terminology.hl7.org/CodeSystem/allergyintolerance-verification",
+              "code": "confirmed"
+            }
+          ]
+        },
+        "type": "allergy",
+        "category": [
+          "medication"
+        ],
+        "criticality": "high",
+        "code": {
+          "coding": [
+            {
+              "system": "http://snomed.info/sct",
+              "code": "372687004",
+              "display": "Amoxicillin"
+            }
+          ],
+          "text": "Penicillin / Amoxicillin — ALL penicillin-class antibiotics"
+        },
+        "patient": {
+          "reference": "urn:uuid:80858291-1d72-5f01-b5bf-3a1427320ba9"
+        },
+        "reaction": [
+          {
+            "manifestation": [
+              {
+                "coding": [
+                  {
+                    "system": "http://snomed.info/sct",
+                    "code": "39579001",
+                    "display": "Anaphylaxis"
+                  }
+                ]
+              }
+            ],
+            "severity": "severe"
+          }
+        ]
+      }
+    },
+    {
+      "fullUrl": "urn:uuid:1df6570a-9d77-5b10-b4bd-be737614edd8",
+      "resource": {
+        "resourceType": "Organization",
+        "id": "org-dk-apoteket-cph",
+        "identifier": [
+          {
+            "value": "DK-APO-CPH-001",
+            "assigner": {
+              "display": "Issuing authority in Denmark (illustrative)"
+            }
+          }
+        ],
+        "active": true,
+        "name": "Apoteket",
+        "address": [
+          {
+            "city": "Copenhagen",
+            "country": "DK"
+          }
+        ]
+      }
+    },
+    {
+      "fullUrl": "urn:uuid:b92c754d-faf3-5d6d-931d-26512dc9981c",
+      "resource": {
+        "resourceType": "MedicationRequest",
+        "id": "rx-ie-dk-warfarin",
+        "meta": {
+          "profile": [
+            "https://hl7-ie.github.io/medication-events/fhir/StructureDefinition/ie-mpd-medicationrequest-eprescription"
+          ]
+        },
+        "identifier": [
+          {
+            "system": "https://hl7-ie.github.io/ie-core/fhir/ie/core/sid/neps",
+            "value": "PCRS-RX-2025-IE-DK-001"
+          },
+          {
+            "system": "http://eidas.europa.eu/attributes/naturalperson/PersonIdentifier",
+            "value": "IE/DK/1234567T"
+          }
+        ],
+        "status": "active",
+        "intent": "order",
+        "subject": {
+          "reference": "urn:uuid:80858291-1d72-5f01-b5bf-3a1427320ba9",
+          "display": "Seán Murphy"
+        },
+        "requester": {
+          "reference": "urn:uuid:f6ae4c82-db5b-5024-b472-a1582886e3ce",
+          "display": "Dr. Aoife O'Brien"
+        },
+        "authoredOn": "2025-06-25",
+        "reasonCode": [
+          {
+            "coding": [
+              {
+                "system": "http://snomed.info/sct",
+                "code": "49436004",
+                "display": "Atrial fibrillation"
+              }
+            ]
+          }
+        ],
+        "dosageInstruction": [
+          {
+            "text": "Tag én 5mg tablet én gang dagligt. INR-mål 2,0-3,0. Kræver INR-monitorering (Take one 5mg tablet once daily. INR target 2.0-3.0. Requires INR monitoring).",
+            "timing": {
+              "repeat": {
+                "frequency": 1,
+                "period": 1,
+                "periodUnit": "d"
+              }
+            },
+            "route": {
+              "coding": [
+                {
+                  "system": "http://snomed.info/sct",
+                  "code": "26643006",
+                  "display": "Oral route"
+                }
+              ]
+            },
+            "patientInstruction": "⚠️ Anticoagulant — requires regular INR blood tests. Target INR 2.0–3.0. Contact local anticoagulation service."
+          }
+        ],
+        "dispenseRequest": {
+          "validityPeriod": {
+            "start": "2025-06-25",
+            "end": "2025-09-25"
+          },
+          "quantity": {
+            "value": 28,
+            "unit": "tablets",
+            "system": "http://unitsofmeasure.org",
+            "code": "{tablet}"
+          }
+        },
+        "substitution": {
+          "allowedBoolean": false,
+          "reason": {
+            "text": "Reason not stated in the source example"
+          }
+        },
+        "note": [
+          {
+            "text": "Cross-border ePrescription via MyHealth@EU (MPD). Valid 90 days (Danish Medicines Agency rules)."
+          },
+          {
+            "text": "⚠️ ANTICOAGULANT: No substitution. INR monitoring mandatory. Current INR: 2.4 (checked 2025-06-24)."
+          }
+        ],
+        "medicationReference": {
+          "reference": "urn:uuid:adab699a-7d19-5e5c-9869-cab4d94e8eaa",
+          "display": "Warfarin 5mg tablets → DK: Warfarin 5mg Tabletter"
+        }
+      }
+    },
+    {
+      "fullUrl": "urn:uuid:adab699a-7d19-5e5c-9869-cab4d94e8eaa",
+      "resource": {
+        "resourceType": "Medication",
+        "id": "med-rx-ie-dk-warfarin",
+        "meta": {
+          "profile": [
+            "https://hl7-ie.github.io/medication-events/fhir/StructureDefinition/ie-mpd-medication-eprescription"
+          ]
+        },
+        "code": {
+          "coding": [
+            {
+              "system": "http://snomed.info/sct",
+              "code": "372756006",
+              "display": "Warfarin"
+            },
+            {
+              "system": "http://www.whocc.no/atc",
+              "code": "B01AA03",
+              "display": "Warfarin"
+            }
+          ],
+          "text": "Warfarin 5mg tablets → DK: Warfarin 5mg Tabletter"
+        },
+        "ingredient": [
+          {
+            "itemCodeableConcept": {
+              "coding": [
+                {
+                  "system": "http://snomed.info/sct",
+                  "code": "372756006",
+                  "display": "Warfarin"
+                }
+              ]
+            },
+            "isActive": true
+          }
+        ]
+      }
+    }
+  ]
+}

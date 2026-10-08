@@ -1,0 +1,435 @@
+{
+  "resourceType": "Bundle",
+  "id": "ie-bundle-to-pt-eprescription",
+  "type": "collection",
+  "timestamp": "2025-06-20T10:00:00+01:00",
+  "entry": [
+    {
+      "fullUrl": "urn:uuid:80858291-1d72-5f01-b5bf-3a1427320ba9",
+      "resource": {
+        "resourceType": "Patient",
+        "id": "patient-sean-murphy",
+        "identifier": [
+          {
+            "system": "https://hl7-ie.github.io/ie-core/fhir/ie/core/sid/ihi",
+            "value": "210000000099887766"
+          },
+          {
+            "system": "https://hl7-ie.github.io/ie-core/fhir/ie/core/sid/pps",
+            "value": "1234567T"
+          },
+          {
+            "system": "http://eidas.europa.eu/attributes/naturalperson/PersonIdentifier",
+            "value": "IE/PT/1234567T"
+          }
+        ],
+        "active": true,
+        "name": [
+          {
+            "use": "official",
+            "family": "Murphy",
+            "given": [
+              "Seán",
+              "Patrick"
+            ],
+            "prefix": [
+              "Mr."
+            ]
+          }
+        ],
+        "gender": "male",
+        "birthDate": "1975-03-15",
+        "address": [
+          {
+            "use": "home",
+            "line": [
+              "14 Grafton Street"
+            ],
+            "city": "Dublin 2",
+            "postalCode": "D02 XY45",
+            "country": "IE",
+            "state": "Dublin"
+          }
+        ],
+        "extension": [
+          {
+            "url": "http://hl7.org/fhir/StructureDefinition/individual-recordedSexOrGender",
+            "extension": [
+              {
+                "url": "value",
+                "valueCodeableConcept": {
+                  "coding": [
+                    {
+                      "system": "http://hl7.org/fhir/administrative-gender",
+                      "code": "male",
+                      "display": "Male"
+                    }
+                  ]
+                }
+              },
+              {
+                "url": "type",
+                "valueCodeableConcept": {
+                  "coding": [
+                    {
+                      "system": "http://loinc.org",
+                      "code": "76689-9",
+                      "display": "Sex assigned at birth"
+                    }
+                  ]
+                }
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "fullUrl": "urn:uuid:f6ae4c82-db5b-5024-b472-a1582886e3ce",
+      "resource": {
+        "resourceType": "Practitioner",
+        "id": "practitioner-aoife-obrien",
+        "identifier": [
+          {
+            "system": "https://hl7-ie.github.io/ie-core/fhir/ie/core/sid/imc",
+            "value": "GP-IE-12345"
+          }
+        ],
+        "active": true,
+        "name": [
+          {
+            "use": "official",
+            "family": "O'Brien",
+            "given": [
+              "Aoife"
+            ],
+            "prefix": [
+              "Dr."
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "fullUrl": "urn:uuid:3ab51105-7364-58f5-a3d6-f9bc50690c12",
+      "resource": {
+        "resourceType": "AllergyIntolerance",
+        "id": "allergy-penicillin",
+        "clinicalStatus": {
+          "coding": [
+            {
+              "system": "http://terminology.hl7.org/CodeSystem/allergyintolerance-clinical",
+              "code": "active"
+            }
+          ]
+        },
+        "verificationStatus": {
+          "coding": [
+            {
+              "system": "http://terminology.hl7.org/CodeSystem/allergyintolerance-verification",
+              "code": "confirmed"
+            }
+          ]
+        },
+        "type": "allergy",
+        "category": [
+          "medication"
+        ],
+        "criticality": "high",
+        "code": {
+          "coding": [
+            {
+              "system": "http://snomed.info/sct",
+              "code": "372687004",
+              "display": "Amoxicillin"
+            }
+          ],
+          "text": "Penicillin / Amoxicillin — ALL penicillin-class antibiotics"
+        },
+        "patient": {
+          "reference": "urn:uuid:80858291-1d72-5f01-b5bf-3a1427320ba9"
+        },
+        "reaction": [
+          {
+            "manifestation": [
+              {
+                "coding": [
+                  {
+                    "system": "http://snomed.info/sct",
+                    "code": "39579001",
+                    "display": "Anaphylaxis"
+                  }
+                ]
+              }
+            ],
+            "severity": "severe"
+          }
+        ]
+      }
+    },
+    {
+      "fullUrl": "urn:uuid:ab46a9eb-2169-53ae-a356-7c47ffe2a1b7",
+      "resource": {
+        "resourceType": "Organization",
+        "id": "org-pt-farmacia-central",
+        "identifier": [
+          {
+            "value": "PT-FAR-LIS-001",
+            "assigner": {
+              "display": "Issuing authority in Portugal (illustrative)"
+            }
+          }
+        ],
+        "active": true,
+        "name": "Farmácia Central",
+        "address": [
+          {
+            "city": "Lisbon",
+            "country": "PT"
+          }
+        ]
+      }
+    },
+    {
+      "fullUrl": "urn:uuid:2af67e7a-8f9c-5e38-beba-9e7d6fc7146e",
+      "resource": {
+        "resourceType": "MedicationRequest",
+        "id": "rx-ie-pt-sertraline",
+        "meta": {
+          "profile": [
+            "https://hl7-ie.github.io/medication-events/fhir/StructureDefinition/ie-mpd-medicationrequest-eprescription"
+          ]
+        },
+        "identifier": [
+          {
+            "system": "https://hl7-ie.github.io/ie-core/fhir/ie/core/sid/neps",
+            "value": "PCRS-RX-2025-IE-PT-001"
+          },
+          {
+            "system": "http://eidas.europa.eu/attributes/naturalperson/PersonIdentifier",
+            "value": "IE/PT/1234567T"
+          }
+        ],
+        "groupIdentifier": {
+          "system": "https://hl7-ie.github.io/ie-core/fhir/ie/core/sid/neps",
+          "value": "IE-GP-RX-GROUP-20250620-PT"
+        },
+        "status": "active",
+        "intent": "order",
+        "subject": {
+          "reference": "urn:uuid:80858291-1d72-5f01-b5bf-3a1427320ba9",
+          "display": "Seán Murphy"
+        },
+        "requester": {
+          "reference": "urn:uuid:f6ae4c82-db5b-5024-b472-a1582886e3ce",
+          "display": "Dr. Aoife O'Brien"
+        },
+        "authoredOn": "2025-06-15",
+        "reasonCode": [
+          {
+            "coding": [
+              {
+                "system": "http://snomed.info/sct",
+                "code": "35489007",
+                "display": "Depressive disorder"
+              }
+            ]
+          }
+        ],
+        "dosageInstruction": [
+          {
+            "text": "Tomar um comprimido de 50mg uma vez ao dia de manhã (Take one 50mg tablet once daily in the morning)",
+            "timing": {
+              "repeat": {
+                "frequency": 1,
+                "period": 1,
+                "periodUnit": "d"
+              }
+            }
+          }
+        ],
+        "dispenseRequest": {
+          "validityPeriod": {
+            "start": "2025-06-15",
+            "end": "2025-09-15"
+          },
+          "quantity": {
+            "value": 28,
+            "unit": "tablets",
+            "system": "http://unitsofmeasure.org",
+            "code": "{tablet}"
+          }
+        },
+        "substitution": {
+          "allowedBoolean": false,
+          "reason": {
+            "text": "Reason not stated in the source example"
+          }
+        },
+        "note": [
+          {
+            "text": "Cross-border ePrescription via MyHealth@EU (MPD format). Valid 90 days (Portaria nº 298/2019). No substitution — psychiatric medication."
+          }
+        ],
+        "medicationReference": {
+          "reference": "urn:uuid:7c6e2a45-a9af-5eef-870a-0cf9b619ddd6",
+          "display": "Sertraline 50mg tablets → PT: Sertralina 50mg Comprimidos"
+        }
+      }
+    },
+    {
+      "fullUrl": "urn:uuid:a30b9d9f-6112-503f-a622-e04c879f6f8f",
+      "resource": {
+        "resourceType": "MedicationRequest",
+        "id": "rx-ie-pt-omeprazole",
+        "meta": {
+          "profile": [
+            "https://hl7-ie.github.io/medication-events/fhir/StructureDefinition/ie-mpd-medicationrequest-eprescription"
+          ]
+        },
+        "identifier": [
+          {
+            "system": "https://hl7-ie.github.io/ie-core/fhir/ie/core/sid/neps",
+            "value": "PCRS-RX-2025-IE-PT-002"
+          },
+          {
+            "system": "http://eidas.europa.eu/attributes/naturalperson/PersonIdentifier",
+            "value": "IE/PT/1234567T"
+          }
+        ],
+        "groupIdentifier": {
+          "system": "https://hl7-ie.github.io/ie-core/fhir/ie/core/sid/neps",
+          "value": "IE-GP-RX-GROUP-20250620-PT"
+        },
+        "status": "active",
+        "intent": "order",
+        "subject": {
+          "reference": "urn:uuid:80858291-1d72-5f01-b5bf-3a1427320ba9",
+          "display": "Seán Murphy"
+        },
+        "requester": {
+          "reference": "urn:uuid:f6ae4c82-db5b-5024-b472-a1582886e3ce",
+          "display": "Dr. Aoife O'Brien"
+        },
+        "authoredOn": "2025-06-15",
+        "reasonCode": [
+          {
+            "coding": [
+              {
+                "system": "http://snomed.info/sct",
+                "code": "235595009",
+                "display": "Gastroesophageal reflux disease"
+              }
+            ]
+          }
+        ],
+        "dosageInstruction": [
+          {
+            "text": "Tomar uma cápsula de 20mg uma vez ao dia em jejum (Take one 20mg capsule once daily before food)"
+          }
+        ],
+        "dispenseRequest": {
+          "validityPeriod": {
+            "start": "2025-06-15",
+            "end": "2025-09-15"
+          },
+          "quantity": {
+            "value": 28,
+            "unit": "capsules",
+            "system": "http://unitsofmeasure.org",
+            "code": "{capsule}"
+          }
+        },
+        "substitution": {
+          "allowedBoolean": true
+        },
+        "medicationReference": {
+          "reference": "urn:uuid:b8fd8542-1863-50d9-9ba8-01bda03101c0",
+          "display": "Omeprazole 20mg capsules → PT: Omeprazol 20mg Cápsulas"
+        }
+      }
+    },
+    {
+      "fullUrl": "urn:uuid:7c6e2a45-a9af-5eef-870a-0cf9b619ddd6",
+      "resource": {
+        "resourceType": "Medication",
+        "id": "med-rx-ie-pt-sertraline",
+        "meta": {
+          "profile": [
+            "https://hl7-ie.github.io/medication-events/fhir/StructureDefinition/ie-mpd-medication-eprescription"
+          ]
+        },
+        "code": {
+          "coding": [
+            {
+              "system": "http://snomed.info/sct",
+              "code": "372594008",
+              "display": "Sertraline"
+            },
+            {
+              "system": "http://www.whocc.no/atc",
+              "code": "N06AB06",
+              "display": "Sertraline"
+            }
+          ],
+          "text": "Sertraline 50mg tablets → PT: Sertralina 50mg Comprimidos"
+        },
+        "ingredient": [
+          {
+            "itemCodeableConcept": {
+              "coding": [
+                {
+                  "system": "http://snomed.info/sct",
+                  "code": "372594008",
+                  "display": "Sertraline"
+                }
+              ]
+            },
+            "isActive": true
+          }
+        ]
+      }
+    },
+    {
+      "fullUrl": "urn:uuid:b8fd8542-1863-50d9-9ba8-01bda03101c0",
+      "resource": {
+        "resourceType": "Medication",
+        "id": "med-rx-ie-pt-omeprazole",
+        "meta": {
+          "profile": [
+            "https://hl7-ie.github.io/medication-events/fhir/StructureDefinition/ie-mpd-medication-eprescription"
+          ]
+        },
+        "code": {
+          "coding": [
+            {
+              "system": "http://snomed.info/sct",
+              "code": "317291008",
+              "display": "Omeprazole 20 mg oral capsule"
+            },
+            {
+              "system": "http://www.whocc.no/atc",
+              "code": "A02BC01",
+              "display": "Omeprazole"
+            }
+          ],
+          "text": "Omeprazole 20mg capsules → PT: Omeprazol 20mg Cápsulas"
+        },
+        "ingredient": [
+          {
+            "itemCodeableConcept": {
+              "coding": [
+                {
+                  "system": "http://snomed.info/sct",
+                  "code": "387137007",
+                  "display": "Omeprazole"
+                }
+              ]
+            },
+            "isActive": true
+          }
+        ]
+      }
+    }
+  ]
+}

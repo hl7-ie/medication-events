@@ -45,6 +45,7 @@ Description: "What a patient is taking, has taken or will take, as reported by t
 // ── Dosage ─────────────────────────────────────────────────────────────────
 // EHDSMedicationUse.dosageInstructions
 * dosage 1..* MS
+* dosage only IEMpdDosage
 * dosage.text 1..1 MS
 * dosage.text ^short = "Human-readable dosage instructions"
 * dosage.timing MS

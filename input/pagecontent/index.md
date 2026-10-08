@@ -29,6 +29,8 @@ coded with the NMPC (SNOMED CT Irish Edition). The people and organisations are
 
 - [HIQA Alignment](hiqa-alignment.html): how the HIQA ePrescription and eDispensation standard maps to this IG.
 - [HIQA Traceability](hiqa-traceability.html): every HIQA data element, and where it is represented.
+- [Electronic Prescription Group](electronic-prescription-group.html): the prescription as a whole (HIQA EP Section 3), compared with NHS England EPS.
+- [Dosage](dosage.html): how to express dosage instructions, with worked examples (HIQA EP Section 5).
 - [Administration and Statements](administration-and-statements.html): the two event types beyond HIQA EP.
 - [Data Minimisation](data-minimisation.html): what an ePrescription must not carry.
 - [Terminology](terminology.html): NMPC and SNOMED CT Irish Edition codes, and how they were checked.

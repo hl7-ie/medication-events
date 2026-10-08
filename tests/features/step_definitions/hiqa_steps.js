@@ -15,6 +15,39 @@ const extUrl = name => `${IE}/StructureDefinition/${name}`;
 
 // Named changes that each break exactly one HIQA rule. Applied to a deep copy of the loaded example.
 const MUTATIONS = {
+  // ── Electronic prescription group (ADR-003) ──
+  'remove the prescription group status reason': r => {
+    const g = r.resourceType === 'RequestGroup' ? r : entriesOf(r, 'RequestGroup')[0];
+    g.extension = (g.extension || []).filter(x => !x.url.endsWith('/ie-mpd-prescription-group-status-reason'));
+  },
+  'drop the second item from the prescription group': r => {
+    entriesOf(r, 'RequestGroup')[0].action.splice(1);
+  },
+  'give the first item another prescription identifier': r => {
+    entriesOf(r, 'MedicationRequest')[0].groupIdentifier.value = '9-RX-2026-999999';
+  },
+  'change the first item date of issue': r => {
+    entriesOf(r, 'MedicationRequest')[0].authoredOn = '2026-09-22T09:45:00+01:00';
+  },
+  'reactivate the cancelled item': r => {
+    entriesOf(r, 'MedicationRequest')[0].status = 'active';
+  },
+  'remove the facility postcode': r => {
+    for (const o of entriesOf(r, 'Organization')) for (const a of o.address || []) delete a.postalCode;
+  },
+  // ── Dosage (ADR-004) ──
+  'remove the period from every dosage': r => {
+    for (const d of r.dosage) if (d.timing && d.timing.repeat) delete d.timing.repeat.period;
+  },
+  'remove the maximum dose': r => {
+    for (const d of r.dosage) delete d.maxDosePerPeriod;
+  },
+  'remove the text of every dosage': r => {
+    for (const d of r.dosage) delete d.text;
+  },
+  'remove the high end of the dose range': r => {
+    delete r.dosage[0].doseAndRate[0].doseRange.high;
+  },
   'remove the age at prescribing from every item': r => {
     for (const mr of entriesOf(r, 'MedicationRequest')) {
       mr.extension = (mr.extension || []).filter(x => x.url !== extUrl('ie-mpd-patient-age-at-prescribing'));
@@ -326,3 +359,15 @@ When('I run the script {string}', function (script) {
 Then('the script should succeed', function () {
   expect(this.scriptStatus, this.scriptOutput).to.equal(0);
 });
+
+Then('every dosage should pass invariant {string}', async function (key) {
+  const res = await checkInvariant(this.resource, key, 'dosage');
+  expect(res.results.length, 'no dosage').to.be.greaterThan(0);
+  expect(res.passed, `${key} (${res.invariant.expression}) failed on ${this.resource.id}`).to.be.true;
+});
+
+Then('a dosage should fail invariant {string}', async function (key) {
+  const res = await checkInvariant(this.resource, key, 'dosage');
+  expect(res.passed, `${key} should have failed on the changed ${this.resource.id}`).to.be.false;
+});
+

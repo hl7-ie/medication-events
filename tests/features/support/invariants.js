@@ -70,12 +70,22 @@ function findInvariant(key) {
 
 // Evaluate invariant `key` against `resource`. When the invariant is attached below the root, it is evaluated
 // for every node at that path. Returns {passed, results}.
-async function checkInvariant(resource, key) {
+async function checkInvariant(resource, key, atPath) {
   const inv = findInvariant(key);
   const base = `${STORE_URL}/eval-${++evaluation}`;
   installFetch(resource, base);
   const options = { async: true, fhirServerUrl: base };
   const env = { resource, rootResource: resource };
+  if (atPath) {
+    // A datatype-profile invariant (e.g. on IEMpdDosage): evaluate it on every node at atPath (e.g. dosage).
+    const nodes = await fhirpath.evaluate(resource, atPath, env, r4, options);
+    const results = [];
+    for (const node of nodes) {
+      const out = await fhirpath.evaluate(node, { base: `${resource.resourceType}.${atPath}`, expression: inv.expression }, env, r4, options);
+      results.push(!(out.length === 1 && out[0] === false));
+    }
+    return { passed: results.every(Boolean), results, invariant: inv };
+  }
   const [type, ...rest] = inv.path.split('.');
   if (type !== resource.resourceType) {
     throw new Error(`${key} applies to ${type}, not ${resource.resourceType}`);
