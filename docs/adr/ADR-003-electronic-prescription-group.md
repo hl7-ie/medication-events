@@ -1,9 +1,9 @@
-# ADR-003: Electronic Prescription Group
+# ADR-003: Electronic Prescription Group (ePG)
 
-- **Status:** Accepted (project owner request, 2026-10-08)
-- **Breaking:** yes (the ePrescription Bundle now requires a prescription group entry)
+- **Status:** Accepted (project owner, 2026-10-08)
+- **Breaking:** yes (the ePrescription Bundle is renamed the Electronic Prescription Group and requires a header)
 - **Supersedes:** IE Core ADR-003's derivation of the prescription-level status from the item statuses
-- **Related:** HIQA EP Section 3; open issues OI-013 (resolved here), OI-104; ADR-004
+- **Related:** HIQA EP Sections 3 and 6; open issues OI-013 (resolved here), OI-104, OI-105; ADR-004
 
 ## Context
 
@@ -13,15 +13,16 @@ items (3.5). Until now the IG carried these on each MedicationRequest: the ident
 as `authoredOn`, and the prescription status was *derived* from the item statuses. 3.1.1, 3.3 to 3.3.3 were Partial
 and 3.4 was a Gap.
 
-The project owner asked for an "Electronic Prescription Group" extending over the Bundle, carrying the prescription
-identifier, the prescription status and provenance.
+The project owner defined the concept: **an Electronic Prescription Group (ePG) is a Bundle of one prescription's
+electronic prescriptions (eP, the MedicationRequest items) together with their eDispensations and provenance.** The
+prescription-level HIQA data must live somewhere in it.
 
-- **FHIR R4 Bundle cannot carry it.** Bundle is a `Resource`, not a `DomainResource`: it has no `extension`,
-  `status` or `text`. A Bundle profile can constrain entries but cannot add prescription-level data.
-- **FHIR R4 RequestGroup is the grouping resource for requests**: `identifier`, `groupIdentifier`, `status`,
-  `intent`, `subject`, `authoredOn`, `author`, `note` and `action` (each action pointing to a request). It has no
-  `statusReason` or presented form, and the core `request-statusReason` and `workflow-supportingInfo` extensions do
-  not allow RequestGroup as a context (checked in hl7.fhir.uv.extensions.r4 5.1.0).
+- **A FHIR R4 Bundle cannot carry prescription-level data.** Bundle is a `Resource`, not a `DomainResource`: no
+  `extension`, `status` or `text`. A Bundle profile can constrain entries only.
+- **FHIR R4 RequestGroup is the grouping resource for requests**: `identifier`, `status`, `intent`, `subject`,
+  `authoredOn`, `author`, `note` and `action` (each action pointing to a request). It has no `statusReason` or
+  presented form, and the core `request-statusReason` and `workflow-supportingInfo` extensions do not allow
+  RequestGroup as a context (checked in hl7.fhir.uv.extensions.r4 5.1.0).
 - **HL7 Europe MPD 1.0.0 and IHE MPD** do not profile a prescription container; they group items by
   `MedicationRequest.groupIdentifier`.
 - **NHS England EPS** (reference, `uk.nhsdigital.r4` 2.11.0 and `uk.nhsdigital.medicines.r4` 2.7.9): no container
@@ -29,58 +30,65 @@ identifier, the prescription status and provenance.
   the long-form UUID in `Extension-DM-PrescriptionId`). The `prescription-order` MessageDefinition sends a `message`
   Bundle (MessageHeader event `prescription-order`, 1 to 4 MedicationRequests, a Provenance holding the signature)
   and requires the items to agree on status, intent, category, subject, requester, `groupIdentifier`,
-  `courseOfTherapyType` and validity period. Cancellation is a `prescription-order-update` message; prescription
-  status history is an extension on each item.
+  `courseOfTherapyType` and validity period. Dispensing is a separate `dispense-notification` message; cancellation
+  is `prescription-order-update`.
 
-## Options
+## Options for the prescription-level data
 
 | Option | Advantages | Disadvantages |
 |---|---|---|
-| A. Keep deriving the status from the items (status quo) | No change | HIQA 3.3 stays Partial; no place for 3.3.2 reason or 3.4 presented form |
-| B. Extensions on the Bundle | Matches "extending over a bundle" | Not possible in R4 (Bundle has no extensions) |
-| **C. RequestGroup entry in the ePrescription Bundle** | FHIR's grouping resource; carries identifier, authoredOn, status, author and the items; extensions are allowed | Two places hold the identifier and date (group and items), so consistency rules are needed |
-| D. Composition (document Bundle) | Has status, sections, attester | A document, not an order; changes the Bundle type for every prescription |
-| E. Task | Has status, statusReason, businessStatus | Models the workflow step, not the prescription; EPS uses Task for release/return, not for the prescription |
+| **A. Header (RequestGroup) inside the ePG** | FHIR's grouping resource; carries identifier, authoredOn, status, author and the items; extensions are allowed; HIQA 3.3 Aligned | The identifier and date also appear on the items, so consistency rules are needed |
+| B. No header; derive the status from the items | Fewer resources | HIQA 3.3 Partial; no place for the 3.3.2 reason or 3.4 presented form |
+| C. Extensions on the Bundle | Matches "extending over a bundle" | Not possible in R4 |
+| D. Composition (document Bundle) | Has status, sections, attester | A document, not an order |
+| E. Task | Has status, statusReason, businessStatus | Models a workflow step, not the prescription |
+
+The project owner chose A (2026-10-08).
 
 ## Decision
 
-Option C. `IEMpdElectronicPrescriptionGroup` (RequestGroup) is a mandatory entry (`prescriptionGroup` 1..1) in
-`IEMpdBundleEPrescription`:
+**`IEMpdElectronicPrescriptionGroup`** (Bundle, `collection`) is the ePG. Its entries:
 
-| HIQA EP | Group element |
-|---|---|
-| 3.1 / 3.1.1 / 3.1.2 identifier, type, value | `identifier` 1..* with `type`, `system`, `value` 1..1 |
-| 3.2 date and time of issue | `authoredOn` 1..1 |
-| 3.3 / 3.3.1 status | `status` (request-status) |
-| 3.3.2 / 3.3.3 status reason | extension `IEMpdPrescriptionGroupStatusReason` (CodeableConcept; text) |
-| 3.4 presented form | extension `IEMpdPresentedForm` (Attachment) |
-| 3.5 items | `action.resource` → each `IEMpdMedicationRequestEPrescription` |
-| prescriber, patient | `author`, `subject` |
+| Slice | Profile | Cardinality |
+|---|---|---|
+| `header` | `IEMpdPrescriptionGroupHeader` (RequestGroup) | 1..1 |
+| `prescriptionItem` | `IEMpdMedicationRequestEPrescription` | 1..* |
+| `dispensation` | `IEMpdMedicationDispenseEDispensation` | 0..* |
+| `provenance` | `IEMpdProvenance` (the prescriber's signature is `IEMpdProvenanceEPrescriptionSignature`) | 0..* (1..* cross-border) |
+| `patient`, `allergyStatement`, `allergy`, `practitioner`, `practitionerRole`, `organization`, `medication` | as before | — |
 
-Consistency rules (Bundle level, informed by the EPS `prescription-order` rules):
+`Bundle.identifier` is the prescription identifier. The cross-border ePG is
+`IEMpdElectronicPrescriptionGroupCrossBorder`.
 
-- `ie-bnd-rx-7`: the group lists every item as an action, and only those.
-- `ie-bnd-rx-8`: every item's `groupIdentifier` is one of the group's identifiers.
-- `ie-bnd-rx-9`: every item has the group's patient, prescriber (`requester` = `author`) and `authoredOn`.
-- `ie-bnd-rx-10` (warning): the group status agrees with the items (active → an active item; revoked → only
-  cancelled or stopped items; completed → no active, on-hold or draft item).
+**`IEMpdPrescriptionGroupHeader`** (RequestGroup) carries HIQA EP 3.1 `identifier` (type, system, value), 3.2
+`authoredOn`, 3.3 `status` with the `IEMpdPrescriptionGroupStatusReason` extension, 3.4 the `IEMpdPresentedForm`
+extension, and 3.5 one `action` per item; `author` is the prescriber and `subject` the patient.
+
+Rules (ePG level; the item rules are informed by the EPS `prescription-order` rules):
+
+- `ie-bnd-rx-7`: the header lists every item as an action, and only those.
+- `ie-bnd-rx-8`: every item's `groupIdentifier` is one of the header's identifiers.
+- `ie-bnd-rx-9`: every item has the header's patient, prescriber (`requester` = `author`) and `authoredOn`.
+- `ie-bnd-rx-10` (warning): the header status agrees with the items.
 - `ie-grp-status-1`: a reason is given unless the prescription is active, completed or draft.
+- `ie-bnd-rx-11`: the prescriber's facility has a full address (HIQA EP 2.9; IE Core OI-013 resolved).
+- `ie-bnd-rx-12`: every eDispensation is authorised by an item in the same ePG (HIQA EP 6.5).
+- `ie-bnd-rx-13`: every eDispensation is for the ePG's patient.
+- `ie-bnd-rx-14` (warning): every Provenance targets resources in the same ePG.
 
-Provenance: the signature Provenance may also target the group (`target` allows the group); the cross-border rule
-that every item is signed (`ie-bnd-xb-2`) is unchanged.
+The signature Provenance may also target the header; the cross-border rule that every item is signed (`ie-bnd-xb-2`)
+is unchanged.
 
-Also closed here because it is a prescription-level rule: **HIQA EP 2.9 healthcare facility address**
-(`ie-bnd-rx-11`): the organisation of the prescriber's role has an address line, county, postcode and country
-(IE Core OI-013).
-
-Not adopted from EPS: FHIR messaging (MessageHeader, `prescription-order` / `-update`). HIQA does not specify the
-national service interface, so the Bundle stays a `collection`; a message wrapper can carry it unchanged if NePS
-defines one (open issue OI-105).
+Not adopted from EPS: FHIR messaging (MessageHeader, `prescription-order`, `dispense-notification`). HIQA does not
+specify the national service interface, so the ePG stays a `collection`; a message wrapper can carry it unchanged if
+NePS defines one (OI-105).
 
 ## Consequences
 
 - HIQA EP 3.1, 3.1.1, 3.1.2, 3.2, 3.3, 3.3.1 to 3.3.3 and 3.4 are Aligned; 2.9 is enforced.
-- Every ePrescription Bundle now has a group entry (breaking for the 0.1.0 draft; scenarios 1 to 6 updated).
-- Scenario 10 shows a whole-prescription cancellation (group `revoked` with a reason, item `cancelled`), like the
-  EPS cancellation examples B1/C1.
+- Profile ids change (unpublished 0.1.0 draft): `ie-mpd-bundle-eprescription` → `ie-mpd-electronic-prescription-group`,
+  `ie-mpd-bundle-eprescription-crossborder` → `ie-mpd-electronic-prescription-group-crossborder`; the header is
+  `ie-mpd-prescription-group-header`.
+- Scenarios 1, 3, 4 and 5 are full ePGs (items with their eDispensations, scenario 1 also with dispensing provenance);
+  scenario 10 shows a cancelled prescription (header `revoked` with a reason), like the EPS cancellation examples.
 - The identifier type (3.1.1) has no HIQA value set; examples use v2-0203 `PLAC` (OI-104).

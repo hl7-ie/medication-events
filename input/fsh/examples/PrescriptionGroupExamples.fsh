@@ -13,33 +13,33 @@ RuleSet: PrescriptionGroup(rxid, patient, authored, item)
 * action[0].resource = Reference({item})
 
 Instance: hiqa-grp-s1-acute-adult
-InstanceOf: IEMpdElectronicPrescriptionGroup
+InstanceOf: IEMpdPrescriptionGroupHeader
 Usage: #example
-Title: "Scenario 1 – Electronic prescription group: acute adult prescription"
+Title: "Scenario 1 – Prescription group header: acute adult prescription"
 Description: "HIQA EP Section 3 for scenario 1: identifier (3.1), date of issue (3.2), status active (3.3) and one item (3.5)."
 * status = #active
 * insert PrescriptionGroup(9-RX-2026-000001, hiqa-patient-tomas-quinn, 2026-09-21T09:45:00+01:00, hiqa-rx-s1-amoxicillin)
 
 Instance: hiqa-grp-s2-paediatric
-InstanceOf: IEMpdElectronicPrescriptionGroup
+InstanceOf: IEMpdPrescriptionGroupHeader
 Usage: #example
-Title: "Scenario 2 – Electronic prescription group: paediatric prescription"
+Title: "Scenario 2 – Prescription group header: paediatric prescription"
 Description: "HIQA EP Section 3 for scenario 2."
 * status = #active
 * insert PrescriptionGroup(9-RX-2026-000002, hiqa-patient-oisin-brady, 2026-09-20T10:10:00+01:00, hiqa-rx-s2-amoxicillin-paeds)
 
 Instance: hiqa-grp-s3-repeat
-InstanceOf: IEMpdElectronicPrescriptionGroup
+InstanceOf: IEMpdPrescriptionGroupHeader
 Usage: #example
-Title: "Scenario 3 – Electronic prescription group: repeat prescription"
+Title: "Scenario 3 – Prescription group header: repeat prescription"
 Description: "HIQA EP Section 3 for scenario 3. The prescription stays active while repeats remain."
 * status = #active
 * insert PrescriptionGroup(9-RX-2026-000003, hiqa-patient-niamh-keane, 2026-09-01T11:05:00+01:00, hiqa-rx-s3-salbutamol-repeat)
 
 Instance: hiqa-grp-s4-controlled-drug
-InstanceOf: IEMpdElectronicPrescriptionGroup
+InstanceOf: IEMpdPrescriptionGroupHeader
 Usage: #example
-Title: "Scenario 4 – Electronic prescription group: Schedule 2 controlled drug"
+Title: "Scenario 4 – Prescription group header: Schedule 2 controlled drug"
 Description: "HIQA EP Section 3 for scenario 4, with a rendered copy of the prescription as its presented form (HIQA EP 3.4; plain text here for brevity, typically a PDF)."
 * status = #active
 * insert PrescriptionGroup(9-RX-2026-000004, hiqa-patient-declan-walsh, 2026-09-15T15:10:00+01:00, hiqa-rx-s4-oxycodone)
@@ -50,17 +50,17 @@ Description: "HIQA EP Section 3 for scenario 4, with a rendered copy of the pres
 * extension[presentedForm].valueAttachment.creation = "2026-09-15T15:10:00+01:00"
 
 Instance: hiqa-grp-s5-non-dispensation
-InstanceOf: IEMpdElectronicPrescriptionGroup
+InstanceOf: IEMpdPrescriptionGroupHeader
 Usage: #example
-Title: "Scenario 5 – Electronic prescription group: prescription later declined at the pharmacy"
+Title: "Scenario 5 – Prescription group header: prescription later declined at the pharmacy"
 Description: "HIQA EP Section 3 for scenario 5. The prescription itself stays active; the non-dispensation is recorded on the MedicationDispense."
 * status = #active
 * insert PrescriptionGroup(9-RX-2026-000005, hiqa-patient-niamh-keane, 2026-09-22T09:30:00+01:00, hiqa-rx-s5-amoxicillin)
 
 Instance: hiqa-grp-s6-crossborder
-InstanceOf: IEMpdElectronicPrescriptionGroup
+InstanceOf: IEMpdPrescriptionGroupHeader
 Usage: #example
-Title: "Scenario 6 – Electronic prescription group: cross-border prescription with two items"
+Title: "Scenario 6 – Prescription group header: cross-border prescription with two items"
 Description: "HIQA EP Section 3 for scenario 6: one prescription, two items sharing the group identifier (HIQA EP 3.1)."
 * status = #active
 * insert PrescriptionGroup(9-RX-2026-000006, hiqa-patient-declan-walsh, 2026-09-16T10:00:00+01:00, hiqa-rx-s6-metformin)
@@ -103,9 +103,9 @@ Description: "The prescriber cancels the prescription before dispensing because 
 * substitution.allowedBoolean = true
 
 Instance: hiqa-grp-s10-cancelled
-InstanceOf: IEMpdElectronicPrescriptionGroup
+InstanceOf: IEMpdPrescriptionGroupHeader
 Usage: #example
-Title: "Scenario 10 – Electronic prescription group: cancelled (revoked) prescription"
+Title: "Scenario 10 – Prescription group header: cancelled (revoked) prescription"
 Description: "The whole prescription is cancelled: status revoked with the reason (HIQA EP 3.3.1 to 3.3.3; ie-grp-status-1). Its only item is cancelled, so the statuses agree (ie-bnd-rx-10)."
 * status = #revoked
 * extension[statusReason].valueCodeableConcept = http://terminology.hl7.org/CodeSystem/medicationrequest-status-reason#altchoice "Try another treatment first"
@@ -113,9 +113,9 @@ Description: "The whole prescription is cancelled: status revoked with the reaso
 * insert PrescriptionGroup(9-RX-2026-000010, hiqa-patient-tomas-quinn, 2026-09-23T10:00:00+01:00, hiqa-rx-s10-amoxicillin-cancelled)
 
 Instance: hiqa-bundle-s10-cancelled
-InstanceOf: IEMpdBundleEPrescription
+InstanceOf: IEMpdElectronicPrescriptionGroup
 Usage: #example
-Title: "Scenario 10 – ePrescription Bundle: cancelled prescription"
+Title: "Scenario 10 – Electronic Prescription Group (ePG): cancelled prescription"
 Description: "The prescription after cancellation: the group is revoked with a reason and the item is cancelled with a reason."
 * identifier.system = $NePS
 * identifier.value = "9-RX-2026-000010"

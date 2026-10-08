@@ -26,9 +26,9 @@ HL7 Ireland, HL7 Europe or the Department of Health.
 | Section 1: Patient | [Patient (ePrescription)](StructureDefinition-ie-mpd-patient-eprescription.html): the EP dataset only |
 | 1.6: Clinical information (allergies, weight, height) | [Allergy statement](StructureDefinition-ie-mpd-list-allergies-at-prescribing.html) required on every prescription; [AllergyIntolerance](StructureDefinition-ie-mpd-allergyintolerance.html); [body weight](StructureDefinition-ie-mpd-body-weight.html) and [body height](StructureDefinition-ie-mpd-body-height.html) |
 | Section 2: Health practitioner | [Practitioner](StructureDefinition-ie-mpd-practitioner.html) (IMC, PSI, NMBI, Dental Council), [PractitionerRole](StructureDefinition-ie-mpd-practitionerrole.html), [Organization](StructureDefinition-ie-mpd-organization.html) (PSI RPB, GMS Panel), [Location](StructureDefinition-ie-mpd-location.html) (GLN) |
-| Section 3: The prescription as a whole (identifier, date of issue, status, presented form) | [Electronic Prescription Group](StructureDefinition-ie-mpd-electronic-prescription-group.html) in the [ePrescription Bundle](StructureDefinition-ie-mpd-bundle-eprescription.html); see [Electronic Prescription Group](electronic-prescription-group.html) |
+| Section 3: The prescription as a whole (identifier, date of issue, status, presented form) | [Prescription Group Header](StructureDefinition-ie-mpd-prescription-group-header.html) in the [Electronic Prescription Group (ePG)](StructureDefinition-ie-mpd-electronic-prescription-group.html), which also holds the items, their eDispensations and provenance; see [Electronic Prescription Group](electronic-prescription-group.html) |
 | Sections 3.5–5: Prescription items, medication, dosage | [MedicationRequest (ePrescription)](StructureDefinition-ie-mpd-medicationrequest-eprescription.html), [Medication](StructureDefinition-ie-mpd-medication-eprescription.html), [Dosage](StructureDefinition-ie-mpd-dosage.html); see [Dosage](dosage.html) |
-| 2.13: Signature, cross-border | [Signature Provenance](StructureDefinition-ie-mpd-provenance-eprescription-signature.html), [cross-border Bundle](StructureDefinition-ie-mpd-bundle-eprescription-crossborder.html) |
+| 2.13: Signature, cross-border | [Signature Provenance](StructureDefinition-ie-mpd-provenance-eprescription-signature.html), [cross-border ePG](StructureDefinition-ie-mpd-electronic-prescription-group-crossborder.html) |
 | Section 6: Dispensation | [MedicationDispense (eDispensation)](StructureDefinition-ie-mpd-medicationdispense-edispensation.html) |
 | Element by element | Logical model [HIQAEPrescriptionLM](StructureDefinition-HIQAEPrescriptionLM.html) |
 {:.grid}
@@ -45,7 +45,8 @@ HL7 Ireland, HL7 Europe or the Department of Health.
 | `ie-bnd-xb-1`, `ie-bnd-xb-2` | A cross-border prescription gives a secure email and carries the prescriber's signature | EP 2.10.2, 2.13 |
 | `ie-rx-status-1` | A status reason is given unless the item is active, completed or draft | EP 3.5.2.2, 3.5.2.3 |
 | `ie-rx-dosage-1`, `ie-dos-1` to `ie-dos-4` | Structured dosage comes with text; a frequency has its period; as-needed dosing states a maximum (warning); a dose range has both ends | EP 5.1, 5.2.3.1.2, 5.2.4.3 |
-| `ie-bnd-rx-7` to `ie-bnd-rx-10`, `ie-grp-status-1` | The prescription group lists exactly the items; items share its identifier, patient, prescriber and date of issue; its status agrees with theirs (warning); a reason is given unless active, completed or draft | EP 3.1 to 3.5 |
+| `ie-bnd-rx-7` to `ie-bnd-rx-10`, `ie-grp-status-1` | The ePG header lists exactly the items; items share its identifier, patient, prescriber and date of issue; its status agrees with theirs (warning); a reason is given unless active, completed or draft | EP 3.1 to 3.5 |
+| `ie-bnd-rx-12` to `ie-bnd-rx-14` | Every eDispensation in the ePG is authorised by one of its items and is for its patient; provenance targets the ePG's resources (warning) | EP 6.5 |
 | `ie-bnd-rx-11` | The prescriber's facility has an address line, county, postcode and country | EP 2.9 |
 | `ie-allergy-2` | An allergy's record entry author and date are given together | EP 1.6.2.4.2, 1.6.2.4.3 |
 | `ie-rx-subst-1` | "Do not substitute" gives a reason | EP 3.5.10.3 |
@@ -65,7 +66,7 @@ sequenceDiagram
     participant N as National ePrescription service
     participant R as Pharmacist
     P->>P: Confirm allergy statement (EP 1.6.1/1.6.2)
-    P->>N: ePrescription Bundle: Patient, items (shared group identifier),<br/>allergy statement, prescriber and facility
+    P->>N: Electronic Prescription Group (ePG): header, patient, items (shared group identifier),<br/>allergy statement, prescriber and facility
     R->>N: Retrieve prescription by group identifier
     alt Dispensed (in full, part, or an instalment)
         R->>N: MedicationDispense: completed, quantity, hand-over time

@@ -1,5 +1,5 @@
 @ie-mpd @prescription-group @dosage
-Feature: Electronic Prescription Group and Dosage (ADR-003, ADR-004)
+Feature: Electronic Prescription Group (ePG) and Dosage (ADR-003, ADR-004)
   As an implementer of IE MPD
   I want the prescription as a whole, and every dosage, to follow the HIQA EP rules
   So that a prescription's identifier, date, status and items always agree, and a dosage is always readable and complete
@@ -51,6 +51,30 @@ Feature: Electronic Prescription Group and Dosage (ADR-003, ADR-004)
     Given the HIQA example "Bundle-hiqa-bundle-s1-acute-adult.json"
     When I "remove the facility postcode"
     Then invariant "ie-bnd-rx-11" should fail
+
+  # ── The ePG holds the eDispensations and provenance ──────────────────────
+
+  Scenario: An ePG carries its eDispensations and dispensing provenance
+    Given the HIQA example "Bundle-hiqa-bundle-s1-acute-adult.json"
+    Then invariant "ie-bnd-rx-12" should pass
+    And invariant "ie-bnd-rx-13" should pass
+    And invariant "ie-bnd-rx-14" should pass
+
+  Scenario: An eDispensation in the ePG is authorised by one of its items (HIQA EP 6.5)
+    Given the HIQA example "Bundle-hiqa-bundle-s3-repeat.json"
+    Then invariant "ie-bnd-rx-12" should pass
+    When I "point the dispensation at a prescription outside the ePG"
+    Then invariant "ie-bnd-rx-12" should fail
+
+  Scenario: An eDispensation in the ePG is for the ePG's patient
+    Given the HIQA example "Bundle-hiqa-bundle-s1-acute-adult.json"
+    When I "make the dispensation for another patient"
+    Then invariant "ie-bnd-rx-13" should fail
+
+  Scenario: Provenance in the ePG describes the ePG's resources
+    Given the HIQA example "Bundle-hiqa-bundle-s1-acute-adult.json"
+    When I "point the provenance at a resource outside the ePG"
+    Then invariant "ie-bnd-rx-14" should fail
 
   # ── Dosage (HIQA EP Section 5) ────────────────────────────────────────
 

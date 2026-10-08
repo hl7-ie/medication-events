@@ -35,6 +35,15 @@ const MUTATIONS = {
   'remove the facility postcode': r => {
     for (const o of entriesOf(r, 'Organization')) for (const a of o.address || []) delete a.postalCode;
   },
+  'point the dispensation at a prescription outside the ePG': r => {
+    entriesOf(r, 'MedicationDispense')[0].authorizingPrescription = [{ reference: 'MedicationRequest/not-in-this-epg' }];
+  },
+  'make the dispensation for another patient': r => {
+    entriesOf(r, 'MedicationDispense')[0].subject = { reference: 'Patient/hiqa-patient-niamh-keane' };
+  },
+  'point the provenance at a resource outside the ePG': r => {
+    entriesOf(r, 'Provenance')[0].target = [{ reference: 'MedicationDispense/not-in-this-epg' }];
+  },
   // ── Dosage (ADR-004) ──
   'remove the period from every dosage': r => {
     for (const d of r.dosage) if (d.timing && d.timing.repeat) delete d.timing.repeat.period;

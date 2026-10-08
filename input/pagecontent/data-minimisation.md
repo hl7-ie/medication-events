@@ -38,7 +38,7 @@ The [traceability matrix](hiqa-traceability.html) lists each prohibited element 
 - **Profiles.** `IEMpdPatientEPrescription` sets each prohibited extension slice and element to `0..0`. The
   prescription and dispense profiles only accept that patient profile as their subject.
 - **Tests.** `tests/features/data-minimisation.feature` checks the profile constraints and every ePrescription patient
-  in the examples, including patients inside ePrescription Bundles.
+  in the examples, including patients inside Electronic Prescription Groups (ePGs).
 - **Guard script.** `scripts/qa/check_ep_data_minimisation.py` fails the build if any ePrescription or eDispensation
   example mentions ethnicity, maiden name, nationality, citizenship, religion or marital status.
 

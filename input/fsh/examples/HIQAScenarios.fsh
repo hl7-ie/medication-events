@@ -412,10 +412,23 @@ Description: "Completed dispensation (HIQA EP Section 6) handed to the patient."
 * substitution.wasSubstituted = false
 
 
-Instance: hiqa-bundle-s1-acute-adult
-InstanceOf: IEMpdBundleEPrescription
+Instance: hiqa-provenance-s1-dispense
+InstanceOf: IEMpdProvenance
 Usage: #example
-Title: "Scenario 1 – ePrescription Bundle: acute adult prescription"
+Title: "Scenario 1 – Dispensing provenance"
+Description: "Who dispensed scenario 1, on behalf of which pharmacy, and when: carried in the ePG with the eDispensation it describes (ADR-003)."
+* target = Reference(hiqa-md-s1-amoxicillin)
+* recorded = "2026-09-21T11:16:00+01:00"
+* activity = http://terminology.hl7.org/CodeSystem/v3-DataOperation#CREATE "create"
+* agent[0].type = http://terminology.hl7.org/CodeSystem/provenance-participant-type#performer "Performer"
+* agent[=].who = Reference(hiqa-prac-pharmacist-farrell)
+* agent[=].onBehalfOf = Reference(hiqa-org-pharmacy)
+
+
+Instance: hiqa-bundle-s1-acute-adult
+InstanceOf: IEMpdElectronicPrescriptionGroup
+Usage: #example
+Title: "Scenario 1 – Electronic Prescription Group (ePG): acute adult prescription"
 Description: "HIQA EP: patient, prescriber, facility, medicinal product, allergy statement (nilknown) and one prescription item."
 * identifier.system = $NePS
 * identifier.value = "9-RX-2026-000001"
@@ -429,7 +442,10 @@ Description: "HIQA EP: patient, prescriber, facility, medicinal product, allergy
 * insert HIQAEntry(Practitioner, hiqa-prac-gp-nolan)
 * insert HIQAEntry(Organization, hiqa-org-gp-practice)
 * insert HIQAEntry(Medication, hiqa-med-amoxicillin-500-caps)
-
+* insert HIQAEntry(MedicationDispense, hiqa-md-s1-amoxicillin)
+* insert HIQAEntry(Provenance, hiqa-provenance-s1-dispense)
+* insert HIQAEntry(Practitioner, hiqa-prac-pharmacist-farrell)
+* insert HIQAEntry(Organization, hiqa-org-pharmacy)
 
 
 // ====================================================================
@@ -483,9 +499,9 @@ Description: "The patient is 5 years old: the age at prescribing is recorded (HI
 
 
 Instance: hiqa-bundle-s2-paediatric
-InstanceOf: IEMpdBundleEPrescription
+InstanceOf: IEMpdElectronicPrescriptionGroup
 Usage: #example
-Title: "Scenario 2 – ePrescription Bundle: paediatric prescription (under 12)"
+Title: "Scenario 2 – Electronic Prescription Group (ePG): paediatric prescription (under 12)"
 Description: "Enforces the legal requirement to state the age of a child under 12 (ie-bnd-rx-3)."
 * identifier.system = $NePS
 * identifier.value = "9-RX-2026-000002"
@@ -601,9 +617,9 @@ Description: "First repeat, after the minimum dispense interval (v3-ActCode RF).
 
 
 Instance: hiqa-bundle-s3-repeat
-InstanceOf: IEMpdBundleEPrescription
+InstanceOf: IEMpdElectronicPrescriptionGroup
 Usage: #example
-Title: "Scenario 3 – ePrescription Bundle: repeat prescription"
+Title: "Scenario 3 – Electronic Prescription Group (ePG): repeat prescription"
 Description: "The allergy statement lists a confirmed penicillin allergy (EP 1.6.2)."
 * identifier.system = $NePS
 * identifier.value = "9-RX-2026-000003"
@@ -618,7 +634,11 @@ Description: "The allergy statement lists a confirmed penicillin allergy (EP 1.6
 * insert HIQAEntry(Practitioner, hiqa-prac-gp-nolan)
 * insert HIQAEntry(Organization, hiqa-org-gp-practice)
 * insert HIQAEntry(Medication, hiqa-med-salbutamol-inhaler)
-
+* insert HIQAEntry(MedicationDispense, hiqa-md-s3-part-fill)
+* insert HIQAEntry(MedicationDispense, hiqa-md-s3-balance)
+* insert HIQAEntry(MedicationDispense, hiqa-md-s3-repeat-1)
+* insert HIQAEntry(Practitioner, hiqa-prac-pharmacist-farrell)
+* insert HIQAEntry(Organization, hiqa-org-pharmacy)
 
 
 // ====================================================================
@@ -683,9 +703,9 @@ Description: "First instalment of a Schedule 2 controlled drug."
 
 
 Instance: hiqa-bundle-s4-controlled-drug
-InstanceOf: IEMpdBundleEPrescription
+InstanceOf: IEMpdElectronicPrescriptionGroup
 Usage: #example
-Title: "Scenario 4 – ePrescription Bundle: controlled drug"
+Title: "Scenario 4 – Electronic Prescription Group (ePG): controlled drug"
 Description: "Schedule 2 controlled-drug prescription."
 * identifier.system = $NePS
 * identifier.value = "9-RX-2026-000004"
@@ -699,7 +719,9 @@ Description: "Schedule 2 controlled-drug prescription."
 * insert HIQAEntry(Practitioner, hiqa-prac-gp-nolan)
 * insert HIQAEntry(Organization, hiqa-org-gp-practice)
 * insert HIQAEntry(Medication, hiqa-med-oxycodone-10-pr)
-
+* insert HIQAEntry(MedicationDispense, hiqa-md-s4-instalment-1)
+* insert HIQAEntry(Practitioner, hiqa-prac-pharmacist-farrell)
+* insert HIQAEntry(Organization, hiqa-org-pharmacy)
 
 
 // ====================================================================
@@ -754,9 +776,9 @@ Description: "HIQA EP 6.3.1 status (declined) and 6.3.2.2 reason (free text); in
 
 
 Instance: hiqa-bundle-s5-non-dispensation
-InstanceOf: IEMpdBundleEPrescription
+InstanceOf: IEMpdElectronicPrescriptionGroup
 Usage: #example
-Title: "Scenario 5 – ePrescription Bundle: prescription later declined"
+Title: "Scenario 5 – Electronic Prescription Group (ePG): prescription later declined"
 Description: "The prescription as sent. The declined dispense is hiqa-md-s5-declined."
 * identifier.system = $NePS
 * identifier.value = "9-RX-2026-000005"
@@ -771,7 +793,9 @@ Description: "The prescription as sent. The declined dispense is hiqa-md-s5-decl
 * insert HIQAEntry(Practitioner, hiqa-prac-gp-nolan)
 * insert HIQAEntry(Organization, hiqa-org-gp-practice)
 * insert HIQAEntry(Medication, hiqa-med-amoxicillin-500-caps)
-
+* insert HIQAEntry(MedicationDispense, hiqa-md-s5-declined)
+* insert HIQAEntry(Practitioner, hiqa-prac-pharmacist-farrell)
+* insert HIQAEntry(Organization, hiqa-org-pharmacy)
 
 
 // ====================================================================
@@ -855,10 +879,10 @@ Description: "HIQA EP 2.13 Signature. The signature value is a SYNTHETIC placeho
 
 
 Instance: hiqa-bundle-s6-crossborder
-InstanceOf: IEMpdBundleEPrescriptionCrossBorder
+InstanceOf: IEMpdElectronicPrescriptionGroupCrossBorder
 Usage: #example
-Title: "Scenario 6 – Cross-border ePrescription Bundle (IE → EU) with signature"
-Description: "Claims IEMpdBundleEPrescriptionCrossBorder (no invented tag; IE Core ADR-003): patient date of birth, prescriber telephone and secure email (EP 2.10.1/2.10.2; ie-bnd-xb-1) and a signature covering every item (EP 2.13; ie-bnd-xb-2)."
+Title: "Scenario 6 – Cross-border Electronic Prescription Group (ePG, IE → EU) with signature"
+Description: "Claims IEMpdElectronicPrescriptionGroupCrossBorder (no invented tag; IE Core ADR-003): patient date of birth, prescriber telephone and secure email (EP 2.10.1/2.10.2; ie-bnd-xb-1) and a signature covering every item (EP 2.13; ie-bnd-xb-2)."
 * identifier.system = $NePS
 * identifier.value = "9-RX-2026-000006"
 * type = #collection
