@@ -41,6 +41,7 @@ Alias: $EULocationCore = http://hl7.eu/fhir/base/StructureDefinition/location-eu
 Alias: $EUMPDMedicationRequest  = http://hl7.eu/fhir/mpd/StructureDefinition/MedicationRequest-eu-mpd
 Alias: $EUMPDMedicationDispense = http://hl7.eu/fhir/mpd/StructureDefinition/MedicationDispense-eu-mpd
 Alias: $EUMPDMedication         = http://hl7.eu/fhir/mpd/StructureDefinition/Medication-eu-mpd
+Alias: $EUMPDDosage             = http://hl7.eu/fhir/mpd/StructureDefinition/Dosage-eu-mpd
 
 // eHDSI / MyHealth@EU system identifiers
 //   NCPeH organisation identifier system (eHDSI OID)

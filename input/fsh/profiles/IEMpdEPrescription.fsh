@@ -65,7 +65,8 @@ Description: "One prescription item of an Irish electronic prescription (HIQA EP
 
 // ── 3.5.8 / Section 5 Dosage ───────────────────────────────────────────
 * dosageInstruction 1..* MS
-* dosageInstruction ^comment = "HIQA EP 3.5.8 Dosage instructions (Mandatory 1..1) and Section 5 Dosaging."
+* dosageInstruction only IEMpdDosage
+* dosageInstruction ^comment = "HIQA EP 3.5.8 Dosage instructions (Mandatory 1..1) and Section 5 Dosaging; see IEMpdDosage and the Dosage page (ADR-004)."
 * dosageInstruction obeys ie-rx-dosage-1
 * dosageInstruction.text 1..1 MS
 * dosageInstruction.text ^comment = "HIQA EP 5.1 Rendered dosage instruction (Optional). IE Medication Events requires it (stricter than HIQA, IE Core OI-012) as a human-readable safety fallback for the structured dosage."
@@ -167,7 +168,8 @@ Description: "An Irish electronic dispensation record (HIQA EP Section 6), deriv
 * substitution.type MS
 * substitution.reason MS
 * dosageInstruction MS
-* dosageInstruction ^comment = "HIQA EP 6.11 Dosage instructions (Required); see Section 5."
+* dosageInstruction only IEMpdDosage
+* dosageInstruction ^comment = "HIQA EP 6.11 Dosage instructions (Required); see Section 5 and IEMpdDosage."
 * dosageInstruction.text MS
 * note ^comment = "HIQA EP 6.12 Additional information (Optional)."
 
@@ -193,7 +195,7 @@ Description: "The medicinal product in an Irish ePrescription or eDispensation (
 * extension[productName] ^comment = "HIQA EP 4.3 Medication product name (brand or trade name), when it differs from code.text."
 * extension[unitOfPresentation] ^comment = "HIQA EP 4.7.3 Unit of presentation (Optional, dispensation)."
 * extension[device] ^comment = "HIQA EP 4.8 Device (Optional, dispensation): 4.8.1 device type and 4.8.2 quantity."
-* extension[characteristic] ^comment = "HIQA EP 4.9 Characteristics (Optional, dispensation)."
+* extension[characteristic] ^comment = "HIQA EP 4.9 Characteristics (Optional, dispensation), with the IHE MPD characteristic extension inherited from HL7 Europe Base: 4.9.1 type (extension type, Mandatory in the cluster) and 4.9.2 value (extension value: coded, Quantity, dateTime, integer, decimal, Ratio or string for 4.9.2.1 to 4.9.2.7)."
 * extension[packageType] ^comment = "HIQA EP 4.7.6 Package type (Optional, dispensation); EDQM package terms."
 * extension[interchangeable] ^comment = "HIQA EP 3.5.10.1 Medicinal product is interchangeable (Required; HPRA List of Interchangeable Medicines)."
 * extension[exemptMedicationItem] ^comment = "HIQA EP 4.11 Exempt medication item (Required). Meaning Requires Clarification."

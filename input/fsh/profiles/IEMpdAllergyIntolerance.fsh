@@ -11,7 +11,7 @@ Description: "The IE Medication Events AllergyIntolerance profile sets minimum e
 * ^status = #draft
 
 * clinicalStatus 0..1 MS
-* obeys ie-allergy-1
+* obeys ie-allergy-1 and ie-allergy-2
 * verificationStatus MS
 * category MS
 * code 1..1 MS
@@ -44,4 +44,9 @@ Description: "The IE Medication Events AllergyIntolerance profile sets minimum e
 Invariant: ie-allergy-1
 Description: "An allergy or intolerance SHALL have a clinical status unless it was entered in error (HIQA PS 5.3.1, Mandatory; FHIR ait-2 forbids clinicalStatus when entered-in-error)"
 Expression: "verificationStatus.coding.where(code = 'entered-in-error').exists() or clinicalStatus.exists()"
+Severity: #error
+
+Invariant: ie-allergy-2
+Description: "Record entry provenance: when the author or the date of the record entry is given, both SHALL be given (HIQA EP 1.6.2.4.2 and 1.6.2.4.3 are Mandatory within the provenance cluster)"
+Expression: "(recorder.exists() or recordedDate.exists()) implies (recorder.exists() and recordedDate.exists())"
 Severity: #error

@@ -12,12 +12,12 @@ Description: "Metformin hydrochloride 500mg film-coated tablets (generic), coded
 * code.coding[+] = $SCT#372567009 "Metformin"
 * code.text = "Metformin 500mg tablets"
 * form = $SCT#385055001 "Tablet"
-* amount.numerator = 60 '{tablet}' "tablets"
+* amount.numerator = 60 $SCT#732936001 "Tablet"
 * amount.denominator = 1 '{pack}' "pack"
 * ingredient[0].itemCodeableConcept = $SCT#372567009 "Metformin"
 * ingredient[=].isActive = true
 * ingredient[=].strength.numerator = 500 'mg' "mg"
-* ingredient[=].strength.denominator = 1 '{tablet}' "tablet"
+* ingredient[=].strength.denominator = 1 $SCT#732936001 "Tablet"
 
 
 
@@ -32,9 +32,9 @@ Description: "Atorvastatin 20mg film-coated tablets (generic), coded with the NM
 * code.coding[+] = $SCT#373444002 "Atorvastatin"
 * code.text = "Atorvastatin 20mg tablets"
 * form = $SCT#385055001 "Tablet"
-* amount.numerator = 30 '{tablet}' "tablets"
+* amount.numerator = 30 $SCT#732936001 "Tablet"
 * amount.denominator = 1 '{pack}' "pack"
 * ingredient[0].itemCodeableConcept = $SCT#373444002 "Atorvastatin"
 * ingredient[=].isActive = true
 * ingredient[=].strength.numerator = 20 'mg' "mg"
-* ingredient[=].strength.denominator = 1 '{tablet}' "tablet"
+* ingredient[=].strength.denominator = 1 $SCT#732936001 "Tablet"
