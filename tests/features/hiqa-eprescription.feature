@@ -23,12 +23,12 @@ Feature: HIQA Draft National Standard for ePrescriptions and eDispensations (Sep
 
     Examples:
       | scenario                     | bundle                                     | profile                                  |
-      | 1 acute adult                | Bundle-hiqa-bundle-s1-acute-adult.json     | ie-mpd-bundle-eprescription             |
-      | 2 paediatric under 12        | Bundle-hiqa-bundle-s2-paediatric.json      | ie-mpd-bundle-eprescription             |
-      | 3 repeat                     | Bundle-hiqa-bundle-s3-repeat.json          | ie-mpd-bundle-eprescription             |
-      | 4 controlled drug            | Bundle-hiqa-bundle-s4-controlled-drug.json | ie-mpd-bundle-eprescription             |
-      | 5 later declined             | Bundle-hiqa-bundle-s5-non-dispensation.json | ie-mpd-bundle-eprescription            |
-      | 6 cross-border with signature | Bundle-hiqa-bundle-s6-crossborder.json    | ie-mpd-bundle-eprescription-crossborder |
+      | 1 acute adult                | Bundle-hiqa-bundle-s1-acute-adult.json     | ie-mpd-electronic-prescription-group             |
+      | 2 paediatric under 12        | Bundle-hiqa-bundle-s2-paediatric.json      | ie-mpd-electronic-prescription-group             |
+      | 3 repeat                     | Bundle-hiqa-bundle-s3-repeat.json          | ie-mpd-electronic-prescription-group             |
+      | 4 controlled drug            | Bundle-hiqa-bundle-s4-controlled-drug.json | ie-mpd-electronic-prescription-group             |
+      | 5 later declined             | Bundle-hiqa-bundle-s5-non-dispensation.json | ie-mpd-electronic-prescription-group            |
+      | 6 cross-border with signature | Bundle-hiqa-bundle-s6-crossborder.json    | ie-mpd-electronic-prescription-group-crossborder |
 
   # ── EP 1.6.1 / 1.6.2 allergy statement ──────────────────────────────
   @allergy-statement

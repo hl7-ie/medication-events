@@ -126,24 +126,24 @@ Logical model: [HIQA ePrescription/eDispensation](StructureDefinition-HIQAEPresc
 | 2.9.3 | Suburb/Town/ Townland/Locality (PD) | Required | 0..1 | IEMpdOrganization | `Organization.address.city` | Y | Aligned |  |
 | 2.9.4 | District/ County (PD) | Mandatory | 1..1 | IEMpdOrganization | `Organization.address.state` | Y | Partial | Mandatory within the facility address; not yet enforced |
 | 2.9.5 | Country (PD) | Mandatory | 1..1 | IEMpdOrganization | `Organization.address.country` | Y | Partial | Mandatory within the facility address; not yet enforced |
-| 2.10 | Communication details (cluster) (PD) | Mandatory | 1..* | IEMpdBundleEPrescription | `Bundle.entry` | Y | Aligned | prescriber or facility telephone required (ie-bnd-rx-4) |
-| 2.10.1 | Telephone Number (PD) | Mandatory | 1..1 | IEMpdBundleEPrescription | `Bundle.entry` | Y | Aligned | ie-bnd-rx-4: phone on the requester, its practitioner or its organisation (another party's phone does not count) |
-| 2.10.2 | Email address (PD) | Required | 0..* | IEMpdBundleEPrescriptionCrossBorder | `Bundle.entry` | Y | Aligned | email required cross-border (ie-bnd-xb-1); Required (MS) otherwise |
+| 2.10 | Communication details (cluster) (PD) | Mandatory | 1..* | IEMpdElectronicPrescriptionGroup | `Bundle.entry` | Y | Aligned | prescriber or facility telephone required (ie-bnd-rx-4) |
+| 2.10.1 | Telephone Number (PD) | Mandatory | 1..1 | IEMpdElectronicPrescriptionGroup | `Bundle.entry` | Y | Aligned | ie-bnd-rx-4: phone on the requester, its practitioner or its organisation (another party's phone does not count) |
+| 2.10.2 | Email address (PD) | Required | 0..* | IEMpdElectronicPrescriptionGroupCrossBorder | `Bundle.entry` | Y | Aligned | email required cross-border (ie-bnd-xb-1); Required (MS) otherwise |
 | 2.10.3 | Other Communication details (cluster) (PD) | Optional | 0..* | IEMpdPractitionerRole | `PractitionerRole.telecom` | Y | Aligned |  |
 | 2.10.3.1 | Communication details – Type (PD) | Optional | 0..* | IEMpdPractitionerRole | `PractitionerRole.telecom.system` | Y | Aligned |  |
 | 2.10.3.2 | Communication Details – Value (PD) | Optional | 0..* | IEMpdPractitionerRole | `PractitionerRole.telecom.value` | Y | Aligned |  |
 | 2.11 | Location ID (GLN) (PD) | Required | 0..1 | IEMpdLocation | `Location.identifier:GLN` | Y | Aligned | system http://www.gs1.org/gln (THO); 13 digits + GS1 check digit (ie-loc-gln-1) |
 | 2.12 | GMS Panel ID | Optional | 0..1 | IEMpdOrganization | `Organization.identifier:GMSPanel` | N | Aligned | Optional; no format enforced |
 | 2.13 | Signature (P) | Required | 0..1 | IEMpdProvenanceEPrescriptionSignature | `Provenance.signature` | Y | Aligned | Provenance signature over the items; required cross-border (ie-bnd-xb-2); format Requires Clarification (OI-009) |
-| 3.1 | Electronic prescription identifier (cluster) (P) | Mandatory | 1..* | IEMpdElectronicPrescriptionGroup | `RequestGroup.identifier` | Y | Aligned | identifier 1..* MS on the prescription group (ADR-003); every item carries it as groupIdentifier (ie-bnd-rx-8; ie-bnd-rx-1) |
-| 3.1.1 | Electronic prescription identifier – type (P) | Mandatory | 1..1 | IEMpdElectronicPrescriptionGroup | `RequestGroup.identifier.type` | Y | Aligned | type 1..1 MS; HIQA gives no value set, so none is bound (OI-104); examples use v2-0203 PLAC |
-| 3.1.2 | Electronic prescription identifier – value (P) | Mandatory | 1..1 | IEMpdElectronicPrescriptionGroup | `RequestGroup.identifier.value` | Y | Aligned | value 1..1 MS |
-| 3.2 | Date and time of issuing the prescription (P) | Mandatory | 1..1 | IEMpdElectronicPrescriptionGroup | `RequestGroup.authoredOn` | Y | Aligned | authoredOn 1..1 MS on the group; every item has the same authoredOn (ie-bnd-rx-9) |
-| 3.3 | Prescription Status (cluster) (P) | Mandatory | 1..1 | IEMpdElectronicPrescriptionGroup | `RequestGroup.status` | Y | Aligned | prescription-level status on the group (ADR-003, replaces IE Core ADR-003 derivation); kept consistent with item statuses (ie-bnd-rx-10) |
-| 3.3.1 | Status (P) | Mandatory | 1..1 | IEMpdElectronicPrescriptionGroup | `RequestGroup.status` | Y | Aligned | draft \| active \| on-hold \| revoked \| completed \| entered-in-error \| unknown |
-| 3.3.2 | Status reason (P) | Required | 0..1 | IEMpdElectronicPrescriptionGroup | `RequestGroup.extension:statusReason` | Y | Aligned | IEMpdPrescriptionGroupStatusReason; required unless active, completed or draft (ie-grp-status-1) |
-| 3.3.3 | Status reason (free text) (P) | Optional | 0..1 | IEMpdElectronicPrescriptionGroup | `RequestGroup.extension:statusReason` | N | Aligned | free text in valueCodeableConcept.text |
-| 3.4 | Presented form (P) | Optional | 0..* | IEMpdElectronicPrescriptionGroup | `RequestGroup.extension:presentedForm` | N | Aligned | IEMpdPresentedForm (Attachment, contentType 1..1), e.g. a PDF |
+| 3.1 | Electronic prescription identifier (cluster) (P) | Mandatory | 1..* | IEMpdPrescriptionGroupHeader | `RequestGroup.identifier` | Y | Aligned | identifier 1..* MS on the prescription group (ADR-003); every item carries it as groupIdentifier (ie-bnd-rx-8; ie-bnd-rx-1) |
+| 3.1.1 | Electronic prescription identifier – type (P) | Mandatory | 1..1 | IEMpdPrescriptionGroupHeader | `RequestGroup.identifier.type` | Y | Aligned | type 1..1 MS; HIQA gives no value set, so none is bound (OI-104); examples use v2-0203 PLAC |
+| 3.1.2 | Electronic prescription identifier – value (P) | Mandatory | 1..1 | IEMpdPrescriptionGroupHeader | `RequestGroup.identifier.value` | Y | Aligned | value 1..1 MS |
+| 3.2 | Date and time of issuing the prescription (P) | Mandatory | 1..1 | IEMpdPrescriptionGroupHeader | `RequestGroup.authoredOn` | Y | Aligned | authoredOn 1..1 MS on the group; every item has the same authoredOn (ie-bnd-rx-9) |
+| 3.3 | Prescription Status (cluster) (P) | Mandatory | 1..1 | IEMpdPrescriptionGroupHeader | `RequestGroup.status` | Y | Aligned | prescription-level status on the group (ADR-003, replaces IE Core ADR-003 derivation); kept consistent with item statuses (ie-bnd-rx-10) |
+| 3.3.1 | Status (P) | Mandatory | 1..1 | IEMpdPrescriptionGroupHeader | `RequestGroup.status` | Y | Aligned | draft \| active \| on-hold \| revoked \| completed \| entered-in-error \| unknown |
+| 3.3.2 | Status reason (P) | Required | 0..1 | IEMpdPrescriptionGroupHeader | `RequestGroup.extension:statusReason` | Y | Aligned | IEMpdPrescriptionGroupStatusReason; required unless active, completed or draft (ie-grp-status-1) |
+| 3.3.3 | Status reason (free text) (P) | Optional | 0..1 | IEMpdPrescriptionGroupHeader | `RequestGroup.extension:statusReason` | N | Aligned | free text in valueCodeableConcept.text |
+| 3.4 | Presented form (P) | Optional | 0..* | IEMpdPrescriptionGroupHeader | `RequestGroup.extension:presentedForm` | N | Aligned | IEMpdPresentedForm (Attachment, contentType 1..1), e.g. a PDF |
 | 3.5 | Prescription item (cluster) (P) | Mandatory | 1..* | IEMpdMedicationRequestEPrescription | `MedicationRequest` | Y | Aligned |  |
 | 3.5.1 | Prescription item identifier (P) | Mandatory | 1..* | IEMpdMedicationRequestEPrescription | `MedicationRequest.identifier` | Y | Aligned |  |
 | 3.5.2 | Prescription item status (cluster) (P) | Mandatory | 1..1 | IEMpdMedicationRequestEPrescription | `MedicationRequest.status` | Y | Aligned |  |

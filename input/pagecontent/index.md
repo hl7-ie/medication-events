@@ -12,7 +12,7 @@ IE Medication Events (IE MPD) profiles the exchange of medication events in Irel
 
 | Event | Profile | Basis |
 |---|---|---|
-| Prescribing (ePrescription) | [MedicationRequest (ePrescription)](StructureDefinition-ie-mpd-medicationrequest-eprescription.html), grouped in an [ePrescription Bundle](StructureDefinition-ie-mpd-bundle-eprescription.html) | HIQA EP Sections 1–5; HL7 Europe MPD 1.0.0 |
+| Prescribing (ePrescription) | [MedicationRequest (ePrescription)](StructureDefinition-ie-mpd-medicationrequest-eprescription.html), grouped with their eDispensations and provenance in an [Electronic Prescription Group (ePG)](StructureDefinition-ie-mpd-electronic-prescription-group.html) | HIQA EP Sections 1–5; HL7 Europe MPD 1.0.0 |
 | Dispensing (eDispensation) | [MedicationDispense (eDispensation)](StructureDefinition-ie-mpd-medicationdispense-edispensation.html) | HIQA EP Section 6; HL7 Europe MPD 1.0.0 |
 | Administration | [MedicationAdministration](StructureDefinition-ie-mpd-medicationadministration.html) | IE MPD design (HIQA has no administration dataset); base FHIR R4 |
 | Medication statement | [MedicationStatement](StructureDefinition-ie-mpd-medicationstatement.html) | HIQA Patient Summary 6.3 (Medication summary); HL7 Europe Base 2.0.0 |
@@ -29,7 +29,7 @@ coded with the NMPC (SNOMED CT Irish Edition). The people and organisations are
 
 - [HIQA Alignment](hiqa-alignment.html): how the HIQA ePrescription and eDispensation standard maps to this IG.
 - [HIQA Traceability](hiqa-traceability.html): every HIQA data element, and where it is represented.
-- [Electronic Prescription Group](electronic-prescription-group.html): the prescription as a whole (HIQA EP Section 3), compared with NHS England EPS.
+- [Electronic Prescription Group](electronic-prescription-group.html): an ePG bundles a prescription's items with their eDispensations and provenance, plus a header with the prescription-level HIQA data; compared with NHS England EPS.
 - [Dosage](dosage.html): how to express dosage instructions, with worked examples (HIQA EP Section 5).
 - [Administration and Statements](administration-and-statements.html): the two event types beyond HIQA EP.
 - [Data Minimisation](data-minimisation.html): what an ePrescription must not carry.

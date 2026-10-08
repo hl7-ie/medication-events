@@ -1,6 +1,6 @@
 system,code,display_in_fsh,found_on_tx,tx_display,inactive,files
 http://loinc.org,29463-7,Body weight,yes,Body weight,False,IEMpdVitalSigns.fsh
-http://loinc.org,48765-2,Allergies and adverse reactions Document,yes,Allergies and adverse reactions Document,False,IEMpdBundleEPrescription.fsh
+http://loinc.org,48765-2,Allergies and adverse reactions Document,yes,Allergies and adverse reactions Document,False,IEMpdElectronicPrescriptionGroup.fsh
 http://loinc.org,76689-9,Sex assigned at birth,yes,Sex assigned at birth,False,ExampleRuleSets.fsh;IEMpdPatient.fsh
 http://loinc.org,8302-2,Body height,yes,Body height,False,IEMpdVitalSigns.fsh
 http://snomed.info/sct,11429006,Consultation,yes,Consultation,False,CrossBorderReferenceExamples.fsh
@@ -83,6 +83,7 @@ http://terminology.hl7.org/CodeSystem/medicationrequest-course-of-therapy,acute,
 http://terminology.hl7.org/CodeSystem/medicationrequest-course-of-therapy,continuous,Continuous long term therapy,yes,Continuous long term therapy,False,HIQAScenarios.fsh
 http://terminology.hl7.org/CodeSystem/medicationrequest-status-reason,altchoice,Try another treatment first,yes,Try another treatment first,False,PrescriptionGroupExamples.fsh
 http://terminology.hl7.org/CodeSystem/organization-type,prov,Healthcare Provider,yes,Healthcare Provider,False,CrossBorderReferenceExamples.fsh;HIQAScenarios.fsh
+http://terminology.hl7.org/CodeSystem/provenance-participant-type,performer,Performer,yes,Performer,False,HIQAScenarios.fsh
 http://terminology.hl7.org/CodeSystem/v2-0203,MD,Medical License number,yes,Medical License number,False,CrossBorderReferenceExamples.fsh;IEMpdPractitioner.fsh
 http://terminology.hl7.org/CodeSystem/v2-0203,NI,National unique individual identifier,yes,National unique individual identifier,False,CrossBorderReferenceExamples.fsh;HIQAScenarios.fsh;IEMpdPatient.fsh
 http://terminology.hl7.org/CodeSystem/v2-0203,PLAC,Placer Identifier,yes,Placer Identifier,False,PrescriptionGroupExamples.fsh
@@ -95,6 +96,7 @@ http://terminology.hl7.org/CodeSystem/v3-ActCode,FF,First Fill,yes,First Fill,Fa
 http://terminology.hl7.org/CodeSystem/v3-ActCode,FFC,First Fill - Complete,yes,First Fill - Complete,False,HIQAScenarios.fsh
 http://terminology.hl7.org/CodeSystem/v3-ActCode,FFP,First Fill - Part Fill,yes,First Fill - Part Fill,False,CrossBorderReferenceExamples.fsh;HIQAScenarios.fsh
 http://terminology.hl7.org/CodeSystem/v3-ActCode,RF,Refill,yes,Refill,False,CrossBorderReferenceExamples.fsh;HIQAScenarios.fsh
+http://terminology.hl7.org/CodeSystem/v3-DataOperation,CREATE,create,yes,create,False,HIQAScenarios.fsh
 http://terminology.hl7.org/CodeSystem/v3-ParticipationType,ATND,attender,yes,attender,False,CrossBorderReferenceExamples.fsh
 http://terminology.hl7.org/CodeSystem/v3-RoleCode,HOSP,Hospital,yes,Hospital,False,CrossBorderReferenceExamples.fsh
 http://terminology.hl7.org/CodeSystem/v3-substanceAdminSubstitution,G,Generic composition,yes,generic composition,False,CrossBorderReferenceExamples.fsh

@@ -27,8 +27,8 @@ IE = 'https://hl7-ie.github.io/medication-events/fhir'
 TERMS = re.compile(r'ethnic|racecode|maidenname|maiden.name|former.?surname|nationality|citizenship|religio|'
                    r'maritalstatus|marital.status|countryofaffiliation|country-of-affiliation', re.I)
 EP_FSH_TYPES = ('IEMpdPatientEPrescription', 'IEMpdMedicationRequestEPrescription',
-                'IEMpdMedicationDispenseEDispensation', 'IEMpdBundleEPrescription',
-                'IEMpdBundleEPrescriptionCrossBorder', 'IEMpdListAllergiesAtPrescribing')
+                'IEMpdMedicationDispenseEDispensation', 'IEMpdElectronicPrescriptionGroup',
+                'IEMpdElectronicPrescriptionGroupCrossBorder', 'IEMpdListAllergiesAtPrescribing')
 PS_MARKERS = ('60591-5', 'Composition', 'ClinicalDocument>', '<ClinicalDocument')
 
 

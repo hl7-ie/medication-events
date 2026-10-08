@@ -12,7 +12,7 @@ FHIR R4 4.0.1
 │                                    IEMpdPractitioner, IEMpdPractitionerRole, IEMpdOrganization, IEMpdLocation
 ├── FHIR R4 vital signs ──────────── IEMpdVitalSigns ── IEMpdBodyWeight, IEMpdBodyHeight
 └── FHIR R4 base ─────────────────── IEMpdMedicationAdministration (no European profile exists)
-                                     IEMpdBundleEPrescription ── IEMpdBundleEPrescriptionCrossBorder
+                                     IEMpdElectronicPrescriptionGroup ── IEMpdElectronicPrescriptionGroupCrossBorder
                                      IEMpdListAllergiesAtPrescribing, IEMpdAllergyIntolerance, IEMpdRelatedPerson
                                      IEMpdProvenance ── IEMpdProvenanceEPrescriptionSignature
 ```
