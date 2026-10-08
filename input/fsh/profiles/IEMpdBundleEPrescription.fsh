@@ -5,7 +5,7 @@ Profile: IEMpdBundleEPrescription
 Parent: Bundle
 Id: ie-mpd-bundle-eprescription
 Title: "IE MPD Bundle (ePrescription)"
-Description: "An Irish electronic prescription as exchanged: one patient (IEMpdPatientEPrescription), one or more prescription items (IEMpdMedicationRequestEPrescription) sharing a group identifier, the prescriber, the prescriber's facility, the medicinal products, and the allergy statement (IEMpdListAllergiesAtPrescribing). Prescription-level legal and safety rules (HIQA EP 1.4.2, 1.6.1, 2.10.1, 3.1) are enforced here because they span resources."
+Description: "An Irish electronic prescription as exchanged: one patient (IEMpdPatientEPrescription), the prescription as a whole (IEMpdElectronicPrescriptionGroup: identifier, date of issue, status, presented form), one or more prescription items (IEMpdMedicationRequestEPrescription) sharing a group identifier, the prescriber, the prescriber's facility, the medicinal products, and the allergy statement (IEMpdListAllergiesAtPrescribing). Prescription-level legal and safety rules (HIQA EP 1.4.2, 1.6.1, 2.9, 2.10.1, 3.1–3.5) are enforced here because they span resources."
 * ^status = #draft
 * identifier 1..1 MS
 * identifier ^comment = "Bundle identifier; typically the NePS electronic prescription (group) identifier (HIQA EP 3.1)."
@@ -19,6 +19,7 @@ Description: "An Irish electronic prescription as exchanged: one patient (IEMpdP
 * entry ^slicing.rules = #open
 * entry contains
     patient 1..1 MS and
+    prescriptionGroup 1..1 MS and
     prescriptionItem 1..* MS and
     allergyStatement 1..1 MS and
     allergy 0..* MS and
@@ -28,6 +29,8 @@ Description: "An Irish electronic prescription as exchanged: one patient (IEMpdP
     medication 0..* MS and
     signature 0..* MS
 * entry[patient].resource only IEMpdPatientEPrescription
+* entry[prescriptionGroup].resource only IEMpdElectronicPrescriptionGroup
+* entry[prescriptionGroup] ^comment = "HIQA EP Section 3: the prescription as a whole (identifier, date of issue, prescription status, presented form) and its items (ADR-003)."
 * entry[prescriptionItem].resource only IEMpdMedicationRequestEPrescription
 * entry[allergyStatement].resource only IEMpdListAllergiesAtPrescribing
 * entry[allergyStatement] ^comment = "HIQA EP 1.6.1 / 1.6.2: exactly one allergy statement per prescription, either listing the allergies or giving the reason none are recorded."
@@ -37,7 +40,7 @@ Description: "An Irish electronic prescription as exchanged: one patient (IEMpdP
 * entry[organization].resource only IEMpdOrganization
 * entry[medication].resource only IEMpdMedicationEPrescription
 * entry[signature].resource only IEMpdProvenanceEPrescriptionSignature
-* obeys ie-bnd-rx-1 and ie-bnd-rx-2 and ie-bnd-rx-3 and ie-bnd-rx-4 and ie-bnd-rx-5 and ie-bnd-rx-6
+* obeys ie-bnd-rx-1 and ie-bnd-rx-2 and ie-bnd-rx-3 and ie-bnd-rx-4 and ie-bnd-rx-5 and ie-bnd-rx-6 and ie-bnd-rx-7 and ie-bnd-rx-8 and ie-bnd-rx-9 and ie-bnd-rx-10 and ie-bnd-rx-11
 
 
 
@@ -86,8 +89,8 @@ Title: "IE MPD Provenance (ePrescription signature)"
 Description: "The prescriber's electronic signature over the prescription items (HIQA EP 2.13 Signature). A Provenance signature is used rather than Bundle.signature so that the signature survives storage in NePS and re-bundling for cross-border exchange (IE Core ADR-003). The signature format and eIDAS assurance level are Requires Clarification (IE Core OI-009)."
 * ^status = #draft
 * target 1..* MS
-* target only Reference(IEMpdMedicationRequestEPrescription)
-* target ^comment = "Every prescription item covered by the signature. Use version-specific references where the server supports them."
+* target only Reference(IEMpdMedicationRequestEPrescription or IEMpdElectronicPrescriptionGroup)
+* target ^comment = "Every prescription item covered by the signature, and optionally the prescription group (ADR-003). Use version-specific references where the server supports them."
 * recorded 1..1 MS
 * agent 1..1 MS
 * agent.who 1..1 MS
@@ -159,3 +162,32 @@ Invariant: ie-list-allergy-1
 Description: "The allergy statement SHALL either list allergies or give the reason none are recorded (HIQA EP 1.6.1 / 1.6.2)"
 Expression: "entry.exists() or emptyReason.exists()"
 Severity: #error
+
+
+// ── Prescription group (ADR-003; consistency rules informed by NHS EPS prescription-order) ──
+
+Invariant: ie-bnd-rx-7
+Description: "The prescription group SHALL list every prescription item in the Bundle as an action, and only those (HIQA EP 3.5)"
+Expression: "entry.where(resource is MedicationRequest).all((fullUrl in %resource.entry.resource.ofType(RequestGroup).action.resource.reference) or (('MedicationRequest/' + resource.id) in %resource.entry.resource.ofType(RequestGroup).action.resource.reference)) and entry.resource.ofType(RequestGroup).action.resource.reference.all(($this in %resource.entry.where(resource is MedicationRequest).fullUrl) or ($this.replace('MedicationRequest/', '') in %resource.entry.resource.ofType(MedicationRequest).id))"
+Severity: #error
+
+Invariant: ie-bnd-rx-8
+Description: "Every prescription item SHALL carry one of the prescription group's identifiers as its group identifier (HIQA EP 3.1)"
+Expression: "entry.resource.ofType(MedicationRequest).all((groupIdentifier.system + '|' + groupIdentifier.value) in %resource.entry.resource.ofType(RequestGroup).identifier.select(system + '|' + value))"
+Severity: #error
+
+Invariant: ie-bnd-rx-9
+Description: "Every prescription item SHALL have the prescription group's patient, prescriber and date of issue (HIQA EP 3.2; compare NHS EPS prescription-order)"
+Expression: "entry.resource.ofType(MedicationRequest).all(subject.reference = %resource.entry.resource.ofType(RequestGroup).first().subject.reference and requester.reference = %resource.entry.resource.ofType(RequestGroup).first().author.reference and authoredOn = %resource.entry.resource.ofType(RequestGroup).first().authoredOn)"
+Severity: #error
+
+Invariant: ie-bnd-rx-10
+Description: "The prescription status SHOULD agree with the item statuses: an active prescription has an active item; a revoked (cancelled) prescription has only cancelled or stopped items; a completed prescription has no active, on-hold or draft item (HIQA EP 3.3)"
+Expression: "entry.resource.ofType(RequestGroup).all((status = 'active' implies %resource.entry.resource.ofType(MedicationRequest).where(status = 'active').exists()) and (status = 'revoked' implies %resource.entry.resource.ofType(MedicationRequest).all(status = 'cancelled' or status = 'stopped')) and (status = 'completed' implies %resource.entry.resource.ofType(MedicationRequest).all(status = 'completed' or status = 'stopped' or status = 'cancelled')))"
+Severity: #warning
+
+Invariant: ie-bnd-rx-11
+Description: "The prescriber's healthcare facility (the organisation of the prescriber's role) SHALL have an address with address line, county, postcode and country (HIQA EP 2.9, 2.9.1, 2.9.2, 2.9.4, 2.9.5, Mandatory)"
+Expression: "entry.resource.ofType(MedicationRequest).all(requester.resolve().ofType(PractitionerRole).organization.resolve().address.where(line.exists() and state.exists() and postalCode.exists() and country.exists()).exists())"
+Severity: #error
+

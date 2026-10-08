@@ -67,6 +67,10 @@ pages:
     title: HIQA Traceability
   data-minimisation.md:
     title: Data Minimisation
+  electronic-prescription-group.md:
+    title: Electronic Prescription Group
+  dosage.md:
+    title: Dosage
   administration-and-statements.md:
     title: Administration and Statements
   terminology.md:
@@ -96,6 +100,8 @@ menu:
     Data Minimisation: data-minimisation.html
     Open Issues: open-issues.html
   Guidance:
+    Electronic Prescription Group: electronic-prescription-group.html
+    Dosage: dosage.html
     Administration and Statements: administration-and-statements.html
     Terminology: terminology.html
     Simplifier Publishing: simplifier-publishing.html

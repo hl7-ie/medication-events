@@ -327,6 +327,7 @@ Description: "CRITICAL ALLERGY: Seán Murphy has a documented severe anaphylacti
 * patient = Reference(ie-mpd-patient-sean-murphy) "Seán Murphy"
 * onsetDateTime = "1995-01-01"
 * recordedDate = "2010-06-01"
+* recorder = Reference(ie-mpd-practitioner-aoife-obrien)
 
 * reaction[0].substance = $SCT#372687004 "Amoxicillin"
 * reaction[=].manifestation = $SCT#39579001 "Anaphylaxis"
@@ -429,12 +430,12 @@ Description: "Lisinopril 10mg tablets, ACE inhibitor for hypertension. The NMPC 
 * code.coding[=].display = "Lisinopril"
 * code.text = "Lisinopril 10mg tablets"
 * form = $SCT#385055001 "Tablet"
-* amount.numerator = 28 '{tablet}' "tablets"
+* amount.numerator = 28 $SCT#732936001 "Tablet"
 * amount.denominator = 1 '{pack}' "pack"
 * ingredient[0].itemCodeableConcept = $SCT#386873009 "Lisinopril"
 * ingredient[=].isActive = true
 * ingredient[=].strength.numerator = 10 'mg' "mg"
-* ingredient[=].strength.denominator = 1 '{tablet}' "tablet"
+* ingredient[=].strength.denominator = 1 $SCT#732936001 "Tablet"
 
 
 
@@ -456,12 +457,12 @@ Description: "Warfarin sodium 5mg tablets, anticoagulant. The NMPC VMP code (SNO
 * code.coding[=].display = "Warfarin"
 * code.text = "Warfarin 5mg tablets"
 * form = $SCT#385055001 "Tablet"
-* amount.numerator = 28 '{tablet}' "tablets"
+* amount.numerator = 28 $SCT#732936001 "Tablet"
 * amount.denominator = 1 '{pack}' "pack"
 * ingredient[0].itemCodeableConcept = $SCT#372756006 "Warfarin"
 * ingredient[=].isActive = true
 * ingredient[=].strength.numerator = 5 'mg' "mg"
-* ingredient[=].strength.denominator = 1 '{tablet}' "tablet"
+* ingredient[=].strength.denominator = 1 $SCT#732936001 "Tablet"
 
 
 
@@ -537,12 +538,12 @@ Description: "Sertraline hydrochloride 50mg tablets, SSRI antidepressant. The NM
 * code.coding[=].display = "Sertraline"
 * code.text = "Sertraline 50mg tablets"
 * form = $SCT#385055001 "Tablet"
-* amount.numerator = 28 '{tablet}' "tablets"
+* amount.numerator = 28 $SCT#732936001 "Tablet"
 * amount.denominator = 1 '{pack}' "pack"
 * ingredient[0].itemCodeableConcept = $SCT#372594008 "Sertraline"
 * ingredient[=].isActive = true
 * ingredient[=].strength.numerator = 50 'mg' "mg"
-* ingredient[=].strength.denominator = 1 '{tablet}' "tablet"
+* ingredient[=].strength.denominator = 1 $SCT#732936001 "Tablet"
 
 
 
@@ -564,12 +565,12 @@ Description: "Omeprazole 20mg gastro-resistant capsules, proton pump inhibitor. 
 * code.coding[=].display = "Omeprazole"
 * code.text = "Omeprazole 20mg gastro-resistant capsules"
 * form = $SCT#385049006 "Capsule"
-* amount.numerator = 28 '{capsule}' "capsules"
+* amount.numerator = 28 $SCT#732937005 "Capsule"
 * amount.denominator = 1 '{pack}' "pack"
 * ingredient[0].itemCodeableConcept = $SCT#387137007 "Omeprazole"
 * ingredient[=].isActive = true
 * ingredient[=].strength.numerator = 20 'mg' "mg"
-* ingredient[=].strength.denominator = 1 '{capsule}' "capsule"
+* ingredient[=].strength.denominator = 1 $SCT#732937005 "Capsule"
 
 
 
@@ -591,12 +592,12 @@ Description: "Atorvastatin 80mg film-coated tablets (high-intensity statin). The
 * code.coding[=].display = "Atorvastatin"
 * code.text = "Atorvastatin 80mg tablets"
 * form = $SCT#385055001 "Tablet"
-* amount.numerator = 28 '{tablet}' "tablets"
+* amount.numerator = 28 $SCT#732936001 "Tablet"
 * amount.denominator = 1 '{pack}' "pack"
 * ingredient[0].itemCodeableConcept = $SCT#373444002 "Atorvastatin"
 * ingredient[=].isActive = true
 * ingredient[=].strength.numerator = 80 'mg' "mg"
-* ingredient[=].strength.denominator = 1 '{tablet}' "tablet"
+* ingredient[=].strength.denominator = 1 $SCT#732936001 "Tablet"
 
 
 
@@ -618,12 +619,12 @@ Description: "Ramipril 10mg capsules, ACE inhibitor. The NMPC VMP code (SNOMED C
 * code.coding[=].display = "Ramipril"
 * code.text = "Ramipril 10mg capsules"
 * form = $SCT#385049006 "Capsule"
-* amount.numerator = 28 '{capsule}' "capsules"
+* amount.numerator = 28 $SCT#732937005 "Capsule"
 * amount.denominator = 1 '{pack}' "pack"
 * ingredient[0].itemCodeableConcept = $SCT#386872004 "Ramipril"
 * ingredient[=].isActive = true
 * ingredient[=].strength.numerator = 10 'mg' "mg"
-* ingredient[=].strength.denominator = 1 '{capsule}' "capsule"
+* ingredient[=].strength.denominator = 1 $SCT#732937005 "Capsule"
 
 
 
@@ -692,7 +693,7 @@ Description: "Irish ePrescription for Metformin 500mg for Seán Murphy, transmit
 * dispenseRequest.validityPeriod.start = "2025-01-15"
 * dispenseRequest.validityPeriod.end = "2025-04-15"
 * dispenseRequest.numberOfRepeatsAllowed = 0
-* dispenseRequest.quantity = 60 '{tablet}' "tablets"
+* dispenseRequest.quantity = 60 $SCT#732936001 "Tablet"
 * dispenseRequest.expectedSupplyDuration = 30 'd' "days"
 
 * substitution.allowedBoolean = true
@@ -738,7 +739,7 @@ Description: "Irish ePrescription for Lisinopril 10mg for Seán Murphy, transmit
 * dispenseRequest.validityPeriod.start = "2025-01-15"
 * dispenseRequest.validityPeriod.end = "2025-04-15"
 * dispenseRequest.numberOfRepeatsAllowed = 0
-* dispenseRequest.quantity = 28 '{tablet}' "tablets"
+* dispenseRequest.quantity = 28 $SCT#732936001 "Tablet"
 * dispenseRequest.expectedSupplyDuration = 28 'd' "days"
 
 * substitution.allowedBoolean = true
@@ -764,7 +765,7 @@ Description: "German pharmacy dispensation of Metformin 500mg Filmtabletten (Rat
 * authorizingPrescription = Reference(ie-rx-sean-de-metformin) "PCRS-RX-2025-IE-DE-001"
 
 * type = http://terminology.hl7.org/CodeSystem/v3-ActCode#DF "Daily Fill"
-* quantity = 60 '{tablet}' "tablets"
+* quantity = 60 $SCT#732936001 "Tablet"
 * daysSupply = 30 'd' "days"
 * whenPrepared = "2025-01-20T10:00:00+01:00"
 * whenHandedOver = "2025-01-20T10:15:00+01:00"
@@ -796,7 +797,7 @@ Description: "German pharmacy dispensation of Lisinopril 10mg Tabletten (Hexal, 
 * authorizingPrescription = Reference(ie-rx-sean-de-lisinopril) "PCRS-RX-2025-IE-DE-002"
 
 * type = http://terminology.hl7.org/CodeSystem/v3-ActCode#DF "Daily Fill"
-* quantity = 28 '{tablet}' "tablets"
+* quantity = 28 $SCT#732936001 "Tablet"
 * daysSupply = 28 'd' "days"
 * whenPrepared = "2025-01-20T10:00:00+01:00"
 * whenHandedOver = "2025-01-20T10:15:00+01:00"
@@ -857,7 +858,7 @@ Description: "Irish ePrescription for Metformin 500mg for Seán Murphy, transmit
 * dispenseRequest.validityPeriod.start = "2025-06-10"
 * dispenseRequest.validityPeriod.end = "2025-09-10"
 * dispenseRequest.numberOfRepeatsAllowed = 0
-* dispenseRequest.quantity = 60 '{tablet}' "tablets"
+* dispenseRequest.quantity = 60 $SCT#732936001 "Tablet"
 * substitution.allowedBoolean = true
 
 
@@ -879,7 +880,7 @@ Description: "Latvian pharmacy dispensation of Metformins 500mg tabletes (ZRA co
 * performer[0].actor = Reference(ie-org-lv-mes-aptieka) "Mēs atdot Aptieka"
 * authorizingPrescription = Reference(ie-rx-sean-lv-metformin) "PCRS-RX-2025-IE-LV-001"
 * type = http://terminology.hl7.org/CodeSystem/v3-ActCode#DF "Daily Fill"
-* quantity = 60 '{tablet}' "tablets"
+* quantity = 60 $SCT#732936001 "Tablet"
 * daysSupply = 30 'd' "days"
 * whenHandedOver = "2025-06-15T11:00:00+03:00"
 * dosageInstruction[0].text = "Lietot vienu 500mg tableti divas reizes dienā ēdienreizēs (Take one 500mg tablet twice daily with meals)"
@@ -939,7 +940,7 @@ Description: "Irish ePrescription for Sertraline 50mg for Seán Murphy, transmit
 * dosageInstruction[=].route = $SCT#26643006 "Oral route"
 * dispenseRequest.validityPeriod.start = "2025-06-15"
 * dispenseRequest.validityPeriod.end = "2025-09-15"
-* dispenseRequest.quantity = 28 '{tablet}' "tablets"
+* dispenseRequest.quantity = 28 $SCT#732936001 "Tablet"
 * substitution.allowedBoolean = false
 
 
@@ -960,7 +961,7 @@ Description: "Portuguese pharmacy dispensation of Sertralina 50mg Comprimidos (I
 * performer[0].actor = Reference(ie-org-pt-farmacia-central-lisbon) "Farmácia Central"
 * authorizingPrescription = Reference(ie-rx-sean-pt-sertraline) "PCRS-RX-2025-IE-PT-001"
 * type = http://terminology.hl7.org/CodeSystem/v3-ActCode#DF "Daily Fill"
-* quantity = 28 '{tablet}' "tablets"
+* quantity = 28 $SCT#732936001 "Tablet"
 * daysSupply = 28 'd' "days"
 * whenHandedOver = "2025-06-20T10:30:00+01:00"
 * dosageInstruction[0].text = "Tomar um comprimido de 50mg uma vez ao dia de manhã (Take one 50mg tablet once daily in the morning)"
@@ -1018,7 +1019,7 @@ Description: "Irish ePrescription for Warfarin 5mg for Seán Murphy, transmitted
 
 * dispenseRequest.validityPeriod.start = "2025-06-25"
 * dispenseRequest.validityPeriod.end = "2025-09-25"
-* dispenseRequest.quantity = 28 '{tablet}' "tablets"
+* dispenseRequest.quantity = 28 $SCT#732936001 "Tablet"
 * substitution.allowedBoolean = false
 
 
@@ -1132,7 +1133,7 @@ Description: "Irish ePrescription for Atorvastatin 80mg for Seán Murphy, transm
 * dosageInstruction[=].route = $SCT#26643006 "Oral route"
 * dispenseRequest.validityPeriod.start = "2025-07-10"
 * dispenseRequest.validityPeriod.end = "2025-10-10"
-* dispenseRequest.quantity = 28 '{tablet}' "tablets"
+* dispenseRequest.quantity = 28 $SCT#732936001 "Tablet"
 * substitution.allowedBoolean = true
 
 
@@ -1212,7 +1213,7 @@ Description: "Finnish ePrescription for Metformin 500mg for Mikko Korhonen, rece
 * dosageInstruction[=].doseAndRate[0].doseQuantity = 500 'mg' "mg"
 * dispenseRequest.validityPeriod.start = "2025-07-20"
 * dispenseRequest.validityPeriod.end = "2025-10-20"
-* dispenseRequest.quantity = 60 '{tablet}' "tablets"
+* dispenseRequest.quantity = 60 $SCT#732936001 "Tablet"
 * substitution.allowedBoolean = true
 
 
@@ -1237,7 +1238,7 @@ Description: "Hickey's Pharmacy, Dublin dispenses Metformin 500mg for Finnish pa
 * authorizingPrescription = Reference(ie-rx-fi-metformin-neps) "FI-RX-2025-NEPS-001"
 
 * type = http://terminology.hl7.org/CodeSystem/v3-ActCode#DF "Daily Fill"
-* quantity = 60 '{tablet}' "tablets"
+* quantity = 60 $SCT#732936001 "Tablet"
 * daysSupply = 30 'd' "days"
 * whenHandedOver = "2025-08-01T14:00:00+01:00"
 * dosageInstruction[0].text = "Take one 500mg tablet twice daily with meals"
@@ -1321,7 +1322,7 @@ Description: "Belgian ePrescription for Atorvastatin 40mg for Lars Janssen, rece
 * dosageInstruction[=].doseAndRate[0].doseQuantity = 40 'mg' "mg"
 * dispenseRequest.validityPeriod.start = "2025-07-25"
 * dispenseRequest.validityPeriod.end = "2025-10-25"
-* dispenseRequest.quantity = 28 '{tablet}' "tablets"
+* dispenseRequest.quantity = 28 $SCT#732936001 "Tablet"
 * substitution.allowedBoolean = true
 
 
@@ -1346,7 +1347,7 @@ Description: "McCauley's Pharmacy, Dublin dispenses Atorvastatin 40mg for Belgia
 * authorizingPrescription = Reference(ie-rx-be-atorvastatin-neps) "BE-RX-2025-NEPS-001"
 
 * type = http://terminology.hl7.org/CodeSystem/v3-ActCode#DF "Daily Fill"
-* quantity = 28 '{tablet}' "tablets"
+* quantity = 28 $SCT#732936001 "Tablet"
 * daysSupply = 28 'd' "days"
 * whenHandedOver = "2025-08-05T11:30:00+01:00"
 * dosageInstruction[0].text = "Take one 40mg tablet once daily at night"
@@ -1444,7 +1445,7 @@ Description: "The product prescribed in ie-rx-be-atorvastatin-neps. The NMPC cod
 * ingredient[0].itemCodeableConcept = $SCT#373444002 "Atorvastatin"
 * ingredient[=].isActive = true
 * ingredient[=].strength.numerator = 40 'mg' "mg"
-* ingredient[=].strength.denominator = 1 '{tablet}' "tablet"
+* ingredient[=].strength.denominator = 1 $SCT#732936001 "Tablet"
 
 // ═══ from IE Core examples/MedicationExamples.fsh ═══
 
@@ -1461,12 +1462,12 @@ Description: "Ramipril 5mg capsules (generic), coded with the NMPC VMP (SNOMED C
 * code.coding[+] = $SCT#386872004 "Ramipril"
 * code.text = "Ramipril 5mg capsules"
 * form = $SCT#385049006 "Capsule"
-* amount.numerator = 28 '{capsule}' "capsules"
+* amount.numerator = 28 $SCT#732937005 "Capsule"
 * amount.denominator = 1 '{pack}' "pack"
 * ingredient[0].itemCodeableConcept = $SCT#386872004 "Ramipril"
 * ingredient[=].isActive = true
 * ingredient[=].strength.numerator = 5 'mg' "mg"
-* ingredient[=].strength.denominator = 1 '{capsule}' "capsule"
+* ingredient[=].strength.denominator = 1 $SCT#732937005 "Capsule"
 
 
 
@@ -1481,12 +1482,12 @@ Description: "Amlodipine 5mg tablets (generic), coded with the NMPC VMP (SNOMED 
 * code.coding[+] = $SCT#386864001 "Amlodipine"
 * code.text = "Amlodipine 5mg tablets"
 * form = $SCT#385055001 "Tablet"
-* amount.numerator = 30 '{tablet}' "tablets"
+* amount.numerator = 30 $SCT#732936001 "Tablet"
 * amount.denominator = 1 '{pack}' "pack"
 * ingredient[0].itemCodeableConcept = $SCT#386864001 "Amlodipine"
 * ingredient[=].isActive = true
 * ingredient[=].strength.numerator = 5 'mg' "mg"
-* ingredient[=].strength.denominator = 1 '{tablet}' "tablet"
+* ingredient[=].strength.denominator = 1 $SCT#732936001 "Tablet"
 
 
 
@@ -1750,7 +1751,7 @@ Description: "A standard Irish GP prescription for Metformin 500mg tablets. Auth
 * dispenseRequest.validityPeriod.start = "2024-06-15"
 * dispenseRequest.validityPeriod.end = "2024-07-15"
 * dispenseRequest.numberOfRepeatsAllowed = 0
-* dispenseRequest.quantity = 60 '{tablet}' "tablets"
+* dispenseRequest.quantity = 60 $SCT#732936001 "Tablet"
 * dispenseRequest.expectedSupplyDuration = 30 'd' "days"
 
 * substitution.allowedBoolean = true
@@ -1778,7 +1779,7 @@ Description: "Full dispensation of 60 Metformin 500mg tablets against Scenario 1
 * authorizingPrescription = Reference(ie-prescription-scenario1-full) "PCRS-RX-2024-001001"
 
 * type = http://terminology.hl7.org/CodeSystem/v3-ActCode#DF "Daily Fill"
-* quantity = 60 '{tablet}' "tablets"
+* quantity = 60 $SCT#732936001 "Tablet"
 * daysSupply = 30 'd' "days"
 
 * whenPrepared = "2024-06-15T14:00:00+01:00"
@@ -1833,7 +1834,7 @@ Description: "An Irish GP prescription for Atorvastatin 20mg tablets (90 days su
 * dispenseRequest.validityPeriod.start = "2024-06-15"
 * dispenseRequest.validityPeriod.end = "2024-09-15"
 * dispenseRequest.numberOfRepeatsAllowed = 2
-* dispenseRequest.quantity = 90 '{tablet}' "tablets"
+* dispenseRequest.quantity = 90 $SCT#732936001 "Tablet"
 * dispenseRequest.expectedSupplyDuration = 90 'd' "days"
 
 * substitution.allowedBoolean = true
@@ -1859,7 +1860,7 @@ Description: "First partial dispensation of 30 Atorvastatin 20mg tablets (of 90 
 * authorizingPrescription = Reference(ie-prescription-scenario2-partial) "PCRS-RX-2024-002001"
 
 * type = http://terminology.hl7.org/CodeSystem/v3-ActCode#FFP "First Fill - Part Fill"
-* quantity = 30 '{tablet}' "tablets"
+* quantity = 30 $SCT#732936001 "Tablet"
 * daysSupply = 30 'd' "days"
 
 * whenPrepared = "2024-06-15T14:30:00+01:00"
@@ -1889,7 +1890,7 @@ Description: "Second partial dispensation of 30 Atorvastatin 20mg tablets on 15 
 * authorizingPrescription = Reference(ie-prescription-scenario2-partial) "PCRS-RX-2024-002001"
 
 * type = http://terminology.hl7.org/CodeSystem/v3-ActCode#FFP "First Fill - Part Fill"
-* quantity = 30 '{tablet}' "tablets"
+* quantity = 30 $SCT#732936001 "Tablet"
 * daysSupply = 30 'd' "days"
 
 * whenPrepared = "2024-07-15T10:00:00+01:00"
@@ -1919,7 +1920,7 @@ Description: "Third and final partial dispensation of 30 Atorvastatin 20mg table
 * authorizingPrescription = Reference(ie-prescription-scenario2-partial) "PCRS-RX-2024-002001"
 
 * type = http://terminology.hl7.org/CodeSystem/v3-ActCode#FFP "First Fill - Part Fill"
-* quantity = 30 '{tablet}' "tablets"
+* quantity = 30 $SCT#732936001 "Tablet"
 * daysSupply = 30 'd' "days"
 
 * whenPrepared = "2024-08-15T11:00:00+01:00"
@@ -1969,7 +1970,7 @@ Description: "First of three prescriptions in a multi-prescription bundle for Jo
 * dispenseRequest.validityPeriod.start = "2024-06-20"
 * dispenseRequest.validityPeriod.end = "2024-07-20"
 * dispenseRequest.numberOfRepeatsAllowed = 5
-* dispenseRequest.quantity = 60 '{tablet}' "tablets"
+* dispenseRequest.quantity = 60 $SCT#732936001 "Tablet"
 * dispenseRequest.expectedSupplyDuration = 30 'd' "days"
 
 * substitution.allowedBoolean = true
@@ -2010,7 +2011,7 @@ Description: "Second of three prescriptions in a multi-prescription bundle for J
 * dispenseRequest.validityPeriod.start = "2024-06-20"
 * dispenseRequest.validityPeriod.end = "2024-09-20"
 * dispenseRequest.numberOfRepeatsAllowed = 2
-* dispenseRequest.quantity = 30 '{tablet}' "tablets"
+* dispenseRequest.quantity = 30 $SCT#732936001 "Tablet"
 * dispenseRequest.expectedSupplyDuration = 30 'd' "days"
 
 * substitution.allowedBoolean = true
@@ -2052,7 +2053,7 @@ Description: "Third of three prescriptions in a multi-prescription bundle for Jo
 * dispenseRequest.validityPeriod.start = "2024-06-20"
 * dispenseRequest.validityPeriod.end = "2024-07-20"
 * dispenseRequest.numberOfRepeatsAllowed = 5
-* dispenseRequest.quantity = 28 '{capsule}' "capsules"
+* dispenseRequest.quantity = 28 $SCT#732937005 "Capsule"
 * dispenseRequest.expectedSupplyDuration = 28 'd' "days"
 
 * substitution.allowedBoolean = true
@@ -2075,7 +2076,7 @@ Description: "Full dispensation of Metformin 60 tablets from the multi-prescript
 * performer[0].actor = Reference(ie-mpd-practitioner-pharmacist-example) "Niamh Brennan"
 * authorizingPrescription = Reference(ie-prescription-scenario3-multi-metformin)
 * type = http://terminology.hl7.org/CodeSystem/v3-ActCode#DF "Daily Fill"
-* quantity = 60 '{tablet}' "tablets"
+* quantity = 60 $SCT#732936001 "Tablet"
 * daysSupply = 30 'd' "days"
 * whenPrepared = "2024-06-20T16:00:00+01:00"
 * whenHandedOver = "2024-06-20T16:15:00+01:00"
@@ -2100,7 +2101,7 @@ Description: "Full dispensation of Atorvastatin 30 tablets from the multi-prescr
 * performer[0].actor = Reference(ie-mpd-practitioner-pharmacist-example) "Niamh Brennan"
 * authorizingPrescription = Reference(ie-prescription-scenario3-multi-atorvastatin)
 * type = http://terminology.hl7.org/CodeSystem/v3-ActCode#DF "Daily Fill"
-* quantity = 30 '{tablet}' "tablets"
+* quantity = 30 $SCT#732936001 "Tablet"
 * daysSupply = 30 'd' "days"
 * whenPrepared = "2024-06-20T16:00:00+01:00"
 * whenHandedOver = "2024-06-20T16:15:00+01:00"
@@ -2125,7 +2126,7 @@ Description: "Full dispensation of Ramipril 28 capsules from the multi-prescript
 * performer[0].actor = Reference(ie-mpd-practitioner-pharmacist-example) "Niamh Brennan"
 * authorizingPrescription = Reference(ie-prescription-scenario3-multi-ramipril)
 * type = http://terminology.hl7.org/CodeSystem/v3-ActCode#DF "Daily Fill"
-* quantity = 28 '{capsule}' "capsules"
+* quantity = 28 $SCT#732937005 "Capsule"
 * daysSupply = 28 'd' "days"
 * whenPrepared = "2024-06-20T16:00:00+01:00"
 * whenHandedOver = "2024-06-20T16:15:00+01:00"
@@ -2215,7 +2216,7 @@ Description: "An Irish ePrescription for Amlodipine 5mg (chronic hypertension, r
 * dispenseRequest.validityPeriod.start = "2024-07-10"
 * dispenseRequest.validityPeriod.end = "2024-10-10"
 * dispenseRequest.numberOfRepeatsAllowed = 2
-* dispenseRequest.quantity = 30 '{tablet}' "tablets"
+* dispenseRequest.quantity = 30 $SCT#732936001 "Tablet"
 * dispenseRequest.expectedSupplyDuration = 30 'd' "days"
 
 * substitution.allowedBoolean = true
@@ -2243,7 +2244,7 @@ Description: "A Spanish pharmacy dispenses Amlodipine 5mg (30 tablets) against t
 * authorizingPrescription = Reference(ie-prescription-scenario4-ie-to-es) "PCRS-RX-2024-004001"
 
 * type = http://terminology.hl7.org/CodeSystem/v3-ActCode#DF "Daily Fill"
-* quantity = 30 '{tablet}' "tablets"
+* quantity = 30 $SCT#732936001 "Tablet"
 * daysSupply = 30 'd' "days"
 
 * whenPrepared = "2024-07-28T11:30:00+02:00"
@@ -2298,7 +2299,7 @@ Description: "A Spanish ePrescription for Amlodipine 5mg issued by a Spanish GP 
 * dispenseRequest.validityPeriod.start = "2024-08-01"
 * dispenseRequest.validityPeriod.end = "2024-11-01"
 * dispenseRequest.numberOfRepeatsAllowed = 2
-* dispenseRequest.quantity = 30 '{tablet}' "tablets"
+* dispenseRequest.quantity = 30 $SCT#732936001 "Tablet"
 * dispenseRequest.expectedSupplyDuration = 30 'd' "days"
 
 * substitution.allowedBoolean = true
@@ -2325,7 +2326,7 @@ Description: "An Irish pharmacy (Boots, Grafton St.) dispenses Amlodipine 5mg ta
 * authorizingPrescription = Reference(ie-prescription-scenario5-es-to-ie) "ES-RX-2024-28-987654321"
 
 * type = http://terminology.hl7.org/CodeSystem/v3-ActCode#DF "Daily Fill"
-* quantity = 30 '{tablet}' "tablets"
+* quantity = 30 $SCT#732936001 "Tablet"
 * daysSupply = 30 'd' "days"
 
 * whenPrepared = "2024-08-12T14:00:00+01:00"
@@ -2377,7 +2378,7 @@ Description: "A GMS repeat prescription for Metformin 500mg tablets, valid for 6
 * dispenseRequest.validityPeriod.start = "2024-01-10"
 * dispenseRequest.validityPeriod.end = "2024-07-10"
 * dispenseRequest.numberOfRepeatsAllowed = 5
-* dispenseRequest.quantity = 60 '{tablet}' "tablets"
+* dispenseRequest.quantity = 60 $SCT#732936001 "Tablet"
 * dispenseRequest.expectedSupplyDuration = 30 'd' "days"
 
 * substitution.allowedBoolean = true
@@ -2399,7 +2400,7 @@ Description: "First monthly dispensation of Metformin under the 6-month GMS repe
 * performer[0].actor = Reference(ie-mpd-practitioner-pharmacist-example) "Niamh Brennan"
 * authorizingPrescription = Reference(ie-prescription-scenario6-repeat)
 * type = http://terminology.hl7.org/CodeSystem/v3-ActCode#FF "First Fill"
-* quantity = 60 '{tablet}' "tablets"
+* quantity = 60 $SCT#732936001 "Tablet"
 * daysSupply = 30 'd' "days"
 * whenHandedOver = "2024-01-10T10:00:00+00:00"
 * dosageInstruction[0].text = "Take one 500mg tablet twice daily with meals"
@@ -2422,7 +2423,7 @@ Description: "Second monthly dispensation of Metformin under the 6-month GMS rep
 * performer[0].actor = Reference(ie-mpd-practitioner-pharmacist-example) "Niamh Brennan"
 * authorizingPrescription = Reference(ie-prescription-scenario6-repeat)
 * type = http://terminology.hl7.org/CodeSystem/v3-ActCode#RF "Refill"
-* quantity = 60 '{tablet}' "tablets"
+* quantity = 60 $SCT#732936001 "Tablet"
 * daysSupply = 30 'd' "days"
 * whenHandedOver = "2024-02-10T10:30:00+00:00"
 * dosageInstruction[0].text = "Take one 500mg tablet twice daily with meals"
@@ -2445,7 +2446,7 @@ Description: "Third monthly dispensation of Metformin under the 6-month GMS repe
 * performer[0].actor = Reference(ie-mpd-practitioner-pharmacist-example) "Niamh Brennan"
 * authorizingPrescription = Reference(ie-prescription-scenario6-repeat)
 * type = http://terminology.hl7.org/CodeSystem/v3-ActCode#RF "Refill"
-* quantity = 60 '{tablet}' "tablets"
+* quantity = 60 $SCT#732936001 "Tablet"
 * daysSupply = 30 'd' "days"
 * whenHandedOver = "2024-03-10T09:15:00+00:00"
 * dosageInstruction[0].text = "Take one 500mg tablet twice daily with meals"

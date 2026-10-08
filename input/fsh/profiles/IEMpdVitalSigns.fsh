@@ -27,6 +27,8 @@ Id: ie-mpd-body-height
 Title: "IE MPD Body Height"
 Description: "Records body height/length observations in the Irish healthcare context. Accepted UCUM units: [in_i] (inches) or cm (centimetres)."
 * ^status = #draft
+* performer 1..* MS
+* performer ^comment = "HIQA EP 1.6.4.3.2 Record entry author (Mandatory within the provenance cluster, which is always present because the record entry date, effective[x], is required)."
 * code = $LOINC#8302-2 "Body height"
 * value[x] only Quantity
 * valueQuantity MS
@@ -46,6 +48,8 @@ Id: ie-mpd-body-weight
 Title: "IE MPD Body Weight"
 Description: "Records body weight observations in the Irish healthcare context. Accepted UCUM units: [lb_av] (pounds) or kg (kilograms)."
 * ^status = #draft
+* performer 1..* MS
+* performer ^comment = "HIQA EP 1.6.3.3.2 Record entry author (Mandatory within the provenance cluster, which is always present because the record entry date, effective[x], is required)."
 * code = $LOINC#29463-7 "Body weight"
 * value[x] only Quantity
 * valueQuantity MS

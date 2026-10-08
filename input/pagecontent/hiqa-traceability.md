@@ -24,9 +24,9 @@ Logical model: [HIQA ePrescription/eDispensation](StructureDefinition-HIQAEPresc
 
 | Conformance | Aligned | Partial | Gap | Prohibited (violated) | Prohibited (enforced) | N/A |
 |---|---|---|---|---|---|---|
-| Mandatory | 39 | 14 | 1 | 0 | 0 | 0 |
-| Required | 63 | 10 | 0 | 0 | 0 | 0 |
-| Optional | 104 | 1 | 10 | 0 | 0 | 0 |
+| Mandatory | 45 | 9 | 0 | 0 | 0 | 0 |
+| Required | 64 | 9 | 0 | 0 | 0 | 0 |
+| Optional | 114 | 0 | 1 | 0 | 0 | 0 |
 | Not in dataset | 0 | 0 | 0 | 0 | 12 | 0 |
 
 ### Mandatory elements not yet aligned
@@ -34,20 +34,14 @@ Logical model: [HIQA ePrescription/eDispensation](StructureDefinition-HIQAEPresc
 | Std | HIQA ID | Element | Status | Notes |
 |---|---|---|---|---|
 | EP | 1.2.6 | Address type | Partial | use 1..1 MS; no HL7 code for homelessness (Requires Clarification) |
-| EP | 1.6.2.4.2 | Record entry author | Partial | Mandatory within the cluster; not MS |
-| EP | 1.6.2.4.3 | Record entry date | Partial | Mandatory within the cluster; not MS |
-| EP | 1.6.3.3.2 | Record entry author | Partial | Mandatory within the cluster; not MS |
-| EP | 1.6.4.3.2 | Record entry author | Partial | Mandatory within the cluster; not MS |
+| EP | 1.6.2.4.3 | Record entry date | Partial | Mandatory within the optional provenance cluster (OI-006 reading): MS, and required together with the recorder by invariant ie-allergy-2 |
 | EP | 2.6 | Health practitioner registration (cluster) | Partial | identifier 1..*; registration slices IMC, PSI, NMBI, DentalCouncil are each 0..1, so no registration number is required on the prescriber (independent review R-10; Requires Clarification which register applies per prescriber type) |
 | EP | 2.9 | Healthcare facility address (cluster) | Partial | Mandatory; enforced in the base only as MS (Bundle-level enforcement deferred: see open issues) |
 | EP | 2.9.1 | Postcode | Partial | Mandatory within the facility address; not yet enforced |
 | EP | 2.9.2 | Address line(s) | Partial | Mandatory within the facility address; not yet enforced |
 | EP | 2.9.4 | District/ County | Partial | Mandatory within the facility address; not yet enforced |
 | EP | 2.9.5 | Country | Partial | Mandatory within the facility address; not yet enforced |
-| EP | 3.1.1 | Electronic prescription identifier – type | Partial | identifier type not constrained (no HIQA value set) |
-| EP | 3.3 | Prescription Status (cluster) | Partial | prescription-level status DERIVED from item statuses (IE Core ADR-003); no container resource |
-| EP | 3.3.1 | Status | Partial | derived from items (IE Core ADR-003) |
-| EP | 4.9.1 | Characteristic type | Gap |  |
+| EP | 4.9.1 | Characteristic type | Partial | Mandatory within the optional characteristics cluster: the IHE MPD characteristic extension (inherited from HL7 Europe Base) makes extension:type 1..1 whenever a characteristic is given |
 
 ### ePrescription / eDispensation: full matrix
 
@@ -91,8 +85,8 @@ Logical model: [HIQA ePrescription/eDispensation](StructureDefinition-HIQAEPresc
 | 1.6.2.3 | Additional information (P) | Optional | 0..1 | IEMpdAllergyIntolerance | `AllergyIntolerance.note` | N | Aligned |  |
 | 1.6.2.4 | Record entry provenance data for allergies and intolerances (cluster) (P) | Required | 0..* | IEMpdListAllergiesAtPrescribing | `List.source` | Y | Aligned | statement author/date on the List; entry-level provenance on AllergyIntolerance |
 | 1.6.2.4.1 | Record entry identifier (P) | Optional | 0..* | IEMpdAllergyIntolerance | `AllergyIntolerance.identifier` | N | Aligned |  |
-| 1.6.2.4.2 | Record entry author (P) | Mandatory | 0..* | IEMpdAllergyIntolerance | `AllergyIntolerance.recorder` | N | Partial | Mandatory within the cluster; not MS |
-| 1.6.2.4.3 | Record entry date (P) | Mandatory | 0..1 | IEMpdAllergyIntolerance | `AllergyIntolerance.recordedDate` | N | Partial | Mandatory within the cluster; not MS |
+| 1.6.2.4.2 | Record entry author (P) | Mandatory | 0..* | IEMpdAllergyIntolerance | `AllergyIntolerance.recorder` | Y | Aligned | MS; Mandatory within the provenance cluster: with recordedDate, both or neither (ie-allergy-2) |
+| 1.6.2.4.3 | Record entry date (P) | Mandatory | 0..1 | IEMpdAllergyIntolerance | `AllergyIntolerance.recordedDate` | Y | Partial | Mandatory within the optional provenance cluster (OI-006 reading): MS, and required together with the recorder by invariant ie-allergy-2 |
 | 1.6.2.4.4 | Record entry source (P) | Optional | 0..1 | IEMpdAllergyIntolerance | `AllergyIntolerance.asserter` | N | Aligned |  |
 | 1.6.2.4.5 | Record entry language (P) | Optional | 0..1 | IEMpdAllergyIntolerance | `AllergyIntolerance.language` | N | Aligned |  |
 | 1.6.3 | Weight (record entry) (PD) | Optional | 0..1 | IEMpdBodyWeight | `Observation` | N | Aligned | Optional; not linked to the prescription (supportingInformation) |
@@ -100,7 +94,7 @@ Logical model: [HIQA ePrescription/eDispensation](StructureDefinition-HIQAEPresc
 | 1.6.3.2 | Weight type (PD) | Optional | 0..1 | IEMpdBodyWeight | `Observation.valueQuantity.code` | Y | Aligned | UCUM kg; HIQA also lists stone/pounds |
 | 1.6.3.3 | Record entry provenance data for weight (cluster) (PD) | Optional | 0..* | IEMpdBodyWeight | `Observation` | N | Aligned |  |
 | 1.6.3.3.1 | Record entry identifier (PD) | Optional | 0..* | IEMpdBodyWeight | `Observation.identifier` | N | Aligned |  |
-| 1.6.3.3.2 | Record entry author (PD) | Mandatory | 0..* | IEMpdBodyWeight | `Observation.performer` | N | Partial | Mandatory within the cluster; not MS |
+| 1.6.3.3.2 | Record entry author (PD) | Mandatory | 0..* | IEMpdBodyWeight | `Observation.performer` | Y | Aligned | performer 1..* MS: the provenance cluster is always present because effective[x] is required |
 | 1.6.3.3.3 | Record entry date (PD) | Mandatory | 0..1 | IEMpdBodyWeight | `Observation.effective[x]` | Y | Aligned |  |
 | 1.6.3.3.4 | Record entry source (PD) | Optional | 0..1 | IEMpdBodyWeight | `Observation.performer` | N | Aligned | source (patient-reported vs practitioner) |
 | 1.6.3.3.5 | Record entry language (PD) | Optional | 0..1 | IEMpdBodyWeight | `Observation.language` | N | Aligned |  |
@@ -109,7 +103,7 @@ Logical model: [HIQA ePrescription/eDispensation](StructureDefinition-HIQAEPresc
 | 1.6.4.2 | Height type (PD) | Optional | 0..1 | IEMpdBodyHeight | `Observation.valueQuantity.code` | Y | Aligned |  |
 | 1.6.4.3 | Record entry provenance data for height (cluster) (PD) | Optional | 0..* | IEMpdBodyHeight | `Observation` | N | Aligned |  |
 | 1.6.4.3.1 | Record entry identifier (PD) | Optional | 0..* | IEMpdBodyHeight | `Observation.identifier` | N | Aligned |  |
-| 1.6.4.3.2 | Record entry author (PD) | Mandatory | 0..* | IEMpdBodyHeight | `Observation.performer` | N | Partial | Mandatory within the cluster; not MS |
+| 1.6.4.3.2 | Record entry author (PD) | Mandatory | 0..* | IEMpdBodyHeight | `Observation.performer` | Y | Aligned | performer 1..* MS: the provenance cluster is always present because effective[x] is required |
 | 1.6.4.3.3 | Record entry date (PD) | Mandatory | 0..1 | IEMpdBodyHeight | `Observation.effective[x]` | Y | Aligned |  |
 | 1.6.4.3.4 | Record entry source (PD) | Optional | 0..1 | IEMpdBodyHeight | `Observation.performer` | N | Aligned |  |
 | 1.6.4.3.5 | Record entry language (PD) | Optional | 0..1 | IEMpdBodyHeight | `Observation.language` | N | Aligned |  |
@@ -141,15 +135,15 @@ Logical model: [HIQA ePrescription/eDispensation](StructureDefinition-HIQAEPresc
 | 2.11 | Location ID (GLN) (PD) | Required | 0..1 | IEMpdLocation | `Location.identifier:GLN` | Y | Aligned | system http://www.gs1.org/gln (THO); 13 digits + GS1 check digit (ie-loc-gln-1) |
 | 2.12 | GMS Panel ID | Optional | 0..1 | IEMpdOrganization | `Organization.identifier:GMSPanel` | N | Aligned | Optional; no format enforced |
 | 2.13 | Signature (P) | Required | 0..1 | IEMpdProvenanceEPrescriptionSignature | `Provenance.signature` | Y | Aligned | Provenance signature over the items; required cross-border (ie-bnd-xb-2); format Requires Clarification (OI-009) |
-| 3.1 | Electronic prescription identifier (cluster) (P) | Mandatory | 1..* | IEMpdMedicationRequestEPrescription | `MedicationRequest.groupIdentifier` | Y | Aligned | enforced by invariant ie-bnd-rx-1 (shared group identifier for multi-item prescriptions); single item: identifier 1..* |
-| 3.1.1 | Electronic prescription identifier – type (P) | Mandatory | 1..1 | IEMpdMedicationRequestEPrescription | `MedicationRequest.identifier.type` | N | Partial | identifier type not constrained (no HIQA value set) |
-| 3.1.2 | Electronic prescription identifier – value (P) | Mandatory | 1..1 | IEMpdMedicationRequestEPrescription | `MedicationRequest.identifier.value` | N | Aligned |  |
-| 3.2 | Date and time of issuing the prescription (P) | Mandatory | 1..1 | IEMpdMedicationRequestEPrescription | `MedicationRequest.authoredOn` | Y | Aligned |  |
-| 3.3 | Prescription Status (cluster) (P) | Mandatory | 1..1 | IEMpdMedicationRequestEPrescription | `MedicationRequest.status` | Y | Partial | prescription-level status DERIVED from item statuses (IE Core ADR-003); no container resource |
-| 3.3.1 | Status (P) | Mandatory | 1..1 | IEMpdMedicationRequestEPrescription | `MedicationRequest.status` | Y | Partial | derived from items (IE Core ADR-003) |
-| 3.3.2 | Status reason (P) | Required | 0..1 | IEMpdMedicationRequestEPrescription | `MedicationRequest.statusReason` | Y | Partial | item level (ie-rx-status-1) |
-| 3.3.3 | Status reason (free text) (P) | Optional | 0..1 | IEMpdMedicationRequestEPrescription | `MedicationRequest.statusReason.text` | N | Partial | item level |
-| 3.4 | Presented form (P) | Optional | 0..* | IEMpdBundleEPrescription |  | N | Gap | presented form (PDF): may be added as a DocumentReference/Binary entry; not profiled (Optional) |
+| 3.1 | Electronic prescription identifier (cluster) (P) | Mandatory | 1..* | IEMpdElectronicPrescriptionGroup | `RequestGroup.identifier` | Y | Aligned | identifier 1..* MS on the prescription group (ADR-003); every item carries it as groupIdentifier (ie-bnd-rx-8; ie-bnd-rx-1) |
+| 3.1.1 | Electronic prescription identifier – type (P) | Mandatory | 1..1 | IEMpdElectronicPrescriptionGroup | `RequestGroup.identifier.type` | Y | Aligned | type 1..1 MS; HIQA gives no value set, so none is bound (OI-104); examples use v2-0203 PLAC |
+| 3.1.2 | Electronic prescription identifier – value (P) | Mandatory | 1..1 | IEMpdElectronicPrescriptionGroup | `RequestGroup.identifier.value` | Y | Aligned | value 1..1 MS |
+| 3.2 | Date and time of issuing the prescription (P) | Mandatory | 1..1 | IEMpdElectronicPrescriptionGroup | `RequestGroup.authoredOn` | Y | Aligned | authoredOn 1..1 MS on the group; every item has the same authoredOn (ie-bnd-rx-9) |
+| 3.3 | Prescription Status (cluster) (P) | Mandatory | 1..1 | IEMpdElectronicPrescriptionGroup | `RequestGroup.status` | Y | Aligned | prescription-level status on the group (ADR-003, replaces IE Core ADR-003 derivation); kept consistent with item statuses (ie-bnd-rx-10) |
+| 3.3.1 | Status (P) | Mandatory | 1..1 | IEMpdElectronicPrescriptionGroup | `RequestGroup.status` | Y | Aligned | draft \| active \| on-hold \| revoked \| completed \| entered-in-error \| unknown |
+| 3.3.2 | Status reason (P) | Required | 0..1 | IEMpdElectronicPrescriptionGroup | `RequestGroup.extension:statusReason` | Y | Aligned | IEMpdPrescriptionGroupStatusReason; required unless active, completed or draft (ie-grp-status-1) |
+| 3.3.3 | Status reason (free text) (P) | Optional | 0..1 | IEMpdElectronicPrescriptionGroup | `RequestGroup.extension:statusReason` | N | Aligned | free text in valueCodeableConcept.text |
+| 3.4 | Presented form (P) | Optional | 0..* | IEMpdElectronicPrescriptionGroup | `RequestGroup.extension:presentedForm` | N | Aligned | IEMpdPresentedForm (Attachment, contentType 1..1), e.g. a PDF |
 | 3.5 | Prescription item (cluster) (P) | Mandatory | 1..* | IEMpdMedicationRequestEPrescription | `MedicationRequest` | Y | Aligned |  |
 | 3.5.1 | Prescription item identifier (P) | Mandatory | 1..* | IEMpdMedicationRequestEPrescription | `MedicationRequest.identifier` | Y | Aligned |  |
 | 3.5.2 | Prescription item status (cluster) (P) | Mandatory | 1..1 | IEMpdMedicationRequestEPrescription | `MedicationRequest.status` | Y | Aligned |  |
@@ -212,15 +206,15 @@ Logical model: [HIQA ePrescription/eDispensation](StructureDefinition-HIQAEPresc
 | 4.8.1 | Device type (D) | Mandatory | 1..1 | IEMpdMedicationEPrescription | `Medication.extension:device` | N | Aligned | Mandatory within the device cluster |
 | 4.8.2 | Device quantity value (D) | Mandatory | 1..1 | IEMpdMedicationEPrescription | `Medication.extension:device` | N | Aligned | Mandatory within the device cluster |
 | 4.9 | Characteristics (cluster) (D) | Optional | 0..* | IEMpdMedicationEPrescription | `Medication.extension:characteristic` | N | Aligned | IHE characteristic (EU Base slice) |
-| 4.9.1 | Characteristic type (D) | Mandatory | 1..1 | IEMpdMedicationEPrescription |  | N | Gap |  |
-| 4.9.2 | Characteristic value (cluster) (D) | Optional | 0..1 | IEMpdMedicationEPrescription |  | N | Gap |  |
-| 4.9.2.1 | Characteristic value (coded) (D) | Optional | 0..1 | IEMpdMedicationEPrescription |  | N | Gap |  |
-| 4.9.2.2 | Characteristic value (quantity) (D) | Optional | 0..1 | IEMpdMedicationEPrescription |  | N | Gap |  |
-| 4.9.2.3 | Characteristic value (datetime) (D) | Optional | 0..1 | IEMpdMedicationEPrescription |  | N | Gap |  |
-| 4.9.2.4 | Characteristic value (integer) (D) | Optional | 0..1 | IEMpdMedicationEPrescription |  | N | Gap |  |
-| 4.9.2.5 | Characteristic value (decimal) (D) | Optional | 0..1 | IEMpdMedicationEPrescription |  | N | Gap |  |
-| 4.9.2.6 | Characteristic value (ratio) (D) | Optional | 0..1 | IEMpdMedicationEPrescription |  | N | Gap |  |
-| 4.9.2.7 | Characteristic value (free text) (D) | Optional | 0..1 | IEMpdMedicationEPrescription |  | N | Gap |  |
+| 4.9.1 | Characteristic type (D) | Mandatory | 1..1 | IEMpdMedicationEPrescription | `Medication.extension:characteristic` | N | Partial | Mandatory within the optional characteristics cluster: the IHE MPD characteristic extension (inherited from HL7 Europe Base) makes extension:type 1..1 whenever a characteristic is given |
+| 4.9.2 | Characteristic value (cluster) (D) | Optional | 0..1 | IEMpdMedicationEPrescription | `Medication.extension:characteristic` | N | Aligned | IHE characteristic extension:value (value[x]) |
+| 4.9.2.1 | Characteristic value (coded) (D) | Optional | 0..1 | IEMpdMedicationEPrescription | `Medication.extension:characteristic` | N | Aligned | extension:value valueCodeableConcept |
+| 4.9.2.2 | Characteristic value (quantity) (D) | Optional | 0..1 | IEMpdMedicationEPrescription | `Medication.extension:characteristic` | N | Aligned | extension:value valueQuantity |
+| 4.9.2.3 | Characteristic value (datetime) (D) | Optional | 0..1 | IEMpdMedicationEPrescription | `Medication.extension:characteristic` | N | Aligned | extension:value valueDateTime |
+| 4.9.2.4 | Characteristic value (integer) (D) | Optional | 0..1 | IEMpdMedicationEPrescription | `Medication.extension:characteristic` | N | Aligned | extension:value valueInteger |
+| 4.9.2.5 | Characteristic value (decimal) (D) | Optional | 0..1 | IEMpdMedicationEPrescription | `Medication.extension:characteristic` | N | Aligned | extension:value valueDecimal |
+| 4.9.2.6 | Characteristic value (ratio) (D) | Optional | 0..1 | IEMpdMedicationEPrescription | `Medication.extension:characteristic` | N | Aligned | extension:value valueRatio |
+| 4.9.2.7 | Characteristic value (free text) (D) | Optional | 0..1 | IEMpdMedicationEPrescription | `Medication.extension:characteristic` | N | Aligned | extension:value valueString |
 | 4.10 | Batch (cluster) (D) | Required | 0..1 | IEMpdMedicationEPrescription | `Medication.batch` | Y | Aligned |  |
 | 4.10.1 | Batch Lot number (D) | Required | 0..1 | IEMpdMedicationEPrescription | `Medication.batch.lotNumber` | Y | Aligned |  |
 | 4.10.2 | Batch expiration date (D) | Required | 0..1 | IEMpdMedicationEPrescription | `Medication.batch.expirationDate` | Y | Aligned |  |

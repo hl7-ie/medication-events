@@ -6,22 +6,24 @@ http://loinc.org,8302-2,Body height,yes,Body height,False,IEMpdVitalSigns.fsh
 http://snomed.info/sct,11429006,Consultation,yes,Consultation,False,CrossBorderReferenceExamples.fsh
 http://snomed.info/sct,1148466008,Amoxicillin 50 mg/mL oral suspension,yes,Amoxicillin 50 mg/mL oral suspension,False,HIQAScenarios.fsh
 http://snomed.info/sct,13644009,Hypercholesterolemia,yes,Hypercholesterolemia,False,CrossBorderReferenceExamples.fsh
-http://snomed.info/sct,15805002,Acute sinusitis,yes,Acute sinusitis,False,HIQAScenarios.fsh
+http://snomed.info/sct,15805002,Acute sinusitis,yes,Acute sinusitis,False,HIQAScenarios.fsh;PrescriptionGroupExamples.fsh
 http://snomed.info/sct,185347001,Encounter for problem,yes,Encounter for problem,False,CrossBorderReferenceExamples.fsh
 http://snomed.info/sct,195967001,Asthma,yes,Asthma,False,AdministrationStatementExamples.fsh;HIQAScenarios.fsh
 http://snomed.info/sct,254311000220102,Atorvastatin 20 mg oral tablet,yes,Atorvastatin 20 mg oral tablet,,MedicationExamples.fsh
 http://snomed.info/sct,254331000220107,Atorvastatin 40 mg oral tablet,yes,Atorvastatin 40 mg oral tablet,,CrossBorderReferenceExamples.fsh
 http://snomed.info/sct,254341000220103,Atorvastatin 80 mg oral tablet,yes,Atorvastatin 80 mg oral tablet,,CrossBorderReferenceExamples.fsh
-http://snomed.info/sct,26643006,Oral route,yes,Oral route,False,CrossBorderReferenceExamples.fsh;HIQAScenarios.fsh
+http://snomed.info/sct,26643006,Oral route,yes,Oral route,False,CrossBorderReferenceExamples.fsh;DosageExamples.fsh;HIQAScenarios.fsh;PrescriptionGroupExamples.fsh
 http://snomed.info/sct,267451000220105,Amlodipine 5 mg oral tablet,yes,Amlodipine 5 mg oral tablet,,CrossBorderReferenceExamples.fsh
 http://snomed.info/sct,268301000220104,Sertraline 50 mg oral tablet,yes,Sertraline 50 mg oral tablet,,CrossBorderReferenceExamples.fsh
 http://snomed.info/sct,309343006,Physician,yes,Physician,False,CrossBorderReferenceExamples.fsh
 http://snomed.info/sct,3110003,Acute otitis media,yes,Acute otitis media,False,HIQAScenarios.fsh
+http://snomed.info/sct,311501008,Half to one hour before food,yes,Half to one hour before food,False,DosageExamples.fsh
+http://snomed.info/sct,311504000,With or after food,yes,With or after food,False,DosageExamples.fsh
 http://snomed.info/sct,313941000220100,Omeprazole 20 mg gastro-resistant oral capsule,yes,Omeprazole 20 mg gastro-resistant oral capsule,,CrossBorderReferenceExamples.fsh
 http://snomed.info/sct,317291008,Omeprazole 20 mg oral capsule,yes,Omeprazole 20 mg oral capsule,False,CrossBorderReferenceExamples.fsh
 http://snomed.info/sct,323510009,Amoxicillin 500 mg oral capsule,yes,Amoxicillin 500 mg oral capsule,False,HIQAScenarios.fsh
 http://snomed.info/sct,325072002,Insulin aspart,yes,Insulin aspart,False,CrossBorderReferenceExamples.fsh
-http://snomed.info/sct,34206005,Subcutaneous route,yes,Subcutaneous route,False,CrossBorderReferenceExamples.fsh
+http://snomed.info/sct,34206005,Subcutaneous route,yes,Subcutaneous route,False,CrossBorderReferenceExamples.fsh;DosageExamples.fsh
 http://snomed.info/sct,35489007,Depressive disorder,yes,Depressive disorder,False,CrossBorderReferenceExamples.fsh
 http://snomed.info/sct,363291000220101,Salbutamol 100 microgram/actuation pressurised suspension for inhalation,yes,Salbutamol 100 microgram/actuation pressurised suspension for inhalation,,HIQAScenarios.fsh
 http://snomed.info/sct,372567009,Metformin,yes,Metformin,False,CrossBorderReferenceExamples.fsh;MedicationExamples.fsh
@@ -45,8 +47,9 @@ http://snomed.info/sct,387024006,Oxycodone hydrochloride,yes,Oxycodone hydrochlo
 http://snomed.info/sct,387137007,Omeprazole,yes,Omeprazole,False,CrossBorderReferenceExamples.fsh
 http://snomed.info/sct,39579001,Anaphylaxis,yes,Anaphylaxis,False,CrossBorderReferenceExamples.fsh;HIQAScenarios.fsh
 http://snomed.info/sct,411529005,Insulin glargine,yes,Insulin glargine,False,CrossBorderReferenceExamples.fsh
+http://snomed.info/sct,421984009,Until finished,yes,Until finished,False,DosageExamples.fsh
 http://snomed.info/sct,44054006,Type 2 diabetes mellitus,yes,Type 2 diabetes mellitus,False,CrossBorderReferenceExamples.fsh;HIQAScenarios.fsh
-http://snomed.info/sct,447694001,Respiratory tract route,yes,Respiratory tract route,False,AdministrationStatementExamples.fsh;HIQAScenarios.fsh
+http://snomed.info/sct,447694001,Respiratory tract route,yes,Respiratory tract route,False,AdministrationStatementExamples.fsh;DosageExamples.fsh;HIQAScenarios.fsh
 http://snomed.info/sct,46255001,Pharmacist,yes,Pharmacist,False,CrossBorderReferenceExamples.fsh
 http://snomed.info/sct,462991000220107,Amoxicillin 250 mg/5 mL powder for oral suspension,yes,Amoxicillin 250 mg/5 mL powder for oral suspension,,HIQAScenarios.fsh
 http://snomed.info/sct,49436004,Atrial fibrillation,yes,Atrial fibrillation,False,CrossBorderReferenceExamples.fsh
@@ -62,6 +65,9 @@ http://snomed.info/sct,718271000220105,Metformin hydrochloride 500 mg oral table
 http://snomed.info/sct,718731000220101,Warfarin sodium 5 mg oral tablet,yes,Warfarin sodium 5 mg oral tablet,,CrossBorderReferenceExamples.fsh
 http://snomed.info/sct,720061000220100,Ramipril 10 mg oral capsule,yes,Ramipril 10 mg oral capsule,,CrossBorderReferenceExamples.fsh
 http://snomed.info/sct,720411000220105,Oxycodone hydrochloride 10 mg prolonged-release oral tablet,yes,Oxycodone hydrochloride 10 mg prolonged-release oral tablet,,HIQAScenarios.fsh
+http://snomed.info/sct,732936001,Tablet,yes,Tablet,False,CrossBorderReferenceExamples.fsh;DosageExamples.fsh;HIQAScenarios.fsh;MedicationExamples.fsh
+http://snomed.info/sct,732937005,Capsule,yes,Capsule,False,CrossBorderReferenceExamples.fsh;DosageExamples.fsh;HIQAScenarios.fsh;PrescriptionGroupExamples.fsh
+http://snomed.info/sct,732981002,Actuation,yes,Actuation,False,AdministrationStatementExamples.fsh;DosageExamples.fsh;HIQAScenarios.fsh
 http://snomed.info/sct,765706002,Oxycodone hydrochloride 10 mg prolonged-release oral tablet,yes,Oxycodone hydrochloride 10 mg prolonged-release oral tablet,False,HIQAScenarios.fsh
 http://snomed.info/sct,770300007,Albuterol (as albuterol sulfate) 100 microgram/actuation pressurized suspension for inhalation,yes,Albuterol (as albuterol sulfate) 100 microgram/actuation pressurized suspension for inhalation,False,HIQAScenarios.fsh
 http://snomed.info/sct,82423001,Chronic pain,yes,Chronic pain,False,HIQAScenarios.fsh
@@ -73,11 +79,13 @@ http://terminology.hl7.org/CodeSystem/condition-clinical,active,,yes,Active,Fals
 http://terminology.hl7.org/CodeSystem/condition-ver-status,confirmed,,yes,Confirmed,False,CrossBorderReferenceExamples.fsh
 http://terminology.hl7.org/CodeSystem/list-empty-reason,nilknown,Nil Known,yes,Nil Known,False,HIQAScenarios.fsh
 http://terminology.hl7.org/CodeSystem/medicationrequest-category,community,Community,yes,Community,False,CrossBorderReferenceExamples.fsh
-http://terminology.hl7.org/CodeSystem/medicationrequest-course-of-therapy,acute,Short course (acute) therapy,yes,Short course (acute) therapy,False,HIQAScenarios.fsh
+http://terminology.hl7.org/CodeSystem/medicationrequest-course-of-therapy,acute,Short course (acute) therapy,yes,Short course (acute) therapy,False,HIQAScenarios.fsh;PrescriptionGroupExamples.fsh
 http://terminology.hl7.org/CodeSystem/medicationrequest-course-of-therapy,continuous,Continuous long term therapy,yes,Continuous long term therapy,False,HIQAScenarios.fsh
+http://terminology.hl7.org/CodeSystem/medicationrequest-status-reason,altchoice,Try another treatment first,yes,Try another treatment first,False,PrescriptionGroupExamples.fsh
 http://terminology.hl7.org/CodeSystem/organization-type,prov,Healthcare Provider,yes,Healthcare Provider,False,CrossBorderReferenceExamples.fsh;HIQAScenarios.fsh
 http://terminology.hl7.org/CodeSystem/v2-0203,MD,Medical License number,yes,Medical License number,False,CrossBorderReferenceExamples.fsh;IEMpdPractitioner.fsh
 http://terminology.hl7.org/CodeSystem/v2-0203,NI,National unique individual identifier,yes,National unique individual identifier,False,CrossBorderReferenceExamples.fsh;HIQAScenarios.fsh;IEMpdPatient.fsh
+http://terminology.hl7.org/CodeSystem/v2-0203,PLAC,Placer Identifier,yes,Placer Identifier,False,PrescriptionGroupExamples.fsh
 http://terminology.hl7.org/CodeSystem/v2-0203,PN,Person number,yes,Person number,False,CrossBorderReferenceExamples.fsh
 http://terminology.hl7.org/CodeSystem/v2-0203,PRN,Provider number,yes,Provider number,False,IEMpdPractitioner.fsh
 http://terminology.hl7.org/CodeSystem/v2-0203,XX,Organization identifier,yes,Organization identifier,False,IEMpdOrganization.fsh
