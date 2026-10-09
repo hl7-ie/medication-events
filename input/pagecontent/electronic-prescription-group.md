@@ -127,6 +127,22 @@ Like the NHS England EPS example catalogue, the ePGs are grouped by what they de
 | [10](Bundle-hiqa-bundle-s10-cancelled.html) | Cancelled before dispensing (compare EPS B1/C1) | header `revoked` with reason, 1 eP `cancelled` |
 {:.grid}
 
+#### More ePGs with several electronic prescriptions
+
+Each eP is coded with an NMPC VMP (SNOMED CT Irish Edition) through its Medication, which also carries the SNOMED CT
+International product or substance and the ATC code (as a coding, or as the HIQA EP 4.2.1 classification); indications, routes and additional instructions are SNOMED CT
+codings declaring the Irish Edition; doses use SNOMED CT units of presentation (product-based) or UCUM (strength-based,
+liquids). See [Terminology](terminology.html).
+
+| ePG | Group | eP (NMPC VMP) | Shows |
+|---|---|---|---|
+| [11](Bundle-hiqa-bundle-epg11-cardiometabolic.html) | Cardiovascular and diabetes review | amlodipine 5 mg (267451000220105), ramipril 5 mg (716371000220101), atorvastatin 20 mg (254311000220102), metformin 500 mg (718271000220105) | 4 continuous eP with repeats; at night (`HS`); with food (`311504000`); 2 of 4 already dispensed |
+| [12](Bundle-hiqa-bundle-epg12-insulin.html) | Basal-bolus insulin | insulin glargine pen (529881000220106), insulin aspart cartridge (525351000220105) | doses in UCUM `[iU]`; supply in Pen (`733006000`) and Cartridge (`732988008`); three concurrent dosages (`ACM`, `ACD`, `ACV`) |
+| [13](Bundle-hiqa-bundle-epg13-sertraline-omeprazole.html) | Depression and reflux (penicillin allergy recorded) | sertraline 50 mg (268301000220104), omeprazole 20 mg (313941000220100) | substitution not allowed with a reason; in the morning (`MORN`); before breakfast (`ACM`, `311501008`); allergy listed in the statement |
+| [14](Bundle-hiqa-bundle-epg14-warfarin-lisinopril.html) | Atrial fibrillation and hypertension | warfarin 5 mg (718731000220101), lisinopril 10 mg (714701000220101) | consecutive dosage schemes (sequence 1 loading, sequence 2 maintenance) |
+| [15](Bundle-hiqa-bundle-epg15-paediatric.html) | Child under 12 | amoxicillin 250 mg/5 mL suspension (462991000220107), salbutamol inhaler (363291000220101) | age at prescribing on each eP; liquid dose in `mL`; as-needed dose range 1 to 2 actuations with a maximum |
+{:.grid}
+
 Administration (scenarios 7, 8) and medication statements (scenario 9) are separate records that point back to an eP;
 see [Administration and Statements](administration-and-statements.html).
 

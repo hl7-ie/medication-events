@@ -90,7 +90,7 @@ Description: "An example IE Core Practitioner representing a General Practitione
 * address[=].postalCode = "D08 NHY1"
 * address[=].country = "IE"
 
-* qualification[0].code = $SCT#309343006 "Physician"
+* qualification[0].code = $SCTIE#309343006 "Physician"
 * qualification[=].issuer.display = "Irish Medical Council"
 
 
@@ -170,7 +170,7 @@ Description: "An example IE Core Encounter representing a completed ambulatory c
 
 * status = #finished
 * class = $V3-ActCode#AMB "ambulatory"
-* type = $SCT#11429006 "Consultation"
+* type = $SCTIE#11429006 "Consultation"
 
 * subject = Reference(ie-mpd-patient-example) "John Murphy"
 * participant[0].type = http://terminology.hl7.org/CodeSystem/v3-ParticipationType#ATND "attender"
@@ -273,7 +273,7 @@ Description: "Dr. Aoife O'Brien, General Practitioner at Grafton Street Medical 
 * address[=].postalCode = "D02 XY45"
 * address[=].country = "IE"
 
-* qualification[0].code = $SCT#62247001 "General practitioner"
+* qualification[0].code = $SCTIE#62247001 "General practitioner"
 * qualification[=].issuer.display = "Irish Medical Council"
 
 
@@ -321,7 +321,7 @@ Description: "CRITICAL ALLERGY: Seán Murphy has a documented severe anaphylacti
 * category = #medication
 * criticality = #high
 
-* code = $SCT#372687004 "Amoxicillin"
+* code = $SCTIE#372687004 "Amoxicillin"
 * code.text = "Penicillin / Amoxicillin (ALL penicillin-class antibiotics)"
 
 * patient = Reference(ie-mpd-patient-sean-murphy) "Seán Murphy"
@@ -329,8 +329,8 @@ Description: "CRITICAL ALLERGY: Seán Murphy has a documented severe anaphylacti
 * recordedDate = "2010-06-01"
 * recorder = Reference(ie-mpd-practitioner-aoife-obrien)
 
-* reaction[0].substance = $SCT#372687004 "Amoxicillin"
-* reaction[=].manifestation = $SCT#39579001 "Anaphylaxis"
+* reaction[0].substance = $SCTIE#372687004 "Amoxicillin"
+* reaction[=].manifestation = $SCTIE#39579001 "Anaphylaxis"
 * reaction[=].severity = #severe
 * reaction[=].description = "Anaphylaxis. Do NOT dispense penicillin-class antibiotics."
 * reaction[=].note[0].text = "Patient carries an EpiPen. Allergy first documented 1995 following hospitalisation."
@@ -352,6 +352,7 @@ Description: "Type 2 Diabetes Mellitus (ICD-10: E11 / SNOMED: 44054006). Active 
 * category = http://terminology.hl7.org/CodeSystem/condition-category#problem-list-item
 * severity = $SCT#6736007 "Moderate severity"
 * code.coding[0].system = $SCT
+* code.coding[0].version = "http://snomed.info/sct/1601000220105"
 * code.coding[=].code = #44054006
 * code.coding[=].display = "Type 2 diabetes mellitus"
 * code.coding[+].system = "http://hl7.org/fhir/sid/icd-10"
@@ -374,6 +375,7 @@ Description: "Essential Hypertension (ICD-10: I10 / SNOMED: 38341003). Active si
 * verificationStatus = http://terminology.hl7.org/CodeSystem/condition-ver-status#confirmed
 * category = http://terminology.hl7.org/CodeSystem/condition-category#problem-list-item
 * code.coding[0].system = $SCT
+* code.coding[0].version = "http://snomed.info/sct/1601000220105"
 * code.coding[=].code = #38341003
 * code.coding[=].display = "Hypertensive disorder"
 * code.coding[+].system = "http://hl7.org/fhir/sid/icd-10"
@@ -396,6 +398,7 @@ Description: "Hypercholesterolaemia (ICD-10: E78.0 / SNOMED: 13644009). Active s
 * verificationStatus = http://terminology.hl7.org/CodeSystem/condition-ver-status#confirmed
 * category = http://terminology.hl7.org/CodeSystem/condition-category#problem-list-item
 * code.coding[0].system = $SCT
+* code.coding[0].version = "http://snomed.info/sct/1601000220105"
 * code.coding[=].code = #13644009
 * code.coding[=].display = "Hypercholesterolemia"
 * code.coding[+].system = "http://hl7.org/fhir/sid/icd-10"
@@ -419,20 +422,22 @@ Title: "Medication – Lisinopril 10mg Tablets (ATC: C09AA03)"
 Description: "Lisinopril 10mg tablets, ACE inhibitor for hypertension. The NMPC VMP code (SNOMED CT Irish Edition) is primary, the International SNOMED CT substance is secondary, and ATC code C09AA03 is included for classification."
 
 * code.coding[0].system = $SCT
+* code.coding[0].version = "http://snomed.info/sct/1601000220105"
 * code.coding[=].version = "http://snomed.info/sct/1601000220105"
 * code.coding[=].code = #714701000220101
 * code.coding[=].display = "Lisinopril 10 mg oral tablet"
 * code.coding[+].system = $SCT
+* code.coding[=].version = "http://snomed.info/sct/1601000220105"
 * code.coding[=].code = #386873009
 * code.coding[=].display = "Lisinopril"
 * code.coding[+].system = $ATC
 * code.coding[=].code = #C09AA03
 * code.coding[=].display = "Lisinopril"
 * code.text = "Lisinopril 10mg tablets"
-* form = $SCT#385055001 "Tablet"
+* form = $SCTIE#385055001 "Tablet"
 * amount.numerator = 28 $SCT#732936001 "Tablet"
 * amount.denominator = 1 '{pack}' "pack"
-* ingredient[0].itemCodeableConcept = $SCT#386873009 "Lisinopril"
+* ingredient[0].itemCodeableConcept = $SCTIE#386873009 "Lisinopril"
 * ingredient[=].isActive = true
 * ingredient[=].strength.numerator = 10 'mg' "mg"
 * ingredient[=].strength.denominator = 1 $SCT#732936001 "Tablet"
@@ -446,20 +451,22 @@ Title: "Medication – Warfarin 5mg Tablets (ATC: B01AA03)"
 Description: "Warfarin sodium 5mg tablets, anticoagulant. The NMPC VMP code (SNOMED CT Irish Edition) is primary, the International SNOMED CT substance is secondary, and ATC code B01AA03 is included for classification. Requires INR monitoring."
 
 * code.coding[0].system = $SCT
+* code.coding[0].version = "http://snomed.info/sct/1601000220105"
 * code.coding[=].version = "http://snomed.info/sct/1601000220105"
 * code.coding[=].code = #718731000220101
 * code.coding[=].display = "Warfarin sodium 5 mg oral tablet"
 * code.coding[+].system = $SCT
+* code.coding[=].version = "http://snomed.info/sct/1601000220105"
 * code.coding[=].code = #372756006
 * code.coding[=].display = "Warfarin"
 * code.coding[+].system = $ATC
 * code.coding[=].code = #B01AA03
 * code.coding[=].display = "Warfarin"
 * code.text = "Warfarin 5mg tablets"
-* form = $SCT#385055001 "Tablet"
+* form = $SCTIE#385055001 "Tablet"
 * amount.numerator = 28 $SCT#732936001 "Tablet"
 * amount.denominator = 1 '{pack}' "pack"
-* ingredient[0].itemCodeableConcept = $SCT#372756006 "Warfarin"
+* ingredient[0].itemCodeableConcept = $SCTIE#372756006 "Warfarin"
 * ingredient[=].isActive = true
 * ingredient[=].strength.numerator = 5 'mg' "mg"
 * ingredient[=].strength.denominator = 1 $SCT#732936001 "Tablet"
@@ -473,20 +480,22 @@ Title: "Medication – Insulin Glargine 100u/ml Injection (ATC: A10AE04)"
 Description: "Insulin glargine 100 units/ml solution for injection, long-acting basal insulin. The NMPC VMP code (SNOMED CT Irish Edition) is primary, the International SNOMED CT substance is secondary, and ATC code A10AE04 is included for classification."
 
 * code.coding[0].system = $SCT
+* code.coding[0].version = "http://snomed.info/sct/1601000220105"
 * code.coding[=].version = "http://snomed.info/sct/1601000220105"
 * code.coding[=].code = #529881000220106
 * code.coding[=].display = "Insulin glargine 100 units/1 mL solution for injection 3 mL pre-filled pen"
 * code.coding[+].system = $SCT
+* code.coding[=].version = "http://snomed.info/sct/1601000220105"
 * code.coding[=].code = #411529005
 * code.coding[=].display = "Insulin glargine"
 * code.coding[+].system = $ATC
 * code.coding[=].code = #A10AE04
 * code.coding[=].display = "Insulin glargine"
 * code.text = "Insulin glargine 100 units/mL solution for injection 3 mL pre-filled pen"
-* form = $SCT#385219001 "Solution for injection"
+* form = $SCTIE#385219001 "Solution for injection"
 * amount.numerator = 5 '{pen}' "pre-filled pens"
 * amount.denominator = 1 '{pack}' "pack"
-* ingredient[0].itemCodeableConcept = $SCT#411529005 "Insulin glargine"
+* ingredient[0].itemCodeableConcept = $SCTIE#411529005 "Insulin glargine"
 * ingredient[=].isActive = true
 * ingredient[=].strength.numerator = 100 'U/mL' "units/mL"
 * ingredient[=].strength.denominator = 1 'mL' "mL"
@@ -500,20 +509,22 @@ Title: "Medication – Insulin Aspart 100u/ml Injection (ATC: A10AB05)"
 Description: "Insulin aspart 100 units/ml solution for injection, rapid-acting insulin. The NMPC VMP code (SNOMED CT Irish Edition) is primary, the International SNOMED CT substance is secondary, and ATC code A10AB05 is included for classification."
 
 * code.coding[0].system = $SCT
+* code.coding[0].version = "http://snomed.info/sct/1601000220105"
 * code.coding[=].version = "http://snomed.info/sct/1601000220105"
 * code.coding[=].code = #525351000220105
 * code.coding[=].display = "Insulin aspart 100 units/1 mL solution for injection 3 mL cartridge"
 * code.coding[+].system = $SCT
+* code.coding[=].version = "http://snomed.info/sct/1601000220105"
 * code.coding[=].code = #325072002
 * code.coding[=].display = "Insulin aspart"
 * code.coding[+].system = $ATC
 * code.coding[=].code = #A10AB05
 * code.coding[=].display = "Insulin aspart"
 * code.text = "Insulin aspart 100 units/mL solution for injection 3 mL cartridge"
-* form = $SCT#385219001 "Solution for injection"
+* form = $SCTIE#385219001 "Solution for injection"
 * amount.numerator = 5 '{cartridge}' "cartridges"
 * amount.denominator = 1 '{pack}' "pack"
-* ingredient[0].itemCodeableConcept = $SCT#325072002 "Insulin aspart"
+* ingredient[0].itemCodeableConcept = $SCTIE#325072002 "Insulin aspart"
 * ingredient[=].isActive = true
 * ingredient[=].strength.numerator = 100 'U/mL' "units/mL"
 * ingredient[=].strength.denominator = 1 'mL' "mL"
@@ -527,20 +538,22 @@ Title: "Medication – Sertraline 50mg Tablets (ATC: N06AB06)"
 Description: "Sertraline hydrochloride 50mg tablets, SSRI antidepressant. The NMPC VMP code (SNOMED CT Irish Edition) is primary, the International SNOMED CT substance is secondary, and ATC code N06AB06 is included for classification."
 
 * code.coding[0].system = $SCT
+* code.coding[0].version = "http://snomed.info/sct/1601000220105"
 * code.coding[=].version = "http://snomed.info/sct/1601000220105"
 * code.coding[=].code = #268301000220104
 * code.coding[=].display = "Sertraline 50 mg oral tablet"
 * code.coding[+].system = $SCT
+* code.coding[=].version = "http://snomed.info/sct/1601000220105"
 * code.coding[=].code = #372594008
 * code.coding[=].display = "Sertraline"
 * code.coding[+].system = $ATC
 * code.coding[=].code = #N06AB06
 * code.coding[=].display = "Sertraline"
 * code.text = "Sertraline 50mg tablets"
-* form = $SCT#385055001 "Tablet"
+* form = $SCTIE#385055001 "Tablet"
 * amount.numerator = 28 $SCT#732936001 "Tablet"
 * amount.denominator = 1 '{pack}' "pack"
-* ingredient[0].itemCodeableConcept = $SCT#372594008 "Sertraline"
+* ingredient[0].itemCodeableConcept = $SCTIE#372594008 "Sertraline"
 * ingredient[=].isActive = true
 * ingredient[=].strength.numerator = 50 'mg' "mg"
 * ingredient[=].strength.denominator = 1 $SCT#732936001 "Tablet"
@@ -554,20 +567,22 @@ Title: "Medication – Omeprazole 20mg Capsules (ATC: A02BC01)"
 Description: "Omeprazole 20mg gastro-resistant capsules, proton pump inhibitor. The NMPC VMP code (SNOMED CT Irish Edition) is primary, the International SNOMED CT substance is secondary, and ATC code A02BC01 is included for classification."
 
 * code.coding[0].system = $SCT
+* code.coding[0].version = "http://snomed.info/sct/1601000220105"
 * code.coding[=].version = "http://snomed.info/sct/1601000220105"
 * code.coding[=].code = #313941000220100
 * code.coding[=].display = "Omeprazole 20 mg gastro-resistant oral capsule"
 * code.coding[+].system = $SCT
+* code.coding[=].version = "http://snomed.info/sct/1601000220105"
 * code.coding[=].code = #317291008
 * code.coding[=].display = "Omeprazole 20 mg oral capsule"
 * code.coding[+].system = $ATC
 * code.coding[=].code = #A02BC01
 * code.coding[=].display = "Omeprazole"
 * code.text = "Omeprazole 20mg gastro-resistant capsules"
-* form = $SCT#385049006 "Capsule"
+* form = $SCTIE#385049006 "Capsule"
 * amount.numerator = 28 $SCT#732937005 "Capsule"
 * amount.denominator = 1 '{pack}' "pack"
-* ingredient[0].itemCodeableConcept = $SCT#387137007 "Omeprazole"
+* ingredient[0].itemCodeableConcept = $SCTIE#387137007 "Omeprazole"
 * ingredient[=].isActive = true
 * ingredient[=].strength.numerator = 20 'mg' "mg"
 * ingredient[=].strength.denominator = 1 $SCT#732937005 "Capsule"
@@ -581,20 +596,22 @@ Title: "Medication – Atorvastatin 80mg Tablets (ATC: C10AA05)"
 Description: "Atorvastatin 80mg film-coated tablets (high-intensity statin). The NMPC VMP code (SNOMED CT Irish Edition) is primary, the International SNOMED CT substance is secondary, and ATC code C10AA05 is included for classification."
 
 * code.coding[0].system = $SCT
+* code.coding[0].version = "http://snomed.info/sct/1601000220105"
 * code.coding[=].version = "http://snomed.info/sct/1601000220105"
 * code.coding[=].code = #254341000220103
 * code.coding[=].display = "Atorvastatin 80 mg oral tablet"
 * code.coding[+].system = $SCT
+* code.coding[=].version = "http://snomed.info/sct/1601000220105"
 * code.coding[=].code = #373444002
 * code.coding[=].display = "Atorvastatin"
 * code.coding[+].system = $ATC
 * code.coding[=].code = #C10AA05
 * code.coding[=].display = "Atorvastatin"
 * code.text = "Atorvastatin 80mg tablets"
-* form = $SCT#385055001 "Tablet"
+* form = $SCTIE#385055001 "Tablet"
 * amount.numerator = 28 $SCT#732936001 "Tablet"
 * amount.denominator = 1 '{pack}' "pack"
-* ingredient[0].itemCodeableConcept = $SCT#373444002 "Atorvastatin"
+* ingredient[0].itemCodeableConcept = $SCTIE#373444002 "Atorvastatin"
 * ingredient[=].isActive = true
 * ingredient[=].strength.numerator = 80 'mg' "mg"
 * ingredient[=].strength.denominator = 1 $SCT#732936001 "Tablet"
@@ -608,20 +625,22 @@ Title: "Medication – Ramipril 10mg Capsules (ATC: C09AA05)"
 Description: "Ramipril 10mg capsules, ACE inhibitor. The NMPC VMP code (SNOMED CT Irish Edition) is primary, the International SNOMED CT substance is secondary, and ATC code C09AA05 is included for classification."
 
 * code.coding[0].system = $SCT
+* code.coding[0].version = "http://snomed.info/sct/1601000220105"
 * code.coding[=].version = "http://snomed.info/sct/1601000220105"
 * code.coding[=].code = #720061000220100
 * code.coding[=].display = "Ramipril 10 mg oral capsule"
 * code.coding[+].system = $SCT
+* code.coding[=].version = "http://snomed.info/sct/1601000220105"
 * code.coding[=].code = #386872004
 * code.coding[=].display = "Ramipril"
 * code.coding[+].system = $ATC
 * code.coding[=].code = #C09AA05
 * code.coding[=].display = "Ramipril"
 * code.text = "Ramipril 10mg capsules"
-* form = $SCT#385049006 "Capsule"
+* form = $SCTIE#385049006 "Capsule"
 * amount.numerator = 28 $SCT#732937005 "Capsule"
 * amount.denominator = 1 '{pack}' "pack"
-* ingredient[0].itemCodeableConcept = $SCT#386872004 "Ramipril"
+* ingredient[0].itemCodeableConcept = $SCTIE#386872004 "Ramipril"
 * ingredient[=].isActive = true
 * ingredient[=].strength.numerator = 10 'mg' "mg"
 * ingredient[=].strength.denominator = 1 $SCT#732937005 "Capsule"
@@ -678,7 +697,7 @@ Description: "Irish ePrescription for Metformin 500mg for Seán Murphy, transmit
 * requester = Reference(ie-mpd-practitioner-aoife-obrien) "Dr. Aoife O'Brien"
 * authoredOn = "2025-01-15"
 
-* reasonCode = $SCT#44054006 "Type 2 diabetes mellitus"
+* reasonCode = $SCTIE#44054006 "Type 2 diabetes mellitus"
 * reasonCode.coding[+].system = $ATC
 * reasonCode.coding[=].code = #A10BA02
 * reasonCode.coding[=].display = "Metformin"
@@ -687,7 +706,7 @@ Description: "Irish ePrescription for Metformin 500mg for Seán Murphy, transmit
 * dosageInstruction[=].timing.repeat.frequency = 2
 * dosageInstruction[=].timing.repeat.period = 1
 * dosageInstruction[=].timing.repeat.periodUnit = #d
-* dosageInstruction[=].route = $SCT#26643006 "Oral route"
+* dosageInstruction[=].route = $SCTIE#26643006 "Oral route"
 * dosageInstruction[=].doseAndRate[0].doseQuantity = 500 'mg' "mg"
 
 * dispenseRequest.validityPeriod.start = "2025-01-15"
@@ -723,7 +742,7 @@ Description: "Irish ePrescription for Lisinopril 10mg for Seán Murphy, transmit
 * requester = Reference(ie-mpd-practitioner-aoife-obrien) "Dr. Aoife O'Brien"
 * authoredOn = "2025-01-15"
 
-* reasonCode = $SCT#38341003 "Hypertensive disorder"
+* reasonCode = $SCTIE#38341003 "Hypertensive disorder"
 * reasonCode.coding[+].system = $ATC
 * reasonCode.coding[=].code = #C09AA03
 * reasonCode.coding[=].display = "Lisinopril"
@@ -733,7 +752,7 @@ Description: "Irish ePrescription for Lisinopril 10mg for Seán Murphy, transmit
 * dosageInstruction[=].timing.repeat.period = 1
 * dosageInstruction[=].timing.repeat.periodUnit = #d
 * dosageInstruction[=].timing.repeat.when = #MORN
-* dosageInstruction[=].route = $SCT#26643006 "Oral route"
+* dosageInstruction[=].route = $SCTIE#26643006 "Oral route"
 * dosageInstruction[=].doseAndRate[0].doseQuantity = 10 'mg' "mg"
 
 * dispenseRequest.validityPeriod.start = "2025-01-15"
@@ -774,7 +793,7 @@ Description: "German pharmacy dispensation of Metformin 500mg Filmtabletten (Rat
 
 * substitution.wasSubstituted = true
 * substitution.type = http://terminology.hl7.org/CodeSystem/v3-substanceAdminSubstitution#G "Generic composition"
-* substitution.reason = $SCT#373873005 "Pharmaceutical / biologic product"
+* substitution.reason = $SCTIE#373873005 "Pharmaceutical / biologic product"
 
 
 
@@ -806,7 +825,7 @@ Description: "German pharmacy dispensation of Lisinopril 10mg Tabletten (Hexal, 
 
 * substitution.wasSubstituted = true
 * substitution.type = http://terminology.hl7.org/CodeSystem/v3-substanceAdminSubstitution#G "Generic composition"
-* substitution.reason = $SCT#373873005 "Pharmaceutical / biologic product"
+* substitution.reason = $SCTIE#373873005 "Pharmaceutical / biologic product"
 
 
 
@@ -849,12 +868,12 @@ Description: "Irish ePrescription for Metformin 500mg for Seán Murphy, transmit
 * subject = Reference(ie-mpd-patient-sean-murphy) "Seán Murphy"
 * requester = Reference(ie-mpd-practitioner-aoife-obrien) "Dr. Aoife O'Brien"
 * authoredOn = "2025-06-10"
-* reasonCode = $SCT#44054006 "Type 2 diabetes mellitus"
+* reasonCode = $SCTIE#44054006 "Type 2 diabetes mellitus"
 * dosageInstruction[0].text = "Take one 500mg tablet twice daily with meals"
 * dosageInstruction[=].timing.repeat.frequency = 2
 * dosageInstruction[=].timing.repeat.period = 1
 * dosageInstruction[=].timing.repeat.periodUnit = #d
-* dosageInstruction[=].route = $SCT#26643006 "Oral route"
+* dosageInstruction[=].route = $SCTIE#26643006 "Oral route"
 * dispenseRequest.validityPeriod.start = "2025-06-10"
 * dispenseRequest.validityPeriod.end = "2025-09-10"
 * dispenseRequest.numberOfRepeatsAllowed = 0
@@ -931,13 +950,13 @@ Description: "Irish ePrescription for Sertraline 50mg for Seán Murphy, transmit
 * subject = Reference(ie-mpd-patient-sean-murphy) "Seán Murphy"
 * requester = Reference(ie-mpd-practitioner-aoife-obrien) "Dr. Aoife O'Brien"
 * authoredOn = "2025-06-15"
-* reasonCode = $SCT#35489007 "Depressive disorder"
+* reasonCode = $SCTIE#35489007 "Depressive disorder"
 * dosageInstruction[0].text = "Take one 50mg tablet once daily in the morning"
 * dosageInstruction[=].timing.repeat.frequency = 1
 * dosageInstruction[=].timing.repeat.period = 1
 * dosageInstruction[=].timing.repeat.periodUnit = #d
 * dosageInstruction[=].timing.repeat.when = #MORN
-* dosageInstruction[=].route = $SCT#26643006 "Oral route"
+* dosageInstruction[=].route = $SCTIE#26643006 "Oral route"
 * dispenseRequest.validityPeriod.start = "2025-06-15"
 * dispenseRequest.validityPeriod.end = "2025-09-15"
 * dispenseRequest.quantity = 28 $SCT#732936001 "Tablet"
@@ -1008,13 +1027,13 @@ Description: "Irish ePrescription for Warfarin 5mg for Seán Murphy, transmitted
 * subject = Reference(ie-mpd-patient-sean-murphy) "Seán Murphy"
 * requester = Reference(ie-mpd-practitioner-aoife-obrien) "Dr. Aoife O'Brien"
 * authoredOn = "2025-06-25"
-* reasonCode = $SCT#49436004 "Atrial fibrillation"
+* reasonCode = $SCTIE#49436004 "Atrial fibrillation"
 
 * dosageInstruction[0].text = "Take one 5mg tablet once daily. INR target 2.0-3.0. Requires INR monitoring — contact local anticoagulation service."
 * dosageInstruction[=].timing.repeat.frequency = 1
 * dosageInstruction[=].timing.repeat.period = 1
 * dosageInstruction[=].timing.repeat.periodUnit = #d
-* dosageInstruction[=].route = $SCT#26643006 "Oral route"
+* dosageInstruction[=].route = $SCTIE#26643006 "Oral route"
 * dosageInstruction[=].patientInstruction = "⚠️ Requires regular INR blood tests. Target INR 2.0–3.0. Consult local anticoagulation clinic."
 
 * dispenseRequest.validityPeriod.start = "2025-06-25"
@@ -1067,13 +1086,13 @@ Description: "Irish ePrescription for Insulin Glargine 100u/ml for Seán Murphy,
 * subject = Reference(ie-mpd-patient-sean-murphy) "Seán Murphy"
 * requester = Reference(ie-mpd-practitioner-aoife-obrien) "Dr. Aoife O'Brien"
 * authoredOn = "2025-07-05"
-* reasonCode = $SCT#44054006 "Type 2 diabetes mellitus"
+* reasonCode = $SCTIE#44054006 "Type 2 diabetes mellitus"
 * dosageInstruction[0].text = "Inject 20 units subcutaneously once daily at bedtime"
 * dosageInstruction[=].timing.repeat.frequency = 1
 * dosageInstruction[=].timing.repeat.period = 1
 * dosageInstruction[=].timing.repeat.periodUnit = #d
 * dosageInstruction[=].timing.repeat.when = #HS
-* dosageInstruction[=].route = $SCT#34206005 "Subcutaneous route"
+* dosageInstruction[=].route = $SCTIE#34206005 "Subcutaneous route"
 * dispenseRequest.validityPeriod.start = "2025-07-05"
 * dispenseRequest.validityPeriod.end = "2025-10-05"
 * dispenseRequest.quantity = 5 '{cartridge}' "cartridges"
@@ -1124,13 +1143,13 @@ Description: "Irish ePrescription for Atorvastatin 80mg for Seán Murphy, transm
 * subject = Reference(ie-mpd-patient-sean-murphy) "Seán Murphy"
 * requester = Reference(ie-mpd-practitioner-aoife-obrien) "Dr. Aoife O'Brien"
 * authoredOn = "2025-07-10"
-* reasonCode = $SCT#13644009 "Hypercholesterolemia"
+* reasonCode = $SCTIE#13644009 "Hypercholesterolemia"
 * dosageInstruction[0].text = "Take one 80mg tablet once daily at night"
 * dosageInstruction[=].timing.repeat.frequency = 1
 * dosageInstruction[=].timing.repeat.period = 1
 * dosageInstruction[=].timing.repeat.periodUnit = #d
 * dosageInstruction[=].timing.repeat.when = #CV
-* dosageInstruction[=].route = $SCT#26643006 "Oral route"
+* dosageInstruction[=].route = $SCTIE#26643006 "Oral route"
 * dispenseRequest.validityPeriod.start = "2025-07-10"
 * dispenseRequest.validityPeriod.end = "2025-10-10"
 * dispenseRequest.quantity = 28 $SCT#732936001 "Tablet"
@@ -1204,12 +1223,12 @@ Description: "Finnish ePrescription for Metformin 500mg for Mikko Korhonen, rece
 * subject = Reference(ie-patient-fi-mikko-korhonen) "Mikko Korhonen"
 * requester = Reference(ie-mpd-practitioner-aoife-obrien) "Dr. Aoife O'Brien"
 * authoredOn = "2025-07-20"
-* reasonCode = $SCT#44054006 "Type 2 diabetes mellitus"
+* reasonCode = $SCTIE#44054006 "Type 2 diabetes mellitus"
 * dosageInstruction[0].text = "Take one 500mg tablet twice daily with meals"
 * dosageInstruction[=].timing.repeat.frequency = 2
 * dosageInstruction[=].timing.repeat.period = 1
 * dosageInstruction[=].timing.repeat.periodUnit = #d
-* dosageInstruction[=].route = $SCT#26643006 "Oral route"
+* dosageInstruction[=].route = $SCTIE#26643006 "Oral route"
 * dosageInstruction[=].doseAndRate[0].doseQuantity = 500 'mg' "mg"
 * dispenseRequest.validityPeriod.start = "2025-07-20"
 * dispenseRequest.validityPeriod.end = "2025-10-20"
@@ -1312,13 +1331,13 @@ Description: "Belgian ePrescription for Atorvastatin 40mg for Lars Janssen, rece
 * subject = Reference(ie-patient-be-lars-janssen) "Lars Janssen"
 * requester = Reference(ie-mpd-practitioner-aoife-obrien) "Dr. Aoife O'Brien"
 * authoredOn = "2025-07-25"
-* reasonCode = $SCT#13644009 "Hypercholesterolemia"
+* reasonCode = $SCTIE#13644009 "Hypercholesterolemia"
 * dosageInstruction[0].text = "Take one 40mg tablet once daily at night"
 * dosageInstruction[=].timing.repeat.frequency = 1
 * dosageInstruction[=].timing.repeat.period = 1
 * dosageInstruction[=].timing.repeat.periodUnit = #d
 * dosageInstruction[=].timing.repeat.when = #CV
-* dosageInstruction[=].route = $SCT#26643006 "Oral route"
+* dosageInstruction[=].route = $SCTIE#26643006 "Oral route"
 * dosageInstruction[=].doseAndRate[0].doseQuantity = 40 'mg' "mg"
 * dispenseRequest.validityPeriod.start = "2025-07-25"
 * dispenseRequest.validityPeriod.end = "2025-10-25"
@@ -1359,10 +1378,10 @@ InstanceOf: IEMpdMedicationEPrescription
 Usage: #example
 Title: "Medication – Metformin 500mg Filmtabletten (Ratiopharm) (as dispensed)"
 Description: "The product actually dispensed in ie-dispense-de-metformin. HL7 Europe MPD requires a dispense to reference a Medication resource."
-* code = $SCT#718271000220105 "Metformin hydrochloride 500 mg oral tablet"
+* code = $SCTIE#718271000220105 "Metformin hydrochloride 500 mg oral tablet"
 * code.coding[0].version = "http://snomed.info/sct/1601000220105"
 * code.text = "Metformin 500mg Filmtabletten (Ratiopharm)"
-* ingredient[0].itemCodeableConcept = $SCT#372567009 "Metformin"
+* ingredient[0].itemCodeableConcept = $SCTIE#372567009 "Metformin"
 * ingredient[=].isActive = true
 
 
@@ -1372,10 +1391,10 @@ InstanceOf: IEMpdMedicationEPrescription
 Usage: #example
 Title: "Medication – Lisinopril 10mg Tabletten (Hexal) (as dispensed)"
 Description: "The product actually dispensed in ie-dispense-de-lisinopril. HL7 Europe MPD requires a dispense to reference a Medication resource."
-* code = $SCT#714701000220101 "Lisinopril 10 mg oral tablet"
+* code = $SCTIE#714701000220101 "Lisinopril 10 mg oral tablet"
 * code.coding[0].version = "http://snomed.info/sct/1601000220105"
 * code.text = "Lisinopril 10mg Tabletten (Hexal)"
-* ingredient[0].itemCodeableConcept = $SCT#386873009 "Lisinopril"
+* ingredient[0].itemCodeableConcept = $SCTIE#386873009 "Lisinopril"
 * ingredient[=].isActive = true
 
 
@@ -1385,10 +1404,10 @@ InstanceOf: IEMpdMedicationEPrescription
 Usage: #example
 Title: "Medication – Metformins 500mg tabletes (as dispensed)"
 Description: "The product actually dispensed in ie-dispense-lv-metformin. HL7 Europe MPD requires a dispense to reference a Medication resource."
-* code = $SCT#718271000220105 "Metformin hydrochloride 500 mg oral tablet"
+* code = $SCTIE#718271000220105 "Metformin hydrochloride 500 mg oral tablet"
 * code.coding[0].version = "http://snomed.info/sct/1601000220105"
 * code.text = "Metformins 500mg tabletes"
-* ingredient[0].itemCodeableConcept = $SCT#372567009 "Metformin"
+* ingredient[0].itemCodeableConcept = $SCTIE#372567009 "Metformin"
 * ingredient[=].isActive = true
 
 
@@ -1398,10 +1417,10 @@ InstanceOf: IEMpdMedicationEPrescription
 Usage: #example
 Title: "Medication – Sertralina 50mg Comprimidos (as dispensed)"
 Description: "The product actually dispensed in ie-dispense-pt-sertraline. HL7 Europe MPD requires a dispense to reference a Medication resource."
-* code = $SCT#268301000220104 "Sertraline 50 mg oral tablet"
+* code = $SCTIE#268301000220104 "Sertraline 50 mg oral tablet"
 * code.coding[0].version = "http://snomed.info/sct/1601000220105"
 * code.text = "Sertralina 50mg Comprimidos"
-* ingredient[0].itemCodeableConcept = $SCT#372594008 "Sertraline"
+* ingredient[0].itemCodeableConcept = $SCTIE#372594008 "Sertraline"
 * ingredient[=].isActive = true
 
 
@@ -1411,10 +1430,10 @@ InstanceOf: IEMpdMedicationEPrescription
 Usage: #example
 Title: "Medication – Metformin 500mg tablets (as dispensed)"
 Description: "The product actually dispensed in ie-dispense-fi-to-ie-neps. HL7 Europe MPD requires a dispense to reference a Medication resource."
-* code = $SCT#718271000220105 "Metformin hydrochloride 500 mg oral tablet"
+* code = $SCTIE#718271000220105 "Metformin hydrochloride 500 mg oral tablet"
 * code.coding[0].version = "http://snomed.info/sct/1601000220105"
 * code.text = "Metformin 500mg tablets"
-* ingredient[0].itemCodeableConcept = $SCT#372567009 "Metformin"
+* ingredient[0].itemCodeableConcept = $SCTIE#372567009 "Metformin"
 * ingredient[=].isActive = true
 
 
@@ -1424,10 +1443,10 @@ InstanceOf: IEMpdMedicationEPrescription
 Usage: #example
 Title: "Medication – Atorvastatin 40mg tablets (as dispensed)"
 Description: "The product actually dispensed in ie-dispense-be-to-ie-neps. HL7 Europe MPD requires a dispense to reference a Medication resource."
-* code = $SCT#254331000220107 "Atorvastatin 40 mg oral tablet"
+* code = $SCTIE#254331000220107 "Atorvastatin 40 mg oral tablet"
 * code.coding[0].version = "http://snomed.info/sct/1601000220105"
 * code.text = "Atorvastatin 40mg tablets"
-* ingredient[0].itemCodeableConcept = $SCT#373444002 "Atorvastatin"
+* ingredient[0].itemCodeableConcept = $SCTIE#373444002 "Atorvastatin"
 * ingredient[=].isActive = true
 
 
@@ -1437,12 +1456,12 @@ InstanceOf: IEMpdMedicationEPrescription
 Usage: #example
 Title: "Medication – Atorvastatin 40mg tablets"
 Description: "The product prescribed in ie-rx-be-atorvastatin-neps. The NMPC code is the NMPC VMP (SNOMED CT Irish Edition), verified in the NMPC Meds Catalogue."
-* code = $SCT#254331000220107 "Atorvastatin 40 mg oral tablet"
+* code = $SCTIE#254331000220107 "Atorvastatin 40 mg oral tablet"
 * code.coding[0].version = "http://snomed.info/sct/1601000220105"
-* code.coding[+] = $SCT#373444002 "Atorvastatin"
+* code.coding[+] = $SCTIE#373444002 "Atorvastatin"
 * code.text = "Atorvastatin 40mg tablets"
-* form = $SCT#385055001 "Tablet"
-* ingredient[0].itemCodeableConcept = $SCT#373444002 "Atorvastatin"
+* form = $SCTIE#385055001 "Tablet"
+* ingredient[0].itemCodeableConcept = $SCTIE#373444002 "Atorvastatin"
 * ingredient[=].isActive = true
 * ingredient[=].strength.numerator = 40 'mg' "mg"
 * ingredient[=].strength.denominator = 1 $SCT#732936001 "Tablet"
@@ -1457,14 +1476,15 @@ Usage: #example
 Title: "Medication – Ramipril 5mg Capsules"
 Description: "Ramipril 5mg capsules (generic), coded with the NMPC VMP (SNOMED CT Irish Edition) as the primary code and the International SNOMED CT substance as a secondary code."
 
-* code = $SCT#716371000220101 "Ramipril 5 mg oral capsule"
+* code = $SCTIE#716371000220101 "Ramipril 5 mg oral capsule"
 * code.coding[0].version = "http://snomed.info/sct/1601000220105"
-* code.coding[+] = $SCT#386872004 "Ramipril"
+* code.coding[+] = $SCTIE#386872004 "Ramipril"
+* code.coding[+] = $ATC#C09AA05 "ramipril"
 * code.text = "Ramipril 5mg capsules"
-* form = $SCT#385049006 "Capsule"
+* form = $SCTIE#385049006 "Capsule"
 * amount.numerator = 28 $SCT#732937005 "Capsule"
 * amount.denominator = 1 '{pack}' "pack"
-* ingredient[0].itemCodeableConcept = $SCT#386872004 "Ramipril"
+* ingredient[0].itemCodeableConcept = $SCTIE#386872004 "Ramipril"
 * ingredient[=].isActive = true
 * ingredient[=].strength.numerator = 5 'mg' "mg"
 * ingredient[=].strength.denominator = 1 $SCT#732937005 "Capsule"
@@ -1477,14 +1497,15 @@ Usage: #example
 Title: "Medication – Amlodipine 5mg Tablets"
 Description: "Amlodipine 5mg tablets (generic), coded with the NMPC VMP (SNOMED CT Irish Edition) as the primary code and the International SNOMED CT substance as a secondary code. Used in cross-border dispensing scenario."
 
-* code = $SCT#267451000220105 "Amlodipine 5 mg oral tablet"
+* code = $SCTIE#267451000220105 "Amlodipine 5 mg oral tablet"
 * code.coding[0].version = "http://snomed.info/sct/1601000220105"
-* code.coding[+] = $SCT#386864001 "Amlodipine"
+* code.coding[+] = $SCTIE#386864001 "Amlodipine"
+* code.coding[+] = $ATC#C08CA01 "amlodipine"
 * code.text = "Amlodipine 5mg tablets"
-* form = $SCT#385055001 "Tablet"
+* form = $SCTIE#385055001 "Tablet"
 * amount.numerator = 30 $SCT#732936001 "Tablet"
 * amount.denominator = 1 '{pack}' "pack"
-* ingredient[0].itemCodeableConcept = $SCT#386864001 "Amlodipine"
+* ingredient[0].itemCodeableConcept = $SCTIE#386864001 "Amlodipine"
 * ingredient[=].isActive = true
 * ingredient[=].strength.numerator = 5 'mg' "mg"
 * ingredient[=].strength.denominator = 1 $SCT#732936001 "Tablet"
@@ -1553,7 +1574,7 @@ Description: "An example Irish registered pharmacist dispensing medication in Du
 * address[=].postalCode = "D02 HH74"
 * address[=].country = "IE"
 
-* qualification[0].code = $SCT#46255001 "Pharmacist"
+* qualification[0].code = $SCTIE#46255001 "Pharmacist"
 * qualification[=].issuer.display = "Pharmaceutical Society of Ireland"
 
 
@@ -1634,7 +1655,7 @@ Description: "A Spanish GP who issued a prescription for a Spanish patient, to b
 * address[=].postalCode = "28006"
 * address[=].country = "ES"
 
-* qualification[0].code = $SCT#62247001 "General practitioner"
+* qualification[0].code = $SCTIE#62247001 "General practitioner"
 * qualification[=].issuer.display = "Consejo General de Colegios Oficiales de Médicos de España"
 
 
@@ -1708,7 +1729,7 @@ Description: "A Spanish pharmacist dispensing a cross-border prescription from I
 * name[=].prefix = "Dra."
 * gender = #female
 
-* qualification[0].code = $SCT#46255001 "Pharmacist"
+* qualification[0].code = $SCTIE#46255001 "Pharmacist"
 * qualification[=].issuer.display = "Consejo General de Colegios Oficiales de Farmacéuticos"
 
 
@@ -1738,14 +1759,14 @@ Description: "A standard Irish GP prescription for Metformin 500mg tablets. Auth
 * authoredOn = "2024-06-15"
 * requester = Reference(ie-mpd-practitioner-example) "Dr. Sarah O'Brien"
 
-* reasonCode = $SCT#44054006 "Type 2 diabetes mellitus"
+* reasonCode = $SCTIE#44054006 "Type 2 diabetes mellitus"
 
 * dosageInstruction[0].sequence = 1
 * dosageInstruction[=].text = "Take one 500mg tablet twice daily with meals"
 * dosageInstruction[=].timing.repeat.frequency = 2
 * dosageInstruction[=].timing.repeat.period = 1
 * dosageInstruction[=].timing.repeat.periodUnit = #d
-* dosageInstruction[=].route = $SCT#26643006 "Oral route"
+* dosageInstruction[=].route = $SCTIE#26643006 "Oral route"
 * dosageInstruction[=].doseAndRate[0].doseQuantity = 500 'mg' "mg"
 
 * dispenseRequest.validityPeriod.start = "2024-06-15"
@@ -1789,7 +1810,7 @@ Description: "Full dispensation of 60 Metformin 500mg tablets against Scenario 1
 * dosageInstruction[=].timing.repeat.frequency = 2
 * dosageInstruction[=].timing.repeat.period = 1
 * dosageInstruction[=].timing.repeat.periodUnit = #d
-* dosageInstruction[=].route = $SCT#26643006 "Oral route"
+* dosageInstruction[=].route = $SCTIE#26643006 "Oral route"
 
 * substitution.wasSubstituted = false
 
@@ -1820,7 +1841,7 @@ Description: "An Irish GP prescription for Atorvastatin 20mg tablets (90 days su
 * authoredOn = "2024-06-15"
 * requester = Reference(ie-mpd-practitioner-example) "Dr. Sarah O'Brien"
 
-* reasonCode = $SCT#55822004 "Hyperlipidemia"
+* reasonCode = $SCTIE#55822004 "Hyperlipidemia"
 
 * dosageInstruction[0].sequence = 1
 * dosageInstruction[=].text = "Take one 20mg tablet once daily at night"
@@ -1828,7 +1849,7 @@ Description: "An Irish GP prescription for Atorvastatin 20mg tablets (90 days su
 * dosageInstruction[=].timing.repeat.period = 1
 * dosageInstruction[=].timing.repeat.periodUnit = #d
 * dosageInstruction[=].timing.repeat.when = #CV
-* dosageInstruction[=].route = $SCT#26643006 "Oral route"
+* dosageInstruction[=].route = $SCTIE#26643006 "Oral route"
 * dosageInstruction[=].doseAndRate[0].doseQuantity = 20 'mg' "mg"
 
 * dispenseRequest.validityPeriod.start = "2024-06-15"
@@ -1958,13 +1979,13 @@ Description: "First of three prescriptions in a multi-prescription bundle for Jo
 * authoredOn = "2024-06-20"
 * requester = Reference(ie-mpd-practitioner-example) "Dr. Sarah O'Brien"
 
-* reasonCode = $SCT#44054006 "Type 2 diabetes mellitus"
+* reasonCode = $SCTIE#44054006 "Type 2 diabetes mellitus"
 
 * dosageInstruction[0].text = "Take one 500mg tablet twice daily with meals"
 * dosageInstruction[=].timing.repeat.frequency = 2
 * dosageInstruction[=].timing.repeat.period = 1
 * dosageInstruction[=].timing.repeat.periodUnit = #d
-* dosageInstruction[=].route = $SCT#26643006 "Oral route"
+* dosageInstruction[=].route = $SCTIE#26643006 "Oral route"
 * dosageInstruction[=].doseAndRate[0].doseQuantity = 500 'mg' "mg"
 
 * dispenseRequest.validityPeriod.start = "2024-06-20"
@@ -1999,13 +2020,13 @@ Description: "Second of three prescriptions in a multi-prescription bundle for J
 * authoredOn = "2024-06-20"
 * requester = Reference(ie-mpd-practitioner-example) "Dr. Sarah O'Brien"
 
-* reasonCode = $SCT#55822004 "Hyperlipidemia"
+* reasonCode = $SCTIE#55822004 "Hyperlipidemia"
 
 * dosageInstruction[0].text = "Take one 20mg tablet once daily at night"
 * dosageInstruction[=].timing.repeat.frequency = 1
 * dosageInstruction[=].timing.repeat.period = 1
 * dosageInstruction[=].timing.repeat.periodUnit = #d
-* dosageInstruction[=].route = $SCT#26643006 "Oral route"
+* dosageInstruction[=].route = $SCTIE#26643006 "Oral route"
 * dosageInstruction[=].doseAndRate[0].doseQuantity = 20 'mg' "mg"
 
 * dispenseRequest.validityPeriod.start = "2024-06-20"
@@ -2040,14 +2061,14 @@ Description: "Third of three prescriptions in a multi-prescription bundle for Jo
 * authoredOn = "2024-06-20"
 * requester = Reference(ie-mpd-practitioner-example) "Dr. Sarah O'Brien"
 
-* reasonCode = $SCT#38341003 "Hypertensive disorder"
+* reasonCode = $SCTIE#38341003 "Hypertensive disorder"
 
 * dosageInstruction[0].text = "Take one 5mg capsule once daily in the morning"
 * dosageInstruction[=].timing.repeat.frequency = 1
 * dosageInstruction[=].timing.repeat.period = 1
 * dosageInstruction[=].timing.repeat.periodUnit = #d
 * dosageInstruction[=].timing.repeat.when = #MORN
-* dosageInstruction[=].route = $SCT#26643006 "Oral route"
+* dosageInstruction[=].route = $SCTIE#26643006 "Oral route"
 * dosageInstruction[=].doseAndRate[0].doseQuantity = 5 'mg' "mg"
 
 * dispenseRequest.validityPeriod.start = "2024-06-20"
@@ -2204,13 +2225,13 @@ Description: "An Irish ePrescription for Amlodipine 5mg (chronic hypertension, r
 * authoredOn = "2024-07-10"
 * requester = Reference(ie-mpd-practitioner-example) "Dr. Sarah O'Brien"
 
-* reasonCode = $SCT#38341003 "Hypertensive disorder"
+* reasonCode = $SCTIE#38341003 "Hypertensive disorder"
 
 * dosageInstruction[0].text = "Take one 5mg tablet once daily"
 * dosageInstruction[=].timing.repeat.frequency = 1
 * dosageInstruction[=].timing.repeat.period = 1
 * dosageInstruction[=].timing.repeat.periodUnit = #d
-* dosageInstruction[=].route = $SCT#26643006 "Oral route"
+* dosageInstruction[=].route = $SCTIE#26643006 "Oral route"
 * dosageInstruction[=].doseAndRate[0].doseQuantity = 5 'mg' "mg"
 
 * dispenseRequest.validityPeriod.start = "2024-07-10"
@@ -2220,7 +2241,7 @@ Description: "An Irish ePrescription for Amlodipine 5mg (chronic hypertension, r
 * dispenseRequest.expectedSupplyDuration = 30 'd' "days"
 
 * substitution.allowedBoolean = true
-* substitution.reason = $SCT#373873005 "Pharmaceutical / biologic product"
+* substitution.reason = $SCTIE#373873005 "Pharmaceutical / biologic product"
 
 
 
@@ -2254,7 +2275,7 @@ Description: "A Spanish pharmacy dispenses Amlodipine 5mg (30 tablets) against t
 
 * substitution.wasSubstituted = true
 * substitution.type = http://terminology.hl7.org/CodeSystem/v3-substanceAdminSubstitution#G "Generic composition"
-* substitution.reason = $SCT#373873005 "Pharmaceutical / biologic product"
+* substitution.reason = $SCTIE#373873005 "Pharmaceutical / biologic product"
 * substitution.responsibleParty = Reference(ie-mpd-practitioner-es-pharmacist) "Dra. Carmen Vega Soto"
 
 
@@ -2287,13 +2308,13 @@ Description: "A Spanish ePrescription for Amlodipine 5mg issued by a Spanish GP 
 * authoredOn = "2024-08-01"
 * requester = Reference(ie-mpd-practitioner-es-example) "Dr. Alejandro Martínez Ruiz"
 
-* reasonCode = $SCT#38341003 "Hypertensive disorder"
+* reasonCode = $SCTIE#38341003 "Hypertensive disorder"
 
 * dosageInstruction[0].text = "Take one 5mg tablet once daily (Tomar un comprimido de 5mg una vez al día)"
 * dosageInstruction[=].timing.repeat.frequency = 1
 * dosageInstruction[=].timing.repeat.period = 1
 * dosageInstruction[=].timing.repeat.periodUnit = #d
-* dosageInstruction[=].route = $SCT#26643006 "Oral route"
+* dosageInstruction[=].route = $SCTIE#26643006 "Oral route"
 * dosageInstruction[=].doseAndRate[0].doseQuantity = 5 'mg' "mg"
 
 * dispenseRequest.validityPeriod.start = "2024-08-01"
@@ -2336,7 +2357,7 @@ Description: "An Irish pharmacy (Boots, Grafton St.) dispenses Amlodipine 5mg ta
 * dosageInstruction[=].timing.repeat.frequency = 1
 * dosageInstruction[=].timing.repeat.period = 1
 * dosageInstruction[=].timing.repeat.periodUnit = #d
-* dosageInstruction[=].route = $SCT#26643006 "Oral route"
+* dosageInstruction[=].route = $SCTIE#26643006 "Oral route"
 
 * substitution.wasSubstituted = false
 
@@ -2366,13 +2387,13 @@ Description: "A GMS repeat prescription for Metformin 500mg tablets, valid for 6
 * authoredOn = "2024-01-10"
 * requester = Reference(ie-mpd-practitioner-example) "Dr. Sarah O'Brien"
 
-* reasonCode = $SCT#44054006 "Type 2 diabetes mellitus"
+* reasonCode = $SCTIE#44054006 "Type 2 diabetes mellitus"
 
 * dosageInstruction[0].text = "Take one 500mg tablet twice daily with meals"
 * dosageInstruction[=].timing.repeat.frequency = 2
 * dosageInstruction[=].timing.repeat.period = 1
 * dosageInstruction[=].timing.repeat.periodUnit = #d
-* dosageInstruction[=].route = $SCT#26643006 "Oral route"
+* dosageInstruction[=].route = $SCTIE#26643006 "Oral route"
 * dosageInstruction[=].doseAndRate[0].doseQuantity = 500 'mg' "mg"
 
 * dispenseRequest.validityPeriod.start = "2024-01-10"

@@ -52,6 +52,27 @@ Feature: Electronic Prescription Group (ePG) and Dosage (ADR-003, ADR-004)
     When I "remove the facility postcode"
     Then invariant "ie-bnd-rx-11" should fail
 
+  Scenario Outline: An ePG with several electronic prescriptions passes the group rules
+    Given the HIQA example "<bundle>"
+    Then invariant "ie-bnd-rx-1" should pass
+    And invariant "ie-bnd-rx-7" should pass
+    And invariant "ie-bnd-rx-8" should pass
+    And invariant "ie-bnd-rx-9" should pass
+    And invariant "ie-bnd-rx-12" should pass
+
+    Examples:
+      | bundle |
+      | Bundle-hiqa-bundle-epg11-cardiometabolic.json |
+      | Bundle-hiqa-bundle-epg12-insulin.json |
+      | Bundle-hiqa-bundle-epg13-sertraline-omeprazole.json |
+      | Bundle-hiqa-bundle-epg14-warfarin-lisinopril.json |
+      | Bundle-hiqa-bundle-epg15-paediatric.json |
+
+  Scenario: Dropping one of four electronic prescriptions from the header is rejected
+    Given the HIQA example "Bundle-hiqa-bundle-epg11-cardiometabolic.json"
+    When I "drop the second item from the prescription group"
+    Then invariant "ie-bnd-rx-7" should fail
+
   # ── The ePG holds the eDispensations and provenance ──────────────────────
 
   Scenario: An ePG carries its eDispensations and dispensing provenance

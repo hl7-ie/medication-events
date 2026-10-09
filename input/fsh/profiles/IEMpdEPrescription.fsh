@@ -86,7 +86,6 @@ Description: "An Irish electronic prescription (eP): one prescribed medication (
 * dosageInstruction.route ^comment = "HIQA EP 5.2.7 Route of administration (Required); EDQM Standard Terms preferred."
 * dosageInstruction.doseAndRate MS
 * dosageInstruction.doseAndRate ^comment = "HIQA EP 5.2.3 Dose and rate (Required): dose quantity or range (5.2.3.1), rate (5.2.3.2)."
-* dosageInstruction.doseAndRate.dose[x] MS
 * dosageInstruction.maxDosePerPeriod MS
 * dosageInstruction.maxDosePerPeriod ^comment = "Maximum dose per period (not a distinct HIQA element; supports safe 'as needed' dosing)."
 * dosageInstruction.additionalInstruction MS

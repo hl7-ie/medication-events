@@ -88,13 +88,13 @@ Description: "The prescriber cancels the prescription before dispensing because 
 * supportingInformation = Reference(hiqa-allergies-tomas-nilknown)
 * authoredOn = "2026-09-23T10:00:00+01:00"
 * requester = Reference(hiqa-role-gp-nolan)
-* reasonCode = $SCT#15805002 "Acute sinusitis"
+* reasonCode = $SCTIE#15805002 "Acute sinusitis"
 * dosageInstruction[0].text = "Take one capsule three times a day for 7 days"
 * dosageInstruction[=].timing.repeat.frequency = 3
 * dosageInstruction[=].timing.repeat.period = 1
 * dosageInstruction[=].timing.repeat.periodUnit = #d
 * dosageInstruction[=].timing.repeat.boundsDuration = 7 'd' "days"
-* dosageInstruction[=].route = $SCT#26643006 "Oral route"
+* dosageInstruction[=].route = $SCTIE#26643006 "Oral route"
 * dosageInstruction[=].doseAndRate[0].doseQuantity = 1 $SCT#732937005 "Capsule"
 * dispenseRequest.quantity = 21 $SCT#732937005 "Capsule"
 * dispenseRequest.validityPeriod.start = "2026-09-23"

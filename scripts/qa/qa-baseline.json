@@ -1,5 +1,5 @@
 {
-  "max_errors": 21,
-  "recorded": "2026-09-27",
-  "explanation": "First baseline: 20 ImplementationGuide parameter codes (a validator artefact: the IG Publisher parameters are not in the R4 guide-parameter-code ValueSet) and 1 ValueSet filtering on the SNOMED CT Irish Edition, which tx.fhir.org does not host (OI-022)."
+  "max_errors": 24,
+  "recorded": "2026-10-09",
+  "explanation": "20 ImplementationGuide parameter codes (a validator artefact: the IG Publisher parameters are not in the R4 guide-parameter-code ValueSet) and 4 ValueSet filters on the SNOMED CT Irish Edition (medication codes 1, allergy intolerance set 3), which tx.fhir.org does not host (OI-022)."
 }

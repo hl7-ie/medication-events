@@ -14,9 +14,9 @@ Description: "Dr Nolan supervises two puffs of salbutamol during an asthma revie
 * effectiveDateTime = "2026-09-23T11:05:00+01:00"
 * performer[0].actor = Reference(hiqa-role-gp-nolan)
 * request = Reference(hiqa-rx-s3-salbutamol-repeat)
-* reasonCode = $SCT#195967001 "Asthma"
+* reasonCode = $SCTIE#195967001 "Asthma"
 * dosage.text = "Two puffs inhaled via spacer"
-* dosage.route = $SCT#447694001 "Respiratory tract route"
+* dosage.route = $SCTIE#447694001 "Respiratory tract route"
 * dosage.dose = 2 $SCT#732981002 "Actuation"
 
 Instance: hiqa-mad-s8-dose-not-given
@@ -44,9 +44,9 @@ Description: "What the patient reports taking (HIQA PS 6.3), recorded by her GP.
 * subject = Reference(hiqa-patient-niamh-keane)
 * effectivePeriod.start = "2012-02-01"
 * informationSource = Reference(hiqa-role-gp-nolan)
-* reasonCode = $SCT#195967001 "Asthma"
+* reasonCode = $SCTIE#195967001 "Asthma"
 * dosage[0].text = "Two puffs when required for breathlessness. Maximum 8 puffs in 24 hours"
 * dosage[=].asNeededBoolean = true
-* dosage[=].route = $SCT#447694001 "Respiratory tract route"
+* dosage[=].route = $SCTIE#447694001 "Respiratory tract route"
 * dosage[=].maxDosePerPeriod.numerator = 8 $SCT#732981002 "Actuation"
 * dosage[=].maxDosePerPeriod.denominator = 24 'h' "hours"

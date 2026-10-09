@@ -48,4 +48,14 @@ First release of IE Medication Events, replacing the starter scaffold.
   allergies (`ie-allergy-2`), weight and height (performer required); 4.9 characteristics mapped to the IHE MPD
   characteristic extension. New open issues OI-104 (identifier type value set) and OI-105 (national service
   interface).
+- **More Electronic Prescription Groups** (ePG 11 to 15): 12 electronic prescriptions in 5 groups (cardiometabolic
+  review with 4 eP and 2 dispensed, basal-bolus insulin, depression and reflux with a brand-specific eP, warfarin
+  loading with lisinopril, paediatric antibiotic and reliever), coded with NMPC VMPs, SNOMED CT and ATC, with SNOMED CT
+  units of presentation (Tablet, Capsule, Actuation, Pen, Cartridge) and UCUM (`[iU]`, `mL`).
+- **SNOMED CT Irish Edition**: every SNOMED CT coding in the examples declares the Irish Edition
+  (`version` `http://snomed.info/sct/1601000220105`; FSH alias `$SCTIE`); the Allergy Intolerance Set is pinned to it
+  like the Medication Codes. Quantity units cannot carry a version; codings bound to unversioned FHIR value sets stay
+  unversioned. QA baseline 24 (3 more Irish Edition filters, OI-022).
+- **Fix:** an ePrescription could not carry a dose range (HIQA EP 5.2.3.1.2): a redundant `dose[x]` rule on the
+  MedicationRequest closed the HL7 Europe MPD type slicing. MustSupport now comes from IEMpdDosage.
 

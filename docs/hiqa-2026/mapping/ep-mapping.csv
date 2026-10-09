@@ -176,9 +176,9 @@ hiqa_id,profile,path,ms,status,notes
 5.2.1,IEMpdMedicationRequestEPrescription,MedicationRequest.dosageInstruction.sequence,N,Aligned,
 5.2.2,IEMpdMedicationRequestEPrescription,MedicationRequest.dosageInstruction.patientInstruction,Y,Aligned,
 5.2.3,IEMpdMedicationRequestEPrescription,MedicationRequest.dosageInstruction.doseAndRate,Y,Aligned,
-5.2.3.1,IEMpdMedicationRequestEPrescription,MedicationRequest.dosageInstruction.doseAndRate.dose[x],Y,Aligned,
-5.2.3.1.1,IEMpdMedicationRequestEPrescription,MedicationRequest.dosageInstruction.doseAndRate.dose[x],Y,Aligned,doseQuantity
-5.2.3.1.2,IEMpdMedicationRequestEPrescription,MedicationRequest.dosageInstruction.doseAndRate.dose[x],Y,Aligned,doseRange
+5.2.3.1,IEMpdDosage,Dosage.doseAndRate.dose[x],Y,Aligned,"MS on IEMpdDosage, the type of MedicationRequest.dosageInstruction"
+5.2.3.1.1,IEMpdDosage,Dosage.doseAndRate.dose[x],Y,Aligned,doseQuantity (IEMpdDosage)
+5.2.3.1.2,IEMpdDosage,Dosage.doseAndRate.dose[x],Y,Aligned,doseRange with both ends (ie-dos-4); allowed in ePrescriptions
 5.2.3.2,IEMpdMedicationRequestEPrescription,MedicationRequest.dosageInstruction.doseAndRate.rate[x],N,Aligned,
 5.2.3.2.1,IEMpdMedicationRequestEPrescription,MedicationRequest.dosageInstruction.doseAndRate.rateQuantity,N,Aligned,
 5.2.3.2.2,IEMpdMedicationRequestEPrescription,MedicationRequest.dosageInstruction.doseAndRate.rateRatio,N,Aligned,

@@ -31,11 +31,11 @@ Description: "Ethnic group/background per the CSO Data Standard for Ethnicity v1
 ValueSet: IEMpdAllergyIntoleranceSet
 Id: ie-mpd-allergy-intolerance-set
 Title: "IE MPD Allergy Intolerance Set"
-Description: "Codes for substances and clinical findings related to allergies and intolerances."
+Description: "Codes for substances and clinical findings related to allergies and intolerances, from the SNOMED CT Irish Edition (module 1601000220105). Not expandable on tx.fhir.org, which does not host the Irish Edition (OI-022)."
 * ^experimental = false
-* include codes from system $SCT where concept is-a #105590001 "Substance"
-* include codes from system $SCT where concept is-a #418038007 "Propensity to adverse reactions to substance"
-* include codes from system $SCT where concept is-a #373873005 "Pharmaceutical / biologic product"
+* include codes from system $SCT|http://snomed.info/sct/1601000220105 where concept is-a #105590001 "Substance"
+* include codes from system $SCT|http://snomed.info/sct/1601000220105 where concept is-a #418038007 "Propensity to adverse reactions to substance"
+* include codes from system $SCT|http://snomed.info/sct/1601000220105 where concept is-a #373873005 "Pharmaceutical / biologic product"
 
 
 // ============================================================================
