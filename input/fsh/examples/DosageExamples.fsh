@@ -5,7 +5,7 @@
 
 RuleSet: DosageStatement(patient, nmpc, display, start)
 * status = #active
-* medicationCodeableConcept = $SCT#{nmpc} "{display}"
+* medicationCodeableConcept = $SCTIE#{nmpc} "{display}"
 * medicationCodeableConcept.coding[0].version = "http://snomed.info/sct/1601000220105"
 * subject = Reference({patient})
 * effectivePeriod.start = "{start}"
@@ -23,14 +23,14 @@ Description: "Two consecutive dosaging schemes (HIQA EP 5.2.1 Sequence): 10 mg o
 * dosage[=].timing.repeat.frequency = 1
 * dosage[=].timing.repeat.period = 1
 * dosage[=].timing.repeat.periodUnit = #d
-* dosage[=].route = $SCT#26643006 "Oral route"
+* dosage[=].route = $SCTIE#26643006 "Oral route"
 * dosage[=].doseAndRate[0].doseQuantity = 2 $SCT#732936001 "Tablet"
 * dosage[+].sequence = 2
 * dosage[=].text = "Then take one tablet (5 mg) once a day, or as directed by the anticoagulation clinic"
 * dosage[=].timing.repeat.frequency = 1
 * dosage[=].timing.repeat.period = 1
 * dosage[=].timing.repeat.periodUnit = #d
-* dosage[=].route = $SCT#26643006 "Oral route"
+* dosage[=].route = $SCTIE#26643006 "Oral route"
 * dosage[=].doseAndRate[0].doseQuantity = 1 $SCT#732936001 "Tablet"
 
 Instance: ie-mpd-dosage-ex-concurrent-insulin
@@ -45,7 +45,7 @@ Description: "Three dosages that apply at the same time share sequence 1: 6 unit
 * dosage[=].timing.repeat.period = 1
 * dosage[=].timing.repeat.periodUnit = #d
 * dosage[=].timing.repeat.when = #ACM
-* dosage[=].route = $SCT#34206005 "Subcutaneous route"
+* dosage[=].route = $SCTIE#34206005 "Subcutaneous route"
 * dosage[=].doseAndRate[0].doseQuantity = 6 '[iU]' "units"
 * dosage[+].sequence = 1
 * dosage[=].text = "Inject 4 units before lunch"
@@ -53,7 +53,7 @@ Description: "Three dosages that apply at the same time share sequence 1: 6 unit
 * dosage[=].timing.repeat.period = 1
 * dosage[=].timing.repeat.periodUnit = #d
 * dosage[=].timing.repeat.when = #ACD
-* dosage[=].route = $SCT#34206005 "Subcutaneous route"
+* dosage[=].route = $SCTIE#34206005 "Subcutaneous route"
 * dosage[=].doseAndRate[0].doseQuantity = 4 '[iU]' "units"
 * dosage[+].sequence = 1
 * dosage[=].text = "Inject 8 units before the evening meal"
@@ -61,7 +61,7 @@ Description: "Three dosages that apply at the same time share sequence 1: 6 unit
 * dosage[=].timing.repeat.period = 1
 * dosage[=].timing.repeat.periodUnit = #d
 * dosage[=].timing.repeat.when = #ACV
-* dosage[=].route = $SCT#34206005 "Subcutaneous route"
+* dosage[=].route = $SCTIE#34206005 "Subcutaneous route"
 * dosage[=].doseAndRate[0].doseQuantity = 8 '[iU]' "units"
 
 Instance: ie-mpd-dosage-ex-as-needed-salbutamol
@@ -73,7 +73,7 @@ Description: "1 to 2 actuations when needed (HIQA EP 5.2.5 as needed: a boolean,
 * dosage[0].text = "Inhale 1 to 2 puffs when required for wheeze. Maximum 8 puffs in 24 hours"
 * dosage[=].patientInstruction = "Use 1 or 2 puffs when you are wheezy. Do not use more than 8 puffs in a day; see your GP if you need it more often."
 * dosage[=].asNeededBoolean = true
-* dosage[=].route = $SCT#447694001 "Respiratory tract route"
+* dosage[=].route = $SCTIE#447694001 "Respiratory tract route"
 * dosage[=].doseAndRate[0].doseRange.low = 1 $SCT#732981002 "Actuation"
 * dosage[=].doseAndRate[0].doseRange.high = 2 $SCT#732981002 "Actuation"
 * dosage[=].maxDosePerPeriod.numerator = 8 $SCT#732981002 "Actuation"
@@ -86,12 +86,12 @@ Title: "Dosage – frequency with time bounds and an additional instruction: amo
 Description: "One capsule three times a day for 5 days (HIQA EP 5.2.4.1.1 time bounds, 5.2.4.3 frequency and period), with the coded additional instruction 421984009 |Until finished|."
 * insert DosageStatement(hiqa-patient-tomas-quinn, 716141000220105, Amoxicillin 500 mg oral capsule, 2026-09-21)
 * dosage[0].text = "Take one capsule three times a day for 5 days. Finish the course"
-* dosage[=].additionalInstruction = $SCT#421984009 "Until finished"
+* dosage[=].additionalInstruction = $SCTIE#421984009 "Until finished"
 * dosage[=].timing.repeat.boundsDuration = 5 'd' "days"
 * dosage[=].timing.repeat.frequency = 3
 * dosage[=].timing.repeat.period = 1
 * dosage[=].timing.repeat.periodUnit = #d
-* dosage[=].route = $SCT#26643006 "Oral route"
+* dosage[=].route = $SCTIE#26643006 "Oral route"
 * dosage[=].doseAndRate[0].doseQuantity = 1 $SCT#732937005 "Capsule"
 
 Instance: ie-mpd-dosage-ex-with-food-metformin
@@ -101,11 +101,11 @@ Title: "Dosage – twice a day with food: metformin"
 Description: "One tablet twice a day with or after food (coded additional instruction 311504000 |With or after food|)."
 * insert DosageStatement(hiqa-patient-declan-walsh, 718271000220105, Metformin hydrochloride 500 mg oral tablet, 2025-03-01)
 * dosage[0].text = "Take one tablet twice a day with or after food"
-* dosage[=].additionalInstruction = $SCT#311504000 "With or after food"
+* dosage[=].additionalInstruction = $SCTIE#311504000 "With or after food"
 * dosage[=].timing.repeat.frequency = 2
 * dosage[=].timing.repeat.period = 1
 * dosage[=].timing.repeat.periodUnit = #d
-* dosage[=].route = $SCT#26643006 "Oral route"
+* dosage[=].route = $SCTIE#26643006 "Oral route"
 * dosage[=].doseAndRate[0].doseQuantity = 1 $SCT#732936001 "Tablet"
 
 Instance: ie-mpd-dosage-ex-event-omeprazole
@@ -115,12 +115,12 @@ Title: "Dosage – linked to an event: omeprazole before breakfast"
 Description: "One capsule once a day before breakfast (HIQA EP 5.2.4.6 event: ACM), with 311501008 |Half to one hour before food|."
 * insert DosageStatement(hiqa-patient-declan-walsh, 313941000220100, Omeprazole 20 mg gastro-resistant oral capsule, 2026-06-01)
 * dosage[0].text = "Take one capsule once a day, half to one hour before breakfast"
-* dosage[=].additionalInstruction = $SCT#311501008 "Half to one hour before food"
+* dosage[=].additionalInstruction = $SCTIE#311501008 "Half to one hour before food"
 * dosage[=].timing.repeat.frequency = 1
 * dosage[=].timing.repeat.period = 1
 * dosage[=].timing.repeat.periodUnit = #d
 * dosage[=].timing.repeat.when = #ACM
-* dosage[=].route = $SCT#26643006 "Oral route"
+* dosage[=].route = $SCTIE#26643006 "Oral route"
 * dosage[=].doseAndRate[0].doseQuantity = 1 $SCT#732937005 "Capsule"
 
 Instance: ie-mpd-dosage-ex-weekly-methotrexate
@@ -139,5 +139,5 @@ Description: "Four tablets once a week on Mondays (HIQA EP 5.2.4.4 day of the we
 * dosage[=].timing.repeat.period = 1
 * dosage[=].timing.repeat.periodUnit = #wk
 * dosage[=].timing.repeat.dayOfWeek = #mon
-* dosage[=].route = $SCT#26643006 "Oral route"
+* dosage[=].route = $SCTIE#26643006 "Oral route"
 * dosage[=].doseAndRate[0].doseQuantity = 4 $SCT#732936001 "Tablet"

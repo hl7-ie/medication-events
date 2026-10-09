@@ -14,17 +14,41 @@ Extension concepts (namespace 1000220), published in the **SNOMED CT Irish Editi
 The [Medication Codes](ValueSet-ie-mpd-medication-codes.html) ValueSet includes the Irish Edition's pharmaceutical
 and biologic products, plus ATC. Medication and prescription profiles bind to it as *extensible*.
 
+### All SNOMED CT codings: the Irish Edition
+
+Ireland uses the **SNOMED CT Irish Edition**, which contains the International Edition plus the Irish Extension
+(NMPC). Every SNOMED CT coding in this IG's examples declares it:
+
+```json
+{ "system": "http://snomed.info/sct", "version": "http://snomed.info/sct/1601000220105",
+  "code": "59621000", "display": "Essential hypertension" }
+```
+
+In FSH, use the alias `$SCTIE` (`http://snomed.info/sct|http://snomed.info/sct/1601000220105`). Two exceptions:
+
+- **Quantity units** (e.g. `732936001` Tablet as a dose unit) have only `system` and `code`; FHIR gives a Quantity no
+  `version`, so units carry `http://snomed.info/sct` alone.
+- **Codings bound to FHIR or HL7 Europe value sets that include SNOMED CT without a version** (in the examples:
+  `Condition.severity`, `Encounter.reasonCode`) are resolved by validators to the International Edition, so they carry
+  no version until those value sets, or a terminology server hosting the Irish Edition, allow it.
+
+This IG's own SNOMED CT value sets ([Medication Codes](ValueSet-ie-mpd-medication-codes.html),
+[Allergy Intolerance Set](ValueSet-ie-mpd-allergy-intolerance-set.html)) are pinned to the Irish Edition.
+
 ### How the codes in this IG were checked
 
 - **NMPC codes.** tx.fhir.org does not host the Irish Edition (OI-022), so every NMPC code in the examples was checked
   by hand in the [NMPC Meds Catalogue](https://nmpc.hse.ie/browser) and recorded, with its NMPC name, in
   `docs/hiqa-2026/nmpc-verification.csv`. The Irish Edition is also published in the SNOMED International browser
   (edition `MAIN/SNOMEDCT-IE`).
-- **Every other code.** `scripts/terminology/verify_codes.py` looks up each SNOMED CT, LOINC and UCUM code used in the
-  FSH on tx.fhir.org and fails if one is missing or inactive. Irish Extension codes (namespace 1000220) are checked
+- **Every other code.** `scripts/terminology/verify_codes.py` looks up each SNOMED CT, LOINC, UCUM and ATC code used in
+  the FSH on tx.fhir.org and fails if one is missing or inactive. SNOMED CT International concepts are part of the
+  Irish Edition, so they are checked in the International Edition there. The HSE CTS
+  (`https://nmpc.hse.ie/production1/fhir`) resolves the Irish Edition to release 20260921 but did not answer anonymous
+  lookups for it on 9 October 2026 (OI-022). Irish Extension codes (namespace 1000220) are checked
   against `nmpc-verification.csv` instead. The result is written to `docs/hiqa-2026/terminology-verification.csv`.
 - **Examples.** The FHIR Validator checks every example with tx.fhir.org. It cannot expand ValueSets that filter on the
-  Irish Edition, which is the one known validator error (OI-022).
+  Irish Edition (the Medication Codes and Allergy Intolerance Set filters), the known validator errors (OI-022).
 
 ### Placeholders
 

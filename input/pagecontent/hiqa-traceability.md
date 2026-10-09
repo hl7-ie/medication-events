@@ -224,9 +224,9 @@ Logical model: [HIQA ePrescription/eDispensation](StructureDefinition-HIQAEPresc
 | 5.2.1 | Sequence (if more than one dosaging scheme exists) (PD) | Optional | 0..1 | IEMpdMedicationRequestEPrescription | `MedicationRequest.dosageInstruction.sequence` | N | Aligned |  |
 | 5.2.2 | Note for patient (PD) | Required | 0..1 | IEMpdMedicationRequestEPrescription | `MedicationRequest.dosageInstruction.patientInstruction` | Y | Aligned |  |
 | 5.2.3 | Dose and rate (cluster) | Required | 0..* | IEMpdMedicationRequestEPrescription | `MedicationRequest.dosageInstruction.doseAndRate` | Y | Aligned |  |
-| 5.2.3.1 | Dose of medication item (cluster) (PD) | Required | 0..1 | IEMpdMedicationRequestEPrescription | `MedicationRequest.dosageInstruction.doseAndRate.dose[x]` | Y | Aligned |  |
-| 5.2.3.1.1 | Dose of medication item - quantity (PD) | Required | 0..1 | IEMpdMedicationRequestEPrescription | `MedicationRequest.dosageInstruction.doseAndRate.dose[x]` | Y | Aligned | doseQuantity |
-| 5.2.3.1.2 | Dose of medication item - range (PD) | Required | 0..1 | IEMpdMedicationRequestEPrescription | `MedicationRequest.dosageInstruction.doseAndRate.dose[x]` | Y | Aligned | doseRange |
+| 5.2.3.1 | Dose of medication item (cluster) (PD) | Required | 0..1 | IEMpdDosage | `Dosage.doseAndRate.dose[x]` | Y | Aligned | MS on IEMpdDosage, the type of MedicationRequest.dosageInstruction |
+| 5.2.3.1.1 | Dose of medication item - quantity (PD) | Required | 0..1 | IEMpdDosage | `Dosage.doseAndRate.dose[x]` | Y | Aligned | doseQuantity (IEMpdDosage) |
+| 5.2.3.1.2 | Dose of medication item - range (PD) | Required | 0..1 | IEMpdDosage | `Dosage.doseAndRate.dose[x]` | Y | Aligned | doseRange with both ends (ie-dos-4); allowed in ePrescriptions |
 | 5.2.3.2 | Rate of administration (cluster) (PD) | Optional | 0..1 | IEMpdMedicationRequestEPrescription | `MedicationRequest.dosageInstruction.doseAndRate.rate[x]` | N | Aligned |  |
 | 5.2.3.2.1 | Rate of administration - quantity (PD) | Optional | 0..1 | IEMpdMedicationRequestEPrescription | `MedicationRequest.dosageInstruction.doseAndRate.rateQuantity` | N | Aligned |  |
 | 5.2.3.2.2 | Rate of administration - ratio (PD) | Optional | 0..1 | IEMpdMedicationRequestEPrescription | `MedicationRequest.dosageInstruction.doseAndRate.rateRatio` | N | Aligned |  |

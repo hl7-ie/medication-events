@@ -209,14 +209,14 @@ InstanceOf: IEMpdMedicationEPrescription
 Usage: #example
 Title: "HIQA scenarios – Amoxicillin 500 mg oral capsule"
 Description: "International SNOMED CT product code and the NMPC VMP (SNOMED CT Irish Edition, verified in the NMPC Meds Catalogue); ATC classification and supply legal status (HIQA EP 4.2)."
-* code = $SCT#323510009 "Amoxicillin 500 mg oral capsule"
-* code.coding[+] = $SCT#716141000220105 "Amoxicillin 500 mg oral capsule"
+* code = $SCTIE#323510009 "Amoxicillin 500 mg oral capsule"
+* code.coding[+] = $SCTIE#716141000220105 "Amoxicillin 500 mg oral capsule"
 * code.coding[=].version = "http://snomed.info/sct/1601000220105"
 * code.text = "Amoxicillin 500 mg capsules"
 * extension[classification][0].valueCodeableConcept = $ATC#J01CA04 "amoxicillin"
 * extension[classification][+].valueCodeableConcept = IEMpdSupplyLegalStatus#prescription-only "Prescription only medicine"
-* form = $SCT#385049006 "Capsule"
-* ingredient[0].itemCodeableConcept = $SCT#372687004 "Amoxicillin"
+* form = $SCTIE#385049006 "Capsule"
+* ingredient[0].itemCodeableConcept = $SCTIE#372687004 "Amoxicillin"
 * ingredient[=].isActive = true
 * ingredient[=].strength.numerator = 500 'mg' "mg"
 * ingredient[=].strength.denominator = 1 $SCT#732937005 "Capsule"
@@ -227,14 +227,14 @@ InstanceOf: IEMpdMedicationEPrescription
 Usage: #example
 Title: "HIQA scenarios – Amoxicillin 50 mg/mL oral suspension"
 Description: "Paediatric oral suspension (scenario 2)."
-* code = $SCT#1148466008 "Amoxicillin 50 mg/mL oral suspension"
-* code.coding[+] = $SCT#462991000220107 "Amoxicillin 250 mg/5 mL powder for oral suspension"
+* code = $SCTIE#1148466008 "Amoxicillin 50 mg/mL oral suspension"
+* code.coding[+] = $SCTIE#462991000220107 "Amoxicillin 250 mg/5 mL powder for oral suspension"
 * code.coding[=].version = "http://snomed.info/sct/1601000220105"
 * code.text = "Amoxicillin 250 mg/5 mL oral suspension"
 * extension[classification][0].valueCodeableConcept = $ATC#J01CA04 "amoxicillin"
 * extension[classification][+].valueCodeableConcept = IEMpdSupplyLegalStatus#prescription-only "Prescription only medicine"
-* form = $SCT#385024007 "Oral suspension"
-* ingredient[0].itemCodeableConcept = $SCT#372687004 "Amoxicillin"
+* form = $SCTIE#385024007 "Oral suspension"
+* ingredient[0].itemCodeableConcept = $SCTIE#372687004 "Amoxicillin"
 * ingredient[=].isActive = true
 * ingredient[=].strength.numerator = 50 'mg' "mg"
 * ingredient[=].strength.denominator = 1 'mL' "mL"
@@ -245,15 +245,15 @@ InstanceOf: IEMpdMedicationEPrescription
 Usage: #example
 Title: "HIQA scenarios – Salbutamol 100 micrograms/actuation pressurised inhaler"
 Description: "Repeat medication (scenarios 3 and 7). SNOMED CT uses the USAN name albuterol."
-* code = $SCT#770300007 "Albuterol (as albuterol sulfate) 100 microgram/actuation pressurized suspension for inhalation"
-* code.coding[+] = $SCT#363291000220101 "Salbutamol 100 microgram/actuation pressurised suspension for inhalation"
+* code = $SCTIE#770300007 "Albuterol (as albuterol sulfate) 100 microgram/actuation pressurized suspension for inhalation"
+* code.coding[+] = $SCTIE#363291000220101 "Salbutamol 100 microgram/actuation pressurised suspension for inhalation"
 * code.coding[=].version = "http://snomed.info/sct/1601000220105"
 * code.text = "Salbutamol 100 micrograms/dose pressurised inhalation suspension"
 * extension[classification][0].valueCodeableConcept = $ATC#R03AC02 "salbutamol"
-* form = $SCT#385205001 "Pressurized suspension for inhalation"
+* form = $SCTIE#385205001 "Pressurized suspension for inhalation"
 * amount.numerator = 200 $SCT#732981002 "Actuation"
 * amount.denominator = 1 '{inhaler}' "inhaler"
-* ingredient[0].itemCodeableConcept = $SCT#372897005 "Albuterol"
+* ingredient[0].itemCodeableConcept = $SCTIE#372897005 "Albuterol"
 * ingredient[=].isActive = true
 * ingredient[=].strength.numerator = 100 'ug' "microgram"
 * ingredient[=].strength.denominator = 1 $SCT#732981002 "Actuation"
@@ -264,15 +264,15 @@ InstanceOf: IEMpdMedicationEPrescription
 Usage: #example
 Title: "HIQA scenarios – Oxycodone hydrochloride 10 mg prolonged-release tablet (Schedule 2)"
 Description: "Controlled drug (scenario 4). The MDA schedule (HIQA EP 4.2.3) uses the IEMpdMDASchedule placeholder code system (Requires Clarification, IE Core OI-007); it drives invariants ie-rx-cd-1 and ie-rx-cd-2."
-* code = $SCT#765706002 "Oxycodone hydrochloride 10 mg prolonged-release oral tablet"
-* code.coding[+] = $SCT#720411000220105 "Oxycodone hydrochloride 10 mg prolonged-release oral tablet"
+* code = $SCTIE#765706002 "Oxycodone hydrochloride 10 mg prolonged-release oral tablet"
+* code.coding[+] = $SCTIE#720411000220105 "Oxycodone hydrochloride 10 mg prolonged-release oral tablet"
 * code.coding[=].version = "http://snomed.info/sct/1601000220105"
 * code.text = "Oxycodone hydrochloride 10 mg prolonged-release tablets"
 * extension[classification][0].valueCodeableConcept = $ATC#N02AA05 "oxycodone"
 * extension[classification][+].valueCodeableConcept = IEMpdMDASchedule#schedule-2 "Schedule 2"
 * extension[classification][+].valueCodeableConcept = IEMpdSupplyLegalStatus#prescription-only "Prescription only medicine"
-* form = $SCT#385060002 "Prolonged-release oral tablet"
-* ingredient[0].itemCodeableConcept = $SCT#387024006 "Oxycodone hydrochloride"
+* form = $SCTIE#385060002 "Prolonged-release oral tablet"
+* ingredient[0].itemCodeableConcept = $SCTIE#387024006 "Oxycodone hydrochloride"
 * ingredient[=].isActive = true
 * ingredient[=].strength.numerator = 10 'mg' "mg"
 * ingredient[=].strength.denominator = 1 $SCT#732936001 "Tablet"
@@ -319,11 +319,11 @@ Description: "HIQA EP 1.6.2 / PS 5.3: confirmed penicillin allergy with anaphyla
 * type = #allergy
 * category = #medication
 * criticality = #high
-* code = $SCT#91936005 "Allergy to penicillin"
+* code = $SCTIE#91936005 "Allergy to penicillin"
 * patient = Reference(hiqa-patient-niamh-keane)
 * recordedDate = "2015-04-10"
 * recorder = Reference(hiqa-prac-gp-nolan)
-* reaction[0].manifestation = $SCT#39579001 "Anaphylaxis"
+* reaction[0].manifestation = $SCTIE#39579001 "Anaphylaxis"
 * reaction[=].severity = #severe
 
 
@@ -375,13 +375,13 @@ Description: "Single-item acute prescription (HIQA EP Section 3)."
 * supportingInformation = Reference(hiqa-allergies-tomas-nilknown)
 * authoredOn = "2026-09-21T09:45:00+01:00"
 * requester = Reference(hiqa-role-gp-nolan)
-* reasonCode = $SCT#15805002 "Acute sinusitis"
+* reasonCode = $SCTIE#15805002 "Acute sinusitis"
 * dosageInstruction[0].text = "Take one capsule three times a day for 7 days"
 * dosageInstruction[=].timing.repeat.frequency = 3
 * dosageInstruction[=].timing.repeat.period = 1
 * dosageInstruction[=].timing.repeat.periodUnit = #d
 * dosageInstruction[=].timing.repeat.boundsDuration = 7 'd' "days"
-* dosageInstruction[=].route = $SCT#26643006 "Oral route"
+* dosageInstruction[=].route = $SCTIE#26643006 "Oral route"
 * dosageInstruction[=].doseAndRate[0].doseQuantity = 1 $SCT#732937005 "Capsule"
 * dispenseRequest.quantity = 21 $SCT#732937005 "Capsule"
 * dispenseRequest.validityPeriod.start = "2026-09-21"
@@ -483,14 +483,14 @@ Description: "The patient is 5 years old: the age at prescribing is recorded (HI
 * supportingInformation[+] = Reference(hiqa-weight-oisin)
 * authoredOn = "2026-09-20T10:10:00+01:00"
 * requester = Reference(hiqa-role-gp-nolan)
-* reasonCode = $SCT#3110003 "Acute otitis media"
+* reasonCode = $SCTIE#3110003 "Acute otitis media"
 * dosageInstruction[0].text = "Give 5 mL (250 mg) three times a day for 5 days"
 * dosageInstruction[=].patientInstruction = "Shake the bottle well. Use the oral syringe provided."
 * dosageInstruction[=].timing.repeat.frequency = 3
 * dosageInstruction[=].timing.repeat.period = 1
 * dosageInstruction[=].timing.repeat.periodUnit = #d
 * dosageInstruction[=].timing.repeat.boundsDuration = 5 'd' "days"
-* dosageInstruction[=].route = $SCT#26643006 "Oral route"
+* dosageInstruction[=].route = $SCTIE#26643006 "Oral route"
 * dosageInstruction[=].doseAndRate[0].doseQuantity = 5 'mL' "mL"
 * dispenseRequest.quantity = 100 'mL' "mL"
 * dispenseRequest.validityPeriod.start = "2026-09-20"
@@ -540,12 +540,12 @@ Description: "Continuous therapy with repeats (HIQA EP 3.5.11), a minimum dispen
 * supportingInformation = Reference(hiqa-allergies-niamh)
 * authoredOn = "2026-09-01T11:05:00+01:00"
 * requester = Reference(hiqa-role-gp-nolan)
-* reasonCode = $SCT#195967001 "Asthma"
+* reasonCode = $SCTIE#195967001 "Asthma"
 * extension[effectiveDosePeriod].valuePeriod.start = "2026-09-01"
 * extension[effectiveDosePeriod].valuePeriod.end = "2027-02-28"
 * dosageInstruction[0].text = "Inhale two puffs when required for breathlessness. Maximum 8 puffs in 24 hours"
 * dosageInstruction[=].asNeededBoolean = true
-* dosageInstruction[=].route = $SCT#447694001 "Respiratory tract route"
+* dosageInstruction[=].route = $SCTIE#447694001 "Respiratory tract route"
 * dosageInstruction[=].doseAndRate[0].doseQuantity = 2 $SCT#732981002 "Actuation"
 * dosageInstruction[=].maxDosePerPeriod.numerator = 8 $SCT#732981002 "Actuation"
 * dosageInstruction[=].maxDosePerPeriod.denominator = 24 'h' "hours"
@@ -663,12 +663,12 @@ Description: "Misuse of Drugs Regulations 2017 requirements as cited by HIQA: qu
 * supportingInformation = Reference(hiqa-allergies-declan-nilknown)
 * authoredOn = "2026-09-15T15:10:00+01:00"
 * requester = Reference(hiqa-role-gp-nolan)
-* reasonCode = $SCT#82423001 "Chronic pain"
+* reasonCode = $SCTIE#82423001 "Chronic pain"
 * dosageInstruction[0].text = "Take one tablet every 12 hours. Swallow whole; do not crush or chew"
 * dosageInstruction[=].timing.repeat.frequency = 1
 * dosageInstruction[=].timing.repeat.period = 12
 * dosageInstruction[=].timing.repeat.periodUnit = #h
-* dosageInstruction[=].route = $SCT#26643006 "Oral route"
+* dosageInstruction[=].route = $SCTIE#26643006 "Oral route"
 * dosageInstruction[=].doseAndRate[0].doseQuantity = 1 $SCT#732936001 "Tablet"
 * dispenseRequest.extension[prescribedQuantity].valueQuantity = 28 $SCT#732936001 "Tablet"
 * dispenseRequest.extension[numberOfInstalments].valuePositiveInt = 2
@@ -745,12 +745,12 @@ Description: "The allergy statement sent with the prescription records a penicil
 * supportingInformation = Reference(hiqa-allergies-niamh)
 * authoredOn = "2026-09-22T09:30:00+01:00"
 * requester = Reference(hiqa-role-gp-nolan)
-* reasonCode = $SCT#15805002 "Acute sinusitis"
+* reasonCode = $SCTIE#15805002 "Acute sinusitis"
 * dosageInstruction[0].text = "Take one capsule three times a day for 7 days"
 * dosageInstruction[=].timing.repeat.frequency = 3
 * dosageInstruction[=].timing.repeat.period = 1
 * dosageInstruction[=].timing.repeat.periodUnit = #d
-* dosageInstruction[=].route = $SCT#26643006 "Oral route"
+* dosageInstruction[=].route = $SCTIE#26643006 "Oral route"
 * dosageInstruction[=].doseAndRate[0].doseQuantity = 1 $SCT#732937005 "Capsule"
 * dispenseRequest.quantity = 21 $SCT#732937005 "Capsule"
 * dispenseRequest.validityPeriod.start = "2026-09-22"
@@ -819,12 +819,12 @@ Description: "Item 1 of a two-item prescription to be dispensed in another EU Me
 * supportingInformation = Reference(hiqa-allergies-declan-nilknown)
 * authoredOn = "2026-09-16T10:00:00+01:00"
 * requester = Reference(hiqa-role-gp-nolan)
-* reasonCode = $SCT#44054006 "Type 2 diabetes mellitus"
+* reasonCode = $SCTIE#44054006 "Type 2 diabetes mellitus"
 * dosageInstruction[0].text = "Take one tablet twice a day with meals"
 * dosageInstruction[=].timing.repeat.frequency = 2
 * dosageInstruction[=].timing.repeat.period = 1
 * dosageInstruction[=].timing.repeat.periodUnit = #d
-* dosageInstruction[=].route = $SCT#26643006 "Oral route"
+* dosageInstruction[=].route = $SCTIE#26643006 "Oral route"
 * dosageInstruction[=].doseAndRate[0].doseQuantity = 1 $SCT#732936001 "Tablet"
 * dispenseRequest.quantity = 56 $SCT#732936001 "Tablet"
 * dispenseRequest.validityPeriod.start = "2026-09-16"
@@ -853,7 +853,7 @@ Description: "Item 2 of the cross-border prescription; same group identifier (EP
 * dosageInstruction[=].timing.repeat.frequency = 1
 * dosageInstruction[=].timing.repeat.period = 1
 * dosageInstruction[=].timing.repeat.periodUnit = #d
-* dosageInstruction[=].route = $SCT#26643006 "Oral route"
+* dosageInstruction[=].route = $SCTIE#26643006 "Oral route"
 * dosageInstruction[=].doseAndRate[0].doseQuantity = 1 $SCT#732936001 "Tablet"
 * dispenseRequest.quantity = 28 $SCT#732936001 "Tablet"
 * dispenseRequest.validityPeriod.start = "2026-09-16"

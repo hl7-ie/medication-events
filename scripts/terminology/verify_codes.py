@@ -114,7 +114,7 @@ def main():
         # and identifier-system aliases (sid/) are not code systems
         if not url.startswith(OWN_CANONICALS) and not url.startswith('urn:') and '/StructureDefinition/' not in url \
                 and '/ValueSet/' not in url and '/ImplementationGuide/' not in url:
-            SYSTEMS.setdefault(a, url)
+            SYSTEMS.setdefault(a, url.split('|')[0])  # $SCTIE = SNOMED CT | Irish Edition version
     found = {}
     for f in glob.glob(os.path.join(ROOT, 'input', 'fsh', '**', '*.fsh'), recursive=True):
         rel = os.path.relpath(f, ROOT).replace(os.sep, '/')

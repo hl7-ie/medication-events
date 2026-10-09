@@ -1,6 +1,9 @@
 // Aliases copied from IE Core (hl7-ie/ie-core @ 2b91509); only those used here are kept.
 
 Alias: $SCT = http://snomed.info/sct
+// SNOMED CT Irish Edition (module 1601000220105): use for every SNOMED CT coding; Quantity units cannot carry a
+// version and keep $SCT.
+Alias: $SCTIE = http://snomed.info/sct|http://snomed.info/sct/1601000220105
 Alias: $LOINC = http://loinc.org
 Alias: $UCUM = http://unitsofmeasure.org
 Alias: $ATC = http://www.whocc.no/atc
