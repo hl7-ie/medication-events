@@ -16,7 +16,7 @@ Instance: hiqa-grp-s1-acute-adult
 InstanceOf: IEMpdPrescriptionGroupHeader
 Usage: #example
 Title: "Scenario 1 – Prescription group header: acute adult prescription"
-Description: "HIQA EP Section 3 for scenario 1: identifier (3.1), date of issue (3.2), status active (3.3) and one item (3.5)."
+Description: "HIQA EP Section 3 for scenario 1: identifier (3.1), date of issue (3.2), group status active (3.3) and its one eP (3.5)."
 * status = #active
 * insert PrescriptionGroup(9-RX-2026-000001, hiqa-patient-tomas-quinn, 2026-09-21T09:45:00+01:00, hiqa-rx-s1-amoxicillin)
 
@@ -61,7 +61,7 @@ Instance: hiqa-grp-s6-crossborder
 InstanceOf: IEMpdPrescriptionGroupHeader
 Usage: #example
 Title: "Scenario 6 – Prescription group header: cross-border prescription with two items"
-Description: "HIQA EP Section 3 for scenario 6: one prescription, two items sharing the group identifier (HIQA EP 3.1)."
+Description: "HIQA EP Section 3 for scenario 6: two electronic prescriptions (eP) issued together, sharing the prescription group identifier (HIQA EP 3.1)."
 * status = #active
 * insert PrescriptionGroup(9-RX-2026-000006, hiqa-patient-declan-walsh, 2026-09-16T10:00:00+01:00, hiqa-rx-s6-metformin)
 * action[+].resource = Reference(hiqa-rx-s6-atorvastatin)
@@ -106,7 +106,7 @@ Instance: hiqa-grp-s10-cancelled
 InstanceOf: IEMpdPrescriptionGroupHeader
 Usage: #example
 Title: "Scenario 10 – Prescription group header: cancelled (revoked) prescription"
-Description: "The whole prescription is cancelled: status revoked with the reason (HIQA EP 3.3.1 to 3.3.3; ie-grp-status-1). Its only item is cancelled, so the statuses agree (ie-bnd-rx-10)."
+Description: "The whole prescription is cancelled: status revoked with the reason (HIQA EP 3.3.1 to 3.3.3; ie-grp-status-1). Its only eP is cancelled, so the statuses agree (ie-bnd-rx-10)."
 * status = #revoked
 * extension[statusReason].valueCodeableConcept = http://terminology.hl7.org/CodeSystem/medicationrequest-status-reason#altchoice "Try another treatment first"
 * extension[statusReason].valueCodeableConcept.text = "Cancelled by the prescriber: treatment changed after review"
@@ -116,7 +116,7 @@ Instance: hiqa-bundle-s10-cancelled
 InstanceOf: IEMpdElectronicPrescriptionGroup
 Usage: #example
 Title: "Scenario 10 – Electronic Prescription Group (ePG): cancelled prescription"
-Description: "The prescription after cancellation: the group is revoked with a reason and the item is cancelled with a reason."
+Description: "The prescription after cancellation: the group is revoked with a reason and its eP is cancelled with a reason."
 * identifier.system = $NePS
 * identifier.value = "9-RX-2026-000010"
 * type = #collection
