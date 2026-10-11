@@ -10,7 +10,7 @@
     "download:validator": "node validator/download-validator.js"
   },
   "dependencies": {
-    "@cucumber/cucumber": "^13.2.1",
+    "@cucumber/cucumber": "^13.3.0",
     "ajv": "^8.20.0",
     "chai": "^6.2.2",
     "glob": "^13.0.6"
